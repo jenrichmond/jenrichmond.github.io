@@ -1,0 +1,39 @@
+---
+title: learning python
+author: Jen Richmond
+date: 2024-07-04
+categories: 
+- python
+---
+
+When you are exploring a far off land and only know a tiny bit of the language they speak there, you always carry a little dictionary with commonly used phrases translated from the language you speak into the other language. It is important to know how to ask someone where the toilets are while you are travelling!
+
+I have just started learning Python with Posit Academy in the lead up to #positconf2024 and I am trying to approach in the same way I would if I was learning French. A dictionary that helps me link functions I know in R to new functions I am learning in Python could be handy.
+
+Linking new concepts to old concepts is also a useful learning strategy. Research in Psychology tells us that memory is relational; the brain represents memories as networks of representations. If you can link something that you are trying to learn to something you already know, you are much more likely to remember that new thing into the long term.
+
+```{r, echo=FALSE, out.width="50%", fig.cap="Art credit: China Blue Art, Memory Network I"}
+knitr::include_graphics("https://chinablueart.com/wp-content/uploads/MemoryNetwork-ICompilation.jpg")
+```
+
+Of course, there are probably a million R to Python dictionaries on the internet; why am I creating a new one for me?
+
+That's because we also know that generative learning and retrieval practice are more effective strategies for remembering things into the long term, than are learning strategies that involve passive review of materials that were created by someone else.
+
+To create a dictionary of functions as I learn new things in Python, I need to retrieve the equivalent function in R from memory and actively evaluate the similarities and differences between the Python and R versions. That process of retrieving and using the concepts I already know, strengthens both my knowledge of R, and links my new Python understanding to it.
+
+So I am starting a [googlesheet](https://docs.google.com/spreadsheets/d/1Vf1AUqdAS_rsyaZw18OxyaIPOoiv9WvOzvILdSRtU6U/edit?usp=sharing) to keep track of new things I am learning how to do in Python and their R equivalents. Maybe I can read that googlesheet in here using the `googlesheets4` package and make it display in a searchable table using `gt`.
+
+```{r include=FALSE}
+library(googlesheets4)
+library(gt)
+
+cheat_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1Vf1AUqdAS_rsyaZw18OxyaIPOoiv9WvOzvILdSRtU6U/edit?gid=0#gid=0") 
+```
+
+```{r}
+cheat_sheet %>%
+  gt() %>%
+  tab_header("My R vs Python cheatsheet") %>%
+  opt_interactive(use_search = TRUE)
+```

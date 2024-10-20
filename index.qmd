@@ -1,11 +1,8 @@
 ---
-title: "jenrichmond.github.io"
+title: "Welcome!"
+subtitle: "I am glad you are here"
 ---
 
-This is a Quarto website.
+This site contains thoughts, projects, talks and resources. It is a [digital garden](https://maggieappleton.com/garden-history) designed to make my googling faster!
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
-```{r}
-1 + 1
-```
