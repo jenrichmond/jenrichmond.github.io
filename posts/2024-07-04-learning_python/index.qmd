@@ -2,6 +2,7 @@
 title: learning python
 author: Jen Richmond
 date: 2024-07-04
+image: featured.png
 categories: 
 - python
 ---
