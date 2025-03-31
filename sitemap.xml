@@ -2,22 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jenrichmond.github.io/posts.html</loc>
-    <lastmod>2024-10-20T23:46:52.676Z</lastmod>
+    <lastmod>2025-03-31T23:16:28.045Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/index.html</loc>
-    <lastmod>2024-10-20T23:46:48.776Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/posts/2024-07-04-learning_python/index.html</loc>
-    <lastmod>2024-10-20T23:31:22.828Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/posts/2024-10-17-what_i_learned_positconf/index.html</loc>
-    <lastmod>2024-10-20T21:49:06.937Z</lastmod>
+    <loc>https://jenrichmond.github.io/posts/2023-04-25-error-bars-on-plots/index.html</loc>
+    <lastmod>2025-03-31T23:16:28.046Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/about.html</loc>
-    <lastmod>2024-10-20T23:46:37.669Z</lastmod>
+    <lastmod>2025-03-31T23:16:28.034Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts/2025-03-31_challenge/index.html</loc>
+    <lastmod>2025-03-31T23:16:28.035Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts/2025-04-02_slope/index.html</loc>
+    <lastmod>2025-03-31T23:16:28.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts/2025-04-01_fractions/index.html</loc>
+    <lastmod>2025-03-31T23:16:28.039Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/index.html</loc>
+    <lastmod>2025-03-31T23:16:28.045Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts.html</loc>
+    <lastmod>2025-03-31T23:16:28.034Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/posts/2024-07-04-learning_python/index.html</loc>
+    <lastmod>2025-03-31T23:16:28.055Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/posts/2023-05-24-rowwise-mean/index.html</loc>
+    <lastmod>2025-03-31T23:16:28.054Z</lastmod>
   </url>
 </urlset>
