@@ -1,0 +1,130 @@
+---
+title: "day 3 circular"
+author:
+  - name: Jen Richmond
+    url: https://jenrichmond.github.io/
+date: 2025-04-03
+format: html
+editor: source
+draft: TRUE
+image: featured.png
+---
+
+[This plot](https://ourworldindata.org/grapher/willingness-climate-action) from Our World in Data illustrates ...
+
+</iframe>
+
+# load packages
+
+```{r}
+#| message: false
+#| warning: false
+#| 
+library(tidyverse)
+library(owidapi)
+library(scales)
+library(ggeasy)
+library(ggannotate)
+
+catalog <- owid_get_catalog()
+```
+
+[This plot](https://ourworldindata.org/grapher/countries-by-share-of-women-in-parliament) illustrates changing representation of women in government leadership. It is great that in 2024 fewer than 2% of governments have no women in leadership, but not amazing that fewer than 2% have 50% or more. I am wondering if I can look at this pattern across different areas of the world by making circular graphs in ggplot.
+
+<iframe src="https://ourworldindata.org/grapher/countries-by-share-of-women-in-parliament?tab=chart" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write">
+
+</iframe>
+
+### read in the data
+
+```{r}
+share <- owid_get("countries-by-share-of-women-in-parliament") 
+
+glimpse(share)
+
+```
+
+## clean it up
+
+I am mostly interested in the current state of affairs so filter the data to only include 2024 and use select to drop and rename variables to make them more friendly. I also want to make the data long
+
+```{r}
+share2024 <- share %>% 
+  filter(year == 2024) %>%
+  rename(number_0pct = num_countries_wom_parl__category_0pct_women, 
+         number_0_10pct = num_countries_wom_parl__category_0_10pct_women,
+         number_10_20pct = num_countries_wom_parl__category_10_20pct_women, 
+           number_20_30pct = num_countries_wom_parl__category_20_30pct_women, 
+           number_30_40pct = num_countries_wom_parl__category_30_40pct_women, 
+           number_40_50pct = num_countries_wom_parl__category_40_50pct_women,
+           number_50pluspct = num_countries_wom_parl__category_50pctplus_women) 
+
+
+# filter for just the world data, make long
+share2024_world <- share2024 %>%
+   select(-entity_id) %>%
+  filter(entity_name == "World") %>%
+  pivot_longer(names_to = "category", values_to = "number", number_0pct:number_50pluspct)
+
+# filter for just the regions data, make long
+
+share2024_regions <- share2024 %>%
+  select(-entity_id) %>%
+  filter(entity_name != "World") %>%
+  pivot_longer(names_to = "category", values_to = "number", number_0pct:number_50pluspct)
+
+# make category a factor
+share2024_world$category <- fct_relevel(share2024_world$category, 
+                            c("number_0pct" , "number_0_10pct" ,"number_10_20pct" ,
+                              "number_20_30pct" ,"number_30_40pct" , "number_40_50pct" ,
+                              "number_50pluspct"))
+
+share2024_regions$category <- fct_relevel(share2024_regions$category, 
+                            c("number_0pct" , "number_0_10pct" ,"number_10_20pct" ,
+                              "number_20_30pct" ,"number_30_40pct" , "number_40_50pct" ,
+                              "number_50pluspct"))
+
+  
+```
+
+### plot
+
+Making a pie chart, inspo from the R Graph gallery https://r-graph-gallery.com/pie-plot.html. There is no pie geom in ggplot, so the workaround is to make a bar chart and use coord_polar to make it circular.
+
+```{r}
+
+palette <- c("#a2559b", "#00847d", "#4b6a9c", "#e56e59", "#38aaba", "#6b3d8d",  "#986d39" )
+
+
+share2024_world <- share2024_world %>% 
+  arrange(category) %>%
+  mutate(prop = number / sum(share2024_world$number) *100) %>%
+  mutate(ypos = cumsum(prop)- 0.5*prop ) %>%
+  mutate(label = case_when(category == "number_0pct" ~ "0%", 
+                           category == "number_0_10pct" ~ "0-10%",
+                           category == "number_10_20pct" ~ "10-20%", 
+                           category == "number_20_30pct" ~ "20-30%", 
+                           category == "number_30_40pct" ~ "30-40%", 
+                           category == "number_40_50pct" ~ "40-50%",
+                           category == "number_50pluspct" ~ "50+%"))
+
+
+```
+
+
+```{r}
+share2024_world %>%
+  ggplot(aes(x = "", y = number, fill = category)) +
+  geom_col(colour = "white") +
+ coord_polar("y", start=0) +
+    theme_void() +
+    scale_fill_manual(values = palette) +
+  easy_remove_legend() +
+  geom_text(aes(y = ypos, label = label), color = "white", size=5)
+
+ggsave(here::here("img", "share.png"), width = 6, height = 4)
+
+ggsave("featured.png")
+
+```
+

@@ -1,8 +1,11 @@
 ---
 title: "Welcome!"
 subtitle: "I am glad you are here"
+image: profile.png
+about:
+  template: jolla
+  image-shape: round
 ---
 
-This site contains thoughts, projects, talks and resources. It is a [digital garden](https://maggieappleton.com/garden-history) designed to make my googling faster!
 
-
+I am a psychologist by training and have been teaching myself (and others) R for a few years now. I am a co-founder of R-Ladies Sydney and developer of [#RYouWithMe](https://rladiessydney.org/courses/). This is my place to keep notes about R (and python) things I am learning. This site makes my googling faster! I hope it is useful to you too.

@@ -7,10 +7,13 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Home
+        text: home
       - about.qmd
       - posts.qmd
-
+      - charts.qmd
+  search:
+    location: navbar
+    type: overlay
 format:
   html:
     theme: cosmo
