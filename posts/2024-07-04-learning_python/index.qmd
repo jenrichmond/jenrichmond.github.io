@@ -26,10 +26,10 @@ To create a dictionary of functions as I learn new things in Python, I need to r
 So I am starting a [googlesheet](https://docs.google.com/spreadsheets/d/1Vf1AUqdAS_rsyaZw18OxyaIPOoiv9WvOzvILdSRtU6U/edit?usp=sharing) to keep track of new things I am learning how to do in Python and their R equivalents. Maybe I can read that googlesheet in here using the `googlesheets4` package and make it display in a searchable table using `gt`.
 
 ```{r include=FALSE}
-library(googlesheets4)
+library(tidyverse)
 library(gt)
 
-cheat_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1Vf1AUqdAS_rsyaZw18OxyaIPOoiv9WvOzvILdSRtU6U/edit?gid=0#gid=0") 
+cheat_sheet <- read_csv("cheat.csv")
 ```
 
 ```{r}

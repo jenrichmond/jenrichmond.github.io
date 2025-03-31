@@ -1,0 +1,90 @@
+how to,R,python,differences
+getting started,NA,NA,NA
+assign variables,my_name <- Jenny,my_name = Jenny,NA
+install packages,"install.packages(""tidyverse"")",pip install numpy,NA
+load packages,library(tidyverse),import numpy OR import numpy as np,use import numpy as np if you want to use an alias to type less
+load functions from packages,**not a thing**,"from plotnine import ggplot, aes, geom_line",NA
+use functions from a package,clean_names(data) OR janitor::clean_names(data),numpy.sqrt(data) OR np.sqrt(data),"once you load a package in R with library(packagename), R just knows to use functions from that package. In python, you need to tell it what package each function comes from-  requires namespace"
+use functions that are built in,"round(x, digits = 3)","round(x, ndigits = 3)",no need to use namespace in python for functions that are built in (https://docs.python.org/3/library/functions.html)
+get help,?name_of_package_function,help(name_of_package_function),NA
+read in dataframe,"df <- read_csv(""data/datafile.csv"")","df = pd.read_csv(""data/datafile.csv"")",NA
+make a dataframe,"new_df <- tibble(col1 = 1:3, col2 = 4:6)","new_df = pd.DataFrame({'col1': [1, 2, 3], 'col2': [4, 5, 6],})","data dictionary w key as column name, values as column contents"
+remove everything from the environment,use the sweeper,globals().clear(),NA
+remove specific objects,??,"del df1, df2",NA
+variable names lower,df %>% clean_names(),df.columns.str.lower(),NA
+convert float to integer,NA,df['Column1'] = df['Column1'].astype(int),NA
+# print data types,NA,print(df.dtypes),NA
+NA,NA,NA,NA
+NA,NA,NA,NA
+NA,NA,NA,NA
+NA,NA,NA,NA
+random things,NA,NA,NA
+random number between 0-1,runif(1),random.random(),requires that you have loaded the random package with import random
+random number between range,"runif(1, min = 1, max = 100)","random.ranint(1,100)",NA
+NA,NA,NA,NA
+sense checking,NA,NA,NA
+list columns,names(df),df.columns,"note: columns, shape and info don't need () because they are extracting an attribute from the object"
+get dimensions,str(df),df.shape,NA
+get dataframe info,glimpse(df),df.info,NA
+get descriptives,summary(df),df.describe(),NA
+get first few rows,head(df),df.head(),NA
+get frequencies,df %>% tabyl(column) %>% arrange(n),df['column'].value_counts() OR df.column.value_counts(),NA
+get distinct/unique values,unique(df$column) OR df %>% distinct(column),df.column.unique(),NA
+NA,NA,NA,NA
+filter,NA,NA,NA
+filter for 1 thing,"subset <- df %>% filter(variable == ""case1"")",subset1 = df.loc[df['variable'] == 'case1'],NA
+filter for 2 things isin,"subset2 <- df %>% filter(variable %in%  c(""case1"", ""case2""))","subset2 = df.loc[df['variable'].isin(['case1', 'case2'])]",NA
+ALT filter for 2 things OR operator,"subset3 <- df %>% filter(variable ==  ""case1"" | ""case2"")",subset3 = df.loc[(df['variable'] == 'case1') | (df['variable'] == 'case2')],NA
+filter strings with starts_with,"subset4 <- df %>% filter(str_detect(variable, ""To""))",subset4 = df.loc[df['variable'].str.startswith('To')],NA
+filter out na,df_no_NA <- df %>% filter(!isna(variable)),df_no_NA = df.dropna(),NA
+replace NA with 0,"df_NA_zero <- df %>% mutate(across(everything(), ~replace_na(.x,0)))",df_NA_zero = df.fillna(0),NA
+NA,NA,NA,NA
+NA,NA,NA,NA
+NA,NA,NA,NA
+mutate,NA,NA,NA
+mutate,df <- df %>% mutate(cumul_cases = cumsum(cases)),df['cumul_cases'] = df['cases'].cumsum(),these are methods .fun()
+NA,df <- df %>% mutate(mean_cases = mean(cases)),df['mean_cases'] = df['cases'].mean(),NA
+NA,df <- df %>% mutate(ratio = cases / deaths),df['ratio'] = df['cases'] / df['deaths'],NA
+NA,NA,NA,NA
+summarise,NA,NA,NA
+get mean of a column,df %>% summarise(mean = mean(column1)),df['column1'].mean(),"subset column as Series, and call mean; skipna = True is default"
+NA,NA,"df2.groupby(['species','island']).agg(['min','mean','max',]).dropna()",NA
+NA,NA,"penguins.groupby('species') .agg({ 'body_mass_g': ['mean'], 'flipper_length_mm': ['mean'], 'bill_length_mm': ['mean'] })",NA
+NA,NA,NA,NA
+NA,NA,NA,NA
+NA,NA,NA,NA
+NA,NA,NA,NA
+arrange,NA,NA,NA
+arrange by a single variable,one_sort <- df %>% arrange(variable1),one_sort = df.sort_values('variable1'),NA
+arrange by more than one variable,"two_sort <- df %>% arrange(variable1, variable2)","two_sort = df.sort_values(['variable1','variable2'])",NA
+NA,NA,NA,NA
+NA,NA,NA,NA
+select,NA,NA,NA
+select a single column,df %>% select(column_name),df['column_name'],NA
+select multiple columns,"df %>% select(column1, column3)","df[['column1', 'column3']]",NA
+select a range of columns,df %>% select(column4:column7),"df.loc[: , 'column4' : 'column7']",": means all, so this gets all rows and cols 1-7"
+remove columns,"df %>% select(-col1, -col4, -col7)","df.drop(columns = ['col1', 'col4', 'col7'])",NA
+recode variables,NA,"df.loc[df['state'] == 'NY', 'state'] = 'New York'",NA
+rename variables,"df %>% rename(newname1 = oldname1, newname2 = oldname2)","df.rename(columns={'oldname1': 'newname1', 'oldname2': 'newname2'})",NA
+NA,NA,NA,NA
+pandas replace using lists,NA,"grades = [1,2,3,4,5,6]",NA
+NA,NA,"status = [""non-mgmt"", ""non-mgmt"", ""non-mgmt"", ""non-mgmt"", ""mgmt"", ""mgmt""]",NA
+NA,NA,"bank['Manager'] = bank['JobGrade'].replace(grades, status)",NA
+NA,NA,bank[170:175],NA
+NA,NA,NA,NA
+NA,NA,NA,NA
+ggplot_plotnine differences,NA,NA,NA
+import each function,library(ggplot),"from plotnine import ggplot, aes, geom_line",NA
+"plotnine code has to be wrapped in parentheses, spell out mapping = aes, aesthetics in ' '","df %>% ggplot(aes(x = col1, y = col2, color = col3)) + geom_line()","(  df %>% ggplot(mapping = aes(x = 'col1', y = 'col2', color = 'col3')) + geom_line() )",NA
+NA,NA,NA,NA
+NA,NA,NA,NA
+NA,NA,"df_dropped = df.dropna(subset=['col1', 'col2])",NA
+dealing with NAs,NA,pd.isna(tv_hours).mean(),"is.na codes 1 and 0, so mean() gets proportion"
+how many values not NA,NA,df.notnull().sum(),NA
+how many values are NA,NA,df.isnull().sum(),NA
+Proportion of NA,NA,df.isnull().sum()/df.notnull().sum(),NA
+NA,NA,NA,NA
+NA,NA,"df2.groupby(['species','island']).agg(['min','mean','max',]).dropna()","df2 %>% group_by(species, island) %>% summarise(across?? all columns)"
+NA,NA,NA,NA
+NA,NA,omplete_penguins = penguins.dropna(),drops every row with a missing value
+NA,NA,complete_bodymass_penguins = penguins.dropna(subset=['body_mass_g']),NA
