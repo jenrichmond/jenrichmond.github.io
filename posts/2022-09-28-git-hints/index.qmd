@@ -1,0 +1,35 @@
+---
+title: git hints
+date: '2022-09-28'
+author:
+  - name: Jen Richmond
+    url: https://jenrichmond.github.io/
+format: html
+editor: source
+image: featured.png
+---
+
+I am getting pretty good at avoiding git merge conflicts by always remembering to pull before I push when using github. But the terminal in RStudio has been giving me this hint for a while and I have been ignoring it. 
+
+![](hint.png)
+
+
+I think this hint is trying to help me but I don't know what rebase or fast-forward means... to google...
+
+[This post](https://blog.sffc.xyz/post/185195398930/why-you-should-use-git-pull-ff-only) suggests that I should only use git pull -ff, going as far as setting -ff as a global config setting. 
+
+Apparently git pull is actually a two step thing (git fetch + git merge).
+First, it fetches the content from the remote and then it merges that content into your local. That is USUALLY fine... especially if you are working alone and nothing has changed about your remote repo since the last time you pulled. In this case, your local will be ahead of your remote and git pull will be fine. 
+
+But if you are using git to collaborate and your team member has pushed some changes to the files you are working on, you can find yourself with a merge conflict. 
+
+The git pull --ff-only command will fetch and merge content from the remote repo, only if it can be done be done by "fast-fowarding"- that is, without creating new commits. This will only happen if the remote and local haven't diverged. If they have it will give you a warning.
+
+My Twitter friends think that in my use case, when I am mostly working with myself and the remote is unlikely to have diverged from the local, the default option will work fine. 
+
+Yay for #rstats twitter!
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Anyone <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> know of a helpful rebase vs. fastforward explainer? Which of these options I should choose? <br><br>My use case is simpler than most. I am not using branches or worried about other people pushing to my repo-- just blog/quarto slides to github... thanks <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a>! <a href="https://t.co/FAaBLJKAqw">pic.twitter.com/FAaBLJKAqw</a></p>&mdash; Jen Richmond @jenrichmondPhD@mastodon.soc (@JenRichmondPhD) <a href="https://twitter.com/JenRichmondPhD/status/1577065556028452864?ref_src=twsrc%5Etfw">October 3, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+

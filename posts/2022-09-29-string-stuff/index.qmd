@@ -1,0 +1,61 @@
+---
+title: how to subset strings
+date: '2022-09-29'
+author:
+  - name: Jen Richmond
+    url: https://jenrichmond.github.io/
+format: html
+editor: source
+draft: TRUE
+image: featured.jpeg
+categories:
+- idhtg
+- stringr
+---
+
+Sometimes you have a column in your data frame that is text, but there is some of it that you don't need. Lets say your data looks like this...
+
+```{r include=FALSE}
+library(tidyverse)
+library(stringr)
+```
+
+
+```{r}
+df <- data.frame(animals = c("this is a bear", "this is a lion", "this is a tiger"))
+
+df
+```
+
+And perhaps only want the animal names... you can use `sub_str()` from the `stringr` package to strip out the extra characters. The `sub_str()` function allows you to specify the position of the character you want to start and end with. 
+
+Here I want to start at the 11th character and keep the rest. 
+
+> Note: spaces are included in your character count. 
+
+```{r}
+
+df_new <- df %>%
+  mutate(new_col = str_sub(animals, start = 11))
+
+df_new
+```
+If you wanted to get just the "is a" piece of the string, you can specify both a start and end character. 
+
+```{r}
+df_new <- df_new %>%
+  mutate(new_col2 = str_sub(animals, start = 6, end = 9))
+
+df_new
+```
+
+You can also use - to count backwards from the end. Here I am selecting the last 9 characters. 
+
+```{r}
+df_new <- df_new %>%
+  mutate(new_col3 = str_sub(animals, start = -9))
+
+df_new
+```
+
+Yay- I no longer have to google (IDHTG) how to subset strings with stringr!

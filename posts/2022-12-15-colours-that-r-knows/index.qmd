@@ -8,6 +8,8 @@ format: html
 editor: source
 draft: FALSE
 image: featured.png
+categories:
+- ggplot
 ---
  
 I have been working through the [ggplot R Advent calendar by Kiirsti Owen](https://github.com/kiirsti/ggplot_adventcalendaR) with some lovely RLadies friends and we got up to Day 15 where we started controlling colours in ggplot with `scale_fill_manual()`. Our immediate question was "how to you know what the names of the colours that R knows are?" 
@@ -58,7 +60,6 @@ Load the epitools package and then use the `colors.plot()` function in the conso
 <iframe width="560" height="315" src="https://www.youtube.com/embed/aMyi0m9ZD_k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 You can then use those names to revise your plot colours. 
-
 
 ```{r}
 trees %>%
