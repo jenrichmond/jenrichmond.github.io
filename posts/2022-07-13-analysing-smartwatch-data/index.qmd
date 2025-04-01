@@ -1,0 +1,342 @@
+---
+title: analysing smartwatch data
+date: '2022-07-13'
+author:
+  - name: Jen Richmond
+    url: https://jenrichmond.github.io/
+format: html
+editor: source
+draft: TRUE
+image: featured.png
+---
+
+Sometimes trying to replicate what someone is doing in a blogpost you find on twitter is a great way to learn something new. I am half heartedly thinking about trying to learn Python so when I saw [this post about analysing smartwatch data](https://thecleverprogrammer.com/2022/05/31/smartwatch-data-analysis-using-python/) on twitter I thought that it looked like interesting data and perhaps if I tried to do what they had done in R, that would be a useful way of starting to translate my R knowledge into python... maybe. 
+
+So here we go....
+
+# load packages
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(here)
+library(naniar)
+library(lubridate)
+library(skimr)
+library(ggeasy)
+library(gt)
+library(janitor)
+```
+
+# read in the data
+
+```{r message=FALSE, warning=FALSE}
+df <- read_csv("dailyActivity_merged.csv")
+```
+
+# look at the first few rows
+
+```{r}
+head(df)
+```
+
+# check if there are NAs
+
+A few ways to check NAs, the easiest uses `naniar` to visualise NAs with vis_miss()
+
+```{r}
+vis_miss(df)
+
+```
+
+Alternatively you can use dplyr to summarise across the whole dataframe... 
+
+```{r}
+# using dplyr
+df %>%
+  summarise(missing = sum(is.na(.)))
+
+# or more simply w n_miss() from naniar
+n_miss(df)
+
+```
+
+... or separately for each variable
+
+```{r, warning=FALSE, message=FALSE}
+# using dplyr 
+df %>%
+  summarise_all(funs(sum(is.na(.))))
+
+# or more simply w miss_var_summary() from naniar
+
+miss_var_summary(df)
+
+```
+
+Take home message: there are no missing values in this dataset. 
+
+# look at data types
+
+```{r}
+glimpse(df)
+```
+
+The ActivityDate variable is characters so we need to convert that to date format
+
+```{r}
+df <- df %>%
+  mutate(ActivityDate = mdy(ActivityDate))
+
+class(df$ActivityDate)
+```
+
+# make a new total minutes column
+
+Lets mutate a new column that sums the activity minutes. We need to use rowwise here to let R know that we want to sum those values in each row. 
+
+```{r}
+df <- df %>%
+  rowwise() %>%
+  mutate(TotalMinutes = VeryActiveMinutes +FairlyActiveMinutes + LightlyActiveMinutes + SedentaryMinutes) %>%
+  ungroup()  # remember to ungroup to make sure the next operation is not rowwise
+```
+
+# descriptives
+
+```{r}
+
+options(scipen = 99) # avoid scientific notation
+
+descriptives <- df %>%
+  select(TotalSteps:TotalMinutes) %>%
+  skim()
+
+gt(descriptives)
+
+```
+
+# scatterplot
+
+## the goal 
+
+![](https://i0.wp.com/thecleverprogrammer.com/wp-content/uploads/2022/05/smartwatch-1.png?w=1158&ssl=1)
+
+
+In the python plot they use a "ols" trendline but I don't really know what that is so using "lm" instead. The graph in the post has the size of the points plotting very active minutes but there isn't a legend on the plot, so I am using a function from `ggeasy` to remove the legend. Also worked out how to make the y axis be labelled 0 - 40k, rather than 0-40000 using the labels argument in `scale_y_continuous`. 
+
+```{r message=FALSE, warning=FALSE}
+df %>%
+  ggplot(aes(x = Calories, y = TotalSteps, size = VeryActiveMinutes)) +
+  geom_point(colour = "blue", alpha = 0.5) + 
+  geom_smooth(method = "lm", se = FALSE) +
+  easy_remove_legend() +
+  scale_y_continuous(limits = c(0,40000), labels = c("0", "10k", "20k", "30k", "40k"))
+
+  
+```
+
+# pie chart
+
+## the goal
+
+![](https://i0.wp.com/thecleverprogrammer.com/wp-content/uploads/2022/05/smartwatch-2.png?w=1158&ssl=1)
+
+The next graph in the blog post is a pie chart plotting the total active minutes in the 4 categories (inactive, lightly active, very active and fairly active). First I need to replicate these values. Luckily they are in the descriptives, so I am just going to select and filter everything else out of that dataframe.  
+
+```{r}
+tam <- descriptives %>%
+  select(skim_variable, numeric.mean) %>%
+  filter(skim_variable %in% c( "SedentaryMinutes", "LightlyActiveMinutes" , "FairlyActiveMinutes", "VeryActiveMinutes")) 
+
+gt(tam)
+```
+
+OK first thing to "fix" are the labels on these categories. Inactive seems like a better label than Sedentary. Make the skim variable a factor first. Then use `levels()` to check that there are now levels. Then use `fct_recode()` to change the labels on the factor levels manually. 
+
+```{r}
+glimpse(tam)
+
+tam <- tam %>%
+  mutate(skim_variable = as_factor(skim_variable))
+
+levels(tam$skim_variable)
+
+tam <- tam %>%
+  mutate(skim_variable = fct_recode(skim_variable, 
+                                    "Very Active Minutes" =  "VeryActiveMinutes", 
+                                   "Fairly Active Minutes" = "FairlyActiveMinutes", 
+                                   "Lightly Active Minutes" = "LightlyActiveMinutes", 
+                                    "Inactive Minutes" = "SedentaryMinutes"))
+
+levels(tam$skim_variable)
+```
+
+There isn't a `geom_pie()` in ggplot, probably because pie charts are the *worst visualisation* but you can make one by first making a stacked bar chart using `geom_bar()` and then adding `coord_polar()`. 
+
+
+Good instructions available here https://r-graph-gallery.com/piechart-ggplot2.html
+
+Bar graph version...
+```{r}
+
+tam %>%
+  ggplot(aes(x="", y=numeric.mean, fill=skim_variable)) +
+  geom_bar(stat="identity") 
+
+```
+
+... add `coord_polar()`
+
+```{r}
+
+tam %>%
+  ggplot(aes(x="", y=numeric.mean, fill=skim_variable)) +
+  geom_bar(stat="identity", color="white") +
+  coord_polar("y", start = 0) 
+```
+
+OK the bones are there but I really don't want the axis labels or the grey background. Add `theme_void()` to get rid of those. 
+
+```{r}
+tam %>%
+  ggplot(aes(x="", y=numeric.mean, fill=skim_variable)) +
+  geom_bar(stat="identity", color="white") +
+  coord_polar("y", start = 0) +
+  theme_void()
+```
+
+Awesome, now in the post they have the legend ordered by the mean (with Inactive at the top). I think you can do that within a mutate, right before your data hits ggplot [see this post] (https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html). 
+
+```{r}
+ tam %>%
+  mutate(skim_variable = fct_reorder(skim_variable, desc(numeric.mean))) %>%
+  ggplot(aes(x="", y=numeric.mean, fill=skim_variable)) +
+  geom_bar(stat="identity", color="white") +
+  coord_polar("y", start = 0) +
+  theme_void()
+```
+
+And they have ridiculous number labels... in the spirit of reproducibility, lets do that too!
+
+```{r}
+tam %>%
+  mutate(skim_variable = fct_reorder(skim_variable, desc(numeric.mean))) %>%
+  ggplot(aes(x="", y=numeric.mean, fill=skim_variable, label = numeric.mean)) +
+  geom_bar(stat="identity", color="white") +
+  coord_polar("y", start = 0) +
+  theme_void() +
+  geom_text(angle = 45)
+```
+
+Hmmmm I have overlapping numbers! I would be great to have more control over where the numbers go... I thought maybe `ggannotate` would help but it doesn't work with polar coordinates. So I am stuck with position dodge. Adding a mutate to round the numbers also helps...
+
+```{r}
+
+tam %>%
+  mutate(skim_variable = fct_reorder(skim_variable, desc(numeric.mean))) %>%
+  mutate(numeric.mean =  round(numeric.mean, 4)) %>%
+  ggplot(aes(x="", y=numeric.mean, fill=skim_variable, label = numeric.mean)) +
+  geom_bar(stat="identity", color="white") +
+  coord_polar("y", start = 0) +
+  theme_void() +
+  geom_text(angle = 45, position = position_dodge(0.5))
+  
+```
+
+Not terrible, what about colours?? The original post has blue, pink, yellow and green. 
+
+- blue 1	0	245	(#0100F5)
+- pink 246	194	203	(#F6C2CB)
+- yellow 249	217	73	(#F9D949)
+- green 166	236	153	(#A6EC99)
+
+
+I worked out how to use the Digital Colour Meter from Utilities on my Mac ot get the exact RGB codes for the colours in the graph using [this resource](https://www.wikihow.com/Get-the-Hex-Code-of-a-Color-on-Your-Computer-Screen).
+
+Then used this [RGB-Hex converter](https://www.rgbtohex.net/). I wonder if this step is necessary?? does ggplot know RGB codes??
+
+Ahhh maybe not... but there is a `rgb` function, check this out!
+
+```{r}
+rgb(1,0,245, maxColorValue = 255)
+rgb(246,194,203, maxColorValue = 255)
+rgb(249,217,73, maxColorValue = 255)
+rgb(166,236,153, maxColorValue = 255)
+```
+
+Adding in colours using `scale_fill_manual()` and removing the legend title with `ggeasy`. 
+
+
+```{r}
+tam %>%
+  mutate(skim_variable = fct_reorder(skim_variable, desc(numeric.mean))) %>%
+  mutate(numeric.mean =  round(numeric.mean, 4)) %>%
+  ggplot(aes(x="", y=numeric.mean, fill=skim_variable, label = numeric.mean)) +
+  geom_bar(stat="identity", color="white") +
+  scale_fill_manual(values = c("#0100F5","#F6C2CB","#F9D949","#A6EC99")) +
+  coord_polar("y", start = 0) +
+  theme_void() +
+  geom_text(angle = 45, position = position_dodge(0.5)) +
+  easy_remove_legend_title()
+```
+
+
+Under the pie chart there are some summary stats...lets see if we can get those using inline code.
+
+```{r}
+tam_wide <- tam %>%
+  pivot_wider(names_from = skim_variable, values_from = numeric.mean) %>%
+  clean_names() %>%
+  rowwise() %>%
+  mutate(total = very_active_minutes + fairly_active_minutes + lightly_active_minutes + inactive_minutes) %>%
+  pivot_longer(names_to = "category", values_to = "minutes", very_active_minutes:inactive_minutes) %>%
+  relocate(total, .after = minutes) %>%
+  mutate(percent = (minutes/total)*100) %>%
+  mutate(percent = round(percent, 1)) %>%
+   mutate(minutes = round(minutes, 0))
+
+
+```
+
+
+**Observations**
+
+1. `r tam_wide[4,4]` of Total inactive minutes in a day
+2. `r tam_wide[3,4]` of Lightly active minutes in a day
+3. On an average, only `r tam_wide[1,2]` (`r tam_wide[1,4]`) were very active
+4. and `r tam_wide[2,4]` (`r tam_wide[2,2]`) of fairly active minutes in a day 
+
+
+# column graph
+
+## the goal
+
+![](https://i0.wp.com/thecleverprogrammer.com/wp-content/uploads/2022/05/smartwatch-3.png?w=1158&ssl=1)
+
+Next up there is a column plot that looks at activity by day of the week. The `lubridate` package makes it easy to pull the day out of a date. I am going back to the original data frame and making a new one that includes just the id and activity date and the activity in minutes.
+
+```{r}
+glimpse(df)
+
+day <- df %>%
+  clean_names() %>%
+  select(id:activity_date, very_active_minutes:calories) %>%
+  mutate(day = wday(activity_date, label = TRUE)) %>%
+  rename(inactive_minutes = sedentary_minutes) %>%
+  pivot_longer(names_to = "category", values_to = "minutes", very_active_minutes:inactive_minutes) %>%
+  mutate(category = str_sub(category, end = -9)) %>%
+  mutate(category = fct_relevel(category, c("very_active", "fairly_active", "lightly_active", "inactive")))
+
+day %>%
+  filter(category != "inactive") %>%
+  group_by(day, category) %>%
+  summarise(activity = sum(minutes)) %>%
+  ggplot(aes(x = day, y = activity, fill = category)) +
+  geom_col(position = "dodge") +
+   scale_fill_manual(values = c("purple", "darkgreen", "pink")) +
+   scale_y_continuous(limits = c(0,40000), labels = c("0", "10k", "20k", "30k", "40k")) +
+  easy_remove_legend_title()
+  
+
+
+```

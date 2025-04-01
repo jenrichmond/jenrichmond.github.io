@@ -1,0 +1,71 @@
+---
+title: using lists in R
+date: '2022-06-27'
+author:
+  - name: Jen Richmond
+    url: https://jenrichmond.github.io/
+format: html
+editor: source
+image: featured.png
+---
+
+One of my goals while on long service leave is to learn some new R things that have been on my radar for a while... the first of these is purrr. The purrr package allows you to iterate a function across different elements in a list or dataframe. 
+
+I have started to try and learn purr before ([see a list of resources here](https://jennyrichmond.netlify.app/blog/i-don-t-like-cats-much/)).  I have copied other people's purrr code a couple of times too...
+
+- how to use [map to read in a LOT of .csv files](https://jennyrichmond.netlify.app/blog/use-map-to-read-many-csv-files/) and 
+- using [pwalk to output plots in different colour schemes](https://rpubs.com/jenrichmond/w5LL)
+
+... but when you copy purrr code from someone else and adjust it to suit you own problem... you can't really say you know how to use purrr. 
+
+The first thing I think I need to get my head around in order to understand purrr is lists. Dataframes are the bread and butter of the tidyverse and up until now I have avoided them, or tried desperately to use `as.dataframe()` or `unnest()` to turn them into a data structure that i understand. Lists allow you to bundle together different kinds of data elements together, so now is the time to get my head around them. 
+
+# how to make a list
+
+This is a example I copied from [a tutorial](https://techvidvan.com/tutorials/r-list/#:~:text=How%20to%20Create%20Lists%20in,function%20to%20create%20a%20list.&text=Another%20way%20to%20create%20a,into%20components%20of%20a%20list.) 
+
+
+```r
+myfirstlist <-  list(2, 
+                     "hello", 
+                     c(3,5,4), 
+                     1:5, 
+                     list(FALSE, 
+                          c("this", "is","a","list"),
+                          c(FALSE,TRUE,TRUE,TRUE,FALSE))) 
+```
+
+
+The `list()` function lets you put elements of all different types (and lengths) into a listy bundle; characters and numbers and logicals. One of the elements in this list of 5 items when others have 3 items or even 1. Another item is ANOTHER list made up of 3 items. Lists within lists--- eeeekk. We can use the `class()` function to check that our list is a list and the `str()` function to get our head around what we are dealing with. 
+
+
+```r
+class(myfirstlist)
+```
+
+```
+## [1] "list"
+```
+
+```r
+str(myfirstlist)
+```
+
+```
+## List of 5
+##  $ : num 2
+##  $ : chr "hello"
+##  $ : num [1:3] 3 5 4
+##  $ : int [1:5] 1 2 3 4 5
+##  $ :List of 3
+##   ..$ : logi FALSE
+##   ..$ : chr [1:4] "this" "is" "a" "list"
+##   ..$ : logi [1:5] FALSE TRUE TRUE TRUE FALSE
+```
+
+This iconic image (which I think comes from a Jenny Bryan talk) is supposed to help me understand how to access elements of a list. 
+
+Lets see if I can unpack it. 
+
+![](pepper.png)
+TBC...
