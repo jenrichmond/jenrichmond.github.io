@@ -6,7 +6,7 @@ author:
     url: https://jenrichmond.github.io/
 format: html
 editor: source
-image: featured.png
+image: pepper.png
 ---
 
 One of my goals while on long service leave is to learn some new R things that have been on my radar for a while... the first of these is purrr. The purrr package allows you to iterate a function across different elements in a list or dataframe. 
