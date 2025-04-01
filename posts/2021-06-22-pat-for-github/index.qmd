@@ -1,0 +1,57 @@
+---
+title: PAT for GitHub
+date: '2021-06-22'
+author:
+  - name: Jen Richmond
+    url: https://jenrichmond.github.io/
+format: html
+editor: source
+image: featured.png
+---
+
+
+I have been avoiding setting up a Personal Access Token to authenticate my github account for a while because it seemed complicated. Never fear [Happy Git with R](https://happygitwithr.com/credential-caching.html) and `usethis()` to the rescue. 
+
+### create a token
+
+In the RStudio console, install the `usethis` package if you don't already have it and use it to create a github token. 
+
+```{r, eval=FALSE}
+#install.packages("usethis")
+
+library(usethis)
+
+usethis::create_github_token()
+```
+
+
+This will take you to github and make a token for you. Accept the defaults and copy the token. 
+
+Go back to the RStudio console. Install the `gitcreds` package, if you don't already have it and then use the `gitcreds_set` function to tell R you want to set github credentials. 
+
+### store it in your credentials
+```{r, eval=FALSE}
+# install.packages("gitcreds")
+
+library(gitcreds)
+
+gitcreds_set(url = "https://github.com")
+```
+
+
+Then it will ask you to Enter password or token...paste into your console. 
+
+
+### check that it works
+
+Check that it works, using the `gitcreds_get()` function. 
+
+```{r, eval=FALSE}
+gitcreds_get()
+
+```
+
+
+```{r echo=FALSE}
+knitr::include_graphics("gitcreds.png")
+```

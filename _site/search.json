@@ -4,7 +4,7 @@
     "href": "posts.html",
     "title": "blog",
     "section": "",
-    "text": "Want to support my blog? \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nlearning python\n\n\n\npython\n\n\n\n\n\n\n\nJen Richmond\n\n\nJul 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrowwise %&gt;% mean\n\n\n\ndata wrangling\n\n\n\n\n\n\n\nJen Richmond\n\n\nMay 24, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nerror bars on plots\n\n\n\nidhgt\n\n\nggplot\n\n\n\n\n\n\n\nJen Richmond\n\n\nApr 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncolours that R knows\n\n\n\nggplot\n\n\n\n\n\n\n\nJen Richmond\n\n\nDec 14, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngit hints\n\n\n\n\n\n\nJen Richmond\n\n\nSep 28, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nusing lists in R\n\n\n\n\n\n\nJen Richmond\n\n\nJun 27, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmy favourite things about R\n\n\n\n\n\n\nJen Richmond\n\n\nJan 17, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Want to support my blog? \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nlearning python\n\n\n\npython\n\n\n\n\n\n\n\nJen Richmond\n\n\nJul 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrowwise %&gt;% mean\n\n\n\ndata wrangling\n\n\n\n\n\n\n\nJen Richmond\n\n\nMay 24, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nerror bars on plots\n\n\n\nidhgt\n\n\nggplot\n\n\n\n\n\n\n\nJen Richmond\n\n\nApr 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncolours that R knows\n\n\n\nggplot\n\n\n\n\n\n\n\nJen Richmond\n\n\nDec 14, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngit hints\n\n\n\n\n\n\nJen Richmond\n\n\nSep 28, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nusing lists in R\n\n\n\n\n\n\nJen Richmond\n\n\nJun 27, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmy favourite things about R\n\n\n\n\n\n\nJen Richmond\n\n\nJan 17, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPAT for GitHub\n\n\n\n\n\n\nJen Richmond\n\n\nJun 22, 2021\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -215,5 +215,12 @@
     "title": "my favourite things about R",
     "section": "readr::write_csv()",
     "text": "readr::write_csv()\nMy data analysis process often involves reading in raw data, cleaning it up, and then writing it out to csv so that you can read the clean data in to another process (visualisation, modelling). I use write_csv() and here::here() to write out a csv that can then be used in a different script.\n\ngentoo %&gt;%\n  write_csv(\"clean_gentoo.csv\")"
+  },
+  {
+    "objectID": "posts/2021-06-22-pat-for-github/index.html",
+    "href": "posts/2021-06-22-pat-for-github/index.html",
+    "title": "PAT for GitHub",
+    "section": "",
+    "text": "I have been avoiding setting up a Personal Access Token to authenticate my github account for a while because it seemed complicated. Never fear Happy Git with R and usethis() to the rescue.\n\ncreate a token\nIn the RStudio console, install the usethis package if you don’t already have it and use it to create a github token.\n\n#install.packages(\"usethis\")\n\nlibrary(usethis)\n\nusethis::create_github_token()\n\nThis will take you to github and make a token for you. Accept the defaults and copy the token.\nGo back to the RStudio console. Install the gitcreds package, if you don’t already have it and then use the gitcreds_set function to tell R you want to set github credentials.\n\n\nstore it in your credentials\n\n# install.packages(\"gitcreds\")\n\nlibrary(gitcreds)\n\ngitcreds_set(url = \"https://github.com\")\n\nThen it will ask you to Enter password or token…paste into your console.\n\n\ncheck that it works\nCheck that it works, using the gitcreds_get() function.\n\ngitcreds_get()"
   }
 ]
