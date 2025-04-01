@@ -6,7 +6,7 @@ author:
     url: https://jenrichmond.github.io/
 format: html
 editor: source
-image: featured.png  
+image: featured.jpeg
 ---
 
 I am prepping a talk for R-Ladies Sydney about my favourite R things, including the packages and functions that end up in every script I write. 
