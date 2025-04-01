@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jen Richmond">
-<meta name="dcterms.date" content="2024-07-04">
+<meta name="dcterms.date" content="2020-11-18">
 
-<title>learning python – Jen Richmond</title>
+<title>cleaning penguins with the janitor package – Jen Richmond</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,13 +110,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </script>
-<script src="../../site_libs/core-js-2.5.3/shim.min.js"></script>
-<script src="../../site_libs/react-18.2.0/react.min.js"></script>
-<script src="../../site_libs/react-18.2.0/react-dom.min.js"></script>
-<script src="../../site_libs/reactwidget-2.0.0/react-tools.js"></script>
-<script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<link href="../../site_libs/reactable-0.4.4/reactable.css" rel="stylesheet">
-<script src="../../site_libs/reactable-binding-0.4.4/reactable.js"></script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -166,19 +159,34 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#exploring-package-functions" id="toc-exploring-package-functions" class="nav-link active" data-scroll-target="#exploring-package-functions">Exploring package functions</a></li>
+  <li><a href="#read-some-dirty-data" id="toc-read-some-dirty-data" class="nav-link" data-scroll-target="#read-some-dirty-data">read some dirty data</a></li>
+  <li><a href="#clean_names" id="toc-clean_names" class="nav-link" data-scroll-target="#clean_names">1. clean_names()</a></li>
+  <li><a href="#remove_empty" id="toc-remove_empty" class="nav-link" data-scroll-target="#remove_empty">2. remove_empty()</a></li>
+  <li><a href="#get-dupes" id="toc-get-dupes" class="nav-link" data-scroll-target="#get-dupes">3. get dupes()</a></li>
+  <li><a href="#tabyl" id="toc-tabyl" class="nav-link" data-scroll-target="#tabyl">4. tabyl()</a>
+  <ul class="collapse">
+  <li><a href="#one-variable-gets-you" id="toc-one-variable-gets-you" class="nav-link" data-scroll-target="#one-variable-gets-you">one variable (gets you %)</a></li>
+  <li><a href="#two-variables" id="toc-two-variables" class="nav-link" data-scroll-target="#two-variables">two variables</a></li>
+  <li><a href="#three-variables" id="toc-three-variables" class="nav-link" data-scroll-target="#three-variables">three variables</a></li>
+  <li><a href="#adorn_-ing-things" id="toc-adorn_-ing-things" class="nav-link" data-scroll-target="#adorn_-ing-things">adorn_ ing things</a></li>
+  </ul></li>
+  <li><a href="#tabyl-other-nice-tables-kableextra-gt" id="toc-tabyl-other-nice-tables-kableextra-gt" class="nav-link" data-scroll-target="#tabyl-other-nice-tables-kableextra-gt">5. tabyl + other nice tables (kableExtra, gt)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">learning python</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">python</div>
-  </div>
-  </div>
+<h1 class="title">cleaning penguins with the janitor package</h1>
+</div>
 
 
 
@@ -187,14 +195,14 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Jen Richmond </p>
+             <p><a href="https://jenrichmond.github.io/">Jen Richmond</a> </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 4, 2024</p>
+      <p class="date">November 18, 2020</p>
     </div>
   </div>
   
@@ -206,46 +214,318 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </header>
 
 
-<p>When you are exploring a far off land and only know a tiny bit of the language they speak there, you always carry a little dictionary with commonly used phrases translated from the language you speak into the other language. It is important to know how to ask someone where the toilets are while you are travelling!</p>
-<p>I have just started learning Python with Posit Academy in the lead up to #positconf2024 and I am trying to approach in the same way I would if I was learning French. A dictionary that helps me link functions I know in R to new functions I am learning in Python could be handy.</p>
-<p>Linking new concepts to old concepts is also a useful learning strategy. Research in Psychology tells us that memory is relational; the brain represents memories as networks of representations. If you can link something that you are trying to learn to something you already know, you are much more likely to remember that new thing into the long term.</p>
+<p>The janitor package by <a href="https://github.com/sfirke/janitor">Sam Firke</a> contains probably my FAVOURITE R function: <code>clean_names()</code>.</p>
+<p>By default when I am reading data into R, I always pipe <code>clean_names()</code> onto the end of my <code>read_csv()</code>. That way, I never have to look at inconsistently formatted variable names. But janitor package includes lots of other useful functions that make it easier to deal with dirty data and count stuff.</p>
+<section id="exploring-package-functions" class="level1">
+<h1>Exploring package functions</h1>
+<p>Are you keen to dig into the little known functions of a package that you use all the time? Here is a tip: in console type the name of the package with a double colon (i.e.&nbsp;janitor::), all the functions in the package will pop up and you can explore them by scrolling up and down the list.</p>
+<p>Alternatively you can load the package in the console and then use <code>ls(package:packagename)</code> to get a list of all the objects in the package.</p>
 <div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://chinablueart.com/wp-content/uploads/MemoryNetwork-ICompilation.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Art credit: China Blue Art, Memory Network I</figcaption>
-</figure>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(package<span class="sc">:</span>janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "%&gt;%"                   "add_totals_col"        "add_totals_row"       
+ [4] "adorn_crosstab"        "adorn_ns"              "adorn_pct_formatting" 
+ [7] "adorn_percentages"     "adorn_rounding"        "adorn_title"          
+[10] "adorn_totals"          "as_tabyl"              "chisq.test"           
+[13] "clean_names"           "compare_df_cols"       "compare_df_cols_same" 
+[16] "convert_to_date"       "convert_to_datetime"   "convert_to_NA"        
+[19] "crosstab"              "describe_class"        "excel_numeric_to_date"
+[22] "find_header"           "fisher.test"           "get_dupes"            
+[25] "get_one_to_one"        "make_clean_names"      "remove_constant"      
+[28] "remove_empty"          "remove_empty_cols"     "remove_empty_rows"    
+[31] "round_half_up"         "round_to_fraction"     "row_to_names"         
+[34] "sas_numeric_to_date"   "signif_half_up"        "single_value"         
+[37] "tabyl"                 "top_levels"            "untabyl"              
+[40] "use_first_valid_of"   </code></pre>
 </div>
 </div>
-</div>
-<p>Of course, there are probably a million R to Python dictionaries on the internet; why am I creating a new one for me?</p>
-<p>That’s because we also know that generative learning and retrieval practice are more effective strategies for remembering things into the long term, than are learning strategies that involve passive review of materials that were created by someone else.</p>
-<p>To create a dictionary of functions as I learn new things in Python, I need to retrieve the equivalent function in R from memory and actively evaluate the similarities and differences between the Python and R versions. That process of retrieving and using the concepts I already know, strengthens both my knowledge of R, and links my new Python understanding to it.</p>
-<p>So I am starting a <a href="https://docs.google.com/spreadsheets/d/1Vf1AUqdAS_rsyaZw18OxyaIPOoiv9WvOzvILdSRtU6U/edit?usp=sharing">googlesheet</a> to keep track of new things I am learning how to do in Python and their R equivalents. Maybe I can read that googlesheet in here using the <code>googlesheets4</code> package and make it display in a searchable table using <code>gt</code>.</p>
+<p>Lets try a few these functions.</p>
+</section>
+<section id="read-some-dirty-data" class="level1">
+<h1>read some dirty data</h1>
+<p>The penguin data isn’t very dirty out of the package, but I added some funky things for illustrative purposes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cheat_sheet <span class="sc">%&gt;%</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="st">"My R vs Python cheatsheet"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_interactive</span>(<span class="at">use_search =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dirty <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"penguin_raw_dirty.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="clean_names" class="level1">
+<h1>1. clean_names()</h1>
+<p>The penguin variable names are not great. A nasty mix of capital and little letters, gaps and brackets- not fun to type over and over again.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dirty)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "studyName"           "Sample Number"       "Species"            
+ [4] "Region"              "Island"              "Stage"              
+ [7] "Individual ID"       "Clutch Completion"   "Empty Column"       
+[10] "Date Egg"            "Culmen Length (mm)"  "Culmen Depth (mm)"  
+[13] "Flipper Length (mm)" "Body Mass (g)"       "Sex"                
+[16] "Delta 15 N (o/oo)"   "Delta 13 C (o/oo)"   "Comments"           </code></pre>
+</div>
+</div>
+<p><code>clean_names()</code> will take all the variable names and make them lower case and replace gaps/brackets with underscores.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> dirty <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "study_name"        "sample_number"     "species"          
+ [4] "region"            "island"            "stage"            
+ [7] "individual_id"     "clutch_completion" "empty_column"     
+[10] "date_egg"          "culmen_length_mm"  "culmen_depth_mm"  
+[13] "flipper_length_mm" "body_mass_g"       "sex"              
+[16] "delta_15_n_o_oo"   "delta_13_c_o_oo"   "comments"         </code></pre>
+</div>
+</div>
+</section>
+<section id="remove_empty" class="level1">
+<h1>2. remove_empty()</h1>
+<p>Sometimes dirty data contains whole rows or columns that are empty. You can quickly remove them with <code>remove_empty()</code>. By default it is a “quiet” function, but specify quiet = FALSE and it will give you a little feedback about what it has done.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>empty <span class="ot">&lt;-</span> clean <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>), <span class="at">quiet =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Removing 1 empty rows of 347 rows total (0.288%).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Removing 1 empty columns of 18 columns total (Removed: empty_column).</code></pre>
+</div>
+</div>
+</section>
+<section id="get-dupes" class="level1">
+<h1>3. get dupes()</h1>
+<p>Lets imagine an RA made a mistake and entered the data for a couple of penguins twice. The <code>get_dupes()</code> function will tell you if there are duplicate entries in your dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>empty <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_dupes</span>(sample_number, species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 18
+  sample_number species  dupe_count study_name region island stage individual_id
+          &lt;dbl&gt; &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;        
+1            18 Adelie …          2 PAL0708    Anvers Torge… Adul… N9A2         
+2            18 Adelie …          2 PAL0708    Anvers Torge… Adul… N9A2         
+3            60 Chinstr…          2 PAL0910    Anvers Dream  Adul… N95A2        
+4            60 Chinstr…          2 PAL0910    Anvers Dream  Adul… N95A2        
+# ℹ 10 more variables: clutch_completion &lt;chr&gt;, date_egg &lt;chr&gt;,
+#   culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;,
+#   body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;,
+#   comments &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>Then you can remove the duplicates with the <code>distinct()</code> function from <code>dplyr</code>. It only keeps distinct observations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dupes_gone <span class="ot">&lt;-</span> empty <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>dupes_gone <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_dupes</span>(sample_number, species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>No duplicate combinations found of: sample_number, species</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 18
+# ℹ 18 variables: sample_number &lt;dbl&gt;, species &lt;chr&gt;, dupe_count &lt;int&gt;,
+#   study_name &lt;chr&gt;, region &lt;chr&gt;, island &lt;chr&gt;, stage &lt;chr&gt;,
+#   individual_id &lt;chr&gt;, clutch_completion &lt;chr&gt;, date_egg &lt;chr&gt;,
+#   culmen_length_mm &lt;dbl&gt;, culmen_depth_mm &lt;dbl&gt;, flipper_length_mm &lt;dbl&gt;,
+#   body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, delta_15_n_o_oo &lt;dbl&gt;, delta_13_c_o_oo &lt;dbl&gt;,
+#   comments &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="tabyl" class="level1">
+<h1>4. tabyl()</h1>
+<p>But perhaps the most surprisingly awesome function in the janitor package is <code>tabyl()</code>. Counting things in R is surprisingly hard <a href="http://jenrichmond.rbind.io/post/counting-things/">see post</a>, but <code>tabyl()</code> is a huge help.</p>
+<p>Advantages…</p>
+<ul>
+<li>works with %&gt;%</li>
+<li>takes a dataframe</li>
+<li>outputs a dataframe</li>
+<li>is compatible with other table packages like <code>kableExtra</code> and <code>gt</code></li>
+</ul>
+<section id="one-variable-gets-you" class="level3">
+<h3 class="anchored" data-anchor-id="one-variable-gets-you">one variable (gets you %)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dupes_gone <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(species) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                   species   n   percent
+       Adelie Penguin (Pygoscelis adeliae) 152 0.4418605
+ Chinstrap penguin (Pygoscelis antarctica)  68 0.1976744
+         Gentoo penguin (Pygoscelis papua) 124 0.3604651</code></pre>
+</div>
+</div>
+</section>
+<section id="two-variables" class="level3">
+<h3 class="anchored" data-anchor-id="two-variables">two variables</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dupes_gone <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(species, sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                   species . FEMALE MALE NA_
+       Adelie Penguin (Pygoscelis adeliae) 0     73   73   6
+ Chinstrap penguin (Pygoscelis antarctica) 0     34   34   0
+         Gentoo penguin (Pygoscelis papua) 1     58   61   4</code></pre>
+</div>
+</div>
+<p>Hmmmm why is there a “.” column? Turns out for one penguin their sex is entered as “.” instead of NA.</p>
+<p>Use <code>na_if()</code> from <code>dplyr</code> to convert pesky values to NA.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dupes_gone<span class="sc">$</span>sex <span class="ot">&lt;-</span>  <span class="fu">na_if</span>(dupes_gone<span class="sc">$</span>sex, <span class="st">"."</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>dupes_gone <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(species, sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                   species FEMALE MALE NA_
+       Adelie Penguin (Pygoscelis adeliae)     73   73   6
+ Chinstrap penguin (Pygoscelis antarctica)     34   34   0
+         Gentoo penguin (Pygoscelis papua)     58   61   5</code></pre>
+</div>
+</div>
+</section>
+<section id="three-variables" class="level3">
+<h3 class="anchored" data-anchor-id="three-variables">three variables</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dupes_gone <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(species, sex, island) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$Biscoe
+                                   species FEMALE MALE NA_
+       Adelie Penguin (Pygoscelis adeliae)     22   22   0
+ Chinstrap penguin (Pygoscelis antarctica)      0    0   0
+         Gentoo penguin (Pygoscelis papua)     58   61   5
+
+$Dream
+                                   species FEMALE MALE NA_
+       Adelie Penguin (Pygoscelis adeliae)     27   28   1
+ Chinstrap penguin (Pygoscelis antarctica)     34   34   0
+         Gentoo penguin (Pygoscelis papua)      0    0   0
+
+$Torgersen
+                                   species FEMALE MALE NA_
+       Adelie Penguin (Pygoscelis adeliae)     24   23   5
+ Chinstrap penguin (Pygoscelis antarctica)      0    0   0
+         Gentoo penguin (Pygoscelis papua)      0    0   0</code></pre>
+</div>
+</div>
+</section>
+<section id="adorn_-ing-things" class="level3">
+<h3 class="anchored" data-anchor-id="adorn_-ing-things">adorn_ ing things</h3>
+<section id="totals-by-row-andor-col" class="level4">
+<h4 class="anchored" data-anchor-id="totals-by-row-andor-col">totals by row and/or col</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>dupes_gone <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(species, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="fu">c</span>(<span class="st">"row"</span>, <span class="st">"col"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                   species FEMALE MALE NA_ Total
+       Adelie Penguin (Pygoscelis adeliae)     73   73   6   152
+ Chinstrap penguin (Pygoscelis antarctica)     34   34   0    68
+         Gentoo penguin (Pygoscelis papua)     58   61   5   124
+                                     Total    165  168  11   344</code></pre>
+</div>
+</div>
+</section>
+<section id="percentages" class="level4">
+<h4 class="anchored" data-anchor-id="percentages">percentages</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>dupes_gone <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(species, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_percentages</span>(<span class="st">"row"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                   species    FEMALE      MALE        NA_
+       Adelie Penguin (Pygoscelis adeliae) 0.4802632 0.4802632 0.03947368
+ Chinstrap penguin (Pygoscelis antarctica) 0.5000000 0.5000000 0.00000000
+         Gentoo penguin (Pygoscelis papua) 0.4677419 0.4919355 0.04032258</code></pre>
+</div>
+</div>
+</section>
+<section id="percent-formatting" class="level4">
+<h4 class="anchored" data-anchor-id="percent-formatting">percent formatting</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>  dupes_gone <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(species, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_percentages</span>(<span class="st">"row"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                   species FEMALE  MALE  NA_
+       Adelie Penguin (Pygoscelis adeliae)  48.0% 48.0% 3.9%
+ Chinstrap penguin (Pygoscelis antarctica)  50.0% 50.0% 0.0%
+         Gentoo penguin (Pygoscelis papua)  46.8% 49.2% 4.0%</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="tabyl-other-nice-tables-kableextra-gt" class="level1">
+<h1>5. tabyl + other nice tables (kableExtra, gt)</h1>
+<p>The nice thing is that the output of <code>tabyl()</code> can be assigned as a dataframe object in your environment OR you can pipe on a <code>kable()</code>…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>dupes_gone <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(species, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_percentages</span>(<span class="st">"row"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="utwspgviiu" class=".gt_table" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#utwspgviiu table {
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">species</th>
+<th style="text-align: left;">FEMALE</th>
+<th style="text-align: left;">MALE</th>
+<th style="text-align: left;">NA_</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Adelie Penguin (Pygoscelis adeliae)</td>
+<td style="text-align: left;">48.0%</td>
+<td style="text-align: left;">48.0%</td>
+<td style="text-align: left;">3.9%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap penguin (Pygoscelis antarctica)</td>
+<td style="text-align: left;">50.0%</td>
+<td style="text-align: left;">50.0%</td>
+<td style="text-align: left;">0.0%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo penguin (Pygoscelis papua)</td>
+<td style="text-align: left;">46.8%</td>
+<td style="text-align: left;">49.2%</td>
+<td style="text-align: left;">4.0%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>… or a <code>gt()</code> to get a really nicely formatted summary table</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>dupes_gone <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(species, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_percentages</span>(<span class="st">"row"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="goazdconmb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#goazdconmb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#utwspgviiu thead, #utwspgviiu tbody, #utwspgviiu tfoot, #utwspgviiu tr, #utwspgviiu td, #utwspgviiu th {
+#goazdconmb thead, #goazdconmb tbody, #goazdconmb tfoot, #goazdconmb tr, #goazdconmb td, #goazdconmb th {
   border-style: none;
 }
 
-#utwspgviiu p {
+#goazdconmb p {
   margin: 0;
   padding: 0;
 }
 
-#utwspgviiu .gt_table {
+#goazdconmb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -271,12 +551,12 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-left-color: #D3D3D3;
 }
 
-#utwspgviiu .gt_caption {
+#goazdconmb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#utwspgviiu .gt_title {
+#goazdconmb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -288,7 +568,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-bottom-width: 0;
 }
 
-#utwspgviiu .gt_subtitle {
+#goazdconmb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -300,7 +580,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-top-width: 0;
 }
 
-#utwspgviiu .gt_heading {
+#goazdconmb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -312,13 +592,13 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#utwspgviiu .gt_bottom_border {
+#goazdconmb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#utwspgviiu .gt_col_headings {
+#goazdconmb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -333,7 +613,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#utwspgviiu .gt_col_heading {
+#goazdconmb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -353,7 +633,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   overflow-x: hidden;
 }
 
-#utwspgviiu .gt_column_spanner_outer {
+#goazdconmb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -365,15 +645,15 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   padding-right: 4px;
 }
 
-#utwspgviiu .gt_column_spanner_outer:first-child {
+#goazdconmb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#utwspgviiu .gt_column_spanner_outer:last-child {
+#goazdconmb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#utwspgviiu .gt_column_spanner {
+#goazdconmb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -385,11 +665,11 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   width: 100%;
 }
 
-#utwspgviiu .gt_spanner_row {
+#goazdconmb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#utwspgviiu .gt_group_heading {
+#goazdconmb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -415,7 +695,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   text-align: left;
 }
 
-#utwspgviiu .gt_empty_group_heading {
+#goazdconmb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -430,15 +710,15 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   vertical-align: middle;
 }
 
-#utwspgviiu .gt_from_md > :first-child {
+#goazdconmb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#utwspgviiu .gt_from_md > :last-child {
+#goazdconmb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#utwspgviiu .gt_row {
+#goazdconmb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -457,7 +737,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   overflow-x: hidden;
 }
 
-#utwspgviiu .gt_stub {
+#goazdconmb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -470,7 +750,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#utwspgviiu .gt_stub_row_group {
+#goazdconmb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -484,15 +764,15 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   vertical-align: top;
 }
 
-#utwspgviiu .gt_row_group_first td {
+#goazdconmb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#utwspgviiu .gt_row_group_first th {
+#goazdconmb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#utwspgviiu .gt_summary_row {
+#goazdconmb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -502,16 +782,16 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#utwspgviiu .gt_first_summary_row {
+#goazdconmb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#utwspgviiu .gt_first_summary_row.thick {
+#goazdconmb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#utwspgviiu .gt_last_summary_row {
+#goazdconmb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -521,7 +801,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#utwspgviiu .gt_grand_summary_row {
+#goazdconmb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -531,7 +811,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#utwspgviiu .gt_first_grand_summary_row {
+#goazdconmb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -541,7 +821,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-top-color: #D3D3D3;
 }
 
-#utwspgviiu .gt_last_grand_summary_row_top {
+#goazdconmb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -551,11 +831,11 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#utwspgviiu .gt_striped {
+#goazdconmb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#utwspgviiu .gt_table_body {
+#goazdconmb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -564,7 +844,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#utwspgviiu .gt_footnotes {
+#goazdconmb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -578,7 +858,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#utwspgviiu .gt_footnote {
+#goazdconmb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -587,7 +867,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#utwspgviiu .gt_sourcenotes {
+#goazdconmb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -601,7 +881,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#utwspgviiu .gt_sourcenote {
+#goazdconmb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -609,86 +889,113 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#utwspgviiu .gt_left {
+#goazdconmb .gt_left {
   text-align: left;
 }
 
-#utwspgviiu .gt_center {
+#goazdconmb .gt_center {
   text-align: center;
 }
 
-#utwspgviiu .gt_right {
+#goazdconmb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#utwspgviiu .gt_font_normal {
+#goazdconmb .gt_font_normal {
   font-weight: normal;
 }
 
-#utwspgviiu .gt_font_bold {
+#goazdconmb .gt_font_bold {
   font-weight: bold;
 }
 
-#utwspgviiu .gt_font_italic {
+#goazdconmb .gt_font_italic {
   font-style: italic;
 }
 
-#utwspgviiu .gt_super {
+#goazdconmb .gt_super {
   font-size: 65%;
 }
 
-#utwspgviiu .gt_footnote_marks {
+#goazdconmb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#utwspgviiu .gt_asterisk {
+#goazdconmb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#utwspgviiu .gt_indent_1 {
+#goazdconmb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#utwspgviiu .gt_indent_2 {
+#goazdconmb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#utwspgviiu .gt_indent_3 {
+#goazdconmb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#utwspgviiu .gt_indent_4 {
+#goazdconmb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#utwspgviiu .gt_indent_5 {
+#goazdconmb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#utwspgviiu .katex-display {
+#goazdconmb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#utwspgviiu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#goazdconmb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
-<div style="font-family:system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;border-top-style:solid;border-top-width:2px;border-top-color:#D3D3D3;padding-bottom:8px;">
-<div class="gt_heading gt_title gt_font_normal" style="text-size:bigger;">My R vs Python cheatsheet</div>
-<div class="gt_heading gt_subtitle gt_bottom_border"></div>
-</div>
-<div id="utwspgviiu" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="utwspgviiu">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"how to":["getting started","assign variables","install packages","load packages","load functions from packages","use functions from a package","use functions that are built in","get help","read in dataframe","make a dataframe","remove everything from the environment","remove specific objects","variable names lower","convert float to integer","# print data types",null,null,null,null,"random things","random number between 0-1","random number between range",null,"sense checking","list columns","get dimensions","get dataframe info","get descriptives","get first few rows","get frequencies","get distinct/unique values",null,"filter","filter for 1 thing","filter for 2 things isin","ALT filter for 2 things OR operator","filter strings with starts_with","filter out na","replace NA with 0",null,null,null,"mutate","mutate",null,null,null,"summarise","get mean of a column",null,null,null,null,null,null,"arrange","arrange by a single variable","arrange by more than one variable",null,null,"select","select a single column","select multiple columns","select a range of columns","remove columns","recode variables","rename variables",null,"pandas replace using lists",null,null,null,null,null,"ggplot_plotnine differences","import each function","plotnine code has to be wrapped in parentheses, spell out mapping = aes, aesthetics in ' '",null,null,null,"dealing with NAs","how many values not NA","how many values are NA","Proportion of NA",null,null,null,null,null],"R":[null,"my_name <- Jenny","install.packages(\"tidyverse\")","library(tidyverse)","**not a thing**","clean_names(data) OR janitor::clean_names(data)","round(x, digits = 3)","?name_of_package_function","df <- read_csv(\"data/datafile.csv\")","new_df <- tibble(col1 = 1:3, col2 = 4:6)","use the sweeper","??","df %>% clean_names()",null,null,null,null,null,null,null,"runif(1)","runif(1, min = 1, max = 100)",null,null,"names(df)","str(df)","glimpse(df)","summary(df)","head(df)","df %>% tabyl(column) %>% arrange(n)","unique(df$column) OR df %>% distinct(column)",null,null,"subset <- df %>% filter(variable == \"case1\")","subset2 <- df %>% filter(variable %in%  c(\"case1\", \"case2\"))","subset3 <- df %>% filter(variable ==  \"case1\" | \"case2\")","subset4 <- df %>% filter(str_detect(variable, \"To\"))","df_no_NA <- df %>% filter(!isna(variable))","df_NA_zero <- df %>% mutate(across(everything(), ~replace_na(.x,0)))",null,null,null,null,"df <- df %>% mutate(cumul_cases = cumsum(cases))","df <- df %>% mutate(mean_cases = mean(cases))","df <- df %>% mutate(ratio = cases / deaths)",null,null,"df %>% summarise(mean = mean(column1))",null,null,null,null,null,null,null,"one_sort <- df %>% arrange(variable1)","two_sort <- df %>% arrange(variable1, variable2)",null,null,null,"df %>% select(column_name)","df %>% select(column1, column3)","df %>% select(column4:column7)","df %>% select(-col1, -col4, -col7)",null,"df %>% rename(newname1 = oldname1, newname2 = oldname2)",null,null,null,null,null,null,null,null,"library(ggplot)","df %>% ggplot(aes(x = col1, y = col2, color = col3)) + geom_line()",null,null,null,null,null,null,null,null,null,null,null,null],"python":[null,"my_name = Jenny","pip install numpy","import numpy OR import numpy as np","from plotnine import ggplot, aes, geom_line","numpy.sqrt(data) OR np.sqrt(data)","round(x, ndigits = 3)","help(name_of_package_function)","df = pd.read_csv(\"data/datafile.csv\")","new_df = pd.DataFrame({'col1': [1, 2, 3], 'col2': [4, 5, 6],})","globals().clear()","del df1, df2","df.columns.str.lower()","df['Column1'] = df['Column1'].astype(int)","print(df.dtypes)",null,null,null,null,null,"random.random()","random.ranint(1,100)",null,null,"df.columns","df.shape","df.info","df.describe()","df.head()","df['column'].value_counts() OR df.column.value_counts()","df.column.unique()",null,null,"subset1 = df.loc[df['variable'] == 'case1']","subset2 = df.loc[df['variable'].isin(['case1', 'case2'])]","subset3 = df.loc[(df['variable'] == 'case1') | (df['variable'] == 'case2')]","subset4 = df.loc[df['variable'].str.startswith('To')]","df_no_NA = df.dropna()","df_NA_zero = df.fillna(0)",null,null,null,null,"df['cumul_cases'] = df['cases'].cumsum()","df['mean_cases'] = df['cases'].mean()","df['ratio'] = df['cases'] / df['deaths']",null,null,"df['column1'].mean()","df2.groupby(['species','island']).agg(['min','mean','max',]).dropna()","penguins.groupby('species') .agg({ 'body_mass_g': ['mean'], 'flipper_length_mm': ['mean'], 'bill_length_mm': ['mean'] })",null,null,null,null,null,"one_sort = df.sort_values('variable1')","two_sort = df.sort_values(['variable1','variable2'])",null,null,null,"df['column_name']","df[['column1', 'column3']]","df.loc[: , 'column4' : 'column7']","df.drop(columns = ['col1', 'col4', 'col7'])","df.loc[df['state'] == 'NY', 'state'] = 'New York'","df.rename(columns={'oldname1': 'newname1', 'oldname2': 'newname2'})",null,"grades = [1,2,3,4,5,6]","status = [\"non-mgmt\", \"non-mgmt\", \"non-mgmt\", \"non-mgmt\", \"mgmt\", \"mgmt\"]","bank['Manager'] = bank['JobGrade'].replace(grades, status)","bank[170:175]",null,null,null,"from plotnine import ggplot, aes, geom_line","(  df %>% ggplot(mapping = aes(x = 'col1', y = 'col2', color = 'col3')) + geom_line() )",null,null,"df_dropped = df.dropna(subset=['col1', 'col2])","pd.isna(tv_hours).mean()","df.notnull().sum()","df.isnull().sum()","df.isnull().sum()/df.notnull().sum()",null,"df2.groupby(['species','island']).agg(['min','mean','max',]).dropna()",null,"omplete_penguins = penguins.dropna()","complete_bodymass_penguins = penguins.dropna(subset=['body_mass_g'])"],"differences":[null,null,null,"use import numpy as np if you want to use an alias to type less",null,"once you load a package in R with library(packagename), R just knows to use functions from that package. In python, you need to tell it what package each function comes from-  requires namespace","no need to use namespace in python for functions that are built in (https://docs.python.org/3/library/functions.html)",null,null,"data dictionary w key as column name, values as column contents",null,null,null,null,null,null,null,null,null,null,"requires that you have loaded the random package with import random",null,null,null,"note: columns, shape and info don't need () because they are extracting an attribute from the object",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"these are methods .fun()",null,null,null,null,"subset column as Series, and call mean; skipna = True is default",null,null,null,null,null,null,null,null,null,null,null,null,null,null,": means all, so this gets all rows and cols 1-7",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"is.na codes 1 and 0, so mean() gets proportion",null,null,null,null,"df2 %>% group_by(species, island) %>% summarise(across?? all columns)",null,"drops every row with a missing value",null]},"columns":[{"id":"how to","name":"how to","type":"character","na":"NA","minWidth":125,"style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","html":true,"align":"left"},{"id":"R","name":"R","type":"character","na":"NA","minWidth":125,"style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","html":true,"align":"left"},{"id":"python","name":"python","type":"character","na":"NA","minWidth":125,"style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","html":true,"align":"left"},{"id":"differences","name":"differences","type":"character","na":"NA","minWidth":125,"style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","html":true,"align":"left"}],"searchable":true,"defaultPageSize":10,"showPageSizeOptions":false,"pageSizeOptions":[10,25,50,100],"paginationType":"numbers","showPagination":true,"showPageInfo":true,"minRows":1,"height":"auto","theme":{"color":"#333333","backgroundColor":"#FFFFFF","stripedColor":"rgba(128,128,128,0.05)","style":{"font-family":"system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif","fontSize":"16px"},"tableStyle":{"borderTopStyle":"solid","borderTopWidth":"2px","borderTopColor":"#D3D3D3"},"headerStyle":{"fontWeight":"normal","backgroundColor":"transparent","borderBottomStyle":"solid","borderBottomWidth":"2px","borderBottomColor":"#D3D3D3"},"groupHeaderStyle":{"fontWeight":"normal","backgroundColor":"transparent","borderBottomStyle":"solid","borderBottomWidth":"2px","borderBottomColor":"#D3D3D3"},"cellStyle":{"fontWeight":"normal"}},"elementId":"utwspgviiu","dataKey":"26da734c75545d02d7aff606e5232dd2"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.0.style","tag.attribs.columns.1.style","tag.attribs.columns.2.style","tag.attribs.columns.3.style"],"jsHooks":[]}</script>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="species" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">species</th>
+<th id="FEMALE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">FEMALE</th>
+<th id="MALE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">MALE</th>
+<th id="NA_" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">NA_</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="species">Adelie Penguin (Pygoscelis adeliae)</td>
+<td class="gt_row gt_right" headers="FEMALE">48.0%</td>
+<td class="gt_row gt_right" headers="MALE">48.0%</td>
+<td class="gt_row gt_right" headers="NA_">3.9%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="species">Chinstrap penguin (Pygoscelis antarctica)</td>
+<td class="gt_row gt_right" headers="FEMALE">50.0%</td>
+<td class="gt_row gt_right" headers="MALE">50.0%</td>
+<td class="gt_row gt_right" headers="NA_">0.0%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="species">Gentoo penguin (Pygoscelis papua)</td>
+<td class="gt_row gt_right" headers="FEMALE">46.8%</td>
+<td class="gt_row gt_right" headers="MALE">49.2%</td>
+<td class="gt_row gt_right" headers="NA_">4.0%</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
