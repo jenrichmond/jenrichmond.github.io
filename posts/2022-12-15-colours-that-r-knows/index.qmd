@@ -1,0 +1,69 @@
+---
+title: colours that R knows
+date: '2022-12-14'
+author:
+  - name: Jen Richmond
+    url: https://jenrichmond.github.io/
+format: html
+editor: source
+draft: FALSE
+image: featured.png
+---
+ 
+I have been working through the [ggplot R Advent calendar by Kiirsti Owen](https://github.com/kiirsti/ggplot_adventcalendaR) with some lovely RLadies friends and we got up to Day 15 where we started controlling colours in ggplot with `scale_fill_manual()`. Our immediate question was "how to you know what the names of the colours that R knows are?" 
+
+This is a "I don't have to google" post about finding the colours that R knows about. 
+
+### read the data
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+
+trees <-read_csv("https://raw.githubusercontent.com/kiirsti/ggplot_adventcalendaR/main/xmas.trees.csv")
+
+```
+
+### make a plot
+
+```{r}
+trees %>%
+ggplot(aes(x=type, y=height))+
+  geom_boxplot(aes(fill=type), colour="black")+
+  theme_classic()+
+  scale_fill_manual(values=c("darkgreen", "firebrick2", "mediumseagreen"))
+```
+
+
+You can have R list the names of all the colours it knows (there are 657 of them) using the `colours()` function, but that is not so useful if you want to see the difference between aquamarine1 and aquamarine2. 
+
+```{r}
+# list the first 20 colours that R knows 
+
+head(colours(), 20)
+```
+
+
+We eventually found a function in the `epitools` package that will display all the colours and allow you to point a click the ones you want! It doesn't work so well in an Rmd chunk- you are best to try it in the console. 
+
+```{r}
+# install.packages("epitools")
+
+library(epitools)
+
+colors.plot(locator = TRUE)
+
+```
+
+Load the epitools package and then use the `colors.plot()` function in the console, setting locator = TRUE. A matrix will appear in your Plots tab. You can use your mouse to pick the colours you want and then click Finish to have R print the names of those colours to your console. Watch me do it in the screencast below. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aMyi0m9ZD_k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+You can then use those names to revise your plot colours. 
+
+
+```{r}
+trees %>%
+ggplot(aes(x=type, y=height))+
+  geom_boxplot(aes(fill=type), colour="black")+
+  theme_classic()+
+  scale_fill_manual(values=c("seagreen", "maroon2", "dodgerblue2"))
+```
