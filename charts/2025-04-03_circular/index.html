@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jen Richmond">
-<meta name="dcterms.date" content="2023-05-24">
+<meta name="dcterms.date" content="2025-04-03">
 
-<title>rowwise %&gt;% mean – Jen Richmond</title>
+<title>day 3 circular – Jen Richmond</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -164,9 +164,16 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#load-packages-make-some-data" id="toc-load-packages-make-some-data" class="nav-link active" data-scroll-target="#load-packages-make-some-data">load packages + make some data</a></li>
-  <li><a href="#base-r-rowmeans" id="toc-base-r-rowmeans" class="nav-link" data-scroll-target="#base-r-rowmeans">base R rowMeans</a></li>
-  <li><a href="#tidyverse-rowwise" id="toc-tidyverse-rowwise" class="nav-link" data-scroll-target="#tidyverse-rowwise">tidyverse rowwise</a></li>
+  <li><a href="#load-packages" id="toc-load-packages" class="nav-link active" data-scroll-target="#load-packages">load packages</a>
+  <ul class="collapse">
+  <li><a href="#read-in-the-data" id="toc-read-in-the-data" class="nav-link" data-scroll-target="#read-in-the-data">read in the data</a></li>
+  <li><a href="#clean-it-up" id="toc-clean-it-up" class="nav-link" data-scroll-target="#clean-it-up">clean it up</a></li>
+  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot">plot</a>
+  <ul class="collapse">
+  <li><a href="#world" id="toc-world" class="nav-link" data-scroll-target="#world">world</a></li>
+  <li><a href="#regions" id="toc-regions" class="nav-link" data-scroll-target="#regions">regions</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -175,11 +182,8 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">rowwise %&gt;% mean</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">data wrangling</div>
-  </div>
-  </div>
+<h1 class="title">day 3 circular</h1>
+</div>
 
 
 
@@ -195,7 +199,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 24, 2023</p>
+      <p class="date">April 3, 2025</p>
     </div>
   </div>
   
@@ -207,121 +211,151 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </header>
 
 
-<p>When you have data from a survey, the responses for each item are most often listed in different variables. Generally you have to average across the items to get a mean value for that scale for each participant. But dealing with calculations across rows is sometimes difficult in R.</p>
-<p><img src="featured.jpg" class="img-fluid" width="400"></p>
-<p>Photo by <a href="https://unsplash.com/@travisessinger?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Travis Essinger</a> on <a href="https://unsplash.com/photos/green-grass-field-oG01mozFb7o?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Unsplash</a></p>
-<section id="load-packages-make-some-data" class="level3">
-<h3 class="anchored" data-anchor-id="load-packages-make-some-data">load packages + make some data</h3>
+<section id="load-packages" class="level1">
+<h1>load packages</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>pID <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"p1"</span>, <span class="st">"p2"</span>, <span class="st">"p3"</span>, <span class="st">"p4"</span>, <span class="st">"p5"</span>, <span class="st">"p6"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>item1 <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="dv">6</span>, <span class="at">replace=</span>T)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>item2 <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="dv">6</span>, <span class="at">replace=</span>T)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>item3 <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="dv">6</span>, <span class="at">replace=</span>T)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>item4 <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="dv">6</span>, <span class="at">replace=</span>T)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>item5 <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="dv">6</span>, <span class="at">replace=</span>T)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(pID, item1, item2, item3, item4, item5)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(survey)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(owidapi)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggeasy)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggannotate)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>catalog <span class="ot">&lt;-</span> <span class="fu">owid_get_catalog</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="https://ourworldindata.org/grapher/countries-by-share-of-women-in-parliament">This plot</a> illustrates changing representation of women in government leadership. It is great that in 2024 fewer than 2% of governments have no women in leadership, but it is not amazing that fewer than 2% have 50% or more. I am wondering if I can look at this pattern across different areas of the world by making circular graphs in ggplot.</p>
+<iframe src="https://ourworldindata.org/grapher/countries-by-share-of-women-in-parliament?tab=chart" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write">
+</iframe>
+<section id="read-in-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="read-in-the-data">read in the data</h3>
+<p>I am mostly interested in the current state of affairs so I read in the data from the owidapi, filter the data to only include 2024 and rename variables to make them more friendly.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>share <span class="ot">&lt;-</span> <span class="fu">owid_get</span>(<span class="st">"countries-by-share-of-women-in-parliament"</span>) </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>share2024 <span class="ot">&lt;-</span> share <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2024</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>entity_id) <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">number_0pct =</span> num_countries_wom_parl__category_0pct_women, </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">number_0_10pct =</span> num_countries_wom_parl__category_0_10pct_women,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">number_10_20pct =</span> num_countries_wom_parl__category_10_20pct_women, </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">number_20_30pct =</span> num_countries_wom_parl__category_20_30pct_women, </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">number_30_40pct =</span> num_countries_wom_parl__category_30_40pct_women, </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">number_40_50pct =</span> num_countries_wom_parl__category_40_50pct_women,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">number_50pluspct =</span> num_countries_wom_parl__category_50pctplus_women) </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(share2024)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 6
-Columns: 6
-$ pID   &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1 &lt;int&gt; 7, 1, 7, 7, 5, 6
-$ item2 &lt;int&gt; 4, 2, 2, 4, 6, 3
-$ item3 &lt;int&gt; 2, 7, 3, 7, 6, 6
-$ item4 &lt;int&gt; 3, 6, 7, 5, 4, 1
-$ item5 &lt;int&gt; 2, 7, 6, 4, 3, 4</code></pre>
+<pre><code>Rows: 7
+Columns: 9
+$ entity_name      &lt;chr&gt; "Africa", "Asia", "Europe", "North America", "Oceania…
+$ year             &lt;int&gt; 2024, 2024, 2024, 2024, 2024, 2024, 2024
+$ number_0pct      &lt;int&gt; 0, 2, 0, 0, 0, 0, 2
+$ number_0_10pct   &lt;int&gt; 4, 7, 0, 0, 4, 0, 15
+$ number_10_20pct  &lt;int&gt; 17, 16, 5, 1, 0, 1, 40
+$ number_20_30pct  &lt;int&gt; 15, 11, 11, 6, 0, 3, 46
+$ number_30_40pct  &lt;int&gt; 10, 5, 15, 3, 1, 5, 39
+$ number_40_50pct  &lt;int&gt; 5, 2, 10, 2, 1, 3, 23
+$ number_50pluspct &lt;int&gt; 1, 0, 0, 2, 0, 0, 3</code></pre>
 </div>
 </div>
 </section>
-<section id="base-r-rowmeans" class="level3">
-<h3 class="anchored" data-anchor-id="base-r-rowmeans">base R rowMeans</h3>
-<p>The <code>rowMeans()</code> function works, but why the x and what do the dots mean??</p>
+<section id="clean-it-up" class="level2">
+<h2 class="anchored" data-anchor-id="clean-it-up">clean it up</h2>
+<p>I want to plot data for the World and each region separately so create separate dataframes here using <code>filter()</code>. I also want to make the data long using <code>pivot_longer</code>, mutate new variables that represent the number of countries as percent, improve the labels on the percent categories and make them a factor so that they order correctly in my plot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>survey_means_base <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">item_mean =</span> <span class="fu">rowMeans</span>(<span class="at">x =</span> <span class="fu">select</span>(<span class="at">.data =</span> . , <span class="fu">starts_with</span>(<span class="at">match =</span> <span class="st">"item"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create world dataframe</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>share2024_world <span class="ot">&lt;-</span> share2024 <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(entity_name <span class="sc">==</span> <span class="st">"World"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"category"</span>, <span class="at">values_to =</span> <span class="st">"number"</span>, number_0pct<span class="sc">:</span>number_50pluspct) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(number), <span class="at">percent =</span> number<span class="sc">/</span>total) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>           <span class="fu">mutate</span>(<span class="at">percent_women =</span> <span class="fu">case_when</span>(category <span class="sc">==</span> <span class="st">"number_0pct"</span> <span class="sc">~</span> <span class="st">"no women"</span>, </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                           category <span class="sc">==</span> <span class="st">"number_0_10pct"</span> <span class="sc">~</span> <span class="st">"less than 10%"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                           category <span class="sc">==</span> <span class="st">"number_10_20pct"</span> <span class="sc">~</span> <span class="st">"10-20%"</span>, </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                           category <span class="sc">==</span> <span class="st">"number_20_30pct"</span> <span class="sc">~</span> <span class="st">"20-30%"</span>, </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                           category <span class="sc">==</span> <span class="st">"number_30_40pct"</span> <span class="sc">~</span> <span class="st">"30-40%"</span>, </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                           category <span class="sc">==</span> <span class="st">"number_40_50pct"</span> <span class="sc">~</span> <span class="st">"40-50%"</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                           category <span class="sc">==</span> <span class="st">"number_50pluspct"</span> <span class="sc">~</span> <span class="st">"50+%"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">percent_women =</span> <span class="fu">fct_relevel</span>(percent_women, </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">c</span>(<span class="st">"no women"</span> , <span class="st">"less than 10%"</span> ,<span class="st">"10-20%"</span> ,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"20-30%"</span> ,<span class="st">"30-40%"</span> , <span class="st">"40-50%"</span> ,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"50+%"</span>))) </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># create regions dataframe</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>share2024_regions <span class="ot">&lt;-</span> share2024 <span class="sc">%&gt;%</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(entity_name <span class="sc">!=</span> <span class="st">"World"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"category"</span>, <span class="at">values_to =</span> <span class="st">"number"</span>, number_0pct<span class="sc">:</span>number_50pluspct) <span class="sc">%&gt;%</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(entity_name) <span class="sc">%&gt;%</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(number), <span class="at">percent =</span> number<span class="sc">/</span>total) <span class="sc">%&gt;%</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>           <span class="fu">mutate</span>(<span class="at">percent_women =</span> <span class="fu">case_when</span>(category <span class="sc">==</span> <span class="st">"number_0pct"</span> <span class="sc">~</span> <span class="st">"no women"</span>, </span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>                           category <span class="sc">==</span> <span class="st">"number_0_10pct"</span> <span class="sc">~</span> <span class="st">"less than 10%"</span>,</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>                           category <span class="sc">==</span> <span class="st">"number_10_20pct"</span> <span class="sc">~</span> <span class="st">"10-20%"</span>, </span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>                           category <span class="sc">==</span> <span class="st">"number_20_30pct"</span> <span class="sc">~</span> <span class="st">"20-30%"</span>, </span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>                           category <span class="sc">==</span> <span class="st">"number_30_40pct"</span> <span class="sc">~</span> <span class="st">"30-40%"</span>, </span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>                           category <span class="sc">==</span> <span class="st">"number_40_50pct"</span> <span class="sc">~</span> <span class="st">"40-50%"</span>,</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>                           category <span class="sc">==</span> <span class="st">"number_50pluspct"</span> <span class="sc">~</span> <span class="st">"50+%"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">percent_women =</span> <span class="fu">fct_relevel</span>(percent_women, </span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">c</span>(<span class="st">"no women"</span> , <span class="st">"less than 10%"</span> ,<span class="st">"10-20%"</span> ,</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"20-30%"</span> ,<span class="st">"30-40%"</span> , <span class="st">"40-50%"</span> ,</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"50+%"</span>))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="tidyverse-rowwise" class="level3">
-<h3 class="anchored" data-anchor-id="tidyverse-rowwise">tidyverse rowwise</h3>
-<p>The tidyverse version involves using <code>rowwise()</code> to tell R that you would like a mean calculated for each row in the dataset. Use <code>c()</code> to tell R which columns to average across.</p>
-<p>Without <code>rowwise()</code>, R will calculate the mean of all rows/columns and put that in the new variable. You will end up with the same value for each row.</p>
+<section id="plot" class="level2">
+<h2 class="anchored" data-anchor-id="plot">plot</h2>
+<section id="world" class="level3">
+<h3 class="anchored" data-anchor-id="world">world</h3>
+<p>Starting with world and using inspo from the <a href="https://r-graph-gallery.com/pie-plot.html">R Graph gallery</a> here I make an ugly pie chart. There is no pie geom in ggplot, so the workaround is to make a column chart and use <code>coord_polar()</code> to make it circular.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>survey_means_norowwise <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">item_mean =</span> <span class="fu">mean</span>(<span class="fu">c</span>(item1, item2, item3, item4, item5))) </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(survey_means_norowwise)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 6
-Columns: 7
-$ pID       &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1     &lt;int&gt; 7, 1, 7, 7, 5, 6
-$ item2     &lt;int&gt; 4, 2, 2, 4, 6, 3
-$ item3     &lt;int&gt; 2, 7, 3, 7, 6, 6
-$ item4     &lt;int&gt; 3, 6, 7, 5, 4, 1
-$ item5     &lt;int&gt; 2, 7, 6, 4, 3, 4
-$ item_mean &lt;dbl&gt; 4.566667, 4.566667, 4.566667, 4.566667, 4.566667, 4.566667</code></pre>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>share2024_world <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> percent, <span class="at">fill =</span> percent_women)) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">colour =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">coord_polar</span>(<span class="st">"y"</span>, <span class="at">start =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">easy_add_legend_title</span>(<span class="st">"Percent seats"</span>) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#a2559b"</span>, <span class="st">"#00847d"</span>, <span class="st">"#4b6a9c"</span>, <span class="st">"#e56e59"</span>, <span class="st">"#38aaba"</span>, <span class="st">"#6b3d8d"</span>,  <span class="st">"#986d39"</span> )) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Percent of countries by share of women in parliament in 2024, World"</span>, </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Percent of seats in lower or single chamber of the legislature held by women"</span>, </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Data source: V-Dem (2025) via OurWorldInData. </span><span class="sc">\n</span><span class="st">Note: Only countries with at least one legislative chamber included."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>With <code>rowwise()</code>, it calculates across the rows, separately for each participant.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>It is important to get into the habit of adding <code>ungroup()</code> after a <code>rowwise()</code> in the same way as you would after a <code>group_by()</code> because the dataframe becomes grouped by row, which can mess with calcuations further down the pipeline.</p>
-</div>
-</div>
+<p>The more interesting question is does this pattern of representation differ across regions?</p>
+</section>
+<section id="regions" class="level3">
+<h3 class="anchored" data-anchor-id="regions">regions</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>survey_means_rowwise <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">item_mean =</span> <span class="fu">mean</span>(<span class="fu">c</span>(item1, item2, item3, item4, item5))) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(survey_means_rowwise)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 6
-Columns: 7
-$ pID       &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1     &lt;int&gt; 7, 1, 7, 7, 5, 6
-$ item2     &lt;int&gt; 4, 2, 2, 4, 6, 3
-$ item3     &lt;int&gt; 2, 7, 3, 7, 6, 6
-$ item4     &lt;int&gt; 3, 6, 7, 5, 4, 1
-$ item5     &lt;int&gt; 2, 7, 6, 4, 3, 4
-$ item_mean &lt;dbl&gt; 3.6, 4.6, 5.0, 5.4, 4.8, 4.0</code></pre>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>share2024_regions <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> percent, <span class="at">fill =</span> percent_women)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">colour =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">coord_polar</span>(<span class="st">"y"</span>, <span class="at">start =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>entity_name) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#a2559b"</span>, <span class="st">"#00847d"</span>, <span class="st">"#4b6a9c"</span>, <span class="st">"#e56e59"</span>, <span class="st">"#38aaba"</span>, <span class="st">"#6b3d8d"</span>,  <span class="st">"#986d39"</span> )) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">easy_add_legend_title</span>(<span class="st">"Percent seats"</span>) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Percent of countries by share of women in parliament in 2024, Regions"</span>, </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Percent of seats in lower or single chamber of the legislature held by women"</span>, </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Data source: V-Dem (2025) via OurWorldInData. </span><span class="sc">\n</span><span class="st">Note: Only countries with at least one legislative chamber included."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>If there are a lot of columns to average across, you can avoid typing all of the names using <code>c_across()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>survey_means_rowwise_across <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">item_mean =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(item1<span class="sc">:</span>item5))) <span class="sc">%&gt;%</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(survey_means_rowwise_across)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 6
-Columns: 7
-$ pID       &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1     &lt;int&gt; 7, 1, 7, 7, 5, 6
-$ item2     &lt;int&gt; 4, 2, 2, 4, 6, 3
-$ item3     &lt;int&gt; 2, 7, 3, 7, 6, 6
-$ item4     &lt;int&gt; 3, 6, 7, 5, 4, 1
-$ item5     &lt;int&gt; 2, 7, 6, 4, 3, 4
-$ item_mean &lt;dbl&gt; 3.6, 4.6, 5.0, 5.4, 4.8, 4.0</code></pre>
 </div>
-</div>
+<p>There is a lot that surprises me about this plot. Oceania is not doing well; the majority of countries have less than 10% of government seats held by women. This dataset only includes the number of countries in each region that have women represented in each of the percent categories. This includes 6 Oceanic countries, but it doesn’t include information about which 6 countries are included. I am interested to dig into the country level data here.</p>
+<p>I was also surprised that Asia is the only region that still has 2 countries that have no women in government. Again, I am curious about which 2; Afghanistan maybe? Perhaps there are Middle East countries that do not have women in government.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
