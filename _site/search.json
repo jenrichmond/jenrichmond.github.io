@@ -186,7 +186,7 @@
     "href": "charts/2025-03-31_challenge/index.html#day-3-circular",
     "title": "day 0 challenge",
     "section": "Day 3 circular",
-    "text": "Day 3 circular\n\nmy plotr code\n\n\n\n\n\n\n# insert ggplot code"
+    "text": "Day 3 circular\nWomen in government\n\nmy plotr code\n\n\n\n\n\n\nshare2024_regions %&gt;%\n  ggplot(aes(x = \"\", y = percent, fill = percent_women)) +\n  geom_col(colour = \"white\") +\n coord_polar(\"y\", start = 0) +\n  facet_wrap(~entity_name) +\n    scale_fill_manual(values = c(\"#a2559b\", \"#00847d\", \"#4b6a9c\", \"#e56e59\", \"#38aaba\", \"#6b3d8d\",  \"#986d39\" )) +\n    theme_void() +\n   easy_add_legend_title(\"Percent seats\") +\nlabs(title = \"Percent of countries by share of women in parliament in 2024, Regions\", \n       subtitle = \"Percent of seats in lower or single chamber of the legislature held by women\", \n       caption = \"Data source: V-Dem (2025) via OurWorldInData. \\nNote: Only countries with at least one legislative chamber included.\")"
   },
   {
     "objectID": "charts/2025-03-31_challenge/index.html#day-4-big-small",

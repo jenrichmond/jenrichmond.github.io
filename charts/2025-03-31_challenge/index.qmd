@@ -133,19 +133,29 @@ time %>%
 
 ## Day 3 circular
 
-
+[Women in government](https://ourworldindata.org/grapher/countries-by-share-of-women-in-parliament)
 
 ::: panel-tabset
 
 ### my plot
 
-![](watch.png)
+![](womeningovt.png)
 
 ### r code
 
 ```{r, echo=TRUE, eval=FALSE}
 
-# insert ggplot code
+share2024_regions %>%
+  ggplot(aes(x = "", y = percent, fill = percent_women)) +
+  geom_col(colour = "white") +
+ coord_polar("y", start = 0) +
+  facet_wrap(~entity_name) +
+    scale_fill_manual(values = c("#a2559b", "#00847d", "#4b6a9c", "#e56e59", "#38aaba", "#6b3d8d",  "#986d39" )) +
+    theme_void() +
+   easy_add_legend_title("Percent seats") +
+labs(title = "Percent of countries by share of women in parliament in 2024, Regions", 
+       subtitle = "Percent of seats in lower or single chamber of the legislature held by women", 
+       caption = "Data source: V-Dem (2025) via OurWorldInData. \nNote: Only countries with at least one legislative chamber included.")
 
 ```
 
