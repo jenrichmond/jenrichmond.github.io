@@ -243,6 +243,14 @@ time %>%
        y = "Hours") +
     theme(plot.caption = element_text(hjust = 0)) 
 
+
+
+```
+
+
+```{r}
+#| include: false
+ggsave("bygender.png")
 ```
  
 It seems that women in their later years spend more time that men alone and less time with a partner, presumably because they are living longer than the men in their lives. 
