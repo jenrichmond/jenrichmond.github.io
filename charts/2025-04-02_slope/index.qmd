@@ -209,9 +209,10 @@ time %>%
 ```{r, save plot}
 #| include: false
 #| 
-ggsave(here::here("charts", "2025-03-31_challenge", "time.png"), width = 6, height = 4)
+ggsave(here::here("charts", "2025-03-31_challenge", "time.png"), width = 6, height = 4,  bg = "white")
 
-ggsave("featured.png")
+
+ggsave("featured.png",  bg = "white")
 
 ```
 
@@ -225,7 +226,7 @@ time %>%
   filter(age < 80) %>%
   filter(group %in% c("Men", "Women")) %>%
   ggplot(aes(x = age, y = hours, colour = category)) +
-  geom_point(size = 1) + 
+  geom_point(size = .6) + 
   geom_line() +
   facet_wrap(~ group) +
   scale_colour_manual(values = c("#496899", "#6b3d8d", "#2b8465", "#986d39", "#b03508", "#883039")) +
@@ -250,7 +251,7 @@ time %>%
 
 ```{r}
 #| include: false
-ggsave("bygender.png")
+ggsave("bygender.png", bg = "white", width = 6, height = 4)
 ```
  
 It seems that women in their later years spend more time that men alone and less time with a partner, presumably because they are living longer than the men in their lives. 

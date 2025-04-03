@@ -164,18 +164,60 @@ labs(title = "Percent of countries by share of women in parliament in 2024, Regi
 
 ## Day 4 big small
 
+[Time spent in unpaid work](https://ourworldindata.org/grapher/time-spend-in-domestic-work-female-vs-male)
 
 ::: panel-tabset
 
 ### my plot
 
-![](watch.png)
+![](domestic.png)
+
 
 ### r code
 
 ```{r, echo=TRUE, eval=FALSE}
 
-# insert ggplot code
+dom_recent %>%
+  ggplot(aes(x = male, y = female, colour = country)) +
+  geom_point(size = 2) +
+  theme_classic() +
+  easy_remove_legend() +
+  theme(panel.grid.major = element_line(color = "lightgray", linetype = 2)) +
+   scale_y_continuous(labels = percent_format(accuracy = 1, scale = 1), 
+                     expand = c(0,0), breaks = seq(0,25, 5), limits = c(0,30)) +
+   scale_x_continuous(labels = percent_format(accuracy = 1, scale = 1), 
+                      expand = c(0,0), breaks = seq(0,12, 2), limits = c(0,14)) +
+  geom_abline(intercept = 0, slope = 1, colour = "gray", linetype = 2) +
+  geom_abline(intercept = 0, slope = 2, colour = "gray", linetype = 2) +
+  geom_abline(intercept = 0, slope = 4, colour = "gray", linetype = 2) +
+  geom_text(data = data.frame(x = 10, y = 3.5, label = "Women and men spend \nequal time"), 
+            mapping = aes(x = x, y = y, label = label), size = 2.5, inherit.aes = FALSE) +
+  geom_text(data = data.frame(x = 12.5, y = 28, label = "Women spend 2x \nmore time"), 
+            mapping = aes(x = x, y = y, label = label), size = 2.5,  inherit.aes = FALSE) +
+  geom_text(data = data.frame(x = 5, y = 26.8, label = "Women spend 4x \nmore time"), 
+            mapping = aes(x = x, y = y, label = label), size = 2.5, inherit.aes = FALSE) +
+  geom_text_repel(aes(label = country), size = 2.5, max.overlaps = 5) +
+  labs(title = "Time women and men spend on unpaid care and domestic work, 2022",
+       subtitle = "The average share of each day that women and men aged 15 and older spend on unpaid care \nand domestic work.",
+       x = "Men (% of 24 hour day)", 
+       y = "Women (% of 24 hour day)", 
+       caption = "Data source: UN Statistics Division and UN WOMEN.
+Note: Unpaid care and domestic work includes: food preparation,
+dishwashing, upkeep of a dwelling, laundry, ironing, gardening, caring
+for pets, shopping, servicing and repair of personal and household
+goods, childcare, and care of the sick, elderly or disabled household
+members, among others.") +
+   theme(plot.caption = element_text(hjust = 0), 
+         plot.subtitle = element_text(margin=margin(0,0,20,0))) +
+  geom_curve(data = data.frame(x = 5.5, y = 28.5, xend = 6.4, yend = 26),
+          mapping = aes(x = x, y = y, xend = xend, yend = yend), curvature = -0.515, 
+          arrow = arrow(20L, unit(0.1, "inches"), "last", "closed"), alpha = 1, inherit.aes = FALSE) +
+  geom_curve(data = data.frame(x = 11.8, y = 28, xend = 12.2, yend = 26),
+          mapping = aes(x = x, y = y, xend = xend, yend = yend), curvature = 0.515, 
+          arrow = arrow(20L, unit(0.1, "inches"), "last", "closed"), alpha = 1, inherit.aes = FALSE) +
+  geom_curve(data = data.frame(x = 8.8, y =4, xend = 8.2, yend = 7),
+          mapping = aes(x = x, y = y, xend = xend, yend = yend), curvature = -0.515, 
+          arrow = arrow(20L, unit(0.1, "inches"), "last", "closed"), alpha = 1, inherit.aes = FALSE)
 
 ```
 
