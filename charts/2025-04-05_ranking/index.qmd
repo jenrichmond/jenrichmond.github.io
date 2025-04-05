@@ -3,7 +3,7 @@ title: "day 5 ranking"
 author:
   - name: Jen Richmond
     url: https://jenrichmond.github.io/
-date: 2024-04-05
+date: 2025-04-05
 format: html
 editor: source
 image: featured.png
@@ -24,13 +24,16 @@ library(owidapi)
 library(ggbump)
 library(ggeasy)
 library(patchwork)
-library(gt)
+
 
 catalog <- owid_get_catalog()
 
 ```
 
-These plots from Our World in Data caught my eye this week, given all that is going on in the USA with layoffs and funding cuts. They illustrate the amount of money that countries spend on research and development as a percent of GDP and the number of people that work in R&D as a function of population and GDP. The theme today is ranking, so I wonder whether I can look at where the USA ranks relative to other countries on these metrics.
+These plots from Our World in Data caught my eye this week given all that is going on in the USA with layoffs and funding cuts ([R&Dspending](https://ourworldindata.org/grapher/research-spending-gdp) ; 
+[R&Dresearchers](https://ourworldindata.org/grapher/researchers-in-rd-per-million-people-vs-gdp-pc)).
+
+They illustrate the amount of money that countries spend on research and development as a percent of GDP and the number of people that work in R&D as a function of population and GDP. The theme today is ranking, so I wonder whether I can look at where the USA ranks relative to other countries on these metrics.
 
 <iframe src="https://ourworldindata.org/grapher/research-spending-gdp?tab=chart" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
 

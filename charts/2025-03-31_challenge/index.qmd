@@ -228,18 +228,40 @@ members, among others.") +
 
 ## Day 5 ranking
 
+- [R&Dspending](https://ourworldindata.org/grapher/research-spending-gdp)
+- [R&Dresearchers](https://ourworldindata.org/grapher/researchers-in-rd-per-million-people-vs-gdp-pc)
 
 ::: panel-tabset
 
 ### my plot
 
-![](watch.png)
+![](rd.png)
 
 ### r code
 
 ```{r, echo=TRUE, eval=FALSE}
 
-# insert ggplot code
+top5spend %>%
+ggplot(aes(year, rank, color = country)) +
+  geom_point(size = 5) +
+   geom_bump(size = 2, smooth = 8) +
+  scale_colour_manual(values = palette_takehe_plus) +
+  geom_text(data = top5spend %>% filter(year == min(year)),
+            aes(x = year - .1, label = country), size = 3.5, hjust = 1) +
+  geom_text(data = top5spend %>% filter(year == max(year)),
+            aes(x = year + .1, label = country), size = 3.5, hjust = 0) +
+    scale_y_reverse() +
+  scale_x_continuous(limits = c(2017.6, 2021.5),
+                     breaks = seq(2018, 2021, 1)) +
+  theme_minimal() +
+  easy_remove_legend() +
+  easy_remove_gridlines() +
+  labs(title = "R&D spending percent of GDP: Top 5 countries", 
+       subtitle = "includes basic research, applied research, and experimental development", 
+       y = "Ranking", x = "Year") +
+  geom_text(data = data.frame(x = 2019, y = 4.7, label = "Switzerland"),
+mapping = aes(x = x, y = y, label = label),
+size = 3.7, colour = "#D1C7B5", inherit.aes = FALSE)
 
 ```
 
