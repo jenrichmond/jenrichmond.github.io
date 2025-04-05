@@ -147,9 +147,9 @@ labs(title = "Percent of countries by share of women in parliament in 2024, Regi
 ```{r, save plot}
 #| include: false
 #| 
-ggsave(here::here("charts", "2025-03-31_challenge", "womeningovt.png"), width = 6, height = 4)
+ggsave(here::here("charts", "2025-03-31_challenge", "womeningovt.png"), width = 6, height = 4, bg = "white")
 
-ggsave("featured.png")
+ggsave("featured.png", bg = "white")
 
 ```
 
