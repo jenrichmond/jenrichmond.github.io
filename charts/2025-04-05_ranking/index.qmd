@@ -26,8 +26,6 @@ library(ggeasy)
 library(patchwork)
 
 
-catalog <- owid_get_catalog()
-
 ```
 
 These plots from Our World in Data caught my eye this week given all that is going on in the USA with layoffs and funding cuts ([R&Dspending](https://ourworldindata.org/grapher/research-spending-gdp) ; 
