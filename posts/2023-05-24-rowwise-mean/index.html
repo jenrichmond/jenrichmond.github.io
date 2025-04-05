@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-8647a4a42273f773479d27c00df3f9ed.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -230,11 +230,11 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 <pre><code>Rows: 6
 Columns: 6
 $ pID   &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1 &lt;int&gt; 6, 5, 7, 6, 7, 3
-$ item2 &lt;int&gt; 5, 7, 3, 2, 5, 3
-$ item3 &lt;int&gt; 6, 1, 4, 4, 2, 5
-$ item4 &lt;int&gt; 6, 2, 7, 7, 5, 6
-$ item5 &lt;int&gt; 4, 2, 4, 5, 5, 2</code></pre>
+$ item1 &lt;int&gt; 3, 4, 1, 2, 1, 6
+$ item2 &lt;int&gt; 1, 4, 6, 6, 3, 5
+$ item3 &lt;int&gt; 1, 2, 3, 2, 5, 5
+$ item4 &lt;int&gt; 5, 6, 7, 4, 4, 7
+$ item5 &lt;int&gt; 7, 6, 3, 5, 2, 5</code></pre>
 </div>
 </div>
 </section>
@@ -259,12 +259,12 @@ $ item5 &lt;int&gt; 4, 2, 4, 5, 5, 2</code></pre>
 <pre><code>Rows: 6
 Columns: 7
 $ pID       &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1     &lt;int&gt; 6, 5, 7, 6, 7, 3
-$ item2     &lt;int&gt; 5, 7, 3, 2, 5, 3
-$ item3     &lt;int&gt; 6, 1, 4, 4, 2, 5
-$ item4     &lt;int&gt; 6, 2, 7, 7, 5, 6
-$ item5     &lt;int&gt; 4, 2, 4, 5, 5, 2
-$ item_mean &lt;dbl&gt; 4.533333, 4.533333, 4.533333, 4.533333, 4.533333, 4.533333</code></pre>
+$ item1     &lt;int&gt; 3, 4, 1, 2, 1, 6
+$ item2     &lt;int&gt; 1, 4, 6, 6, 3, 5
+$ item3     &lt;int&gt; 1, 2, 3, 2, 5, 5
+$ item4     &lt;int&gt; 5, 6, 7, 4, 4, 7
+$ item5     &lt;int&gt; 7, 6, 3, 5, 2, 5
+$ item_mean &lt;dbl&gt; 4.033333, 4.033333, 4.033333, 4.033333, 4.033333, 4.033333</code></pre>
 </div>
 </div>
 <p>With <code>rowwise()</code>, it calculates across the rows, separately for each participant.</p>
@@ -292,12 +292,12 @@ Note
 <pre><code>Rows: 6
 Columns: 7
 $ pID       &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1     &lt;int&gt; 6, 5, 7, 6, 7, 3
-$ item2     &lt;int&gt; 5, 7, 3, 2, 5, 3
-$ item3     &lt;int&gt; 6, 1, 4, 4, 2, 5
-$ item4     &lt;int&gt; 6, 2, 7, 7, 5, 6
-$ item5     &lt;int&gt; 4, 2, 4, 5, 5, 2
-$ item_mean &lt;dbl&gt; 5.4, 3.4, 5.0, 4.8, 4.8, 3.8</code></pre>
+$ item1     &lt;int&gt; 3, 4, 1, 2, 1, 6
+$ item2     &lt;int&gt; 1, 4, 6, 6, 3, 5
+$ item3     &lt;int&gt; 1, 2, 3, 2, 5, 5
+$ item4     &lt;int&gt; 5, 6, 7, 4, 4, 7
+$ item5     &lt;int&gt; 7, 6, 3, 5, 2, 5
+$ item_mean &lt;dbl&gt; 3.4, 4.4, 4.0, 3.8, 3.0, 5.6</code></pre>
 </div>
 </div>
 <p>If there are a lot of columns to average across, you can avoid typing all of the names using <code>c_across()</code>.</p>
@@ -312,12 +312,12 @@ $ item_mean &lt;dbl&gt; 5.4, 3.4, 5.0, 4.8, 4.8, 3.8</code></pre>
 <pre><code>Rows: 6
 Columns: 7
 $ pID       &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1     &lt;int&gt; 6, 5, 7, 6, 7, 3
-$ item2     &lt;int&gt; 5, 7, 3, 2, 5, 3
-$ item3     &lt;int&gt; 6, 1, 4, 4, 2, 5
-$ item4     &lt;int&gt; 6, 2, 7, 7, 5, 6
-$ item5     &lt;int&gt; 4, 2, 4, 5, 5, 2
-$ item_mean &lt;dbl&gt; 5.4, 3.4, 5.0, 4.8, 4.8, 3.8</code></pre>
+$ item1     &lt;int&gt; 3, 4, 1, 2, 1, 6
+$ item2     &lt;int&gt; 1, 4, 6, 6, 3, 5
+$ item3     &lt;int&gt; 1, 2, 3, 2, 5, 5
+$ item4     &lt;int&gt; 5, 6, 7, 4, 4, 7
+$ item5     &lt;int&gt; 7, 6, 3, 5, 2, 5
+$ item_mean &lt;dbl&gt; 3.4, 4.4, 4.0, 3.8, 3.0, 5.6</code></pre>
 </div>
 </div>
 
