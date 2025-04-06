@@ -270,18 +270,29 @@ size = 3.7, colour = "#D1C7B5", inherit.aes = FALSE)
 
 ## Day 6 florence
 
+[Willingness to get the COVID vaccine](This plot](https://ourworldindata.org/grapher/covid-vaccine-willingness-and-people-vaccinated-by-month)
 
 ::: panel-tabset
 
 ### my plot
 
-![](watch.png)
+![](vax.png)
 
 ### r code
 
 ```{r, echo=TRUE, eval=FALSE}
 
-# insert ggplot code
+us_oz %>%
+  ggplot(aes(x = month, y = percent, fill = status)) +
+  geom_col() +
+  scale_fill_manual(values = palette) +
+  coord_polar() +
+  facet_wrap(~country) +
+  easy_remove_axes(which = "y") +
+  theme(panel.background = element_rect(fill = 'white', colour = 'white')) +
+  easy_move_legend(to = "bottom") +
+  labs(title = "Willingness to get vaccinated against COVID-19, Mar 15, 2021 to Oct 15, 2021") +
+  easy_remove_axes(which = "x", what = "title")
 
 ```
 
