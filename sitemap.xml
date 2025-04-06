@@ -2,78 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jenrichmond.github.io/posts.html</loc>
-    <lastmod>2025-04-05T21:52:40.524Z</lastmod>
+    <lastmod>2025-04-06T05:36:10.950Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2023-05-24-rowwise-mean/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.548Z</lastmod>
+    <lastmod>2025-04-06T05:36:10.975Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2022-01-17-my-favourite-things-about-r/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.525Z</lastmod>
+    <lastmod>2025-04-06T05:36:10.952Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2020-11-18-digging-into-the-janitor-package/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.524Z</lastmod>
+    <lastmod>2025-04-06T05:36:10.951Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/about.html</loc>
-    <lastmod>2025-04-05T21:52:40.503Z</lastmod>
+    <lastmod>2025-04-06T05:36:10.928Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/charts/2025-03-31_challenge/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.506Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-01_fractions/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.512Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-04_bigsmall/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.518Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-05_ranking/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.519Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-02_slope/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.515Z</lastmod>
+    <lastmod>2025-04-06T05:36:10.931Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/charts/2025-04-03_circular/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.516Z</lastmod>
+    <lastmod>2025-04-06T05:36:10.942Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts/2025-04-02_slope/index.html</loc>
+    <lastmod>2025-04-06T05:36:10.941Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts/2025-04-05_ranking/index.html</loc>
+    <lastmod>2025-04-06T05:36:10.945Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts/2025-04-04_bigsmall/index.html</loc>
+    <lastmod>2025-04-06T05:36:10.944Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts/2025-04-01_fractions/index.html</loc>
+    <lastmod>2025-04-06T05:36:10.938Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts/2025-04-06_florence/index.html</loc>
+    <lastmod>2025-04-06T05:36:10.946Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.523Z</lastmod>
+    <lastmod>2025-04-06T05:36:10.950Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/charts.html</loc>
-    <lastmod>2025-04-05T21:52:40.503Z</lastmod>
+    <lastmod>2025-04-06T05:36:10.928Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2022-09-28-git-hints/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.537Z</lastmod>
+    <lastmod>2025-04-06T05:36:10.964Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2024-07-04-learning_python/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.549Z</lastmod>
+    <lastmod>2025-04-06T05:36:10.976Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2022-12-15-colours-that-r-knows/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.539Z</lastmod>
+    <lastmod>2025-04-06T05:36:10.966Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2021-06-22-pat-for-github/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.524Z</lastmod>
+    <lastmod>2025-04-06T05:36:10.951Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2023-04-25-error-bars-on-plots/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.540Z</lastmod>
+    <lastmod>2025-04-06T05:36:10.966Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2022-06-27-using-lists-in-r/index.html</loc>
-    <lastmod>2025-04-05T21:52:40.532Z</lastmod>
+    <lastmod>2025-04-06T05:36:10.958Z</lastmod>
   </url>
 </urlset>

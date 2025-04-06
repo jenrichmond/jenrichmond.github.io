@@ -7,9 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jen Richmond">
-<meta name="dcterms.date" content="2023-05-24">
 
-<title>rowwise %&gt;% mean – Jen Richmond</title>
+<title>day 6 florence – Jen Richmond</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -164,9 +163,12 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#load-packages-make-some-data" id="toc-load-packages-make-some-data" class="nav-link active" data-scroll-target="#load-packages-make-some-data">load packages + make some data</a></li>
-  <li><a href="#base-r-rowmeans" id="toc-base-r-rowmeans" class="nav-link" data-scroll-target="#base-r-rowmeans">base R rowMeans</a></li>
-  <li><a href="#tidyverse-rowwise" id="toc-tidyverse-rowwise" class="nav-link" data-scroll-target="#tidyverse-rowwise">tidyverse rowwise</a></li>
+  <li><a href="#load-packages" id="toc-load-packages" class="nav-link active" data-scroll-target="#load-packages">load packages</a>
+  <ul class="collapse">
+  <li><a href="#read-in-the-data" id="toc-read-in-the-data" class="nav-link" data-scroll-target="#read-in-the-data">read in the data</a></li>
+  <li><a href="#clean-it-up" id="toc-clean-it-up" class="nav-link" data-scroll-target="#clean-it-up">clean it up</a></li>
+  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot">plot</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -175,11 +177,8 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">rowwise %&gt;% mean</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">data wrangling</div>
-  </div>
-  </div>
+<h1 class="title">day 6 florence</h1>
+</div>
 
 
 
@@ -195,7 +194,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 24, 2023</p>
+      <p class="date">Invalid Date</p>
     </div>
   </div>
   
@@ -207,121 +206,145 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </header>
 
 
-<p>When you have data from a survey, the responses for each item are most often listed in different variables. Generally you have to average across the items to get a mean value for that scale for each participant. But dealing with calculations across rows is sometimes difficult in R.</p>
-<p><img src="featured.jpg" class="img-fluid" width="400"></p>
-<p>Photo by <a href="https://unsplash.com/@travisessinger?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Travis Essinger</a> on <a href="https://unsplash.com/photos/green-grass-field-oG01mozFb7o?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Unsplash</a></p>
-<section id="load-packages-make-some-data" class="level3">
-<h3 class="anchored" data-anchor-id="load-packages-make-some-data">load packages + make some data</h3>
+<p>I did not know that Florence Nightingale was also a <a href="https://www.scientificamerican.com/article/how-florence-nightingale-changed-data-visualization-forever/">data visualisation revolutionary</a>, in addition to being a nurse and scientist. She realised that visualisations are important for telling data stories and her <a href="https://github.com/edwardgunning/FlorenceNightingale.">rose diagrams</a> convinced Queen Victoria of the impact of sanitation on health for soldiers.</p>
+<p>The Day 6 theme is Florence Nightingale, so I am on a mission to find an appropriate dataset.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Nightingale-mortality.jpg/2560px-Nightingale-mortality.jpg" class="img-fluid figure-img"></p>
+<figcaption>Rose diagram by Florence Nightengale</figcaption>
+</figure>
+</div>
+<p><a href="https://ourworldindata.org/grapher/covid-vaccine-willingness-and-people-vaccinated-by-month">This plot</a> comparing the proportion of people willing to get the COVID vaccine in Australia and the USA illustrates how differences in public health policy can impact vaccine uptake.</p>
+<p>It is interesting that across this period the proportion of people who were unvaccinated and unwilling remained pretty constant in the USA, whereas this proportion became smaller and smaller in Australia, as campaigns encouraging people to get vaccinated were rolled out.</p>
+<p>The vaccination data seems like a good candidate for a rose diagram.</p>
+<iframe src="https://ourworldindata.org/grapher/covid-vaccine-willingness-and-people-vaccinated-by-month?country=AUS~USA&amp;tab=chart" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write">
+</iframe>
+<section id="load-packages" class="level1">
+<h1>load packages</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>pID <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"p1"</span>, <span class="st">"p2"</span>, <span class="st">"p3"</span>, <span class="st">"p4"</span>, <span class="st">"p5"</span>, <span class="st">"p6"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>item1 <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="dv">6</span>, <span class="at">replace=</span>T)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>item2 <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="dv">6</span>, <span class="at">replace=</span>T)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>item3 <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="dv">6</span>, <span class="at">replace=</span>T)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>item4 <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="dv">6</span>, <span class="at">replace=</span>T)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>item5 <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>, <span class="dv">6</span>, <span class="at">replace=</span>T)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(pID, item1, item2, item3, item4, item5)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(survey)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(owidapi)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggeasy)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="read-in-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="read-in-the-data">read in the data</h3>
+<p>Here I am reading the data from Our World in Data and selecting/renaming variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>vax <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://ourworldindata.org/grapher/covid-vaccine-willingness-and-people-vaccinated-by-month.csv?v=1&amp;csvType=full&amp;useColumnShortNames=true"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">country =</span> entity, <span class="at">date =</span> day, <span class="at">unvax_unwilling =</span> unwillingness_covid_vaccinate_this_week_pct_pop, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">unvax_uncertain =</span>  uncertain_covid_vaccinate_this_week_pct_pop , <span class="at">unvax_willing =</span>  willingness_covid_vaccinate_this_week_pct_pop , <span class="at">vaccinated =</span>  people_vaccinated_per_hundred ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="clean-it-up" class="level3">
+<h3 class="anchored" data-anchor-id="clean-it-up">clean it up</h3>
+<p>I am interested in the comparison between Australia and the US so filter for those two countries and then make the data long, so that the percent values appear in one column, and the status categories in another. I make the status column a factor and pull the month out of the date variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>vax_long <span class="ot">&lt;-</span> vax <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Australia"</span>, <span class="st">"United States"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"status"</span>, <span class="at">values_to =</span> <span class="st">"percent"</span>, unvax_unwilling<span class="sc">:</span>vaccinated) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">status =</span> <span class="fu">as_factor</span>(status)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">month</span>(date, <span class="at">label=</span><span class="cn">TRUE</span>))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(vax_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 6
-Columns: 6
-$ pID   &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1 &lt;int&gt; 2, 6, 4, 6, 6, 4
-$ item2 &lt;int&gt; 2, 3, 3, 3, 6, 4
-$ item3 &lt;int&gt; 7, 4, 3, 6, 6, 6
-$ item4 &lt;int&gt; 2, 5, 2, 7, 4, 3
-$ item5 &lt;int&gt; 5, 6, 1, 6, 7, 3</code></pre>
+<pre><code>Rows: 84
+Columns: 5
+$ country &lt;chr&gt; "Australia", "Australia", "Australia", "Australia", "Australia…
+$ date    &lt;date&gt; 2021-03-15, 2021-03-15, 2021-03-15, 2021-03-15, 2021-04-15, 2…
+$ status  &lt;fct&gt; unvax_unwilling, unvax_uncertain, unvax_willing, vaccinated, u…
+$ percent &lt;dbl&gt; 27.72, 19.80, 51.77, 0.71, 31.32, 20.13, 43.73, 4.82, 31.14, 2…
+$ month   &lt;ord&gt; Mar, Mar, Mar, Mar, Apr, Apr, Apr, Apr, May, May, May, May, Ju…</code></pre>
 </div>
 </div>
 </section>
-<section id="base-r-rowmeans" class="level3">
-<h3 class="anchored" data-anchor-id="base-r-rowmeans">base R rowMeans</h3>
-<p>The <code>rowMeans()</code> function works, but why the x and what do the dots mean??</p>
+<section id="plot" class="level3">
+<h3 class="anchored" data-anchor-id="plot">plot</h3>
+<section id="just-australia" class="level4">
+<h4 class="anchored" data-anchor-id="just-australia">just Australia</h4>
+<p>OK I am going to start by plotting Australia first and getting column graph, before adding the <code>coord_polar()</code> below. I want the plot to start with the March data, so relevel month as a factor.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>survey_means_base <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">item_mean =</span> <span class="fu">rowMeans</span>(<span class="at">x =</span> <span class="fu">select</span>(<span class="at">.data =</span> . , <span class="fu">starts_with</span>(<span class="at">match =</span> <span class="st">"item"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>oz <span class="ot">&lt;-</span> vax_long <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Australia"</span>) </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>oz<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">fct_relevel</span>(oz<span class="sc">$</span>month, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span>, <span class="st">"Jul"</span>, <span class="st">"Aug"</span>, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Sep"</span>, <span class="st">"Oct"</span>, <span class="st">"Nov"</span>, <span class="st">"Dec"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(oz<span class="sc">$</span>month)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec" "Jan" "Feb"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>palette <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#c5001f"</span>,<span class="st">"#f6b79b"</span>, <span class="st">"#a8d0e4"</span>, <span class="st">"#498dc0"</span> )</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>oz <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> percent, <span class="at">fill =</span> status)) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> palette)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Adding <code>coord_polar()</code> to turn it into a Florence Nightengale plot. Here I have removed the y axis, made the background white and moved the legend to the bottom.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>oz <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> percent, <span class="at">fill =</span> status)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> palette) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">easy_remove_axes</span>(<span class="at">which =</span> <span class="st">"y"</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">'white'</span>, <span class="at">colour =</span> <span class="st">'white'</span>)) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">easy_move_legend</span>(<span class="at">to =</span> <span class="st">"bottom"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
-<section id="tidyverse-rowwise" class="level3">
-<h3 class="anchored" data-anchor-id="tidyverse-rowwise">tidyverse rowwise</h3>
-<p>The tidyverse version involves using <code>rowwise()</code> to tell R that you would like a mean calculated for each row in the dataset. Use <code>c()</code> to tell R which columns to average across.</p>
-<p>Without <code>rowwise()</code>, R will calculate the mean of all rows/columns and put that in the new variable. You will end up with the same value for each row.</p>
+<section id="both-australia-and-usa" class="level4">
+<h4 class="anchored" data-anchor-id="both-australia-and-usa">both Australia and USA</h4>
+<p>Now I want to use <code>facet_wrap()</code> to get a plot that compares this pattern for the US and Australia. In looking at the data, the USA data only goes until Oct, so I am filtering so that I have the same months represented for each country.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>survey_means_norowwise <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">item_mean =</span> <span class="fu">mean</span>(<span class="fu">c</span>(item1, item2, item3, item4, item5))) </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(survey_means_norowwise)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 6
-Columns: 7
-$ pID       &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1     &lt;int&gt; 2, 6, 4, 6, 6, 4
-$ item2     &lt;int&gt; 2, 3, 3, 3, 6, 4
-$ item3     &lt;int&gt; 7, 4, 3, 6, 6, 6
-$ item4     &lt;int&gt; 2, 5, 2, 7, 4, 3
-$ item5     &lt;int&gt; 5, 6, 1, 6, 7, 3
-$ item_mean &lt;dbl&gt; 4.4, 4.4, 4.4, 4.4, 4.4, 4.4</code></pre>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>months <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span>, <span class="st">"Jul"</span>, <span class="st">"Aug"</span>, </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Sep"</span>, <span class="st">"Oct"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>us_oz <span class="ot">&lt;-</span> vax_long <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(month <span class="sc">%in%</span> months)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>us_oz <span class="sc">%&gt;%</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> percent, <span class="at">fill =</span> status)) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> palette) <span class="sc">+</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>country) <span class="sc">+</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">easy_remove_axes</span>(<span class="at">which =</span> <span class="st">"y"</span>) <span class="sc">+</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">'white'</span>, <span class="at">colour =</span> <span class="st">'white'</span>)) <span class="sc">+</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">easy_move_legend</span>(<span class="at">to =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Willingness to get vaccinated against COVID-19"</span>, </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Mar 15, 2021 to Oct 15, 2021"</span>) <span class="sc">+</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">easy_remove_axes</span>(<span class="at">which =</span> <span class="st">"x"</span>, <span class="at">what =</span> <span class="st">"title"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>With <code>rowwise()</code>, it calculates across the rows, separately for each participant.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>It is important to get into the habit of adding <code>ungroup()</code> after a <code>rowwise()</code> in the same way as you would after a <code>group_by()</code> because the dataframe becomes grouped by row, which can mess with calcuations further down the pipeline.</p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>survey_means_rowwise <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">item_mean =</span> <span class="fu">mean</span>(<span class="fu">c</span>(item1, item2, item3, item4, item5))) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(survey_means_rowwise)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 6
-Columns: 7
-$ pID       &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1     &lt;int&gt; 2, 6, 4, 6, 6, 4
-$ item2     &lt;int&gt; 2, 3, 3, 3, 6, 4
-$ item3     &lt;int&gt; 7, 4, 3, 6, 6, 6
-$ item4     &lt;int&gt; 2, 5, 2, 7, 4, 3
-$ item5     &lt;int&gt; 5, 6, 1, 6, 7, 3
-$ item_mean &lt;dbl&gt; 3.6, 4.8, 2.6, 5.6, 5.8, 4.0</code></pre>
-</div>
-</div>
-<p>If there are a lot of columns to average across, you can avoid typing all of the names using <code>c_across()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>survey_means_rowwise_across <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">item_mean =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(item1<span class="sc">:</span>item5))) <span class="sc">%&gt;%</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(survey_means_rowwise_across)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 6
-Columns: 7
-$ pID       &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1     &lt;int&gt; 2, 6, 4, 6, 6, 4
-$ item2     &lt;int&gt; 2, 3, 3, 3, 6, 4
-$ item3     &lt;int&gt; 7, 4, 3, 6, 6, 6
-$ item4     &lt;int&gt; 2, 5, 2, 7, 4, 3
-$ item5     &lt;int&gt; 5, 6, 1, 6, 7, 3
-$ item_mean &lt;dbl&gt; 3.6, 4.8, 2.6, 5.6, 5.8, 4.0</code></pre>
-</div>
-</div>
+<p>Success- this style of plot really nicely illustrates the lack change in willingness to get the COVID vaccine across this period in the US.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
