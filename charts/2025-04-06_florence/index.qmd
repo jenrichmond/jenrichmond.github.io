@@ -3,7 +3,7 @@ title: "day 6 florence"
 author:
   - name: Jen Richmond
     url: https://jenrichmond.github.io/
-date: today()
+date: 2025-04-06
 format: html
 editor: source
 image: featured.png
