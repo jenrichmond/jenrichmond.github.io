@@ -1715,6 +1715,28 @@
       "Maintainer": "Winston Chang <winston@posit.co>",
       "Repository": "CRAN"
     },
+    "feathers": {
+      "Package": "feathers",
+      "Version": "0.0.0.9000",
+      "Source": "GitHub",
+      "Title": "Colour Palettes Based On Australian Bird Plumage",
+      "Authors@R": "person(given = \"Shandiya\", family = \"Balasubramaniam\", role = c(\"aut\", \"cre\"), email = \"shandiya.b@gmail.com\", comment = c(Twitter = \"@ShandiyaB\"))",
+      "Description": "This is a collection of colour palettes that can be used for data visualisation, with inspiration from the plumage colours of Australian birds.",
+      "License": "MIT + file LICENSE",
+      "Encoding": "UTF-8",
+      "Roxygen": "list(markdown = TRUE)",
+      "RoxygenNote": "7.2.3",
+      "URL": "https://github.com/shandiya/feathers",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "feathers",
+      "RemoteUsername": "shandiya",
+      "RemoteRef": "main",
+      "RemoteSha": "09ab4c5cd1d88ce63b6076bc96ff28c8138cb139",
+      "NeedsCompilation": "no",
+      "Author": "Shandiya Balasubramaniam [aut, cre] (@ShandiyaB)",
+      "Maintainer": "Shandiya Balasubramaniam <shandiya.b@gmail.com>"
+    },
     "fontawesome": {
       "Package": "fontawesome",
       "Version": "0.5.3",
