@@ -207,14 +207,14 @@
     "href": "charts/2025-03-31_challenge/index.html#day-6-florence",
     "title": "day 0 challenge",
     "section": "Day 6 florence",
-    "text": "Day 6 florence\n[Willingness to get the COVID vaccine](This plot](https://ourworldindata.org/grapher/covid-vaccine-willingness-and-people-vaccinated-by-month)\n\nmy plotr code\n\n\n\n\n\n\nus_oz %&gt;%\n  ggplot(aes(x = month, y = percent, fill = status)) +\n  geom_col() +\n  scale_fill_manual(values = palette) +\n  coord_polar() +\n  facet_wrap(~country) +\n  easy_remove_axes(which = \"y\") +\n  theme(panel.background = element_rect(fill = 'white', colour = 'white')) +\n  easy_move_legend(to = \"bottom\") +\n  labs(title = \"Willingness to get vaccinated against COVID-19, Mar 15, 2021 to Oct 15, 2021\") +\n  easy_remove_axes(which = \"x\", what = \"title\")"
+    "text": "Day 6 florence\nWillingness to get the COVID vaccine\n\nmy plotr code\n\n\n\n\n\n\nus_oz %&gt;%\n  ggplot(aes(x = month, y = percent, fill = status)) +\n  geom_col() +\n  scale_fill_manual(values = palette) +\n  coord_polar() +\n  facet_wrap(~country) +\n  easy_remove_axes(which = \"y\") +\n  theme(panel.background = element_rect(fill = 'white', colour = 'white')) +\n  easy_move_legend(to = \"bottom\") +\n  labs(title = \"Willingness to get vaccinated against COVID-19, Mar 15, 2021 to Oct 15, 2021\") +\n  easy_remove_axes(which = \"x\", what = \"title\")"
   },
   {
     "objectID": "charts/2025-03-31_challenge/index.html#day-7-outliers",
     "href": "charts/2025-03-31_challenge/index.html#day-7-outliers",
     "title": "day 0 challenge",
     "section": "Day 7 outliers",
-    "text": "Day 7 outliers\n\nmy plotr code\n\n\n\n\n\n\n# insert ggplot code"
+    "text": "Day 7 outliers\nSex ratio outliers\n\nmy plotr code\n\n\n\n\n\n\nratio4 %&gt;%\n  ggplot(aes(x = year, y = ratio, colour = country)) +\n  geom_point() +\n  geom_line() +\n  theme_classic() +\nscale_colour_manual(values = get_pal(\"eastern_rosella\")) +\n  scale_y_continuous(expand = c(0,0), limits = c(98, 120)) +\n  scale_x_continuous(breaks = seq(1950, 2020, 10)) +\n  geom_hline(yintercept = 100, linetype = 2) +\n  geom_text(data = data.frame(x = 2005, y = 100.8, label = \"Equal numbers of newborn boys and girls\"), mapping = aes(x = x, y = y, label = label), size = 3, inherit.aes = FALSE) +\n  labs(y = \"Sex ratio\", x = \"Year\", \n       title = \"Sex ratio at birth, 1950 to 2023\", \n       subtitle = \"The sex ratio at birth is measured as the number of newborn \\nboys for every 100 newborn girls. Higher values indicate a much \\nhigher number of newborn boys than girls.\", \n       caption = \"Data source: UN, World Population Prospects (2024). \\nNote: It's considered that 105 is the biologically expected sex ratio at birth.\")"
   },
   {
     "objectID": "charts/2025-03-31_challenge/index.html#day-8-histogram",

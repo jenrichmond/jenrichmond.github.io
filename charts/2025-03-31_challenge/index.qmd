@@ -270,7 +270,7 @@ size = 3.7, colour = "#D1C7B5", inherit.aes = FALSE)
 
 ## Day 6 florence
 
-[Willingness to get the COVID vaccine](This plot](https://ourworldindata.org/grapher/covid-vaccine-willingness-and-people-vaccinated-by-month)
+[Willingness to get the COVID vaccine](https://ourworldindata.org/grapher/covid-vaccine-willingness-and-people-vaccinated-by-month)
 
 ::: panel-tabset
 
@@ -301,18 +301,32 @@ us_oz %>%
 
 ## Day 7 outliers
 
+[Sex ratio outliers](https://ourworldindata.org/gender-ratio)
 
 ::: panel-tabset
 
 ### my plot
 
-![](watch.png)
+![](ratio.png)
 
 ### r code
 
 ```{r, echo=TRUE, eval=FALSE}
 
-# insert ggplot code
+ratio4 %>%
+  ggplot(aes(x = year, y = ratio, colour = country)) +
+  geom_point() +
+  geom_line() +
+  theme_classic() +
+scale_colour_manual(values = get_pal("eastern_rosella")) +
+  scale_y_continuous(expand = c(0,0), limits = c(98, 120)) +
+  scale_x_continuous(breaks = seq(1950, 2020, 10)) +
+  geom_hline(yintercept = 100, linetype = 2) +
+  geom_text(data = data.frame(x = 2005, y = 100.8, label = "Equal numbers of newborn boys and girls"), mapping = aes(x = x, y = y, label = label), size = 3, inherit.aes = FALSE) +
+  labs(y = "Sex ratio", x = "Year", 
+       title = "Sex ratio at birth, 1950 to 2023", 
+       subtitle = "The sex ratio at birth is measured as the number of newborn \nboys for every 100 newborn girls. Higher values indicate a much \nhigher number of newborn boys than girls.", 
+       caption = "Data source: UN, World Population Prospects (2024). \nNote: It's considered that 105 is the biologically expected sex ratio at birth.")
 
 ```
 
