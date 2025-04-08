@@ -333,7 +333,44 @@ scale_colour_manual(values = get_pal("eastern_rosella")) +
 :::
 
 
-## Day 8 histogram
+## Day 9 diverging
+
+
+::: panel-tabset
+
+### my plot
+
+![](values.png)
+
+### r code
+
+```{r, echo=TRUE, eval=FALSE}
+
+work_family %>%
+  ggplot(aes(x = year, y = important, colour = life_area)) +
+  geom_point(size = 2) +
+  geom_line() +
+  facet_wrap(~ country) +
+  labs(title = "How important family and work are to people in life", 
+       subtitle = "Share of survey respondents rating `very important` or `rather important`", 
+       x = "Year", y = "Percent of people", 
+       caption = "Data source: Integrated Values Surveys (2022)") +
+  theme_minimal() +
+  scale_y_continuous(limits = c(70,100)) +
+  scale_x_continuous(limits = c(1990, 2022)) +
+  scale_color_brewer(palette = "Set1") +
+  easy_add_legend_title("Life Area")
+```
+
+:::
+
+
+:::
+
+
+
+
+## Day 11 stripes
 
 
 ::: panel-tabset
