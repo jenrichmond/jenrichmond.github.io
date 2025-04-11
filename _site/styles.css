@@ -1,1 +1,10 @@
 /* css styles */
+
+
+.margin-note {
+  float: right;
+  width: 25%;
+  font-size: 0.9em;
+  color: #666;
+  margin-left: 1em;
+}

@@ -335,6 +335,8 @@ scale_colour_manual(values = get_pal("eastern_rosella")) +
 
 ## Day 9 diverging
 
+[Family and work](https://ourworldindata.org/happiness-and-life-satisfaction)
+
 
 ::: panel-tabset
 
@@ -365,29 +367,47 @@ work_family %>%
 :::
 
 
-:::
+
 
 
 
 
 ## Day 11 stripes
 
+[warming stripes](https://showyourstripes.info/b/australasia/newzealand/all)
 
 ::: panel-tabset
 
 ### my plot
 
-![](watch.png)
+![](temp.png)
 
 ### r code
 
 ```{r, echo=TRUE, eval=FALSE}
 
-# insert ggplot code
+maxmin <- range(qmean$annual, na.rm = T)
+md <- mean(qmean$annual, na.rm = T)
+
+
+qmean %>%
+    ggplot(aes(x = date, y = 1, fill = annual)) +
+  geom_tile() +
+  scale_fill_gradientn(colors = rev(col_strip), 
+                       values = scales::rescale(c(maxmin[1], md, maxmin[2])), 
+                       na.value = "gray80") +
+  scale_x_continuous(limits = c(1972, 2022), expand = c(0,0), breaks = seq(1972,2022, 10)) +
+  labs(
+    title = "Queenstown 1972-2022",
+    caption = "Data: Stats NZ", 
+    x = "Year") +
+  coord_cartesian(expand = FALSE) +
+  theme_strip() +
+  easy_remove_axes(which = "x")
 
 ```
 
 :::
 
 
-:::
+
