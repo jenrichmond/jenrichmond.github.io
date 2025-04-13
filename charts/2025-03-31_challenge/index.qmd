@@ -410,4 +410,84 @@ qmean %>%
 :::
 
 
+## Day 13 clusters 
+
+
+
+::: panel-tabset
+
+### my plot
+
+![](clusters.png)
+
+### r code
+
+```{r, echo=TRUE, eval=FALSE}
+
+library(factoextra)
+
+fviz_cluster(km_bodymass_bill, data = bodymass_bill, 
+             show.clust.cent = FALSE, label=NA) +
+  theme_bw() +
+  labs(title = "Cluster plot k-means penguin classification")
+
+```
+
+:::
+
+## Day 16 negative 
+
+[link caption](URL)
+
+::: panel-tabset
+
+### my plot
+
+![](watch.png)
+
+### r code
+
+```{r, echo=TRUE, eval=FALSE}
+
+#insert code
+
+```
+
+
+## Day 17 birds 
+
+[link caption](URL)
+
+::: panel-tabset
+
+### my plot
+
+![](watch.png)
+
+### r code
+
+```{r, echo=TRUE, eval=FALSE}
+
+#insert code
+
+```
+
+
+## Day 19 smooth
+
+[link caption](URL)
+
+::: panel-tabset
+
+### my plot
+
+![](watch.png)
+
+### r code
+
+```{r, echo=TRUE, eval=FALSE}
+
+#insert code
+
+```
 
