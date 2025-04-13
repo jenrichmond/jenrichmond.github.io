@@ -2,94 +2,98 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jenrichmond.github.io/posts.html</loc>
-    <lastmod>2025-04-11T09:20:53.146Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.694Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2023-05-24-rowwise-mean/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.171Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.718Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2022-01-17-my-favourite-things-about-r/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.148Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.695Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2020-11-18-digging-into-the-janitor-package/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.147Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.694Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/about.html</loc>
-    <lastmod>2025-04-11T09:20:53.031Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.576Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/charts/2025-04-09_diverging/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.053Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.599Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/charts/2025-04-06_florence/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.051Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.597Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/charts/2025-04-11_stripes/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.142Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.688Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/charts/2025-04-07_outliers/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.052Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-04_bigsmall/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.049Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-05_ranking/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.050Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.598Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/charts/2025-04-02_slope/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.046Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.591Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts/2025-04-05_ranking/index.html</loc>
+    <lastmod>2025-04-13T22:31:49.596Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts/2025-04-04_bigsmall/index.html</loc>
+    <lastmod>2025-04-13T22:31:49.594Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts/2025-04-13_clusters/index.html</loc>
+    <lastmod>2025-04-13T22:31:49.689Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/charts/2025-04-01_fractions/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.043Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.589Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/charts/2025-04-03_circular/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.047Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.593Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/charts/2025-03-31_challenge/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.034Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.580Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.146Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.693Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/charts.html</loc>
-    <lastmod>2025-04-11T09:20:53.031Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.576Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2022-09-28-git-hints/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.160Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.707Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2024-07-04-learning_python/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.172Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.719Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2022-12-15-colours-that-r-knows/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.162Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.709Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2021-06-22-pat-for-github/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.147Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.694Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2023-04-25-error-bars-on-plots/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.163Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.710Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2022-06-27-using-lists-in-r/index.html</loc>
-    <lastmod>2025-04-11T09:20:53.154Z</lastmod>
+    <lastmod>2025-04-13T22:31:49.702Z</lastmod>
   </url>
 </urlset>

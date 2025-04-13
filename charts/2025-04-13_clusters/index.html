@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jen Richmond">
-<meta name="dcterms.date" content="2024-07-04">
+<meta name="dcterms.date" content="2025-04-13">
 
-<title>learning python – Jen Richmond</title>
+<title>day 13_clusters – Jen Richmond</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,13 +110,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </script>
-<script src="../../site_libs/core-js-2.5.3/shim.min.js"></script>
-<script src="../../site_libs/react-18.2.0/react.min.js"></script>
-<script src="../../site_libs/react-18.2.0/react-dom.min.js"></script>
-<script src="../../site_libs/reactwidget-2.0.0/react-tools.js"></script>
-<script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<link href="../../site_libs/reactable-0.4.4/reactable.css" rel="stylesheet">
-<script src="../../site_libs/reactable-binding-0.4.4/reactable.js"></script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -166,19 +159,25 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#body-mass-x-bill-length" id="toc-body-mass-x-bill-length" class="nav-link active" data-scroll-target="#body-mass-x-bill-length">Body mass x bill length</a>
+  <ul class="collapse">
+  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot">plot</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">learning python</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">python</div>
-  </div>
-  </div>
+<h1 class="title">day 13_clusters</h1>
+</div>
 
 
 
@@ -187,14 +186,14 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Jen Richmond </p>
+             <p><a href="https://jenrichmond.github.io/">Jen Richmond</a> </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 4, 2024</p>
+      <p class="date">April 13, 2025</p>
     </div>
   </div>
   
@@ -206,46 +205,134 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </header>
 
 
-<p>When you are exploring a far off land and only know a tiny bit of the language they speak there, you always carry a little dictionary with commonly used phrases translated from the language you speak into the other language. It is important to know how to ask someone where the toilets are while you are travelling!</p>
-<p>I have just started learning Python with Posit Academy in the lead up to #positconf2024 and I am trying to approach in the same way I would if I was learning French. A dictionary that helps me link functions I know in R to new functions I am learning in Python could be handy.</p>
-<p>Linking new concepts to old concepts is also a useful learning strategy. Research in Psychology tells us that memory is relational; the brain represents memories as networks of representations. If you can link something that you are trying to learn to something you already know, you are much more likely to remember that new thing into the long term.</p>
-<div class="cell">
-<div class="cell-output-display">
+<p>Today I am again departing from Our World in Data to play around with something I know nothing about: k-means clustering. This animation by Allison Horst from the <a href="https://www.tidymodels.org/learn/statistics/k-means/"><code>tidymodels</code> documentation</a> is super cute and explains what k-means clustering does.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://chinablueart.com/wp-content/uploads/MemoryNetwork-ICompilation.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Art credit: China Blue Art, Memory Network I</figcaption>
+<p><img src="https://www.tidymodels.org/learn/statistics/k-means/kmeans.gif" class="img-fluid figure-img"></p>
+<figcaption>Art by Allison Horst</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>https://www.tidymodels.org/learn/statistics/k-means/</p>
+<p>The penguins data from the <code>palmerpenguins</code> package seemed like a good place to start.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read the dataset</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># pull just species for later</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>species <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="body-mass-x-bill-length" class="level1">
+<h1>Body mass x bill length</h1>
+<p>I am interested in whether we can cluster the penguins using information about their body mass and bill length. Here I am selecting just those variables, scaling the data and then using the <code>kmeans</code> function to compute 3 clusters. The output shows which cluster the model has assigned each data point to and tells us that this cluster arrangement accounts for 73% of the variance.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select a subset of the variables</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>bodymass_bill <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(body_mass_g, bill_length_mm) </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># scale the data</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>bodymass_bill_scaled <span class="ot">&lt;-</span> <span class="fu">scale</span>(bodymass_bill) </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># compute 3 clusters</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>km_bodymass_bill <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(bodymass_bill_scaled, <span class="at">centers =</span> <span class="dv">3</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>km_bodymass_bill</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>K-means clustering with 3 clusters of sizes 106, 148, 79
+
+Cluster means:
+  body_mass_g bill_length_mm
+1   1.2331389      0.7262020
+2  -0.6697839     -0.9559782
+3  -0.3998065      0.8165489
+
+Clustering vector:
+  [1] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ [38] 2 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2 2 2
+ [75] 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 1 2 2 2 2 2
+[112] 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 1
+[149] 3 1 1 1 1 1 3 1 2 1 1 1 3 1 2 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1
+[186] 2 1 3 1 1 1 3 1 1 1 1 1 3 1 1 1 3 1 3 1 3 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+[223] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1
+[260] 1 1 1 1 1 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 3 2 3 3 3 3 3 3 3 2
+[297] 3 2 3 3 3 3 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 3 3 3 3 3 3 3 3 3 2 3 3 3
+
+Within cluster sum of squares by cluster:
+[1] 62.12498 74.59241 43.24261
+ (between_SS / total_SS =  72.9 %)
+
+Available components:
+
+[1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"
+[6] "betweenss"    "size"         "iter"         "ifault"      </code></pre>
+</div>
+</div>
+<section id="plot" class="level3">
+<h3 class="anchored" data-anchor-id="plot">plot</h3>
+<p>To visualise the clusters I am using the <code>fviz_cluster()</code> function from the <code>factoextra</code> package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_cluster</span>(km_bodymass_bill, <span class="at">data =</span> bodymass_bill, </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">show.clust.cent =</span> <span class="cn">FALSE</span>, <span class="at">label=</span><span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Cluster plot k-means penguin classification"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Of course, there are probably a million R to Python dictionaries on the internet; why am I creating a new one for me?</p>
-<p>That’s because we also know that generative learning and retrieval practice are more effective strategies for remembering things into the long term, than are learning strategies that involve passive review of materials that were created by someone else.</p>
-<p>To create a dictionary of functions as I learn new things in Python, I need to retrieve the equivalent function in R from memory and actively evaluate the similarities and differences between the Python and R versions. That process of retrieving and using the concepts I already know, strengthens both my knowledge of R, and links my new Python understanding to it.</p>
-<p>So I am starting a <a href="https://docs.google.com/spreadsheets/d/1Vf1AUqdAS_rsyaZw18OxyaIPOoiv9WvOzvILdSRtU6U/edit?usp=sharing">googlesheet</a> to keep track of new things I am learning how to do in Python and their R equivalents. Maybe I can read that googlesheet in here using the <code>googlesheets4</code> package and make it display in a searchable table using <code>gt</code>.</p>
+<p>Well that was almost too easy. Those clusters look nice but I know that the model isn’t 100% accurate. Which points have been misclassified?</p>
+<p>Here I am using <code>augment()</code> from <code>tidymodels</code> to add the cluster information to the original data, and then joining the species vector onto that dataframe, so that I end up with a joined dataframe that includes information about species, body mass, bill length and the cluster values. Then I mutate a new variable that codes whether each data point was correctly classified or not.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cheat_sheet <span class="sc">%&gt;%</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="st">"My R vs Python cheatsheet"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_interactive</span>(<span class="at">use_search =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use augment to add clusters to original data</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>clusters <span class="ot">&lt;-</span> <span class="fu">augment</span>(km_bodymass_bill, bodymass_bill)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add species column to clusters</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>joined <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(species, clusters) <span class="sc">%&gt;%</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">cluster =</span> .cluster) <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">correct =</span> <span class="fu">case_when</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span> <span class="sc">&amp;</span> cluster <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"TRUE"</span>, </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                             species <span class="sc">==</span> <span class="st">"Gentoo"</span> <span class="sc">&amp;</span> cluster <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"TRUE"</span>, </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                             species <span class="sc">==</span> <span class="st">"Chinstrap"</span> <span class="sc">&amp;</span> cluster <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"TRUE"</span>, </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                             <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"FALSE"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then I am using <code>tabyl</code> from janitor to count the misclassifications by species and plotting by species and classification accuracy.</p>
+<p>This shows that most of the Adelie and Chinstrap penguins are grouped into the same cluster but some of the smaller Gentoo penguins seem to have been misclassified.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>joined <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(species,correct) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="olmmecabvh" class=".gt_table" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#olmmecabvh table {
+<div id="jrvketnvyz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jrvketnvyz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#olmmecabvh thead, #olmmecabvh tbody, #olmmecabvh tfoot, #olmmecabvh tr, #olmmecabvh td, #olmmecabvh th {
+#jrvketnvyz thead, #jrvketnvyz tbody, #jrvketnvyz tfoot, #jrvketnvyz tr, #jrvketnvyz td, #jrvketnvyz th {
   border-style: none;
 }
 
-#olmmecabvh p {
+#jrvketnvyz p {
   margin: 0;
   padding: 0;
 }
 
-#olmmecabvh .gt_table {
+#jrvketnvyz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -271,12 +358,12 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-left-color: #D3D3D3;
 }
 
-#olmmecabvh .gt_caption {
+#jrvketnvyz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#olmmecabvh .gt_title {
+#jrvketnvyz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -288,7 +375,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-bottom-width: 0;
 }
 
-#olmmecabvh .gt_subtitle {
+#jrvketnvyz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -300,7 +387,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-top-width: 0;
 }
 
-#olmmecabvh .gt_heading {
+#jrvketnvyz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -312,13 +399,13 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#olmmecabvh .gt_bottom_border {
+#jrvketnvyz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#olmmecabvh .gt_col_headings {
+#jrvketnvyz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -333,7 +420,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#olmmecabvh .gt_col_heading {
+#jrvketnvyz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -353,7 +440,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   overflow-x: hidden;
 }
 
-#olmmecabvh .gt_column_spanner_outer {
+#jrvketnvyz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -365,15 +452,15 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   padding-right: 4px;
 }
 
-#olmmecabvh .gt_column_spanner_outer:first-child {
+#jrvketnvyz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#olmmecabvh .gt_column_spanner_outer:last-child {
+#jrvketnvyz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#olmmecabvh .gt_column_spanner {
+#jrvketnvyz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -385,11 +472,11 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   width: 100%;
 }
 
-#olmmecabvh .gt_spanner_row {
+#jrvketnvyz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#olmmecabvh .gt_group_heading {
+#jrvketnvyz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -415,7 +502,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   text-align: left;
 }
 
-#olmmecabvh .gt_empty_group_heading {
+#jrvketnvyz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -430,15 +517,15 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   vertical-align: middle;
 }
 
-#olmmecabvh .gt_from_md > :first-child {
+#jrvketnvyz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#olmmecabvh .gt_from_md > :last-child {
+#jrvketnvyz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#olmmecabvh .gt_row {
+#jrvketnvyz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -457,7 +544,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   overflow-x: hidden;
 }
 
-#olmmecabvh .gt_stub {
+#jrvketnvyz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -470,7 +557,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#olmmecabvh .gt_stub_row_group {
+#jrvketnvyz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -484,15 +571,15 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   vertical-align: top;
 }
 
-#olmmecabvh .gt_row_group_first td {
+#jrvketnvyz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#olmmecabvh .gt_row_group_first th {
+#jrvketnvyz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#olmmecabvh .gt_summary_row {
+#jrvketnvyz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -502,16 +589,16 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#olmmecabvh .gt_first_summary_row {
+#jrvketnvyz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#olmmecabvh .gt_first_summary_row.thick {
+#jrvketnvyz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#olmmecabvh .gt_last_summary_row {
+#jrvketnvyz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -521,7 +608,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#olmmecabvh .gt_grand_summary_row {
+#jrvketnvyz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -531,7 +618,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#olmmecabvh .gt_first_grand_summary_row {
+#jrvketnvyz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -541,7 +628,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-top-color: #D3D3D3;
 }
 
-#olmmecabvh .gt_last_grand_summary_row_top {
+#jrvketnvyz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -551,11 +638,11 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#olmmecabvh .gt_striped {
+#jrvketnvyz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#olmmecabvh .gt_table_body {
+#jrvketnvyz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -564,7 +651,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-bottom-color: #D3D3D3;
 }
 
-#olmmecabvh .gt_footnotes {
+#jrvketnvyz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -578,7 +665,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#olmmecabvh .gt_footnote {
+#jrvketnvyz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -587,7 +674,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#olmmecabvh .gt_sourcenotes {
+#jrvketnvyz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -601,7 +688,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   border-right-color: #D3D3D3;
 }
 
-#olmmecabvh .gt_sourcenote {
+#jrvketnvyz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -609,86 +696,122 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   padding-right: 5px;
 }
 
-#olmmecabvh .gt_left {
+#jrvketnvyz .gt_left {
   text-align: left;
 }
 
-#olmmecabvh .gt_center {
+#jrvketnvyz .gt_center {
   text-align: center;
 }
 
-#olmmecabvh .gt_right {
+#jrvketnvyz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#olmmecabvh .gt_font_normal {
+#jrvketnvyz .gt_font_normal {
   font-weight: normal;
 }
 
-#olmmecabvh .gt_font_bold {
+#jrvketnvyz .gt_font_bold {
   font-weight: bold;
 }
 
-#olmmecabvh .gt_font_italic {
+#jrvketnvyz .gt_font_italic {
   font-style: italic;
 }
 
-#olmmecabvh .gt_super {
+#jrvketnvyz .gt_super {
   font-size: 65%;
 }
 
-#olmmecabvh .gt_footnote_marks {
+#jrvketnvyz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#olmmecabvh .gt_asterisk {
+#jrvketnvyz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#olmmecabvh .gt_indent_1 {
+#jrvketnvyz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#olmmecabvh .gt_indent_2 {
+#jrvketnvyz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#olmmecabvh .gt_indent_3 {
+#jrvketnvyz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#olmmecabvh .gt_indent_4 {
+#jrvketnvyz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#olmmecabvh .gt_indent_5 {
+#jrvketnvyz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#olmmecabvh .katex-display {
+#jrvketnvyz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#olmmecabvh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#jrvketnvyz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
-<div style="font-family:system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;border-top-style:solid;border-top-width:2px;border-top-color:#D3D3D3;padding-bottom:8px;">
-<div class="gt_heading gt_title gt_font_normal" style="text-size:bigger;">My R vs Python cheatsheet</div>
-<div class="gt_heading gt_subtitle gt_bottom_border"></div>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="species" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">species</th>
+<th id="FALSE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">FALSE</th>
+<th id="TRUE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">TRUE</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="species">Adelie</td>
+<td class="gt_row gt_right" headers="FALSE">7</td>
+<td class="gt_row gt_right" headers="TRUE">139</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="species">Chinstrap</td>
+<td class="gt_row gt_right" headers="FALSE">7</td>
+<td class="gt_row gt_right" headers="TRUE">61</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="species">Gentoo</td>
+<td class="gt_row gt_right" headers="FALSE">17</td>
+<td class="gt_row gt_right" headers="TRUE">102</td>
+</tr>
+</tbody>
+</table>
+
 </div>
-<div id="olmmecabvh" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="olmmecabvh">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"how to":["getting started","assign variables","install packages","load packages","load functions from packages","use functions from a package","use functions that are built in","get help","read in dataframe","make a dataframe","remove everything from the environment","remove specific objects","variable names lower","convert float to integer","# print data types",null,null,null,null,"random things","random number between 0-1","random number between range",null,"sense checking","list columns","get dimensions","get dataframe info","get descriptives","get first few rows","get frequencies","get distinct/unique values",null,"filter","filter for 1 thing","filter for 2 things isin","ALT filter for 2 things OR operator","filter strings with starts_with","filter out na","replace NA with 0",null,null,null,"mutate","mutate",null,null,null,"summarise","get mean of a column",null,null,null,null,null,null,"arrange","arrange by a single variable","arrange by more than one variable",null,null,"select","select a single column","select multiple columns","select a range of columns","remove columns","recode variables","rename variables",null,"pandas replace using lists",null,null,null,null,null,"ggplot_plotnine differences","import each function","plotnine code has to be wrapped in parentheses, spell out mapping = aes, aesthetics in ' '",null,null,null,"dealing with NAs","how many values not NA","how many values are NA","Proportion of NA",null,null,null,null,null],"R":[null,"my_name <- Jenny","install.packages(\"tidyverse\")","library(tidyverse)","**not a thing**","clean_names(data) OR janitor::clean_names(data)","round(x, digits = 3)","?name_of_package_function","df <- read_csv(\"data/datafile.csv\")","new_df <- tibble(col1 = 1:3, col2 = 4:6)","use the sweeper","??","df %>% clean_names()",null,null,null,null,null,null,null,"runif(1)","runif(1, min = 1, max = 100)",null,null,"names(df)","str(df)","glimpse(df)","summary(df)","head(df)","df %>% tabyl(column) %>% arrange(n)","unique(df$column) OR df %>% distinct(column)",null,null,"subset <- df %>% filter(variable == \"case1\")","subset2 <- df %>% filter(variable %in%  c(\"case1\", \"case2\"))","subset3 <- df %>% filter(variable ==  \"case1\" | \"case2\")","subset4 <- df %>% filter(str_detect(variable, \"To\"))","df_no_NA <- df %>% filter(!isna(variable))","df_NA_zero <- df %>% mutate(across(everything(), ~replace_na(.x,0)))",null,null,null,null,"df <- df %>% mutate(cumul_cases = cumsum(cases))","df <- df %>% mutate(mean_cases = mean(cases))","df <- df %>% mutate(ratio = cases / deaths)",null,null,"df %>% summarise(mean = mean(column1))",null,null,null,null,null,null,null,"one_sort <- df %>% arrange(variable1)","two_sort <- df %>% arrange(variable1, variable2)",null,null,null,"df %>% select(column_name)","df %>% select(column1, column3)","df %>% select(column4:column7)","df %>% select(-col1, -col4, -col7)",null,"df %>% rename(newname1 = oldname1, newname2 = oldname2)",null,null,null,null,null,null,null,null,"library(ggplot)","df %>% ggplot(aes(x = col1, y = col2, color = col3)) + geom_line()",null,null,null,null,null,null,null,null,null,null,null,null],"python":[null,"my_name = Jenny","pip install numpy","import numpy OR import numpy as np","from plotnine import ggplot, aes, geom_line","numpy.sqrt(data) OR np.sqrt(data)","round(x, ndigits = 3)","help(name_of_package_function)","df = pd.read_csv(\"data/datafile.csv\")","new_df = pd.DataFrame({'col1': [1, 2, 3], 'col2': [4, 5, 6],})","globals().clear()","del df1, df2","df.columns.str.lower()","df['Column1'] = df['Column1'].astype(int)","print(df.dtypes)",null,null,null,null,null,"random.random()","random.ranint(1,100)",null,null,"df.columns","df.shape","df.info","df.describe()","df.head()","df['column'].value_counts() OR df.column.value_counts()","df.column.unique()",null,null,"subset1 = df.loc[df['variable'] == 'case1']","subset2 = df.loc[df['variable'].isin(['case1', 'case2'])]","subset3 = df.loc[(df['variable'] == 'case1') | (df['variable'] == 'case2')]","subset4 = df.loc[df['variable'].str.startswith('To')]","df_no_NA = df.dropna()","df_NA_zero = df.fillna(0)",null,null,null,null,"df['cumul_cases'] = df['cases'].cumsum()","df['mean_cases'] = df['cases'].mean()","df['ratio'] = df['cases'] / df['deaths']",null,null,"df['column1'].mean()","df2.groupby(['species','island']).agg(['min','mean','max',]).dropna()","penguins.groupby('species') .agg({ 'body_mass_g': ['mean'], 'flipper_length_mm': ['mean'], 'bill_length_mm': ['mean'] })",null,null,null,null,null,"one_sort = df.sort_values('variable1')","two_sort = df.sort_values(['variable1','variable2'])",null,null,null,"df['column_name']","df[['column1', 'column3']]","df.loc[: , 'column4' : 'column7']","df.drop(columns = ['col1', 'col4', 'col7'])","df.loc[df['state'] == 'NY', 'state'] = 'New York'","df.rename(columns={'oldname1': 'newname1', 'oldname2': 'newname2'})",null,"grades = [1,2,3,4,5,6]","status = [\"non-mgmt\", \"non-mgmt\", \"non-mgmt\", \"non-mgmt\", \"mgmt\", \"mgmt\"]","bank['Manager'] = bank['JobGrade'].replace(grades, status)","bank[170:175]",null,null,null,"from plotnine import ggplot, aes, geom_line","(  df %>% ggplot(mapping = aes(x = 'col1', y = 'col2', color = 'col3')) + geom_line() )",null,null,"df_dropped = df.dropna(subset=['col1', 'col2])","pd.isna(tv_hours).mean()","df.notnull().sum()","df.isnull().sum()","df.isnull().sum()/df.notnull().sum()",null,"df2.groupby(['species','island']).agg(['min','mean','max',]).dropna()",null,"omplete_penguins = penguins.dropna()","complete_bodymass_penguins = penguins.dropna(subset=['body_mass_g'])"],"differences":[null,null,null,"use import numpy as np if you want to use an alias to type less",null,"once you load a package in R with library(packagename), R just knows to use functions from that package. In python, you need to tell it what package each function comes from-  requires namespace","no need to use namespace in python for functions that are built in (https://docs.python.org/3/library/functions.html)",null,null,"data dictionary w key as column name, values as column contents",null,null,null,null,null,null,null,null,null,null,"requires that you have loaded the random package with import random",null,null,null,"note: columns, shape and info don't need () because they are extracting an attribute from the object",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"these are methods .fun()",null,null,null,null,"subset column as Series, and call mean; skipna = True is default",null,null,null,null,null,null,null,null,null,null,null,null,null,null,": means all, so this gets all rows and cols 1-7",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"is.na codes 1 and 0, so mean() gets proportion",null,null,null,null,"df2 %>% group_by(species, island) %>% summarise(across?? all columns)",null,"drops every row with a missing value",null]},"columns":[{"id":"how to","name":"how to","type":"character","na":"NA","minWidth":125,"style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","html":true,"align":"left"},{"id":"R","name":"R","type":"character","na":"NA","minWidth":125,"style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","html":true,"align":"left"},{"id":"python","name":"python","type":"character","na":"NA","minWidth":125,"style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","html":true,"align":"left"},{"id":"differences","name":"differences","type":"character","na":"NA","minWidth":125,"style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","html":true,"align":"left"}],"searchable":true,"defaultPageSize":10,"showPageSizeOptions":false,"pageSizeOptions":[10,25,50,100],"paginationType":"numbers","showPagination":true,"showPageInfo":true,"minRows":1,"height":"auto","theme":{"color":"#333333","backgroundColor":"#FFFFFF","stripedColor":"rgba(128,128,128,0.05)","style":{"font-family":"system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif","fontSize":"16px"},"tableStyle":{"borderTopStyle":"solid","borderTopWidth":"2px","borderTopColor":"#D3D3D3"},"headerStyle":{"fontWeight":"normal","backgroundColor":"transparent","borderBottomStyle":"solid","borderBottomWidth":"2px","borderBottomColor":"#D3D3D3"},"groupHeaderStyle":{"fontWeight":"normal","backgroundColor":"transparent","borderBottomStyle":"solid","borderBottomWidth":"2px","borderBottomColor":"#D3D3D3"},"cellStyle":{"fontWeight":"normal"}},"elementId":"olmmecabvh","dataKey":"26da734c75545d02d7aff606e5232dd2"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.0.style","tag.attribs.columns.1.style","tag.attribs.columns.2.style","tag.attribs.columns.3.style"],"jsHooks":[]}</script>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>joined <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> bill_length_mm, <span class="at">colour =</span> species, <span class="at">shape =</span> correct)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
 </div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
