@@ -437,19 +437,31 @@ fviz_cluster(km_bodymass_bill, data = bodymass_bill,
 
 ## Day 16 negative 
 
-[link caption](URL)
+[Is your country going in the right direction?](https://www.ipsos.com/en/global-opinion-polls/right-direction-or-wrong-track)
 
 ::: panel-tabset
 
 ### my plot
 
-![](watch.png)
+![](direction.png)
 
 ### r code
 
 ```{r, echo=TRUE, eval=FALSE}
 
-#insert code
+right_wrong_long_new %>%
+  filter(country != "France") %>%
+  ggplot(aes(x = country, y = percent, fill = track)) +
+  scale_fill_manual(values = palette, name = "Direction", labels = c("Wrong", "Right")) +
+  geom_col() +
+  coord_flip() +
+  theme_minimal() +
+  easy_remove_gridlines() +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(y = "Country", x = "Percent of people", 
+       title = "Percent of the public who rate their country as heading in \nright direction vs the wrong direction", 
+       caption = "Source: Ipsos: What Worries The World? March 2025 • \nBase: Representative sample of 25,746 adults aged 16-74 in 29 participating countries, \nFebruary 21 2025 - March 7 2025.") +
+  guides(fill = guide_legend(reverse = TRUE))
 
 ```
 
