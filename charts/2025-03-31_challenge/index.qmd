@@ -468,19 +468,32 @@ right_wrong_long_new %>%
 
 ## Day 17 birds 
 
-[link caption](URL)
+[Puteketeke2023](https://www.forestandbird.org.nz/resources/bird-century-winner-announced-puteketeke-pandemonium-prevails)
 
 ::: panel-tabset
 
 ### my plot
 
-![](watch.png)
+![](puteketeke.png)
 
 ### r code
 
 ```{r, echo=TRUE, eval=FALSE}
 
-#insert code
+d23 %>%
+  ggplot(aes(x = rank_number, y = votes, fill = maori_name)) +
+   geom_col() +
+  scale_x_continuous(breaks = seq(1,10, 1)) +
+     scale_y_continuous(limits = c(0,350000)) +
+  labs(y = "Number #1 Votes", x = "Rank", title = "Bird of the Century 2023", subtitle= "Winner = Pūteketeke / Australasian crested grebe",
+       caption = "Note: some argue that the 2023 results were impacted by foreign election interference") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Paired", name = "Maori name")
+
+
+p23 + geom_image(
+    data = tibble(rank_number = 1, votes = 320000, maori_name = "Pūteketeke"),
+    aes(image = here::here("charts", "2025-04-17_birds", "img", "grebe.jpg")), size = 0.15)
 
 ```
 

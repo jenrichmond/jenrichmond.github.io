@@ -1,12 +1,222 @@
 ---
-title: "day X_theme"
+title: "day 17_birds"
 author:
   - name: Jen Richmond
     url: https://jenrichmond.github.io/
-date: today()
+date: 2025-04-17
 format: html
 editor: source
-draft: TRUE
 image: featured.png
 ---
 
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(datapasta)
+library(janitor)
+library(ggbump)
+library(ggeasy)
+library(ggimage)
+library(plotly)
+
+```
+
+It is Day 17 and the theme is birds. I am interested in the results of the [Forest and Bird New Zealand](https://www.forestandbird.org.nz/?gad_source=1&gclid=Cj0KCQjwzYLABhD4ARIsALySuCQk3mQLVt-6iWSvTgWhWjh7mhqA8yOavKD3mOuB5AP4TbyKA6IAp0IaAtazEALw_wcB) Bird of the Year competition over the past few years.
+
+On [Wikipedia](https://en.wikipedia.org/wiki/Bird_of_the_Year) I found tables of the 2022-2024 results but I had to get the 2021 data from the [press release](https://www.forestandbird.org.nz/resources/holy-flying-mammals-batman-bird-year-winner-announced#:~:text=The%20top%20ten%20finishers%20and,10%20Rockhopper%20penguin%20(1603)).
+
+The [`datapasta` package](https://github.com/MilesMcBain/datapasta) from Miles McBain makes copying and pasting data from the wild into RStudio really easy. The cleaning required was a bit unwieldy though, so this separate .R script gets the data in for each year, combines it into a single dataframe and fixes all the annoying inconsistencies in bird naming across years, before writing it to csv.
+
+### read the data
+
+```{r}
+#| message: false
+#| warning: false
+
+top10_year <- read_csv(here::here("charts", "2025-04-17_birds", "top10.csv"))
+
+glimpse(top10_year)
+```
+
+### plot ranking
+
+This is rank data so I am trying `ggbump()`again.
+
+```{r}
+#| message: false
+#| warning: false
+
+top10_year %>%
+ggplot(aes(year, rank_number, color = maori_name)) +
+  geom_point(size = 5) +
+   geom_bump(linewidth = 2, smooth = 8) +
+      scale_y_reverse() +
+  scale_x_continuous(limits = c(2019.8, 2025),
+                     breaks = seq(2021, 2024, 1)) +
+ theme_minimal() +
+  easy_remove_legend() +
+  easy_remove_gridlines()  +
+   geom_text(data = top10_year %>% filter(year == min(year)),
+            aes(x = year - .1, label = maori_name), size = 3.5, hjust = 1) +
+  geom_text(data = top10_year %>% filter(year == max(year)),
+            aes(x = year + .1, label = maori_name), size = 3.5, hjust = 0) +
+  scale_y_reverse(breaks = seq(1 , 10, 1), limits= c(10,0)) +
+  geom_text(data = data.frame(x = 2023, y = 0.5, label = "Pūteketeke", size = 1.5),
+mapping = aes(x = x, y = y, label = label),
+colour = "#00aafd", inherit.aes = FALSE) +
+  geom_text(data = data.frame(x = 2022, y = 0.5, label = "Pīwauwau", size = 1.5),
+mapping = aes(x = x, y = y, label = label),
+colour = "#01B7EB", inherit.aes = FALSE) +
+  labs(x = "Year",  y = "Rank", title = "Forest & Bird New Zealand", subtitle = "Bird of the Year Ranking: 2021-2024")
+
+
+```
+
+### Bird of the Year competition controversies
+
+The ranking data is interesting but it hides a number of controversies that have plagued the Bird of the year competition in recent years.
+
+#### 2021: not even a bird
+
+The Long-tailed bat (Pekapeka-tou-roa) is New Zealand's only native land mammal and [caused a bit of a stir](Te%20Manu%20Rongonui%20o%20te%20Tau) when it was voted as New Zealand's favourite bird in 2021.
+
+```{r}
+#| code-fold: true
+d21 <- top10_year %>%
+  filter(year == 2021) %>%
+  mutate(maori_name = fct_reorder(maori_name, rank_number))
+
+
+p21 <- d21 %>%
+  ggplot(aes(x = rank_number, y = votes, fill = maori_name)) +
+  geom_col() +
+  scale_x_continuous(breaks = seq(1,10, 1)) +
+  scale_y_continuous(limits = c(0,5000)) +
+  labs(y = "Number #1 Votes", x = "Rank", title = "Bird of the Year 2021", subtitle= "Winner = Pekapeka-tou-roa / Long-tailed bat",
+       caption = "note: the BOTY competition uses a single transferable vote system; the bird \nwith the most Number #1 Votes does not necessarily win") +
+  theme_minimal() 
+
+
+p21 + 
+  geom_image(
+    data = tibble(rank_number = 1, votes = 3800, maori_name = "Pekapeka-tou-roa"),
+    aes(image = here::here("charts", "2025-04-17_birds", "img", "bat.jpg")), size = 0.15)
+  
+```
+
+#### 2022: Rock Wren beats the Little Penguin
+
+The results in 2022 were more typical. While the Little Penguin / Kororā technically received the most #1 votes, it was pipped at the post by the New Zealand Rock Wren / Pīwauwau, a tiny alpine bird that lives in the mountains of the South Island.
+
+```{r}
+#| code-fold: true
+#| 
+d22 <- top10_year %>%
+  filter(year == 2022) %>%
+  mutate(maori_name = fct_reorder(maori_name, rank_number))
+
+p22 <- d22 %>%
+  ggplot(aes(x = rank_number, y = votes, fill = maori_name)) +
+  geom_col() +
+  scale_x_continuous(breaks = seq(1,10, 1)) +
+   scale_y_continuous(limits = c(0,5000)) +
+  labs(y = "Number #1 Votes", x = "Rank", title = "Bird of the Year 2022", subtitle= "Winner = Pīwauwau / Rock wren",
+       caption = "note: the BOTY competition uses a single transferable vote system; the bird \nwith the most Number #1 Votes does not necessarily win") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Paired", name = "Maori name")
+
+
+
+p22 +  geom_image(
+    data = tibble(rank_number = 1, votes = 3800, maori_name = "Pīwauwau"),
+    aes(image = here::here("charts", "2025-04-17_birds", "img", "NZ_rock_wren_on_rock.jpg")), size = 0.15)
+  
+  
+  
+```
+
+#### 2023: Pūteketeke pandemonium
+
+Forest and Bird were celebrating their 100 year anniversary in 2023, so dubbed the competition "Bird of the Century" that year. This may have been what attracted international attention and the subsequent [pandemonium](https://www.forestandbird.org.nz/resources/bird-century-winner-announced-puteketeke-pandemonium-prevails).
+
+The Australasian crested grebe / Pūteketeke received almost 300K votes due to a [campaign launched](https://www.npr.org/2023/11/15/1213228757/john-oliver-new-zealand-bird-century-contest-puteketeke) by British/American comedian and late night show host John Oliver.
+
+The campaign, described as ["alarmingly aggressive" by some](https://www.youtube.com/watch?v=6GF6Gd7wrlk), involved placing billboards across the world, from Wellington NZ...
+
+![Billboard in Wellington, NZ](img/billboard.webp)
+
+... to Manitowoc WI.
+
+![Billboard in Manitowoc, WI](img/bird-campaign WI.webp)
+
+
+John even appeared on the Jimmy Fallon show wearing a Pūteketeke costume.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uVE1hBzHn3s?si=gC6OraMKsigQNE9x" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
+
+The result of the campaign was a resounding win for the Pūteketeke and an impressive boost in competition interest and donations to Forest and Bird. 
+
+
+```{r}
+#| code-fold: true
+
+options(scipen = 999)
+
+d23 <- top10_year %>%
+  filter(year == 2023) %>%
+  mutate(maori_name = fct_reorder(maori_name, rank_number))
+
+
+p23 <- d23 %>%
+  ggplot(aes(x = rank_number, y = votes, fill = maori_name)) +
+   geom_col() +
+  scale_x_continuous(breaks = seq(1,10, 1)) +
+     scale_y_continuous(limits = c(0,350000)) +
+  labs(y = "Number #1 Votes", x = "Rank", title = "Bird of the Century 2023", subtitle= "Winner = Pūteketeke / Australasian crested grebe",
+       caption = "Note: some argue that the 2023 results were \nimpacted by foreign election interference") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Paired", name = "Maori name")
+
+
+p23 + geom_image(
+    data = tibble(rank_number = 1, votes = 320000, maori_name = "Pūteketeke"),
+    aes(image = here::here("charts", "2025-04-17_birds", "img", "grebe.jpg")), size = 0.15)
+  
+```
+```{r}
+#| include: false
+
+ggsave(here::here("charts", "2025-03-31_challenge", "puteketeke.png"), width = 6, height = 4,  bg = "white")
+
+
+ggsave("featured.png",  bg = "white")
+```
+
+
+#### 2024: Yellow-eyed Penguin
+
+```{r}
+#| code-fold: true
+d24 <- top10_year %>%
+  filter(year == 2024) %>%
+  mutate(maori_name = fct_reorder(maori_name, rank_number))
+
+  
+  p24 <- d24 %>%
+  ggplot(aes(x = rank_number, y = votes, fill = maori_name)) +
+   geom_col() +
+  scale_x_continuous(breaks = seq(1,10, 1)) +
+     scale_y_continuous(limits = c(0,9000)) +
+  labs(y = "Number #1 Votes", x = "Rank", title = "Bird of the Year 2024", subtitle= "Winner = Hoiho / Yellow-eyed Penguin") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Paired", name = "Maori name")
+
+
+p24 +
+  geom_image(
+    data = tibble(rank_number = 1, votes = 8000, maori_name = "Hoiho"),
+    aes(image = here::here("charts", "2025-04-17_birds", "img", "Yellow-eyed_Penguin_MC.jpg")), size = 0.15)
+```
