@@ -18,6 +18,7 @@ library(janitor)
 library(ggbump)
 library(ggeasy)
 library(ggimage)
+library(magick)
 
 
 ```
