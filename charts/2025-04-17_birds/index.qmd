@@ -26,11 +26,17 @@ On [Wikipedia](https://en.wikipedia.org/wiki/Bird_of_the_Year) I found tables of
 
 The [`datapasta` package](https://github.com/MilesMcBain/datapasta) from Miles McBain makes copying and pasting data from the wild into RStudio really easy. The cleaning required was a bit unwieldy though, so this separate .R script gets the data in for each year, combines it into a single dataframe and fixes all the annoying inconsistencies in bird naming across years, before writing it to csv.
 
-### read the data
+### load packages/read data
 
 ```{r}
 #| message: false
 #| warning: false
+
+library(tidyverse)
+library(datapasta)
+library(janitor)
+library(ggbump)
+library(ggeasy)
 
 top10_year <- read_csv(here::here("charts", "2025-04-17_birds", "top10.csv"))
 
@@ -44,6 +50,7 @@ This is rank data so I am trying `ggbump()`again.
 ```{r}
 #| message: false
 #| warning: false
+#| code-fold: true
 
 top10_year %>%
 ggplot(aes(year, rank_number, color = maori_name)) +
@@ -71,11 +78,13 @@ colour = "#01B7EB", inherit.aes = FALSE) +
 
 ```
 
-### Bird of the Year competition controversies
+### Controversy
 
 The ranking data is interesting but it hides a number of controversies that have plagued the Bird of the year competition in recent years.
 
 #### 2021: not even a bird
+
+![In 2021, the Long-tailed bat (Pekapeka-tou-roa) won the Bird of the Year, despite not being a bird](img/long-tailed-bat-hero-1920.webp){width="640"}
 
 The Long-tailed bat (Pekapeka-tou-roa) is New Zealand's only native land mammal and [caused a bit of a stir](Te%20Manu%20Rongonui%20o%20te%20Tau) when it was voted as New Zealand's favourite bird in 2021.
 
@@ -100,6 +109,8 @@ d21 %>%
 ```
 
 #### 2022: Rock Wren beats the Little Penguin
+
+![In 2022, the NZ Rock Wren beat the Little Penguin](img/rockwren.avif){width="640"}
 
 The results in 2022 were more typical. While the Little Penguin / Kororā technically received the most #1 votes, it was pipped at the post by the New Zealand Rock Wren / Pīwauwau, a tiny alpine bird that lives in the mountains of the South Island.
 
@@ -126,6 +137,8 @@ d22 %>%
 
 #### 2023: Pūteketeke pandemonium
 
+![The Puteketeke (Australasian Crested Grebe) won by an impressive margin in 2023.](img/grebe.jpg)
+
 Forest and Bird were celebrating their 100 year anniversary in 2023, so dubbed the competition "Bird of the Century" that year. This may have been what attracted international attention and the subsequent [pandemonium](https://www.forestandbird.org.nz/resources/bird-century-winner-announced-puteketeke-pandemonium-prevails).
 
 The Australasian crested grebe / Pūteketeke received almost 300K votes due to a [campaign launched](https://www.npr.org/2023/11/15/1213228757/john-oliver-new-zealand-bird-century-contest-puteketeke) by British/American comedian and late night show host John Oliver.
@@ -136,8 +149,7 @@ The campaign, described as ["alarmingly aggressive" by some](https://www.youtube
 
 ... to Manitowoc WI.
 
-![Billboard in Manitowoc, WI](img/bird-campaign WI.webp)
-
+![Billboard in Manitowoc, WI](img/bird-campaign%20WI.webp)
 
 John even appeared on the Jimmy Fallon show wearing a Pūteketeke costume.
 
@@ -145,8 +157,7 @@ John even appeared on the Jimmy Fallon show wearing a Pūteketeke costume.
 
 </iframe>
 
-The result of the campaign was a resounding win for the Pūteketeke and an impressive boost in competition interest and donations to Forest and Bird. 
-
+The result of the campaign was a resounding win for the Pūteketeke and an impressive boost in competition interest and donations to Forest and Bird.
 
 ```{r}
 #| code-fold: true
@@ -170,6 +181,7 @@ d23 <- top10_year %>%
 
   
 ```
+
 ```{r}
 #| include: false
 
@@ -179,8 +191,9 @@ ggsave(here::here("charts", "2025-03-31_challenge", "puteketeke.png"), width = 6
 ggsave("featured.png",  bg = "white")
 ```
 
-
 #### 2024: Yellow-eyed Penguin
+
+![Yellow-eyed Penguin, Bird of the Year 2024](img/yellow-eyed-penguins_0.avif){width="640"}
 
 ```{r}
 #| code-fold: true
