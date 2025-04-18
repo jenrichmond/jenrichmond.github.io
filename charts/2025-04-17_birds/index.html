@@ -164,9 +164,9 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#read-the-data" id="toc-read-the-data" class="nav-link active" data-scroll-target="#read-the-data">read the data</a></li>
+  <li><a href="#load-packagesread-data" id="toc-load-packagesread-data" class="nav-link active" data-scroll-target="#load-packagesread-data">load packages/read data</a></li>
   <li><a href="#plot-ranking" id="toc-plot-ranking" class="nav-link" data-scroll-target="#plot-ranking">plot ranking</a></li>
-  <li><a href="#bird-of-the-year-competition-controversies" id="toc-bird-of-the-year-competition-controversies" class="nav-link" data-scroll-target="#bird-of-the-year-competition-controversies">Bird of the Year competition controversies</a></li>
+  <li><a href="#controversy" id="toc-controversy" class="nav-link" data-scroll-target="#controversy">Controversy</a></li>
   </ul>
 </nav>
     </div>
@@ -214,12 +214,18 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 <p>It is Day 17 and the theme is birds. I am interested in the results of the <a href="https://www.forestandbird.org.nz/?gad_source=1&amp;gclid=Cj0KCQjwzYLABhD4ARIsALySuCQk3mQLVt-6iWSvTgWhWjh7mhqA8yOavKD3mOuB5AP4TbyKA6IAp0IaAtazEALw_wcB">Forest and Bird New Zealand</a> Bird of the Year competition over the past few years.</p>
 <p>On <a href="https://en.wikipedia.org/wiki/Bird_of_the_Year">Wikipedia</a> I found tables of the 2022-2024 results but I had to get the 2021 data from the <a href="https://www.forestandbird.org.nz/resources/holy-flying-mammals-batman-bird-year-winner-announced#:~:text=The%20top%20ten%20finishers%20and,10%20Rockhopper%20penguin%20(1603)">press release</a>.</p>
 <p>The <a href="https://github.com/MilesMcBain/datapasta"><code>datapasta</code> package</a> from Miles McBain makes copying and pasting data from the wild into RStudio really easy. The cleaning required was a bit unwieldy though, so this separate .R script gets the data in for each year, combines it into a single dataframe and fixes all the annoying inconsistencies in bird naming across years, before writing it to csv.</p>
-<section id="read-the-data" class="level3">
-<h3 class="anchored" data-anchor-id="read-the-data">read the data</h3>
+<section id="load-packagesread-data" class="level3">
+<h3 class="anchored" data-anchor-id="load-packagesread-data">load packages/read data</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>top10_year <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"charts"</span>, <span class="st">"2025-04-17_birds"</span>, <span class="st">"top10.csv"</span>))</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(top10_year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datapasta)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbump)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggeasy)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>top10_year <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"charts"</span>, <span class="st">"2025-04-17_birds"</span>, <span class="st">"top10.csv"</span>))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(top10_year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 40
 Columns: 5
@@ -235,6 +241,8 @@ $ maori_name  &lt;chr&gt; "Pekapeka-tou-roa", "Kākāpō", "Titipounamu", "Kea",
 <h3 class="anchored" data-anchor-id="plot-ranking">plot ranking</h3>
 <p>This is rank data so I am trying <code>ggbump()</code>again.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>top10_year <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(year, rank_number, <span class="at">color =</span> maori_name)) <span class="sc">+</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
@@ -257,6 +265,7 @@ $ maori_name  &lt;chr&gt; "Pekapeka-tou-roa", "Kākāpō", "Titipounamu", "Kea",
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label),</span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="at">colour =</span> <span class="st">"#01B7EB"</span>, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>,  <span class="at">y =</span> <span class="st">"Rank"</span>, <span class="at">title =</span> <span class="st">"Forest &amp; Bird New Zealand"</span>, <span class="at">subtitle =</span> <span class="st">"Bird of the Year Ranking: 2021-2024"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -266,11 +275,17 @@ $ maori_name  &lt;chr&gt; "Pekapeka-tou-roa", "Kākāpō", "Titipounamu", "Kea",
 </div>
 </div>
 </section>
-<section id="bird-of-the-year-competition-controversies" class="level3">
-<h3 class="anchored" data-anchor-id="bird-of-the-year-competition-controversies">Bird of the Year competition controversies</h3>
+<section id="controversy" class="level3">
+<h3 class="anchored" data-anchor-id="controversy">Controversy</h3>
 <p>The ranking data is interesting but it hides a number of controversies that have plagued the Bird of the year competition in recent years.</p>
 <section id="not-even-a-bird" class="level4">
 <h4 class="anchored" data-anchor-id="not-even-a-bird">2021: not even a bird</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/long-tailed-bat-hero-1920.webp" class="img-fluid figure-img" width="640"></p>
+<figcaption>In 2021, the Long-tailed bat (Pekapeka-tou-roa) won the Bird of the Year, despite not being a bird</figcaption>
+</figure>
+</div>
 <p>The Long-tailed bat (Pekapeka-tou-roa) is New Zealand’s only native land mammal and <a href="Te Manu Rongonui o te Tau">caused a bit of a stir</a> when it was voted as New Zealand’s favourite bird in 2021.</p>
 <div class="cell">
 <details class="code-fold">
@@ -300,6 +315,12 @@ $ maori_name  &lt;chr&gt; "Pekapeka-tou-roa", "Kākāpō", "Titipounamu", "Kea",
 </section>
 <section id="rock-wren-beats-the-little-penguin" class="level4">
 <h4 class="anchored" data-anchor-id="rock-wren-beats-the-little-penguin">2022: Rock Wren beats the Little Penguin</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/rockwren.avif" class="img-fluid figure-img" width="640"></p>
+<figcaption>In 2022, the NZ Rock Wren beat the Little Penguin</figcaption>
+</figure>
+</div>
 <p>The results in 2022 were more typical. While the Little Penguin / Kororā technically received the most #1 votes, it was pipped at the post by the New Zealand Rock Wren / Pīwauwau, a tiny alpine bird that lives in the mountains of the South Island.</p>
 <div class="cell">
 <details class="code-fold">
@@ -329,6 +350,12 @@ $ maori_name  &lt;chr&gt; "Pekapeka-tou-roa", "Kākāpō", "Titipounamu", "Kea",
 </section>
 <section id="pūteketeke-pandemonium" class="level4">
 <h4 class="anchored" data-anchor-id="pūteketeke-pandemonium">2023: Pūteketeke pandemonium</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/grebe.jpg" class="img-fluid figure-img"></p>
+<figcaption>The Puteketeke (Australasian Crested Grebe) won by an impressive margin in 2023.</figcaption>
+</figure>
+</div>
 <p>Forest and Bird were celebrating their 100 year anniversary in 2023, so dubbed the competition “Bird of the Century” that year. This may have been what attracted international attention and the subsequent <a href="https://www.forestandbird.org.nz/resources/bird-century-winner-announced-puteketeke-pandemonium-prevails">pandemonium</a>.</p>
 <p>The Australasian crested grebe / Pūteketeke received almost 300K votes due to a <a href="https://www.npr.org/2023/11/15/1213228757/john-oliver-new-zealand-bird-century-contest-puteketeke">campaign launched</a> by British/American comedian and late night show host John Oliver.</p>
 <p>The campaign, described as <a href="https://www.youtube.com/watch?v=6GF6Gd7wrlk">“alarmingly aggressive” by some</a>, involved placing billboards across the world, from Wellington NZ…</p>
@@ -380,6 +407,12 @@ $ maori_name  &lt;chr&gt; "Pekapeka-tou-roa", "Kākāpō", "Titipounamu", "Kea",
 </section>
 <section id="yellow-eyed-penguin" class="level4">
 <h4 class="anchored" data-anchor-id="yellow-eyed-penguin">2024: Yellow-eyed Penguin</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/yellow-eyed-penguins_0.avif" class="img-fluid figure-img" width="640"></p>
+<figcaption>Yellow-eyed Penguin, Bird of the Year 2024</figcaption>
+</figure>
+</div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
