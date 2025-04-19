@@ -24,7 +24,7 @@ It is Day 17 and the theme is birds. I am interested in the results of the [Fore
 
 On [Wikipedia](https://en.wikipedia.org/wiki/Bird_of_the_Year) I found tables of the 2022-2024 results but I had to get the 2021 data from the [press release](https://www.forestandbird.org.nz/resources/holy-flying-mammals-batman-bird-year-winner-announced#:~:text=The%20top%20ten%20finishers%20and,10%20Rockhopper%20penguin%20(1603)).
 
-The [`datapasta` package](https://github.com/MilesMcBain/datapasta) from Miles McBain makes copying and pasting data from the wild into RStudio really easy. The cleaning required was a bit unwieldy though, so this separate .R script gets the data in for each year, combines it into a single dataframe and fixes all the annoying inconsistencies in bird naming across years, before writing it to csv.
+The [`datapasta` package](https://github.com/MilesMcBain/datapasta) from Miles McBain makes copying and pasting data from the wild into RStudio really easy. The cleaning required was a bit unwieldy though, so this [separate .R script](https://github.com/jenrichmond/jenrichmond.github.io/blob/main/charts/2025-04-17_birds/get_bird_data.R) gets the data in for each year, combines it into a single dataframe and fixes all the annoying inconsistencies in bird naming across years, before writing it to csv.
 
 ### load packages/read data
 
