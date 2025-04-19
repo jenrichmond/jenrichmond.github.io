@@ -465,10 +465,12 @@ right_wrong_long_new %>%
 
 ```
 
+:::
+
 
 ## Day 17 birds 
 
-[Puteketeke2023](https://www.forestandbird.org.nz/resources/bird-century-winner-announced-puteketeke-pandemonium-prevails)
+[Puteketeke2023: A scrollytelling story](https://jenrichmond.github.io/posts/2025-04-18_closeread/)
 
 ::: panel-tabset
 
@@ -497,10 +499,10 @@ p23 + geom_image(
 
 ```
 
+:::
 
-## Day 19 smooth
 
-[link caption](URL)
+## Day X theme
 
 ::: panel-tabset
 
@@ -512,7 +514,10 @@ p23 + geom_image(
 
 ```{r, echo=TRUE, eval=FALSE}
 
-#insert code
+# insert ggplot code
 
 ```
+
+:::
+
 
