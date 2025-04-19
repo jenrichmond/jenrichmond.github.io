@@ -16,9 +16,9 @@ format:
 
 This post is my first attempt at a `closeread` scrollytelling story. It tells the story of the [Pūteketeke controversy](https://www.forestandbird.org.nz/resources/bird-century-winner-announced-puteketeke-pandemonium-prevails?gad_source=1&gclid=CjwKCAjwk43ABhBIEiwAvvMEBxXajWDGGQNmx6QbZjiQlec8hqOLnfd8OZ1hKKLJYBtjSOkwTdUc4RoCbiQQAvD_BwE) that plagued the Forest and Bird NZ *Bird of the Century* competition in 2023.
 
-The `closeread` extension makes it easy to turn a Quarto document into a scrollytelling story like this one. The `closeread` [documentation](https://closeread.dev/) and [this tutorial](https://www.gastonsanchez.com/learn-closeread/) by Gaston Sanchez were helpful in making this story. 
+The `closeread` extension makes it easy to turn a Quarto document into a scrollytelling story like this one. The `closeread` [documentation](https://closeread.dev/) and [this tutorial](https://www.gastonsanchez.com/learn-closeread/) by Gaston Sanchez were helpful in making this story.
 
-:::: cr-section
+::::::::::::::::::::::: cr-section
 This bird is called a Pūteketeke @cr-grebe
 
 ::: {#cr-grebe}
@@ -265,9 +265,8 @@ Last year, the Yellow-eyed Penguin / Hoiho prevailed. @cr-ye
 :::
 
 Check out the [Forest and Bird website](https://www.birdoftheyear.org.nz/) to read about past winners, donate to conservation efforts, and vote for your favourite New Zealand bird in the 2025 competition (voting opens in September).
-:::::
+:::::::::::::::::::::::
 
-
-<div style="text-align: center; margin-top: 3rem; color: #666;">
+::: {style="text-align: center; margin-top: 3rem; color: #666;"}
 Made with [Quarto](https://quarto.org/)
-</div>
+:::
