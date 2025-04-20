@@ -1,6 +1,8 @@
 ---
 title: "Pūteketeke Pandemonium"
 editor: visual
+author: Jen Richmond 
+date: 2025-04-20
 format:
   closeread-html:
     cr-style:
