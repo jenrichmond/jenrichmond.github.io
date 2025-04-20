@@ -1,12 +1,51 @@
 ---
-title: "day X_theme"
+title: "day 19_smooth"
 author:
   - name: Jen Richmond
     url: https://jenrichmond.github.io/
-date: today()
+date: 2025-04-20
 format: html
 editor: source
-draft: TRUE
 image: featured.png
 ---
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(here)
+
+eggs <- read_csv(here("charts", "2025-04-19_smooth", "eggsNZUSA.csv")) 
+
+
+eggs <- eggs %>%
+    mutate(month_year = paste0(month, "_", year)) %>%
+  mutate(date = lubridate::my(month_year))
+
+glimpse(eggs)
+  
+```
+
+```{r}
+#| message: false
+#| warning: false
+eggs %>%
+  ggplot(aes(x = date, y = price, colour = currency)) +
+  geom_point() +
+  geom_smooth(se = FALSE, na.rm = TRUE) +
+  scale_colour_brewer(palette = "Dark2", name = "Country", labels = c("NZ", "USA")) +
+  theme_minimal() +
+  labs(y = "Price per dozen ($)", x = "Year", 
+       title = "Egg prices (per dozen) over time", 
+       caption = "NZ Data from StatsNZ; \nUS Data from Bureau of Labor Statistics")
+```
+
+```{r}
+#| include: false
+
+ggsave(here::here("charts", "2025-03-31_challenge", "eggs.png"), width = 6, height = 4,  bg = "white")
+
+
+ggsave("featured.png",  bg = "white")
+```
 

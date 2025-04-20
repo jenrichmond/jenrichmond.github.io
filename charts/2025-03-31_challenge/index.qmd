@@ -502,6 +502,32 @@ p23 + geom_image(
 :::
 
 
+## Day 19 smooth
+
+::: panel-tabset
+
+### my plot
+
+![](eggs.png)
+
+### r code
+
+```{r, echo=TRUE, eval=FALSE}
+
+eggs %>%
+  ggplot(aes(x = date, y = price, colour = currency)) +
+  geom_point() +
+  geom_smooth(se = FALSE, na.rm = TRUE) +
+  scale_colour_brewer(palette = "Dark2", name = "Country", labels = c("NZ", "USA")) +
+  theme_minimal() +
+  labs(y = "Price per dozen ($)", x = "Year", 
+       title = "Egg prices (per dozen) over time", 
+       caption = "NZ Data from StatsNZ; \nUS Data from Bureau of Labor Statistics")
+
+```
+
+:::
+
 ## Day X theme
 
 ::: panel-tabset
@@ -519,5 +545,4 @@ p23 + geom_image(
 ```
 
 :::
-
 
