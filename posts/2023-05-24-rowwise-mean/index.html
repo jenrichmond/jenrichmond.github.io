@@ -230,11 +230,11 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 <pre><code>Rows: 6
 Columns: 6
 $ pID   &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1 &lt;int&gt; 4, 1, 2, 5, 2, 4
-$ item2 &lt;int&gt; 2, 5, 7, 3, 4, 2
-$ item3 &lt;int&gt; 5, 6, 3, 4, 4, 7
-$ item4 &lt;int&gt; 6, 3, 6, 2, 6, 4
-$ item5 &lt;int&gt; 1, 7, 2, 4, 4, 4</code></pre>
+$ item1 &lt;int&gt; 7, 2, 6, 1, 5, 4
+$ item2 &lt;int&gt; 1, 4, 1, 6, 5, 4
+$ item3 &lt;int&gt; 7, 6, 7, 4, 2, 5
+$ item4 &lt;int&gt; 3, 1, 6, 4, 6, 4
+$ item5 &lt;int&gt; 1, 1, 6, 6, 7, 4</code></pre>
 </div>
 </div>
 </section>
@@ -259,12 +259,12 @@ $ item5 &lt;int&gt; 1, 7, 2, 4, 4, 4</code></pre>
 <pre><code>Rows: 6
 Columns: 7
 $ pID       &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1     &lt;int&gt; 4, 1, 2, 5, 2, 4
-$ item2     &lt;int&gt; 2, 5, 7, 3, 4, 2
-$ item3     &lt;int&gt; 5, 6, 3, 4, 4, 7
-$ item4     &lt;int&gt; 6, 3, 6, 2, 6, 4
-$ item5     &lt;int&gt; 1, 7, 2, 4, 4, 4
-$ item_mean &lt;dbl&gt; 3.966667, 3.966667, 3.966667, 3.966667, 3.966667, 3.966667</code></pre>
+$ item1     &lt;int&gt; 7, 2, 6, 1, 5, 4
+$ item2     &lt;int&gt; 1, 4, 1, 6, 5, 4
+$ item3     &lt;int&gt; 7, 6, 7, 4, 2, 5
+$ item4     &lt;int&gt; 3, 1, 6, 4, 6, 4
+$ item5     &lt;int&gt; 1, 1, 6, 6, 7, 4
+$ item_mean &lt;dbl&gt; 4.2, 4.2, 4.2, 4.2, 4.2, 4.2</code></pre>
 </div>
 </div>
 <p>With <code>rowwise()</code>, it calculates across the rows, separately for each participant.</p>
@@ -292,12 +292,12 @@ Note
 <pre><code>Rows: 6
 Columns: 7
 $ pID       &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1     &lt;int&gt; 4, 1, 2, 5, 2, 4
-$ item2     &lt;int&gt; 2, 5, 7, 3, 4, 2
-$ item3     &lt;int&gt; 5, 6, 3, 4, 4, 7
-$ item4     &lt;int&gt; 6, 3, 6, 2, 6, 4
-$ item5     &lt;int&gt; 1, 7, 2, 4, 4, 4
-$ item_mean &lt;dbl&gt; 3.6, 4.4, 4.0, 3.6, 4.0, 4.2</code></pre>
+$ item1     &lt;int&gt; 7, 2, 6, 1, 5, 4
+$ item2     &lt;int&gt; 1, 4, 1, 6, 5, 4
+$ item3     &lt;int&gt; 7, 6, 7, 4, 2, 5
+$ item4     &lt;int&gt; 3, 1, 6, 4, 6, 4
+$ item5     &lt;int&gt; 1, 1, 6, 6, 7, 4
+$ item_mean &lt;dbl&gt; 3.8, 2.8, 5.2, 4.2, 5.0, 4.2</code></pre>
 </div>
 </div>
 <p>If there are a lot of columns to average across, you can avoid typing all of the names using <code>c_across()</code>.</p>
@@ -312,12 +312,12 @@ $ item_mean &lt;dbl&gt; 3.6, 4.4, 4.0, 3.6, 4.0, 4.2</code></pre>
 <pre><code>Rows: 6
 Columns: 7
 $ pID       &lt;chr&gt; "p1", "p2", "p3", "p4", "p5", "p6"
-$ item1     &lt;int&gt; 4, 1, 2, 5, 2, 4
-$ item2     &lt;int&gt; 2, 5, 7, 3, 4, 2
-$ item3     &lt;int&gt; 5, 6, 3, 4, 4, 7
-$ item4     &lt;int&gt; 6, 3, 6, 2, 6, 4
-$ item5     &lt;int&gt; 1, 7, 2, 4, 4, 4
-$ item_mean &lt;dbl&gt; 3.6, 4.4, 4.0, 3.6, 4.0, 4.2</code></pre>
+$ item1     &lt;int&gt; 7, 2, 6, 1, 5, 4
+$ item2     &lt;int&gt; 1, 4, 1, 6, 5, 4
+$ item3     &lt;int&gt; 7, 6, 7, 4, 2, 5
+$ item4     &lt;int&gt; 3, 1, 6, 4, 6, 4
+$ item5     &lt;int&gt; 1, 1, 6, 6, 7, 4
+$ item_mean &lt;dbl&gt; 3.8, 2.8, 5.2, 4.2, 5.0, 4.2</code></pre>
 </div>
 </div>
 
