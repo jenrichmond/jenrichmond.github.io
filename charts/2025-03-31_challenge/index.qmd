@@ -528,7 +528,7 @@ eggs %>%
 
 :::
 
-## Day X theme
+## Day 22 stars
 
 ::: panel-tabset
 
@@ -546,3 +546,20 @@ eggs %>%
 
 :::
 
+## Day 24 WHO
+
+::: panel-tabset
+
+### my plot
+
+![](watch.png)
+
+### r code
+
+```{r, echo=TRUE, eval=FALSE}
+
+# insert ggplot code
+
+```
+
+:::

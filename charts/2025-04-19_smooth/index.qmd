@@ -10,9 +10,9 @@ image: featured.png
 ---
 
 
-[Egg prices in the USA](https://www.nbcnews.com/data-graphics/dozen-egg-prices-drop-charts-data-rcna200232) are high right now, mostly due to supply issues caused by bird flu outbreaks. I was interested in how prices compare to egg prices in NZ, which have been high since [battery farms bans wwent into effect](https://www.consumer.org.nz/articles/how-did-egg-prices-double-in-a-year?gad_source=1&gclid=CjwKCAjwk43ABhBIEiwAvvMEB5SiHsth08IkoYuGeXo6df4B5r6xlNonBhDxZqLCd3tOpbE9P0JmFBoCxCoQAvD_BwE) in 2022. 
+[Egg prices in the USA](https://www.nbcnews.com/data-graphics/dozen-egg-prices-drop-charts-data-rcna200232) are high right now, mostly due to supply issues caused by bird flu outbreaks. I was interested in how prices compare to egg prices in NZ, which have been high since [battery farms bans went into effect](https://www.consumer.org.nz/articles/how-did-egg-prices-double-in-a-year?gad_source=1&gclid=CjwKCAjwk43ABhBIEiwAvvMEB5SiHsth08IkoYuGeXo6df4B5r6xlNonBhDxZqLCd3tOpbE9P0JmFBoCxCoQAvD_BwE) in 2022. 
 
-The data for these plot came from StatsNZ and the US Bureau of Labor Statistics and reuested a bit of wrangling to make the format consistent. You can find the code that I wrong to read in and clean the egg data in this [.R script](https://github.com/jenrichmond/jenrichmond.github.io/blob/main/charts/2025-04-19_smooth/get%20egg%20data.R) 
+The data for these plots came from StatsNZ and the US Bureau of Labor Statistics and required a bit of wrangling to make the formats consistent. You can find the code that I wrote to read in and clean the egg data in this [.R script](https://github.com/jenrichmond/jenrichmond.github.io/blob/main/charts/2025-04-19_smooth/get%20egg%20data.R) 
 
 ## read data/fix dates
 

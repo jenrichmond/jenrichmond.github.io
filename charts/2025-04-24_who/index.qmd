@@ -1,0 +1,17 @@
+---
+title: "day 24 WHO"
+author:
+  - name: Jen Richmond
+    url: https://jenrichmond.github.io/
+date: 2025-04-24
+format: html
+draft: TRUE
+editor: source
+image: featured.png
+---
+
+WHO 2024 report
+
+# **World health statistics 2024: monitoring health for the SDGs, sustainable development goals**
+
+<https://iris.who.int/bitstream/handle/10665/376869/9789240094703-eng.pdf?sequence=1#page=37.00>

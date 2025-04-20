@@ -1,0 +1,16 @@
+---
+title: "day 22 stars"
+author:
+  - name: Jen Richmond
+    url: https://jenrichmond.github.io/
+date: 2025-04-22
+draft: TRUE
+format: html
+editor: source
+image: featured.png
+
+---
+
+<https://hollywoodagegap.com/>
+
+<https://github.com/lynnandtonic/hollywood-age-gap?tab=readme-ov-file>

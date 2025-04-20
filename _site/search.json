@@ -396,7 +396,7 @@
     "href": "charts/2025-04-19_smooth/index.html",
     "title": "day 19_smooth",
     "section": "",
-    "text": "Egg prices in the USA are high right now, mostly due to supply issues caused by bird flu outbreaks. I was interested in how prices compare to egg prices in NZ, which have been high since battery farms bans wwent into effect in 2022.\nThe data for these plot came from StatsNZ and the US Bureau of Labor Statistics and reuested a bit of wrangling to make the format consistent. You can find the code that I wrong to read in and clean the egg data in this .R script"
+    "text": "Egg prices in the USA are high right now, mostly due to supply issues caused by bird flu outbreaks. I was interested in how prices compare to egg prices in NZ, which have been high since battery farms bans went into effect in 2022.\nThe data for these plots came from StatsNZ and the US Bureau of Labor Statistics and required a bit of wrangling to make the formats consistent. You can find the code that I wrote to read in and clean the egg data in this .R script"
   },
   {
     "objectID": "charts/2025-04-19_smooth/index.html#read-datafix-dates",
@@ -404,5 +404,19 @@
     "title": "day 19_smooth",
     "section": "read data/fix dates",
     "text": "read data/fix dates\n\nlibrary(tidyverse)\nlibrary(here)\n\neggs &lt;- read_csv(here(\"charts\", \"2025-04-19_smooth\", \"eggsNZUSA.csv\")) \n\n\neggs &lt;- eggs %&gt;%\n    mutate(month_year = paste0(month, \"_\", year)) %&gt;%\n  mutate(date = lubridate::my(month_year))\n\nglimpse(eggs)\n\nRows: 253\nColumns: 6\n$ year       &lt;dbl&gt; 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015,…\n$ month      &lt;chr&gt; \"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\", \"Se…\n$ price      &lt;dbl&gt; 3.78, 3.79, 3.64, 3.71, 3.87, 3.83, 3.81, 3.77, 3.74, 3.76,…\n$ currency   &lt;chr&gt; \"NZD\", \"NZD\", \"NZD\", \"NZD\", \"NZD\", \"NZD\", \"NZD\", \"NZD\", \"NZ…\n$ month_year &lt;chr&gt; \"Jan_2015\", \"Feb_2015\", \"Mar_2015\", \"Apr_2015\", \"May_2015\",…\n$ date       &lt;date&gt; 2015-01-01, 2015-02-01, 2015-03-01, 2015-04-01, 2015-05-01…"
+  },
+  {
+    "objectID": "charts/2025-03-31_challenge/index.html#day-22-stars",
+    "href": "charts/2025-03-31_challenge/index.html#day-22-stars",
+    "title": "day 0 challenge",
+    "section": "Day 22 stars",
+    "text": "Day 22 stars\n\nmy plotr code\n\n\n\n\n\n\n# insert ggplot code"
+  },
+  {
+    "objectID": "charts/2025-03-31_challenge/index.html#day-24-who",
+    "href": "charts/2025-03-31_challenge/index.html#day-24-who",
+    "title": "day 0 challenge",
+    "section": "Day 24 WHO",
+    "text": "Day 24 WHO\n\nmy plotr code\n\n\n\n\n\n\n# insert ggplot code"
   }
 ]
