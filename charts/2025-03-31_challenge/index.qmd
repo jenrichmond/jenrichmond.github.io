@@ -530,17 +530,31 @@ eggs %>%
 
 ## Day 22 stars
 
+[Hollywood age differences](https://hollywoodagegap.com/)
+
 ::: panel-tabset
 
 ### my plot
 
-![](watch.png)
+![](stars.png)
 
 ### r code
 
 ```{r, echo=TRUE, eval=FALSE}
 
-# insert ggplot code
+age_diff_decade %>%
+  filter(release_year >= 1980) %>%
+  ggplot(aes(x = decade, y = age_difference, fill = decade)) +
+ geom_rain(alpha = .5, 
+            boxplot.args.pos = list(
+              width = .1, position = position_nudge(x = 0.2)),
+            violin.args.pos = list(
+              side = "r",
+              width = 0.7, position = position_nudge(x = 0.3))) +
+  theme_minimal() +
+  easy_remove_legend() +
+    scale_y_continuous(expand = c(0,0), limits = c(-.2, 55)) +
+  labs(y = "Age difference", x = "Decade",  subtitle = "1980s - current")
 
 ```
 
