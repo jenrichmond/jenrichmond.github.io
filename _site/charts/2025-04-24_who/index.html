@@ -212,7 +212,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 
 <p>The prompt for Day 24 is the World Health Organisation. I spent some time exploring the WHO website for a chart that uses a geom that I hadn’t tried before and came up with this one from the <a href="https://www.who.int/publications/i/item/9789240094703">World Health Statistics 2024 report</a>.</p>
 <p><img src="hepBHepC_who_report2024_p37.png" class="img-fluid"></p>
-<p>I found a table of the data in the <a href="https://www.who.int/publications/i/item/9789240091672">Global Hepatitis Report 2024</a> and used this script to get it into csv format.</p>
+<p>I found a table of the data in the <a href="https://www.who.int/publications/i/item/9789240091672">Global Hepatitis Report 2024</a> and used this <a href="https://github.com/jenrichmond/jenrichmond.github.io/blob/main/charts/2025-04-24_who/get_hep_data.R">Rscript</a> to get it into csv format.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
@@ -242,7 +242,7 @@ $ deaths_hebC &lt;dbl&gt; 35000, 38000, 42000, 21000, 65000, 43000</code></pre>
 </section>
 <section id="claudes-code" class="level1">
 <h1>claude’s code</h1>
-<p>I was surprised that the <a href="claudes code.R">code that claude</a> wrote ran without throwing an error and made a passable treemap plot. It is actually impressive that the LLM pulled the data and colour palette from the png file I gave it. Of course, if I want to learn about how treemaps work, I should probably start from scratch.</p>
+<p>I was surprised that the <a href="https://github.com/jenrichmond/jenrichmond.github.io/blob/main/charts/2025-04-24_who/claudes_code.R">code that claude</a> wrote ran without throwing an error and made a passable treemap plot. It is actually impressive that the LLM pulled the data and colour palette from the png file I gave it. Of course, if I want to learn about how treemaps work, I should probably start from scratch.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"charts"</span>, <span class="st">"2025-04-24_who"</span>, <span class="st">"claudes_code.R"</span>))</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>

@@ -13,7 +13,7 @@ The prompt for Day 24 is the World Health Organisation. I spent some time explor
 
 ![](hepBHepC_who_report2024_p37.png)
 
-I found a table of the data in the [Global Hepatitis Report 2024](https://www.who.int/publications/i/item/9789240091672) and used this script to get it into csv format. 
+I found a table of the data in the [Global Hepatitis Report 2024](https://www.who.int/publications/i/item/9789240091672) and used this [Rscript](https://github.com/jenrichmond/jenrichmond.github.io/blob/main/charts/2025-04-24_who/get_hep_data.R) to get it into csv format. 
 
 
 
@@ -41,7 +41,7 @@ Now I don't even know what this kind of chart is called, let alone how to make i
 
 # claude's code
 
-I was surprised that the [code that claude](claudes code.R) wrote ran without throwing an error and made a passable treemap plot. It is actually impressive that the LLM pulled the data and colour palette from the png file I gave it. Of course, if I want to learn about how treemaps work, I should probably start from scratch. 
+I was surprised that the [code that claude](https://github.com/jenrichmond/jenrichmond.github.io/blob/main/charts/2025-04-24_who/claudes_code.R) wrote ran without throwing an error and made a passable treemap plot. It is actually impressive that the LLM pulled the data and colour palette from the png file I gave it. Of course, if I want to learn about how treemaps work, I should probably start from scratch. 
 
 ```{r}
 source(here::here("charts", "2025-04-24_who", "claudes_code.R"))
