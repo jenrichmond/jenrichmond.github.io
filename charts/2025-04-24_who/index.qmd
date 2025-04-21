@@ -5,13 +5,218 @@ author:
     url: https://jenrichmond.github.io/
 date: 2025-04-24
 format: html
-draft: TRUE
 editor: source
 image: featured.png
 ---
 
-WHO 2024 report
+The prompt for Day 24 is the World Health Organisation. I spent some time exploring the WHO website for a chart that uses a geom that I hadn't tried before and came up with this one from the [World Health Statistics 2024 report](https://www.who.int/publications/i/item/9789240094703). 
 
-# **World health statistics 2024: monitoring health for the SDGs, sustainable development goals**
+![](hepBHepC_who_report2024_p37.png)
 
-<https://iris.who.int/bitstream/handle/10665/376869/9789240094703-eng.pdf?sequence=1#page=37.00>
+I found a table of the data in the [Global Hepatitis Report 2024](https://www.who.int/publications/i/item/9789240091672) and used this script to get it into csv format. 
+
+
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(here)
+library(janitor)
+library(treemapify)
+library(ggeasy)
+library(patchwork)
+library(ggtext)
+
+hep <- read_csv(here("charts", "2025-04-24_who", "hepBC.csv"))
+
+glimpse(hep)
+```
+
+# what kind of plot?
+
+Now I don't even know what this kind of chart is called, let alone how to make it with ggplot, so I asked claude.ai for some suggestions. 
+
+![](claude.png)
+
+# claude's code
+
+I was surprised that the [code that claude](claudes code.R) wrote ran without throwing an error and made a passable treemap plot. It is actually impressive that the LLM pulled the data and colour palette from the png file I gave it. Of course, if I want to learn about how treemaps work, I should probably start from scratch. 
+
+```{r}
+source(here::here("charts", "2025-04-24_who", "claudes_code.R"))
+
+final_plot
+```
+
+# my code
+
+```{r}
+hep %>% 
+  ggplot(aes(area = new_hepB, fill = WHO_region)) +
+  geom_treemap()
+
+```
+
+Basic plot check! Things I would like to change...
+
+- colour scheme
+- labels on the boxes
+- titles, captions
+- layout (how do I get the large African Region box to appear on the top, rather than left)
+
+
+
+### colours
+
+It is interesting that the colours that claude used in his code are close but not exactly the same as the ones I pulled from the plot using the ColorZilla tool. 
+
+```{r}
+
+claudes_colors <- c(
+  "African Region" = "#5EB3D5", "South-East Asia Region" = "#A9D18E",
+  "Eastern Mediterranean Region" = "#F6B18F", "Western Pacific Region" = "#FFD966",
+  "European Region" = "#C293CE", "Region of the Americas" = "#A593C7"
+)
+
+palette <- c("African Region" ="#69C1E6",  "South-East Asia Region" = "#B5D47C", 
+                 "Eastern Mediterranean Region" = "#F3A078",  
+               "Western Pacific Region" =  "#FACF70",
+                 "European Region" ="#CC71B2", "Region of the Americas" ="#A687B6")
+
+```
+
+OK here I have sorted the colour palette and added I fine white line between the boxes using colour = "white". Next labels...
+
+```{r}
+hep %>% 
+  ggplot(aes(area = new_hepB, fill = WHO_region)) +
+  geom_treemap(colour = "white") +
+  scale_fill_manual(values = palette)
+  
+```
+
+
+### labels
+
+```{r}
+
+
+hep %>% 
+  ggplot(aes(area = new_hepB, fill = WHO_region, 
+             label = paste(WHO_region, new_hepB, sep = "\n"))) +
+  geom_treemap(colour = "white") +
+  scale_fill_manual(values = palette) +
+  geom_treemap_text(colour = "black",
+                    place = "topleft",
+                    size = 5, 
+                    grow = FALSE) + # option from ggfittext to NOT make font fit box
+  easy_remove_legend()
+```
+
+
+### layout
+
+> note it doesn't seem possible to control the layout of the boxes using the `treemapify` package; I played with the layout argument which has "squarified" as the default but allows you to specific layout = "srow" which forces the tile placement to begin with a row... it didn't seem to do anything. 
+
+```{r}
+
+
+hep %>% 
+  ggplot(aes(area = new_hepB, fill = WHO_region, layout = "srow",
+             label = paste(WHO_region, new_hepB, sep = "\n"))) +
+  geom_treemap(colour = "white") +
+  scale_fill_manual(values = palette) +
+  geom_treemap_text(colour = "black",
+                    place = "topleft",
+                    size = 5, 
+                    grow = FALSE) + # option from ggfittext to NOT make font fit box
+  easy_remove_legend()
+```
+
+### titles / captions
+
+I am going to make an equivalent HepC plot and then paste them together before adding chart titles and captions. Using the layout = "fixed" option allow a side by side comparison of the HepB and HepC plots
+
+```{r}
+
+hepB <- hep %>% 
+  ggplot(aes(area = new_hepB, fill = WHO_region, layout = "fixed",
+             label = paste(WHO_region, new_hepB, sep = "\n"))) +
+  geom_treemap(colour = "white") +
+  scale_fill_manual(values = palette) +
+  geom_treemap_text(colour = "black",
+                    place = "topleft",
+                    size = 5, 
+                    grow = FALSE) + # option from ggfittext to NOT make font fit box
+  easy_remove_legend() +
+  labs(title = "Figure 2.4 Number of new hepatitis B and hepatitis C infections, by WHO region, 2022", subtitle = "Hepatitis B") +
+  theme(plot.subtitle = element_text(hjust = 0.5, size = 5), 
+        plot.title = element_text(size = 10)) 
+
+
+
+ hepC <- hep %>% 
+  ggplot(aes(area = new_hepC, fill = WHO_region, layout = "fixed",
+             label = paste(WHO_region, new_hepC, sep = "\n"))) +
+  geom_treemap(colour = "white") +
+  scale_fill_manual(values = palette) +
+  geom_treemap_text(colour = "black",
+                    place = "topleft",
+                    size = 5, 
+                    grow = FALSE) + # option from ggfittext to NOT make font fit box
+  easy_remove_legend() +
+  labs(subtitle = "Hepatitis C") +
+   theme(plot.subtitle = element_text(hjust = 0.5, size = 5))
+
+ 
+ hepB  + hepC 
+```
+
+
+And lastly, claude helped get the yellow/bold formatting for the title. The `ggtext` package is required to allow for element_markdown()
+
+
+```{r}
+
+hepB <- hep %>% 
+  ggplot(aes(area = new_hepB, fill = WHO_region, layout = "fixed",
+             label = paste(WHO_region, new_hepB, sep = "\n"))) +
+  geom_treemap(colour = "white") +
+  scale_fill_manual(values = palette) +
+  geom_treemap_text(colour = "black",
+                    place = "topleft",
+                    size = 5, 
+                    grow = FALSE) + # option from ggfittext to NOT make font fit box
+  easy_remove_legend() +
+labs(title = "<span style='color:#F4BD4B;'>Figure 2.4</span><span> Number of new hepatitis B and hepatitis C infections, by WHO region, 2022</span>", 
+     subtitle = "Hepatitis B") +
+  theme(plot.subtitle = element_text(hjust = 0.5, size = 5), 
+        plot.title = element_markdown(hjust = 0, size = 8, face = "bold"))
+
+ hepC <- hep %>% 
+  ggplot(aes(area = new_hepC, fill = WHO_region, layout = "fixed",
+             label = paste(WHO_region, new_hepC, sep = "\n"))) +
+  geom_treemap(colour = "white") +
+  scale_fill_manual(values = palette) +
+  geom_treemap_text(colour = "black",
+                    place = "topleft",
+                    size = 5, 
+                    grow = FALSE) + # option from ggfittext to NOT make font fit box
+  easy_remove_legend() +
+  labs(subtitle = "Hepatitis C") +
+   theme(plot.subtitle = element_text(hjust = 0.5, size = 5))
+
+ 
+ hepB  + hepC 
+```
+
+```{r}
+#| include: false
+
+ggsave(here::here("charts", "2025-03-31_challenge", "who.png"), width = 6, height = 4,  bg = "white")
+
+
+ggsave("featured.png",  width = 6, height = 4,  bg = "white")
+```
+

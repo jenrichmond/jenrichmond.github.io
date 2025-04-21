@@ -562,6 +562,55 @@ age_diff_decade %>%
 
 ## Day 24 WHO
 
+[Global Hepatitis Report 2024](https://www.who.int/publications/i/item/9789240091672)
+
+::: panel-tabset
+
+### my plot
+
+![](who.png)
+
+### r code
+
+```{r, echo=TRUE, eval=FALSE}
+
+hepB <- hep %>% 
+  ggplot(aes(area = new_hepB, fill = WHO_region, layout = "fixed",
+             label = paste(WHO_region, new_hepB, sep = "\n"))) +
+  geom_treemap(colour = "white") +
+  scale_fill_manual(values = palette) +
+  geom_treemap_text(colour = "black",
+                    place = "topleft",
+                    size = 5, 
+                    grow = FALSE) + # option from ggfittext to NOT make font fit box
+  easy_remove_legend() +
+labs(title = "<span style='color:#F4BD4B;'>Figure 2.4</span><span> Number of new hepatitis B and hepatitis C infections, by WHO region, 2022</span>", 
+     subtitle = "Hepatitis B") +
+  theme(plot.subtitle = element_text(hjust = 0.5, size = 5), 
+        plot.title = element_markdown(hjust = 0, size = 8, face = "bold"))
+
+ hepC <- hep %>% 
+  ggplot(aes(area = new_hepC, fill = WHO_region, layout = "fixed",
+             label = paste(WHO_region, new_hepC, sep = "\n"))) +
+  geom_treemap(colour = "white") +
+  scale_fill_manual(values = palette) +
+  geom_treemap_text(colour = "black",
+                    place = "topleft",
+                    size = 5, 
+                    grow = FALSE) + # option from ggfittext to NOT make font fit box
+  easy_remove_legend() +
+  labs(subtitle = "Hepatitis C") +
+   theme(plot.subtitle = element_text(hjust = 0.5, size = 5))
+
+ 
+ hepB  + hepC 
+
+```
+
+:::
+
+## Day X theme
+
 ::: panel-tabset
 
 ### my plot
@@ -577,3 +626,4 @@ age_diff_decade %>%
 ```
 
 :::
+
