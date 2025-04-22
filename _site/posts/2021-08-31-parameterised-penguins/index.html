@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jen Richmond">
+<meta name="dcterms.date" content="2021-08-31">
 
-<title>blog – Jen Richmond</title>
+<title>parameterised penguins – Jen Richmond</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,35 +67,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Y7WV5KV7Z0"></script>
 
 <script type="text/javascript">
@@ -106,37 +77,8 @@ gtag('js', new Date());
 gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -146,7 +88,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Jen Richmond</span>
     </a>
   </div>
@@ -157,19 +99,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">about</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./charts.html"> 
+    <a class="nav-link" href="../../charts.html"> 
 <span class="menu-text">30daycharts</span></a>
   </li>  
 </ul>
@@ -184,21 +126,39 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(11)</span></div><div class="category" data-category="data wrangling">data wrangling <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot">ggplot <span class="quarto-category-count">(2)</span></div><div class="category" data-category="idhgt">idhgt <span class="quarto-category-count">(1)</span></div><div class="category" data-category="python">python <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-to-write-a-basic-report" id="toc-how-to-write-a-basic-report" class="nav-link active" data-scroll-target="#how-to-write-a-basic-report">how to write a basic report</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">blog</h1>
+<h1 class="title">parameterised penguins</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p><a href="https://jenrichmond.github.io/">Jen Richmond</a> </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 31, 2021</p>
+    </div>
+  </div>
   
     
   </div>
@@ -208,314 +168,82 @@ window.Quarto = {
 </header>
 
 
-<p>Want to support my blog? <a href="https://buymeacoffee.com/jennyrichm9" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" height="30"></a></p>
+<p>I am beginning a project where we want to create a distill site that has lots of profile pages that all have the same format but pull different data from a dataframe. Here I am learning how to use set up parameters within RMarkdown so that I can use purrr to render many reports at once.</p>
+<section id="how-to-customise-your-yaml" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-customise-your-yaml">how to customise your yaml</h4>
+<p>yaml stands for “yet another markup language” and it is the code that you see at the top of your RMarkdown document that is between the sets of dashes.</p>
+<p>When you open a new Rmd document, the yaml just contains fields to insert the title, author, and date that your document was created and some info about what kind of output your want your Rmd to knit to, but you can customise the yaml to specify lots of different characteristics of your Rmd document.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="yaml.png" class="img-fluid figure-img" width="169"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In this yaml, I have set the output to be html and added the hpstr theme from the <code>prettydoc</code> package. I have also set how big I want the figures to be in my knitted document. Other options include adding a table of contents and allowing readers to show and hide code <a href="https://bookdown.org/yihui/rmarkdown/html-document.html">see details in the Yihui’s rmarkdown book here</a>.</p>
+<p>The new piece here is adding “params” (more about Rmd/params <a href="https://r4ds.had.co.nz/r-markdown.html#parameters">here</a>. Eventually I want to create a separate report for each type of penguin species so I have set the parameter I am interested in as <code>my_species</code>. As a first run, I am interested in Adelie penguins.</p>
+</section>
+<section id="how-to-write-a-basic-report" class="level1">
+<h1>how to write a basic report</h1>
+<p>Before I can render lots of reports, I need to write the code and make it run on the Adelie species. The first chunk of code in my report loads the packages needed, sets my default ggplot theme and loads in the penguin data. Then I use the species params that I set in the yaml to filter the penguins for only Adelie, creating a new species dataframe.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chunk1.png" class="img-fluid figure-img" width="552"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The next chunk uses that species dataframe to make a plot of body mass by flipper length. I can also refer to the params I set to make the level 1 header and subtitle of my plot reflect which species of penguin are being plotted.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chunk2.png" class="img-fluid figure-img" width="539"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>When I knit the document I end up with a pretty nice looking report about Adelie penguins <a href="https://rpubs.com/jenrichmond/adelie">see RPubs here</a>.</p>
+<section id="how-to-render-many-reports" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-render-many-reports">how to render many reports</h4>
+<p>Now that my report is working for one level of species and I have set params within my yaml, I can use purrr to automagically render a separate report for each species in the penguins dataset. I start by opening a new .R script and making a tibble that has three variables…</p>
+<ul>
+<li>species (the unique values of species from the penguin data)</li>
+<li>filename (a combo of penguin-report- and each of the species with .html extension)</li>
+<li>params (map across each levels of species)</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="knit1.png" class="img-fluid figure-img" width="438"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Then I take that tibble and pipe it into a <code>select()</code> function, selecting just the filename (which is renamed as output_file at the same time) and params. Pipe those two variables into <code>pwalk()</code>, which renders the parameterised_penguins.Rmd for each level of the params. When I run the code in my <code>knit_many_reports.R</code> script, I end up with 3 x .html reports, one for each species, in my files tab. Magic!!</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="knit2.png" class="img-fluid figure-img" width="440"></p>
+</figure>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>note: I am still getting my head around how purrr works, but my understanding is that <code>walk()</code> is a lot like <code>map()</code>, in that it iterates over a list of things, but it is useful when you want to keep the output of the code you are iterating (i.e.&nbsp;generating reports). I have used it before <a href="https://rpubs.com/jenrichmond/w5LL">here</a> to test out different ggplot palettes. <code>pwalk()</code> is like <code>walk()</code> except that there are multiple arguments, in this case both the output_file and each of the params.</p>
+</blockquote>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1745064000000" data-listing-file-modified-sort="1745197328882" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1132">
-<a href="./posts/2025-04-18_closeread/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/2025-04-18_closeread/img/grebe.jpg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Pūteketeke Pandemonium
-</h5>
-<div class="card-text listing-description">
-This post is my first attempt at a <code>closeread</code> scrollytelling story. It tells the story of the Pūteketeke controversy that plagued the Forest and Bird NZ <em>Bird of the Century</em> co…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Apr 20, 2025
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="python" data-listing-date-sort="1720008000000" data-listing-file-modified-sort="1743462968030" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="361">
-<a href="./posts/2024-07-04-learning_python/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2024-07-04-learning_python/featured.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-learning python
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('python'); return false;">
-python
-</div>
-</div>
-<div class="card-text listing-description">
-When you are exploring a far off land and only know a tiny bit of the language they speak there, you always carry a little dictionary with commonly used phrases translated…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Jul 4, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="data wrangling" data-listing-date-sort="1684843200000" data-listing-file-modified-sort="1743449668759" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="294">
-<a href="./posts/2023-05-24-rowwise-mean/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2023-05-24-rowwise-mean/featured.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-rowwise %&gt;% mean
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data wrangling'); return false;">
-data wrangling
-</div>
-</div>
-<div class="card-text listing-description">
-When you have data from a survey, the responses for each item are most often listed in different variables. Generally you have to average across the items to get a mean…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-May 24, 2023
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="idhgt,ggplot" data-listing-date-sort="1682337600000" data-listing-file-modified-sort="1743449195759" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="774">
-<a href="./posts/2023-04-25-error-bars-on-plots/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2023-04-25-error-bars-on-plots/featured.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-error bars on plots
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('idhgt'); return false;">
-idhgt
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot'); return false;">
-ggplot
-</div>
-</div>
-<div class="card-text listing-description">
-Repurposing this APA figures post as a IDHTG (I don’t have to google) post.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Apr 25, 2023
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="ggplot" data-listing-date-sort="1670929200000" data-listing-file-modified-sort="1743469377268" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="280">
-<a href="./posts/2022-12-15-colours-that-r-knows/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2022-12-15-colours-that-r-knows/featured.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-colours that R knows
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot'); return false;">
-ggplot
-</div>
-</div>
-<div class="card-text listing-description">
-I have been working through the ggplot R Advent calendar by Kiirsti Owen with some lovely RLadies friends and we got up to Day 15 where we started controlling colours in…<code></code>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Dec 14, 2022
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="5" data-listing-date-sort="1664276400000" data-listing-file-modified-sort="1743469623328" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="333">
-<a href="./posts/2022-09-28-git-hints/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2022-09-28-git-hints/featured.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-git hints
-</h5>
-<div class="card-text listing-description">
-I am getting pretty good at avoiding git merge conflicts by always remembering to pull before I push when using github. But the terminal in RStudio has been giving me this…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Sep 28, 2022
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="6" data-listing-date-sort="1656244800000" data-listing-file-modified-sort="1743474478219" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="538">
-<a href="./posts/2022-06-27-using-lists-in-r/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2022-06-27-using-lists-in-r/pepper.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-using lists in R
-</h5>
-<div class="card-text listing-description">
-One of my goals while on long service leave is to learn some new R things that have been on my radar for a while… the first of these is purrr. The purrr package allows you…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Jun 27, 2022
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="7" data-listing-date-sort="1642330800000" data-listing-file-modified-sort="1743474548436" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1351">
-<a href="./posts/2022-01-17-my-favourite-things-about-r/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2022-01-17-my-favourite-things-about-r/featured.jpeg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-my favourite things about R
-</h5>
-<div class="card-text listing-description">
-I am prepping a talk for R-Ladies Sydney about my favourite R things, including the packages and functions that end up in every script I write.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Jan 17, 2022
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="8" data-listing-date-sort="1630324800000" data-listing-file-modified-sort="1745295718566" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="637">
-<a href="./posts/2021-08-31-parameterised-penguins/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2021-08-31-parameterised-penguins/featured.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-parameterised penguins
-</h5>
-<div class="card-text listing-description">
-I am beginning a project where we want to create a distill site that has lots of profile pages that all have the same format but pull different data from a dataframe. Here I…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Aug 31, 2021
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="9" data-listing-date-sort="1624276800000" data-listing-file-modified-sort="1743474532523" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="143">
-<a href="./posts/2021-06-22-pat-for-github/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2021-06-22-pat-for-github/featured.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-PAT for GitHub
-</h5>
-<div class="card-text listing-description">
-I have been avoiding setting up a Personal Access Token to authenticate my github account for a while because it seemed complicated. Never fear Happy Git with R and <code>usethis()</code>…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Jun 22, 2021
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="10" data-listing-date-sort="1605610800000" data-listing-file-modified-sort="1743476003629" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="598">
-<a href="./posts/2020-11-18-digging-into-the-janitor-package/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2020-11-18-digging-into-the-janitor-package/featured.jpeg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-cleaning penguins with the janitor package
-</h5>
-<div class="card-text listing-description">
-The janitor package by Sam Firke contains probably my FAVOURITE R function: <code>clean_names()</code>.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Nov 18, 2020
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
