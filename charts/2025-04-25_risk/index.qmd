@@ -1,0 +1,115 @@
+---
+title: "measles risk"
+author:
+ - name: Jen Richmond
+url: https://jenrichmond.github.io/
+date: 2025-04-25
+format: html
+editor: source
+image: featured.png
+---
+
+
+
+For the Day 25 prompt risk, I am going to try my hand at maps and reproduce the [CDC plots](https://www.cdc.gov/measles/data-research/index.html#cdc_data_surveillance_section_7-mmr-vaccine-coverage-for-kindergarteners-by-school-year-2009%e2%80%932024) relating to measles vaccination and cases in the US. 
+
+
+
+```{r}
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(here)
+library(usmap)
+library(janitor)
+
+vax <- read_csv(here("charts/2025-04-25_risk/kindy_vax _rates.csv")) %>%
+  mutate(year = str_sub(school_year, 1,4)) %>%
+  select(state = geography, year, estimate_pct, categories) %>%
+  mutate(estimate_pct = parse_number(estimate_pct)) 
+
+cases2425 <- read_csv(here("charts/2025-04-25_risk/cases20242025.csv")) %>%
+  select(state = geography, year, cases_calendar_year)
+
+vax$year <- as.numeric(vax$year)
+
+glimpse(vax)
+
+```
+
+# vaccination rates
+
+It looks like there is data for the school year going back to 2009- maybe that would be cool to animate later but for the moment I am interested in the most recent school year. 
+
+```{r}
+
+vax2324 <- vax %>%
+  filter(year == "2023") 
+
+```
+
+The dataset has vax rates as both percent estimate and categories. First I am going to try colouring by the numeric percent values. I would like the lowest to show up red. 
+
+```{r}
+min(vax2324$estimate_pct)
+max(vax2324$estimate_pct)
+
+
+plot_usmap(data = vax2324, values = "estimate_pct", labels=FALSE) +
+  scale_fill_continuous(low = "red", high = "white", 
+                         name = "percent", 
+                        limits = c(75,100)) +
+  labs(title = "Percent of kindergarten children vaccinated for measles by state", 
+       subtitle = "School year 2023-24")
+
+
+
+```
+
+What would it look like if we used the categories instead? 
+
+```{r}
+
+vax2324$categories <- fct_relevel(vax2324$categories, c("95%+", "90-94.9%", "Less than 90%"))
+
+levels(vax2324$categories)
+
+
+plot_usmap(data = vax2324, values = "categories", labels=FALSE) +
+  scale_fill_manual(values = c("#ffcccc", "#ff7380", "#ff1933"))  +
+   labs(title = "Percent of kindergarten children vaccinated for measles by state", 
+       subtitle = "School year 2023-24") +
+  theme(
+    legend.position = "bottom")
+
+```
+
+
+
+### measles cases
+
+
+```{r}
+plot_usmap(data = cases2425, values = "cases_calendar_year", labels=FALSE) +
+  scale_fill_continuous(low = "white", high = "red", 
+                         name = "cases", 
+                        limits = c(0,600)) +
+  labs(title = "USA Measles cases by state", subtitle = "Data as of April 17, 2025", caption = "Data from CDC \nhttps://www.cdc.gov/measles/data-research/index.html") +
+  facet_wrap(~ year) +
+  theme(
+    legend.position = "bottom",
+    strip.background = element_blank(),
+    strip.text = element_text(color = "black", size = 10)
+  )
+```
+
+```{r}
+#| include: false
+
+ggsave(here::here("charts", "2025-03-31_challenge", "measles.png"), width = 6, height = 4,  bg = "white")
+
+
+ggsave("featured.png",  width = 6, height = 4,  bg = "white")
+```
+

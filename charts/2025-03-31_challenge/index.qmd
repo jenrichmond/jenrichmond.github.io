@@ -609,6 +609,37 @@ labs(title = "<span style='color:#F4BD4B;'>Figure 2.4</span><span> Number of new
 
 :::
 
+## Day 25 risk
+
+[CDC measles data](https://www.cdc.gov/measles/data-research/index.html#cdc_data_surveillance_section_7-mmr-vaccine-coverage-for-kindergarteners-by-school-year-2009%e2%80%932024) 
+
+::: panel-tabset
+
+### my plot
+
+![](measles.png)
+
+### r code
+
+```{r, echo=TRUE, eval=FALSE}
+
+plot_usmap(data = cases2425, values = "cases_calendar_year", labels=FALSE) +
+  scale_fill_continuous(low = "white", high = "red", 
+                         name = "cases", 
+                        limits = c(0,600)) +
+  labs(title = "USA Measles cases by state", subtitle = "Data as of April 17, 2025", caption = "Data from CDC \nhttps://www.cdc.gov/measles/data-research/index.html") +
+  facet_wrap(~ year) +
+  theme(
+    legend.position = "bottom",
+    strip.background = element_blank(),
+    strip.text = element_text(color = "black", size = 10)
+  )
+
+```
+
+:::
+
+
 ## Day X theme
 
 ::: panel-tabset
