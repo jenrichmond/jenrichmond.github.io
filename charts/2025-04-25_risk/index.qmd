@@ -14,7 +14,6 @@ image: featured.png
 For the Day 25 prompt risk, I am going to try my hand at maps and reproduce the [CDC plots](https://www.cdc.gov/measles/data-research/index.html#cdc_data_surveillance_section_7-mmr-vaccine-coverage-for-kindergarteners-by-school-year-2009%e2%80%932024) relating to measles vaccination and cases in the US. 
 
 
-
 ```{r}
 #| message: false
 #| warning: false
