@@ -1,0 +1,114 @@
+---
+title: useful bash commands
+date: '2022-01-16'
+author:
+  - name: Jen Richmond
+    url: https://jenrichmond.github.io/
+format: html
+editor: source
+image: featured.png
+---
+
+I remember working in a cafe in Melbourne with Charles Gray a couple of years ago and watching in awe as she navigated her way around our project files using the terminal and command line. I thought, wow... I'd like to learn how to do that. Some time later, I took a Software Carpentry Unix course at ResBaz and none of it sunk in. Much like learning other programming concepts, I think you need to have a reason. 
+
+I created a reason for myself this week when I discovered that in briefly putting my blog project in my icloud, I had inadvertently created all kinds of hidden files (i.e. files that start with a dot) and files with weird .icloud extensions that wouldn't show up or open in RStudio. 
+
+> TAKE HOME- your blog is on github, it isn't going to get lost. There is no need to have it live in another cloud based place (icloud, onedrive, dropbox). 
+
+In trying to rename these files in bulk, I learned some useful bash commands. You can use these in the terminal within RStudio, or in a Terminal window via Utilities. 
+
+Working in the terminal depends heavily on knowing *where* you are on your computer. Once you know which directory you are in, you can use cd commands to navigate. 
+
+```
+
+pwd # print working directory
+
+cd folder/subfolder # change directory from where you are
+
+cd ~ # navigate back to home directory
+
+cd .. # navigate up a folder level
+ 
+cd - # navigate to previous directory
+
+```
+
+To print all of the folders/files in a directory, use ls commands. 
+
+```
+
+ls # print list of subdirectories/files
+ls -a # print everything, even hidden files
+
+```
+
+To remove files, use rm commands
+
+``` 
+
+rm nameoffile.txt # remove a file
+rm -v # remove a directory
+
+```
+
+You can find files that meet certain criteria too. The dot stands in for this directory. Here I am looking for all files with the ext .icloud
+
+[stackoverflow thread](https://stackoverflow.com/questions/5905054/how-can-i-recursively-find-all-files-in-current-and-subfolders-based-on-wildcard)
+
+``` 
+
+find . -name "*.icloud"
+
+```
+
+The rename package seems to be something that you need to use brew to install, but once you have it, you can easily rename things. Here we are renaming all .jpeg files with .jpg. 
+
+[howtogeek post](https://www.howtogeek.com/423214/how-to-use-the-rename-command-on-linux/)
+
+
+```
+
+rename .jpeg .jpg *.jpeg
+
+```
+
+
+You can also rename other parts of filenames with this syntax. I had a lot of hidden files that started with a dot. This renames the .index.Rmd files as index.Rmd 
+
+
+``` 
+
+rename 's/.index/index' *.Rmd
+
+```
+
+I also had lots of hidden files with .Rmd.icloud extensions. Here we are looking for files that start with .index and replacing the .icloud ext with noting (i.e. blank second //)
+
+
+
+``` 
+
+rename 's/.icloud//' .index*
+
+```
+
+Fixing rid of hidden files starting with, - [this resource](https://askubuntu.com/questions/1089485/how-to-rename-unhide-all-files-and-subdirectories-within-a-directory) was useful
+
+
+
+
+THIS prints what it will do…
+
+```
+-depth -name ".*" -exec rename -n 's|(.*/)\.(.*)|$1$2|' {} +
+```
+
+Remove the -n to get it to run 
+
+```
+-depth -name ".*" -exec rename 's|(.*/)\.(.*)|$1$2|' {} +
+```
+
+Ultimately these bash did what I wanted (rename the hidden files and remove the weird extensions) but it didn't solve my problem. I managed to rename the files and then they still wouldn't open, so had to copy them back in from another back up... but it was a useful bash exploration anyway! 
+
+
