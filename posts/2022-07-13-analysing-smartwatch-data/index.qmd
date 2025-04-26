@@ -6,7 +6,6 @@ author:
     url: https://jenrichmond.github.io/
 format: html
 editor: source
-draft: TRUE
 image: featured.png
 ---
 
