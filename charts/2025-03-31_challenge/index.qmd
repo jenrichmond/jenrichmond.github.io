@@ -24,7 +24,7 @@ The `owidapi` package is an easy way to get access to the data sources that the 
 ```{r}
 #| message: false
 #| warning: false
-#| 
+#| eval: false
 
 library(owidapi)
 
@@ -640,7 +640,7 @@ plot_usmap(data = cases2425, values = "cases_calendar_year", labels=FALSE) +
 :::
 
 
-## Day X theme
+## Day 27 noise
 
 ::: panel-tabset
 
@@ -657,4 +657,47 @@ plot_usmap(data = cases2425, values = "cases_calendar_year", labels=FALSE) +
 ```
 
 :::
+
+
+## Day 28 inclusion
+
+::: panel-tabset
+
+### my plot
+
+![](watch.png)
+
+### r code
+
+```{r, echo=TRUE, eval=FALSE}
+
+# insert ggplot code
+
+```
+
+:::
+
+
+
+## Day 30 national geographic
+
+::: panel-tabset
+
+### my plot
+
+![](watch.png)
+
+### r code
+
+```{r, echo=TRUE, eval=FALSE}
+
+# insert ggplot code
+
+```
+
+:::
+
+
+
+
 

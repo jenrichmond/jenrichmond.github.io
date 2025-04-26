@@ -1,0 +1,11 @@
+---
+title: "day 27 noise"
+author:
+  - name: Jen Richmond
+    url: https://jenrichmond.github.io/
+date: 2025-04-27
+format: html
+editor: source
+image: featured.png
+
+---

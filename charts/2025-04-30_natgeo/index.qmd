@@ -1,0 +1,11 @@
+---
+title: "day 30 nat geo"
+author:
+  - name: Jen Richmond
+    url: https://jenrichmond.github.io/
+date: 2025-04-30
+format: html
+editor: source
+image: featured.png
+
+---

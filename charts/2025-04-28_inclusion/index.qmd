@@ -1,0 +1,10 @@
+---
+title: "day 28 inclusion"
+author:
+  - name: Jen Richmond
+    url: https://jenrichmond.github.io/
+date: 2025-04-28
+format: html
+editor: source
+image: featured.png
+---
