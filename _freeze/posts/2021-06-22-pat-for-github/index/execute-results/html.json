@@ -1,0 +1,15 @@
+{
+  "hash": "db04fe5e7d1fefd595c16a4429ab32d3",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: PAT for GitHub\ndate: '2021-06-22'\nauthor:\n  - name: Jen Richmond\n    url: https://jenrichmond.github.io/\nformat: html\neditor: source\nimage: featured.jpg\n---\n\n\n\n\nI have been avoiding setting up a Personal Access Token to authenticate my github account for a while because it seemed complicated. Never fear [Happy Git with R](https://happygitwithr.com/credential-caching.html) and `usethis()` to the rescue. \n\n### create a token\n\nIn the RStudio console, install the `usethis` package if you don't already have it and use it to create a github token. \n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n#install.packages(\"usethis\")\n\nlibrary(usethis)\n\nusethis::create_github_token()\n```\n:::\n\n\n\n\nThis will take you to github and make a token for you. Accept the defaults and copy the token. \n\nGo back to the RStudio console. Install the `gitcreds` package, if you don't already have it and then use the `gitcreds_set` function to tell R you want to set github credentials. \n\n### store it in your credentials\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# install.packages(\"gitcreds\")\n\nlibrary(gitcreds)\n\ngitcreds_set(url = \"https://github.com\")\n```\n:::\n\n\n\n\nThen it will ask you to Enter password or token...paste into your console. \n\n\n### check that it works\n\nCheck that it works, using the `gitcreds_get()` function. \n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ngitcreds_get()\n```\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n![](gitcreds.png){width=270}\n:::\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

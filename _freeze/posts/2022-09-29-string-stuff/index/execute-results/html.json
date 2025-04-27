@@ -1,0 +1,15 @@
+{
+  "hash": "f80f0e3d5fb37839c399ee9091b6f22b",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: how to subset strings\ndate: '2022-09-29'\nauthor:\n  - name: Jen Richmond\n    url: https://jenrichmond.github.io/\nformat: html\neditor: source\ndraft: TRUE\nimage: featured.jpeg\ncategories:\n- idhtg\n- stringr\n---\n\n\n\nSometimes you have a column in your data frame that is text, but there is some of it that you don't need. Lets say your data looks like this...\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndf <- data.frame(animals = c(\"this is a bear\", \"this is a lion\", \"this is a tiger\"))\n\ndf\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n          animals\n1  this is a bear\n2  this is a lion\n3 this is a tiger\n```\n\n\n:::\n:::\n\n\n\nAnd perhaps only want the animal names... you can use `sub_str()` from the `stringr` package to strip out the extra characters. The `sub_str()` function allows you to specify the position of the character you want to start and end with. \n\nHere I want to start at the 11th character and keep the rest. \n\n> Note: spaces are included in your character count. \n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndf_new <- df %>%\n  mutate(new_col = str_sub(animals, start = 11))\n\ndf_new\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n          animals new_col\n1  this is a bear    bear\n2  this is a lion    lion\n3 this is a tiger   tiger\n```\n\n\n:::\n:::\n\n\nIf you wanted to get just the \"is a\" piece of the string, you can specify both a start and end character. \n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndf_new <- df_new %>%\n  mutate(new_col2 = str_sub(animals, start = 6, end = 9))\n\ndf_new\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n          animals new_col new_col2\n1  this is a bear    bear     is a\n2  this is a lion    lion     is a\n3 this is a tiger   tiger     is a\n```\n\n\n:::\n:::\n\n\n\nYou can also use - to count backwards from the end. Here I am selecting the last 9 characters. \n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndf_new <- df_new %>%\n  mutate(new_col3 = str_sub(animals, start = -9))\n\ndf_new\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n          animals new_col new_col2  new_col3\n1  this is a bear    bear     is a is a bear\n2  this is a lion    lion     is a is a lion\n3 this is a tiger   tiger     is a s a tiger\n```\n\n\n:::\n:::\n\n\n\nYay- I no longer have to google (IDHTG) how to subset strings with stringr!",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

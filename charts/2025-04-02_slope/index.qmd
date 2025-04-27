@@ -25,14 +25,13 @@ execute:
 #| warning: false
 #| 
 library(tidyverse)
-library(owidapi)
+library(janitor)
 library(scales)
 library(ggeasy)
 library(ggannotate)
 
 # remotes::install_github("mattcowgill/ggannotate")
 
-catalog <- owid_get_catalog()
 ```
 
 ### read in the data
@@ -42,11 +41,12 @@ Here I am reading the data using the owidapi package and selecting and renaming 
 I know that colours are often easier to deal with if we turn character variables into factors so that we can set the order. Here I use `fct_relevel()` to order the categories so that I can easily line up which colour is associated with each. 
 
 ```{r}
-time <- owid_get("time-spent-with-relationships-by-age-us") %>%
-  select(group = entity_name, age = year, 
-         alone = t__who_category_alone, friend = t__who_category_friend, 
-         children = t__who_category_children, family = t__who_category_family, 
-         partner = t__who_category_partner, coworker = t__who_category_co_worker) %>%
+time <- read_csv("https://ourworldindata.org/grapher/time-spent-with-relationships-by-age-us.csv?v=1&csvType=full&useColumnShortNames=true") %>%
+          clean_names() %>%
+select(group = entity, age = year, 
+         alone = t_who_category_alone, friend = t_who_category_friend, 
+         children = t_who_category_children, family = t_who_category_family, 
+         partner = t_who_category_partner, coworker = t_who_category_co_worker) %>%
   pivot_longer(names_to = "category", values_to = "hours", alone:coworker)
 
 

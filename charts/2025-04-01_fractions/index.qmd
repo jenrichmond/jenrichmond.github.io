@@ -25,13 +25,13 @@ As it turns out, people have a rather dim view of the likelihood that others wou
 #| 
 library(tidyverse)
 library(here)
-library(owidapi)
+library(janitor)
 library(scales)
 library(ggeasy)
 library(ggrepel)
 library(plotly)
 
-catalog <- owid_get_catalog()
+
 ```
 
 ### read in the data
@@ -39,11 +39,14 @@ catalog <- owid_get_catalog()
 Here I am using the owidapi package to read in the data and reordering/renaming some variables before sorting the data by country and year.
 
 ```{r}
-willingness <- owid_get("willingness-climate-action") %>%
-  select(entity_name, entity_id, owid_region, year, 
+
+
+willingness <- read_csv("https://ourworldindata.org/grapher/willingness-climate-action.csv?v=1&csvType=full&useColumnShortNames=true") %>%
+  clean_names() %>%
+  select(entity, code, owid_region, year, 
          prediction_others_willingness = willingness_contribute_1pct_climate_others, 
          self_willingness = willingness_contribute_pct_climate) %>%
-   arrange(entity_id, year)
+   arrange(entity, year)
 
 
 glimpse(willingness)
@@ -69,7 +72,7 @@ This chunk groups the data by country and then mutates a new column to contain n
 ```{r}
 
 willingness2024 <- willingness %>%
-  group_by(entity_name) %>%
+  group_by(entity) %>%
   mutate(region = first(owid_region[year == 2023])) %>%
   select(starts_with("entity"), region, year, ends_with("willingness")) %>%
   filter(year == 2024) 
@@ -132,7 +135,7 @@ willingness2024 %>%
 
 ### colours and text
 
-Adding colour by region makes me realise that there is a row that entity_name == World, which doesn't have a region. I need to filtered the World out to avoid an NA category.
+Adding colour by region makes me realise that there is a row that entity == World, which doesn't have a region. I need to filtered the World out to avoid an NA category.
 
 I want to use the same colours as the OWID plot. The [ColorZilla web extension](https://chromewebstore.google.com/detail/colorzilla/bhlhnicpbhignbdhedgjhgdocnmhomnp) allows you to use a dropper to get the specific \# codes for each colour on any plot on the internet- handy!
 
@@ -144,7 +147,7 @@ I have used `scale_colour_manual()` to set the colours and added a title and sub
 
 
 willingness2024 %>%
-  filter(entity_name != "World") %>%
+  filter(entity != "World") %>%
   ggplot(aes(y =  prediction_others_willingness, x = self_willingness, colour = region)) +
   geom_point() +
   scale_y_continuous(labels = percent_format(accuracy = 1, scale = 1), 
@@ -164,7 +167,7 @@ willingness2024 %>%
     linetype = "dotted") +
   scale_colour_manual(values = c("#a2559b", "#00847d", "#4b6a9c", "#e56e59", "#38aaba", "#883039")) +
   easy_remove_legend_title() +
-  geom_text_repel(aes(label = entity_name), size = 3, max.overlaps = 20)
+  geom_text_repel(aes(label = entity), size = 3, max.overlaps = 20)
 
 ```
 
@@ -186,9 +189,9 @@ The `plotly` packages allows for much of the same kind of interactivity that the
 ```{r}
 
 plot <- willingness2024 %>%
-  filter(entity_name != "World") %>%
+  filter(entity != "World") %>%
   ggplot(aes(y =  prediction_others_willingness, x = self_willingness, 
-             colour = region, text = paste("country:", entity_name))) +
+             colour = region, text = paste("country:", entity))) +
   geom_point() +
   scale_y_continuous(labels = percent_format(accuracy = 1, scale = 1), 
                       limits = c(0,100), expand = c(0,0), breaks = seq(0,100,20)) +

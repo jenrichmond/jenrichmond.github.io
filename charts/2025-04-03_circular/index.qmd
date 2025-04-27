@@ -20,13 +20,12 @@ execute:
 #| warning: false
 
 library(tidyverse)
-library(owidapi)
+library(janitor)
 library(scales)
 library(ggeasy)
 library(ggannotate)
 library(plotly)
 
-catalog <- owid_get_catalog()
 ```
 
 [This plot](https://ourworldindata.org/grapher/countries-by-share-of-women-in-parliament) illustrates changing representation of women in government leadership. It is great that in 2024 fewer than 2% of governments have no women in leadership, but it is not amazing that fewer than 2% have 50% or more. I am wondering if I can look at this pattern across different areas of the world by making circular graphs in ggplot.
@@ -40,19 +39,23 @@ catalog <- owid_get_catalog()
 I am mostly interested in the current state of affairs so I read in the data from the owidapi, filter the data to only include 2024 and rename variables to make them more friendly.
 
 ```{r}
-share <- owid_get("countries-by-share-of-women-in-parliament") 
+#| message: false
+#| warning: false
+share <- read_csv("https://ourworldindata.org/grapher/countries-by-share-of-women-in-parliament.csv?v=1&csvType=full&useColumnShortNames=true") %>%
+  clean_names()
+
 
 
 share2024 <- share %>% 
   filter(year == 2024) %>%
-  select(-entity_id) %>%
-  rename(number_0pct = num_countries_wom_parl__category_0pct_women, 
-         number_0_10pct = num_countries_wom_parl__category_0_10pct_women,
-         number_10_20pct = num_countries_wom_parl__category_10_20pct_women, 
-           number_20_30pct = num_countries_wom_parl__category_20_30pct_women, 
-           number_30_40pct = num_countries_wom_parl__category_30_40pct_women, 
-           number_40_50pct = num_countries_wom_parl__category_40_50pct_women,
-           number_50pluspct = num_countries_wom_parl__category_50pctplus_women) 
+  select(-code) %>%
+  rename(number_0pct = num_countries_wom_parl_category_0pct_women, 
+         number_0_10pct = num_countries_wom_parl_category_0_10pct_women,
+         number_10_20pct = num_countries_wom_parl_category_10_20pct_women, 
+           number_20_30pct = num_countries_wom_parl_category_20_30pct_women, 
+           number_30_40pct = num_countries_wom_parl_category_30_40pct_women, 
+           number_40_50pct = num_countries_wom_parl_category_40_50pct_women,
+           number_50pluspct = num_countries_wom_parl_category_50pctplus_women) 
 
 glimpse(share2024)
 
@@ -65,7 +68,7 @@ I want to plot data for the World and each region separately so create separate 
 # create world dataframe
 
 share2024_world <- share2024 %>%
-  filter(entity_name == "World") %>%
+  filter(entity == "World") %>%
   pivot_longer(names_to = "category", values_to = "number", number_0pct:number_50pluspct) %>%
     mutate(total = sum(number), percent = number/total) %>%
            mutate(percent_women = case_when(category == "number_0pct" ~ "no women", 
@@ -83,9 +86,9 @@ share2024_world <- share2024 %>%
 # create regions dataframe
 
 share2024_regions <- share2024 %>%
-  filter(entity_name != "World") %>%
+  filter(entity != "World") %>%
   pivot_longer(names_to = "category", values_to = "number", number_0pct:number_50pluspct) %>%
-  group_by(entity_name) %>%
+  group_by(entity) %>%
     mutate(total = sum(number), percent = number/total) %>%
            mutate(percent_women = case_when(category == "number_0pct" ~ "no women", 
                            category == "number_0_10pct" ~ "less than 10%",
@@ -135,7 +138,7 @@ share2024_regions %>%
   ggplot(aes(x = "", y = percent, fill = percent_women)) +
   geom_col(colour = "white") +
  coord_polar("y", start = 0) +
-  facet_wrap(~entity_name) +
+  facet_wrap(~entity) +
     scale_fill_manual(values = c("#a2559b", "#00847d", "#4b6a9c", "#e56e59", "#38aaba", "#6b3d8d",  "#986d39" )) +
     theme_void() +
    easy_add_legend_title("Percent seats") +

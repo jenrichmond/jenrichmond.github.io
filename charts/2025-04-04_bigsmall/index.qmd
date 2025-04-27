@@ -27,14 +27,12 @@ I am particularly interested in whether there has been any shift in this ratio i
 #| warning: false
 #| 
 library(tidyverse)
-library(owidapi)
 library(scales)
 library(ggeasy)
 library(ggrepel)
 library(plotly)
 library(janitor)
 
-catalog <- owid_get_catalog()
 ```
 
 
@@ -42,9 +40,9 @@ catalog <- owid_get_catalog()
 ### read in the data
 
 ```{r}
-dom <- owid_get("time-spent-in-domestic-work-female-vs-male") 
 
-
+dom <- read_csv("https://ourworldindata.org/grapher/time-spend-in-domestic-work-female-vs-male.csv?v=1&csvType=full&useColumnShortNames=true") %>%
+  clean_names()
 ```
 
 ### clean it up
@@ -54,9 +52,9 @@ Here I am renaming some unweildy variable names, filtering the data to include o
 ```{r} 
 
 dom_clean <- dom %>%
-  rename(country = "entity_name", 
-         female = "x_5_4_1__sl_dom_tspd__15_years_old_and_over__all_areas__female", 
-         male = "x_5_4_1__sl_dom_tspd__15_years_old_and_over__all_areas__male") %>%
+  rename(country = "entity", 
+         female = "x5_4_1_sl_dom_tspd_15_years_old_and_over_all_areas_female", 
+         male = "x5_4_1_sl_dom_tspd_15_years_old_and_over_all_areas_male") %>%
   filter(year > 2000) %>%
   filter(!is.na(female)) 
 
@@ -233,7 +231,7 @@ I am dropping extra columns and computing a new variable that is the difference 
 
 ```{r}
 difference <-  dom_clean %>%
-  select(-entity_id, -population_historical, -owid_region) %>%
+  select(-code, -population_historical, -owid_region) %>%
   rowwise() %>%
   mutate(difference = female - male) %>%
   arrange(desc(difference)) 
