@@ -8,6 +8,8 @@ format: html
 editor: source
 draft: FALSE
 image: featured.png
+execute:
+  freeze: true
 ---
 
 

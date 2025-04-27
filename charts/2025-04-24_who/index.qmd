@@ -7,6 +7,8 @@ date: 2025-04-24
 format: html
 editor: source
 image: featured.png
+execute:
+  freeze: true
 ---
 
 The prompt for Day 24 is the World Health Organisation. I spent some time exploring the WHO website for a chart that uses a geom that I hadn't tried before and came up with this one from the [World Health Statistics 2024 report](https://www.who.int/publications/i/item/9789240094703). 

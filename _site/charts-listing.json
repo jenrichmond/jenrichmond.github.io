@@ -1,0 +1,25 @@
+{
+  "listing": "/charts.html",
+  "items": [
+    "/charts/2025-03-31_challenge/index.html",
+    "/charts/2025-04-01_fractions/index.html",
+    "/charts/2025-04-02_slope/index.html",
+    "/charts/2025-04-03_circular/index.html",
+    "/charts/2025-04-04_bigsmall/index.html",
+    "/charts/2025-04-05_ranking/index.html",
+    "/charts/2025-04-06_florence/index.html",
+    "/charts/2025-04-07_outliers/index.html",
+    "/charts/2025-04-09_diverging/index.html",
+    "/charts/2025-04-11_stripes/index.html",
+    "/charts/2025-04-13_clusters/index.html",
+    "/charts/2025-04-16_negative/index.html",
+    "/charts/2025-04-17_birds/index.html",
+    "/charts/2025-04-19_smooth/index.html",
+    "/charts/2025-04-22_stars/index.html",
+    "/charts/2025-04-24_who/index.html",
+    "/charts/2025-04-25_risk/index.html",
+    "/charts/2025-04-27_noise/index.html",
+    "/charts/2025-04-28_inclusion/index.html",
+    "/charts/2025-04-30_natgeo/index.html"
+  ]
+}

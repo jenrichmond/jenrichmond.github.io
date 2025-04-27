@@ -7,6 +7,8 @@ date: 2025-04-13
 format: html
 editor: source
 image: featured.png
+execute:
+  freeze: true
 ---
 
 Today I am again departing from Our World in Data to play around with something I know nothing about: k-means clustering. This animation by Allison Horst from the  [`tidymodels` documentation](https://www.tidymodels.org/learn/statistics/k-means/) is super cute and explains what k-means clustering does. 

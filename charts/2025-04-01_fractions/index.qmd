@@ -6,6 +6,8 @@ format: html
 editor: source
 draft: FALSE
 image: featured.png
+execute:
+  freeze: true
 ---
 
 [This plot](https://ourworldindata.org/grapher/willingness-climate-action) from Our World in Data illustrates the proportion of people who are willing to donate 1% of their income to climate change efforts as a function of people's estimate of how many people in their country would be willing to donate. 

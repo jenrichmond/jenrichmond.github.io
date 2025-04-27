@@ -7,6 +7,8 @@ date: 2025-04-04
 format: html
 editor: source
 image: featured.png
+execute:
+  freeze: true
 ---
 
 [This plot](https://ourworldindata.org/grapher/time-spend-in-domestic-work-female-vs-male) illustrates the disproportionate amount of time that women across the world spend doing unpaid care and domestic work relative to men. Only Belgium comes anywhere near close to equal time spent by men and women. 

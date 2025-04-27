@@ -7,4 +7,6 @@ date: 2025-04-28
 format: html
 editor: source
 image: featured.png
+execute:
+  freeze: true
 ---

@@ -8,6 +8,8 @@ author:
 date: 2025-04-02
 draft: FALSE
 image: featured.png
+execute:
+  freeze: true
 ---
 
 [This plot](https://ourworldindata.org/grapher/time-spent-with-relationships-by-age-us) from Our World in Data illustrates the amount of time that we spend with others and how that changes with age. The slope of line plotting the amount of time that people spend alone is pretty terrifying. Lets see if we can reproduce that plot using ggplot.

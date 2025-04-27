@@ -7,6 +7,8 @@ date: 2025-04-09
 format: html
 editor: source
 image: featured.png
+execute:
+  freeze: true
 ---
 
 [Our World in Data](https://ourworldindata.org/happiness-and-life-satisfaction) has a series of plots that report data from the Integrated Values survey, asking people across the world how important they consider a range of life areas (family, friends,work, leisure time, politics, religion. For the Day 6 prompt, I am wondering whether our views on the relative importance of family and work have shifted over time. 

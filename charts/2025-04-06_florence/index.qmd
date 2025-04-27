@@ -7,6 +7,8 @@ date: 2025-04-06
 format: html
 editor: source
 image: featured.png
+execute:
+  freeze: true
 ---
 
 I did not know that Florence Nightingale was also a [data visualisation revolutionary](https://www.scientificamerican.com/article/how-florence-nightingale-changed-data-visualization-forever/), in addition to being a nurse and scientist. She realised that visualisations are important for telling data stories and her [rose diagrams](https://github.com/edwardgunning/FlorenceNightingale.) convinced Queen Victoria of the impact of sanitation on health for soldiers. 

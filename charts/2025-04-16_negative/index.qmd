@@ -7,6 +7,8 @@ date: 2025-04-16
 format: html
 editor: source
 image: featured.png
+execute:
+  freeze: true
 ---
 
 Exploring OurWorldinData this morning looking for plots that might fit the negative theme for today and [this article](https://ourworldind%20ata.org/collective-pessimism-and-our-inability-to-guess-the-happiness-of-others) caught my eye.
