@@ -9,3 +9,264 @@ editor: source
 image: featured.png
 
 ---
+
+
+The Day 27 prompt is noise and I am interested in finding some data illustrating how noise pollution might impact our health. It was a bit hard to find interesting plots that had open data for this theme, but this Super Bowl noise data from [Apple Hearing Study](https://sph.umich.edu/applehearingstudy/study-updates/super-bowl-noise.html) was available on [Github](https://github.com/Yingt2023/Super-Bowl). 
+
+I think the plots in this [writeup](https://sph.umich.edu/applehearingstudy/study-updates/super-bowl-noise.html) are interesting, both because it seems that game days (red line) are noisier than regular Sundays (dotted black) and that the magnitude of that difference is bigger in game states. Also if you tab across these panels, it seems that games are getting noisier over this period. 
+
+That said, I really dislike the way the authors have messed with the y axis scale here. It is possible that there has been some smoothing going on too. Lets see what this data looks like without that manipulation. 
+
+# Superbowl plots
+
+::: panel-tabset
+
+### 2021
+
+![](https://sph.umich.edu/applehearingstudy/study-updates/images/SuperBowl_2021_v3.jpg)
+
+
+### 2022
+
+![](https://sph.umich.edu/applehearingstudy/study-updates/images/SuperBowl_2022_v3.jpg)
+
+
+### 2023
+
+![](https://sph.umich.edu/applehearingstudy/study-updates/images/SuperBowl_2023_v3.jpg)
+
+### 2024
+
+![](https://sph.umich.edu/applehearingstudy/study-updates/images/SuperBowl_2024_v3.jpg)
+
+:::
+
+
+
+## read in data
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+
+library(tidyverse)
+library(janitor)
+library(ggeasy)
+library(ggannotate)
+
+sb21 <- read_csv("https://raw.githubusercontent.com/Yingt2023/Super-Bowl/refs/heads/main/SuperBowl_2021.csv") %>%
+  clean_names() %>%
+  mutate(year = "2021")
+
+sb22 <- read_csv("https://raw.githubusercontent.com/Yingt2023/Super-Bowl/refs/heads/main/SuperBowl_2022.csv") %>%
+   clean_names() %>%
+  mutate(year = "2022")
+
+sb23 <- read_csv("https://raw.githubusercontent.com/Yingt2023/Super-Bowl/refs/heads/main/SuperBowl_2023.csv") %>%
+   clean_names() %>%
+  mutate(year = "2023")
+
+sb24 <- read_csv("https://raw.githubusercontent.com/Yingt2023/Super-Bowl/refs/heads/main/SuperBowl_2024.csv") %>%
+   clean_names() %>%
+  mutate(year = "2024")
+
+sb <- rbind(sb21, sb22, sb23, sb24) %>%
+  select(year, super_bowl_sunday, game_zone, hours_to_game_begin, avg_leq)
+
+glimpse(sb)
+```
+### make plot 
+
+```{r}
+#| message: false
+#| warning: false
+
+
+sb %>%
+  ggplot(aes(x = hours_to_game_begin, y = avg_leq, colour = super_bowl_sunday)) +
+  geom_line() +
+  facet_grid(year~game_zone)
+
+```
+
+Basic plot check! Things I would like to change...
+
+- theme and gridlines
+- colours and linetype
+- scale (is it possible to reproduce the weird y axis scale?)
+- grey rectangle highlight
+- annotations and titles
+
+
+### theme/colours
+
+Here I am getting rid of the grey background with `theme_minimal` and using `ggeasy::easy_remove_gridlines` to remove the vertical grid. Took me a while to realise that I had to specify both colour and linetype in my main aesthetic, in order to make one line block and dashed and the other solid red. 
+
+```{r}
+#| code-fold: true
+sb %>%
+  ggplot(aes(x = hours_to_game_begin, y = avg_leq, 
+             colour = super_bowl_sunday, linetype = super_bowl_sunday)) +
+  geom_line() +
+  facet_grid(year~game_zone) +
+  theme_minimal() +
+   easy_remove_gridlines(axis = c("x")) +
+    scale_colour_manual(values = c("black", "red")) +
+   scale_linetype_manual(values = c("dashed", "solid")) +
+  easy_remove_legend()
+```
+
+### grey box
+
+Adding a grey box using `annotate()` to mark the game time period and fixing the x axis scale. 
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+sb %>%
+  ggplot(aes(x = hours_to_game_begin, y = avg_leq, 
+             colour = super_bowl_sunday, linetype = super_bowl_sunday)) +
+  geom_line() +
+  facet_grid(year~game_zone) +
+  theme_minimal() +
+   easy_remove_gridlines(axis = c("x")) +
+    scale_colour_manual(values = c("black", "red")) +
+   scale_linetype_manual(values = c("dashed", "solid")) +
+  easy_remove_legend() +
+  annotate("rect", xmin = 0, xmax = 3.5, ymin = -Inf, ymax = Inf, alpha = 0.1, fill = "darkgrey") +
+    scale_x_continuous(limits = c(-6, 9), breaks= seq(-6, 9, 3)) 
+```
+
+### title/annotations
+
+Fixing the axis labels, adding a title and annotations
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| 
+sb %>%
+  ggplot(aes(x = hours_to_game_begin, y = avg_leq, 
+             colour = super_bowl_sunday, linetype = super_bowl_sunday)) +
+  geom_line() +
+  facet_grid(year~game_zone) +
+  theme_minimal() +
+   easy_remove_gridlines(axis = c("x")) +
+    scale_colour_manual(values = c("black", "red")) +
+   scale_linetype_manual(values = c("dashed", "solid")) +
+  easy_remove_legend() +
+  annotate("rect", xmin = 0, xmax = 3.5, ymin = -Inf, ymax = Inf, alpha = 0.1, fill = "darkgrey") +
+    scale_x_continuous(limits = c(-6, 9), breaks= seq(-6, 9, 3)) +
+   scale_y_continuous(breaks= seq(50, 70, 10)) +
+  labs(title = "Super Bowl Sunday noise exposure in decibels", x = "Hours from start of Super Bowl", y = "Average noise exposure (in decibels)", caption = "Data from Apple Hearing Study") +
+  geom_text(data = data.frame(x = -1.3, y = 53, label = "Start game \n6:30 PM EST", game_zone = "Game States", year = "2024"),
+mapping = aes(x = x, y = y, label = label),
+size = 2, inherit.aes = FALSE) +
+  geom_text(data = data.frame(x = 2.3, y = 53, label = "End game \n10:00 PM EST", game_zone = "Game States", year = "2024"),
+mapping = aes(x = x, y = y, label = label),
+size = 2, inherit.aes = FALSE) +
+  geom_text(data = data.frame(x = -1.3, y = 53, label = "Start game \n6:30 PM EST", game_zone = "Non-game States", year = "2024"),
+mapping = aes(x = x, y = y, label = label),
+size = 2, inherit.aes = FALSE) +
+  geom_text(data = data.frame(x = 2.3, y = 53, label = "End game \n10:00 PM EST", game_zone = "Non-game States", year = "2024"),
+mapping = aes(x = x, y = y, label = label),
+size = 2, inherit.aes = FALSE) +
+  theme(panel.spacing = unit(1, "lines"))
+ 
+ 
+```
+
+```{r}
+#| include: false
+
+ggsave(here::here("charts", "2025-03-31_challenge", "superbowl.png"), width = 6, height = 4,  bg = "white")
+
+
+ggsave("featured.png",  width = 6, height = 4,  bg = "white")
+```
+
+### bonus
+
+#### split by year and use map() to create separate plots
+
+I want to create a panel set like the one at the top of the post with my plots across years, so have used this code to map the ggplot code across each year, exporting each plot to png. 
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| 
+# Split the data by year and create separate plots
+year_plots <- sb %>%
+  group_split(year) %>%
+  map(~{
+    year_val <- unique(.x$year)
+    ggplot(.x, aes(x = hours_to_game_begin, y = avg_leq, 
+                   colour = super_bowl_sunday, linetype = super_bowl_sunday)) +
+      geom_line() +
+      facet_grid(. ~ game_zone) +
+      ggtitle(paste("Super Bowl Noise -", year_val)) +
+      theme_minimal() +
+   easy_remove_gridlines(axis = c("x")) +
+    scale_colour_manual(values = c("black", "red")) +
+   scale_linetype_manual(values = c("dashed", "solid")) +
+  easy_remove_legend() +
+  annotate("rect", xmin = 0, xmax = 3.5, ymin = -Inf, ymax = Inf, alpha = 0.1, fill = "darkgrey") +
+    scale_x_continuous(limits = c(-6, 9), breaks= seq(-6, 9, 3)) +
+   scale_y_continuous(breaks= seq(50, 70, 5)) +
+  labs( x = "Hours from start of Super Bowl", y = "Average noise exposure (in decibels)", caption = "Data from Apple Hearing Study") +
+        ggtitle(paste("Super Bowl Noise -", year_val)) +
+  geom_text(data = data.frame(x = -1.3, y = 53, label = "Start game \n6:30 PM EST", game_zone = "Game States", year = "2024"),
+mapping = aes(x = x, y = y, label = label),
+size = 2, inherit.aes = FALSE) +
+  geom_text(data = data.frame(x = 2.3, y = 53, label = "End game \n10:00 PM EST", game_zone = "Game States", year = "2024"),
+mapping = aes(x = x, y = y, label = label),
+size = 2, inherit.aes = FALSE) +
+  geom_text(data = data.frame(x = -1.3, y = 53, label = "Start game \n6:30 PM EST", game_zone = "Non-game States", year = "2024"),
+mapping = aes(x = x, y = y, label = label),
+size = 2, inherit.aes = FALSE) +
+  geom_text(data = data.frame(x = 2.3, y = 53, label = "End game \n10:00 PM EST", game_zone = "Non-game States", year = "2024"),
+mapping = aes(x = x, y = y, label = label),
+size = 2, inherit.aes = FALSE) +
+  theme(panel.spacing = unit(1, "lines"))
+  }) 
+
+
+# save all plots
+walk2(
+  year_plots,
+  unique(sb$year),
+  ~ggsave(filename = paste0("superbowl_noise_", .y, ".png"), 
+          plot = .x, width = 10, height = 6)
+)
+```
+
+
+# my superbowl plots
+
+::: panel-tabset
+
+
+### 2021
+
+![](superbowl_noise_2021.png)
+
+
+### 2022
+
+![](superbowl_noise_2022.png)
+
+
+### 2023
+
+![](superbowl_noise_2023.png)
+
+### 2024
+
+![](superbowl_noise_2024.png)
+
+:::
+
+
