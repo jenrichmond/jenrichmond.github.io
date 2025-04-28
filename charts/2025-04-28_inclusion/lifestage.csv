@@ -1,0 +1,33 @@
+CA_code,VA_code,estimate,stage,category,response
+C02A,V55A,96.6,Young people,Internet use,Many times a day
+C02A,V55B,2.5,Young people,Internet use,Once or twice a day
+C02A,V55C,S,Young people,Internet use,A few times a week or less
+C02A,V55D,S,Young people,Internet use,Never use it
+C02A,V56A,61,Young people,Internet satisfaction,Very satisfied
+C02A,V56B,34.3,Young people,Internet satisfaction,Satisfied
+C02A,V56C,3.2,Young people,Internet satisfaction,No feeling either way
+C02A,V56D,1.5,Young people,Internet satisfaction,Dissatisfied/very dissatisfied
+C02B,V55A,94.5,Prime working age,Internet use,Many times a day
+C02B,V55B,4.4,Prime working age,Internet use,Once or twice a day
+C02B,V55C,0.6,Prime working age,Internet use,A few times a week or less
+C02B,V55D,0.6,Prime working age,Internet use,Never use it
+C02B,V56A,58.3,Prime working age,Internet satisfaction,Very satisfied
+C02B,V56B,36.1,Prime working age,Internet satisfaction,Satisfied
+C02B,V56C,3.2,Prime working age,Internet satisfaction,No feeling either way
+C02B,V56D,2.4,Prime working age,Internet satisfaction,Dissatisfied/very dissatisfied
+C02C,V55A,82.2,Middle-age,Internet use,Many times a day
+C02C,V55B,10.2,Middle-age,Internet use,Once or twice a day
+C02C,V55C,4.3,Middle-age,Internet use,A few times a week or less
+C02C,V55D,3.4,Middle-age,Internet use,Never use it
+C02C,V56A,48,Middle-age,Internet satisfaction,Very satisfied
+C02C,V56B,42.1,Middle-age,Internet satisfaction,Satisfied
+C02C,V56C,4.8,Middle-age,Internet satisfaction,No feeling either way
+C02C,V56D,5.1,Middle-age,Internet satisfaction,Dissatisfied/very dissatisfied
+C02D,V55A,49,Older people,Internet use,Many times a day
+C02D,V55B,24.1,Older people,Internet use,Once or twice a day
+C02D,V55C,8.9,Older people,Internet use,A few times a week or less
+C02D,V55D,18,Older people,Internet use,Never use it
+C02D,V56A,30.8,Older people,Internet satisfaction,Very satisfied
+C02D,V56B,52.1,Older people,Internet satisfaction,Satisfied
+C02D,V56C,6.6,Older people,Internet satisfaction,No feeling either way
+C02D,V56D,10.5,Older people,Internet satisfaction,Dissatisfied/very dissatisfied

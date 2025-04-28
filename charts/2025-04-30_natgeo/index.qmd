@@ -9,4 +9,14 @@ editor: source
 image: featured.png
 execute:
   freeze: true
+
 ---
+
+
+```{r}
+library(tidyverse)
+library(here)
+
+
+```
+

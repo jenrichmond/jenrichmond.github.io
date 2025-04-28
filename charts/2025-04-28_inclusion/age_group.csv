@@ -1,0 +1,57 @@
+CA_code,VA_code,estimate,age,category,response
+C03A,V55A,96.6,15-24,Internet use,Many times a day
+C03A,V55B,2.5,15-24,Internet use,Once or twice a day
+C03A,V55C,S,15-24,Internet use,A few times a week or less
+C03A,V55D,S,15-24,Internet use,Never use it
+C03A,V56A,61,15-24,Internet satisfaction,Very satisfied
+C03A,V56B,34.3,15-24,Internet satisfaction,Satisfied
+C03A,V56C,3.2,15-24,Internet satisfaction,No feeling either way
+C03A,V56D,1.5,15-24,Internet satisfaction,Dissatisfied/very dissatisfied
+C03B,V55A,95.1,25-34,Internet use,Many times a day
+C03B,V55B,3.8,25-34,Internet use,Once or twice a day
+C03B,V55C,0.5,25-34,Internet use,A few times a week or less
+C03B,V55D,0.6,25-34,Internet use,Never use it
+C03B,V56A,60.1,25-34,Internet satisfaction,Very satisfied
+C03B,V56B,33.9,25-34,Internet satisfaction,Satisfied
+C03B,V56C,4.1,25-34,Internet satisfaction,No feeling either way
+C03B,V56D,1.9,25-34,Internet satisfaction,Dissatisfied/very dissatisfied
+C03C,V55A,93.8,35-44,Internet use,Many times a day
+C03C,V55B,4.9,35-44,Internet use,Once or twice a day
+C03C,V55C,0.6,35-44,Internet use,A few times a week or less
+C03C,V55D,0.7,35-44,Internet use,Never use it
+C03C,V56A,56.4,35-44,Internet satisfaction,Very satisfied
+C03C,V56B,38.5,35-44,Internet satisfaction,Satisfied
+C03C,V56C,2.1,35-44,Internet satisfaction,No feeling either way
+C03C,V56D,2.9,35-44,Internet satisfaction,Dissatisfied/very dissatisfied
+C03D,V55A,87.6,45-54,Internet use,Many times a day
+C03D,V55B,7.8,45-54,Internet use,Once or twice a day
+C03D,V55C,2.9,45-54,Internet use,A few times a week or less
+C03D,V55D,1.6,45-54,Internet use,Never use it
+C03D,V56A,52.9,45-54,Internet satisfaction,Very satisfied
+C03D,V56B,39,45-54,Internet satisfaction,Satisfied
+C03D,V56C,3.7,45-54,Internet satisfaction,No feeling either way
+C03D,V56D,4.4,45-54,Internet satisfaction,Dissatisfied/very dissatisfied
+C03E,V55A,76.5,55-64,Internet use,Many times a day
+C03E,V55B,12.6,55-64,Internet use,Once or twice a day
+C03E,V55C,5.7,55-64,Internet use,A few times a week or less
+C03E,V55D,5.2,55-64,Internet use,Never use it
+C03E,V56A,42.7,55-64,Internet satisfaction,Very satisfied
+C03E,V56B,45.4,55-64,Internet satisfaction,Satisfied
+C03E,V56C,5.9,55-64,Internet satisfaction,No feeling either way
+C03E,V56D,5.9,55-64,Internet satisfaction,Dissatisfied/very dissatisfied
+C03F,V55A,58.5,65-74,Internet use,Many times a day
+C03F,V55B,23,65-74,Internet use,Once or twice a day
+C03F,V55C,6.9,65-74,Internet use,A few times a week or less
+C03F,V55D,11.7,65-74,Internet use,Never use it
+C03F,V56A,34.2,65-74,Internet satisfaction,Very satisfied
+C03F,V56B,50.1,65-74,Internet satisfaction,Satisfied
+C03F,V56C,6.1,65-74,Internet satisfaction,No feeling either way
+C03F,V56D,9.6,65-74,Internet satisfaction,Dissatisfied/very dissatisfied
+C03G,V55A,35.8,75+,Internet use,Many times a day
+C03G,V55B,25.8,75+,Internet use,Once or twice a day
+C03G,V55C,11.7,75+,Internet use,A few times a week or less
+C03G,V55D,26.7,75+,Internet use,Never use it
+C03G,V56A,25.1,75+,Internet satisfaction,Very satisfied
+C03G,V56B,55.5,75+,Internet satisfaction,Satisfied
+C03G,V56C,7.3,75+,Internet satisfaction,No feeling either way
+C03G,V56D,12.1,75+,Internet satisfaction,Dissatisfied/very dissatisfied

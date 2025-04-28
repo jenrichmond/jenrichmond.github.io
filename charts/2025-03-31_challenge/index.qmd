@@ -690,17 +690,28 @@ size = 2, inherit.aes = FALSE) +
 
 ## Day 28 inclusion
 
+[NZ wellbeing stats](https://www.stats.govt.nz/information-releases/wellbeing-statistics-2023/)
+
 ::: panel-tabset
 
 ### my plot
 
-![](watch.png)
+![](digital.png)
 
 ### r code
 
 ```{r, echo=TRUE, eval=FALSE}
 
-# insert ggplot code
+age_use %>%
+  ggplot(aes(x = age, y = estimate, fill = response)) +
+  geom_col() +
+  scale_fill_manual(values = palette1) +
+  easy_add_legend_title("Frequency") +
+  labs(y = "Percent of respondents", x = "Age group", , 
+       title = "Digital inclusion: Wellbeing NZ 2023", 
+       subtitle = "Internet use", caption = "Data from StatsNZ") +
+  theme_minimal() +
+  easy_remove_gridlines(axis = "y") 
 
 ```
 

@@ -1,0 +1,17 @@
+CA_code,VA_code,estimate,gender,category,response
+C04A,V55A,81.3,Male,Internet use,Many times a day
+C04A,V55B,9.8,Male,Internet use,Once or twice a day
+C04A,V55C,3.7,Male,Internet use,A few times a week or less
+C04A,V55D,5.1,Male,Internet use,Never use it
+C04A,V56A,49.9,Male,Internet satisfaction,Very satisfied
+C04A,V56B,41.3,Male,Internet satisfaction,Satisfied
+C04A,V56C,4.5,Male,Internet satisfaction,No feeling either way
+C04A,V56D,4.3,Male,Internet satisfaction,Dissatisfied/very dissatisfied
+C04B,V55A,82.9,Female,Internet use,Many times a day
+C04B,V55B,9.7,Female,Internet use,Once or twice a day
+C04B,V55C,3,Female,Internet use,A few times a week or less
+C04B,V55D,4.5,Female,Internet use,Never use it
+C04B,V56A,52,Female,Internet satisfaction,Very satisfied
+C04B,V56B,39.5,Female,Internet satisfaction,Satisfied
+C04B,V56C,3.8,Female,Internet satisfaction,No feeling either way
+C04B,V56D,4.7,Female,Internet satisfaction,Dissatisfied/very dissatisfied
