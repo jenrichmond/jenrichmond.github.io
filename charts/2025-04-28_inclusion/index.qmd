@@ -11,9 +11,10 @@ execute:
   freeze: true
 ---
 
-INSERT STORY RE DIGITAL INCLUSION
+Stats NZ recently released an update to their [Wellbeing 2023 dataset](https://www.stats.govt.nz/information-releases/wellbeing-statistics-2023/) that included variables related to digital inclusion. I downloaded the raw dataset from the site and used [this script](https://github.com/jenrichmond/jenrichmond.github.io/blob/main/charts/2025-04-28_inclusion/get_digital_inclusion_data.R) to do a bit of cleaning before reading the data into RStudio and plotting how internet use and satisfaction differs across the lifespan below. 
 
-https://www.stats.govt.nz/information-releases/wellbeing-statistics-2023/
+I found it particularly interesting that more than half of kiwis 75+ use the internet daily, but older people are less likely to say they are very satisfied with the internet than are younger people. 
+
 
 ### get data
 
@@ -30,8 +31,7 @@ library(ggeasy)
 
 age_use <- read_csv(here("charts/2025-04-28_inclusion/age_group.csv")) %>%
   filter(category == "Internet use") %>%
-   mutate(response = factor(response, levels = c("Many times a day",  "Once or twice a day", 
-                                           "A few times a week or less", "Never use it"))) %>%
+   mutate(response = factor(response, levels = c("Many times a day",  "Once or twice a day",  "A few times a week or less", "Never use it"))) %>%
    mutate(age = factor(age, levels = c("15-24", "25-34","35-44", "45-54","55-64","65-74","75+"))) %>%
   mutate(estimate = as.numeric(estimate)) %>%
   select(category, age, response, estimate)

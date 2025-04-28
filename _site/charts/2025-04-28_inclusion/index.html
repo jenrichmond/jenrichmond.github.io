@@ -206,8 +206,8 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </header>
 
 
-<p>INSERT STORY RE DIGITAL INCLUSION</p>
-<p>https://www.stats.govt.nz/information-releases/wellbeing-statistics-2023/</p>
+<p>Stats NZ recently released an update to their <a href="https://www.stats.govt.nz/information-releases/wellbeing-statistics-2023/">Wellbeing 2023 dataset</a> that included variables related to digital inclusion. I downloaded the raw dataset from the site and used <a href="https://github.com/jenrichmond/jenrichmond.github.io/blob/main/charts/2025-04-28_inclusion/get_digital_inclusion_data.R">this script</a> to do a bit of cleaning before reading the data into RStudio and plotting how internet use and satisfaction differs across the lifespan below.</p>
+<p>I found it particularly interesting that more than half of kiwis 75+ use the internet daily, but older people are less likely to say they are very satisfied with the internet than are younger people.</p>
 <section id="get-data" class="level3">
 <h3 class="anchored" data-anchor-id="get-data">get data</h3>
 <div class="cell">
@@ -220,21 +220,20 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>age_use <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"charts/2025-04-28_inclusion/age_group.csv"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(category <span class="sc">==</span> <span class="st">"Internet use"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">response =</span> <span class="fu">factor</span>(response, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Many times a day"</span>,  <span class="st">"Once or twice a day"</span>, </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                                           <span class="st">"A few times a week or less"</span>, <span class="st">"Never use it"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">age =</span> <span class="fu">factor</span>(age, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"15-24"</span>, <span class="st">"25-34"</span>,<span class="st">"35-44"</span>, <span class="st">"45-54"</span>,<span class="st">"55-64"</span>,<span class="st">"65-74"</span>,<span class="st">"75+"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">estimate =</span> <span class="fu">as.numeric</span>(estimate)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(category, age, response, estimate)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>age_sat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"charts/2025-04-28_inclusion/age_group.csv"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(category <span class="sc">==</span> <span class="st">"Internet satisfaction"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">response =</span> <span class="fu">factor</span>(response, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Very satisfied"</span>,  <span class="st">"Satisfied"</span>, </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                                           <span class="st">"No feeling either way"</span>, <span class="st">"Dissatisfied/very dissatisfied</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">age =</span> <span class="fu">factor</span>(age, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"15-24"</span>, <span class="st">"25-34"</span>,<span class="st">"35-44"</span>, <span class="st">"45-54"</span>,<span class="st">"55-64"</span>,<span class="st">"65-74"</span>,<span class="st">"75+"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">estimate =</span> <span class="fu">as.numeric</span>(estimate)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(category, age, response, estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">response =</span> <span class="fu">factor</span>(response, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Many times a day"</span>,  <span class="st">"Once or twice a day"</span>,  <span class="st">"A few times a week or less"</span>, <span class="st">"Never use it"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">age =</span> <span class="fu">factor</span>(age, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"15-24"</span>, <span class="st">"25-34"</span>,<span class="st">"35-44"</span>, <span class="st">"45-54"</span>,<span class="st">"55-64"</span>,<span class="st">"65-74"</span>,<span class="st">"75+"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">estimate =</span> <span class="fu">as.numeric</span>(estimate)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(category, age, response, estimate)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>age_sat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"charts/2025-04-28_inclusion/age_group.csv"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(category <span class="sc">==</span> <span class="st">"Internet satisfaction"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">response =</span> <span class="fu">factor</span>(response, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Very satisfied"</span>,  <span class="st">"Satisfied"</span>, </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                                           <span class="st">"No feeling either way"</span>, <span class="st">"Dissatisfied/very dissatisfied</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">age =</span> <span class="fu">factor</span>(age, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"15-24"</span>, <span class="st">"25-34"</span>,<span class="st">"35-44"</span>, <span class="st">"45-54"</span>,<span class="st">"55-64"</span>,<span class="st">"65-74"</span>,<span class="st">"75+"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">estimate =</span> <span class="fu">as.numeric</span>(estimate)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(category, age, response, estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
