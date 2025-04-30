@@ -75,9 +75,11 @@ labelled_lifestage %>%
 # AGE GROUP
 
 
+
+
 labelled_age_group <- age_group %>%
   mutate(
-    age = case_when(
+    stage = case_when(
       CA_code == "C03A" ~ "15-24",
       CA_code == "C03B" ~ "25-34",
       CA_code == "C03C" ~ "35-44",

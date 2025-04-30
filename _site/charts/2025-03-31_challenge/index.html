@@ -182,7 +182,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   <li><a href="#day-25-risk" id="toc-day-25-risk" class="nav-link" data-scroll-target="#day-25-risk">Day 25 risk</a></li>
   <li><a href="#day-27-noise" id="toc-day-27-noise" class="nav-link" data-scroll-target="#day-27-noise">Day 27 noise</a></li>
   <li><a href="#day-28-inclusion" id="toc-day-28-inclusion" class="nav-link" data-scroll-target="#day-28-inclusion">Day 28 inclusion</a></li>
-  <li><a href="#day-30-national-geographic" id="toc-day-30-national-geographic" class="nav-link" data-scroll-target="#day-30-national-geographic">Day 30 national geographic</a></li>
+  <li><a href="#day-30-finale" id="toc-day-30-finale" class="nav-link" data-scroll-target="#day-30-finale">Day 30 finale</a></li>
   </ul>
 </nav>
     </div>
@@ -846,17 +846,25 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </div>
 </div>
 </section>
-<section id="day-30-national-geographic" class="level2">
-<h2 class="anchored" data-anchor-id="day-30-national-geographic">Day 30 national geographic</h2>
+<section id="day-30-finale" class="level2">
+<h2 class="anchored" data-anchor-id="day-30-finale">Day 30 finale</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-19-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-19-1" role="tab" aria-controls="tabset-19-1" aria-selected="true">my plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-19-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-19-2" role="tab" aria-controls="tabset-19-2" aria-selected="false">r code</a></li></ul>
 <div class="tab-content">
 <div id="tabset-19-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-19-1-tab">
-<p><img src="watch.png" class="img-fluid"></p>
+<p><img src="chart_time.png" class="img-fluid"></p>
 </div>
 <div id="tabset-19-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-19-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># insert ggplot code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>chart_time <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> time, <span class="at">colour =</span> challenge_week)) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">get_pal</span>(<span class="st">"Kereru"</span>)) <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Hours"</span>, <span class="at">title =</span> <span class="st">"30 Day Chart Challenge April 2025"</span>, <span class="at">subtitle =</span> <span class="st">"Daily time spent making plots"</span>) <span class="sc">+</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_time</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)) <span class="sc">+</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">easy_remove_legend_title</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>

@@ -719,19 +719,27 @@ age_use %>%
 
 
 
-## Day 30 national geographic
+## Day 30 finale
 
 ::: panel-tabset
 
 ### my plot
 
-![](watch.png)
+![](chart_time.png)
 
 ### r code
 
 ```{r, echo=TRUE, eval=FALSE}
 
-# insert ggplot code
+chart_time %>%
+  ggplot(aes(x = date, y = time, colour = challenge_week)) +
+  geom_point() +
+  geom_line() +
+  theme_minimal() +
+  scale_colour_manual(values = get_pal("Kereru")) +
+  labs(x = "Date", y = "Hours", title = "30 Day Chart Challenge April 2025", subtitle = "Daily time spent making plots") +
+  scale_y_time(labels = c(0,1,2,3)) +
+  easy_remove_legend_title()
 
 ```
 

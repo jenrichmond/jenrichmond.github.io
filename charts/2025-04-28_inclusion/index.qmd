@@ -126,6 +126,11 @@ age_sat %>%
 
 ```
 
+```{r}
+#| include: false
+ggsave("sat.png", width = 6, height = 4,  bg = "white")
+
+```
 
 
 ### combine plots
