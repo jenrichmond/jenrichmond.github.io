@@ -10,15 +10,34 @@ draft: TRUE
 image: featured.png
 ---
 
-Have you tried #TidyTuesday? It is a weekly data challenge where the team from the Data Science Learning Community curate and post a dataset to their github repository, data nerds from all over the world have a go at making a cool visualisation and then everyone shares what they came up with on social media via #tidytuesday. 
+Have you tried #TidyTuesday? It is a weekly data challenge where the team from the Data Science Learning Community curate and post a dataset to their github repository, then data nerds from all over the world have a go at making a cool visualisation with it and everyone shares what they came up with on social media via the hashtag #tidytuesday. 
 
-Data organising within the #rstats community takes work. Ted Laderas has [talked a lot about burnout](https://laderast.github.io/meetup_burnout/) among organisers. It is common in volunteer settings for 20% of the people to do 80% of the work but this can lead to unsustainable communities. Ted points to importance of expanding your core group of organisers and making it easy for people to contribute as ways to make a meetup group work better for everyone; many hands make light work. 
+Data organising within the #rstats community takes work; TidyTuesday doesn't just happen. Ted Laderas has [talked a lot about burnout](https://laderast.github.io/meetup_burnout/) among organisers. It is common in volunteer settings for 20% of the people to do 80% of the work but this can lead to unsustainable communities. Ted points to importance of expanding your core group of organisers and making it easy for people to contribute, as ways to make a data initiative work better for everyone; many hands make light work. 
 
 Recently the #tidytuesday team have put this philosophy into action by creating some functions within the `tidytuesdayR` package that make it easy to curate and contribute a dataset to the challenge. 
 
 # How to use `tidytuesdayR` as a participant
 
+The package has a number of functions that make it super easy for you get the data into RStudio. No need to download the csv and read it back in. Just use the `tt_load()` with the date or year and week. Sometimes the dataset will contain more than one table so looking at the struture of hte object that `tt_load()` returns using `str()` will give you an idea of which dataframe might be of interest. 
+```{r}
+
+# install.packages("tidytuesdayR")
+
+library(tidytuesdayR)
+
+tues_data <- tidytuesdayR::tt_load("2025-04-29") 
+
+# OR use year and week
+# tues_data <- tidytuesdayR::tt_load(2025, week = 17) 
+
+str(tues_data)
+
+user25 <- tues_data$user2025
+
+```
 
 
 
 # How to use `tidytuesdayR` as a contributor
+
+Do you have an idea of a dataset that might be of interest to other tidytuesdayers? 
