@@ -6,8 +6,7 @@ author:
 date: 2021-01-08
 format: html
 editor: source
-draft: TRUE
-image: featured.png
+image: featured.jpg
 ---
 
 ```{r setup, include=FALSE}
@@ -20,14 +19,11 @@ There are so many lovely packages for colour palettes (see links at the bottom o
 
 This new one called `feathers` by [Shandiya Balasubramanium](https://github.com/shandiya/feathers) is inspired by Australian birds and is delightful. 
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Today I built my first R package! Meet feather: a set of colour palettes inspired by the plumage of Australian birds. It&#39;s a work in progress and a bit rough around the edges, but I&#39;m pretty proud of it<a href="https://twitter.com/hashtag/RStats?src=hash&amp;ref_src=twsrc%5Etfw">#RStats</a> <a href="https://twitter.com/hashtag/WildOz?src=hash&amp;ref_src=twsrc%5Etfw">#WildOz</a> <a href="https://twitter.com/hashtag/DataVisualization?src=hash&amp;ref_src=twsrc%5Etfw">#DataVisualization</a> <a href="https://t.co/9kjavQ4Q50">https://t.co/9kjavQ4Q50</a></p>&mdash; Shandiya Balasubramaniam (@ShandiyaB) <a href="https://twitter.com/ShandiyaB/status/1347116050714816513?ref_src=twsrc%5Etfw">January 7, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
 The vignette doesn't have any pictures of the birds though, so I thought it might be a good opportunity to help [Shandiya](https://twitter.com/ShandiyaB) out and try my first pull request. I am documenting the process here, so I can refer back to it for next time. 
 
 # Trying out the feathers package
 
-I've installed the feather package from github... 
+I've installed the feathers package from github... 
 
 ```{r eval = FALSE}
 devtools::install_github("shandiya/feathers")
@@ -125,7 +121,7 @@ print_pal(be)
 
 When making a pull request you are asking the person who wrote the package (or who owns the repo) to pull the changes you have made into the original repo. 
 
-https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork
+[pull request from a fork](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork)
 
 ### Step 1: fork the repo
 

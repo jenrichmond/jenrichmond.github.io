@@ -1,0 +1,24 @@
+---
+title: "i am a tidy tuesday contributor"
+author:
+  - name: Jen Richmond
+    url: https://jenrichmond.github.io/
+date: 2025-05-05
+format: html
+editor: source
+draft: TRUE
+image: featured.png
+---
+
+Have you tried #TidyTuesday? It is a weekly data challenge where the team from the Data Science Learning Community curate and post a dataset to their github repository, data nerds from all over the world have a go at making a cool visualisation and then everyone shares what they came up with on social media via #tidytuesday. 
+
+Data organising within the #rstats community takes work. Ted Laderas has [talked a lot about burnout](https://laderast.github.io/meetup_burnout/) among organisers. It is common in volunteer settings for 20% of the people to do 80% of the work but this can lead to unsustainable communities. Ted points to importance of expanding your core group of organisers and making it easy for people to contribute as ways to make a meetup group work better for everyone; many hands make light work. 
+
+Recently the #tidytuesday team have put this philosophy into action by creating some functions within the `tidytuesdayR` package that make it easy to curate and contribute a dataset to the challenge. 
+
+# How to use `tidytuesdayR` as a participant
+
+
+
+
+# How to use `tidytuesdayR` as a contributor
