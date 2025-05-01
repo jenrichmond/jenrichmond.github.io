@@ -523,5 +523,40 @@
     "title": "day 6 florence",
     "section": "",
     "text": "I did not know that Florence Nightingale was also a data visualisation revolutionary, in addition to being a nurse and scientist. She realised that visualisations are important for telling data stories and her rose diagrams convinced Queen Victoria of the impact of sanitation on health for soldiers.\nThe Day 6 theme is Florence Nightingale, so I am on a mission to find an appropriate dataset.\n\n\n\nRose diagram by Florence Nightengale\n\n\nThis plot comparing the proportion of people willing to get the COVID vaccine in Australia and the USA illustrates how differences in public health policy can impact vaccine uptake.\nIt is interesting that across this period the proportion of people who were unvaccinated and unwilling remained pretty constant in the USA, whereas this proportion became smaller and smaller in Australia, as campaigns encouraging people to get vaccinated were rolled out.\nThe vaccination data seems like a good candidate for a rose diagram.\n\n\n\nload packages\n\nlibrary(tidyverse)\nlibrary(owidapi)\nlibrary(scales)\nlibrary(ggeasy)\nlibrary(janitor)\n\n\nread in the data\nHere I am reading the data from Our World in Data and selecting/renaming variables.\n\nvax &lt;- read_csv(\"https://ourworldindata.org/grapher/covid-vaccine-willingness-and-people-vaccinated-by-month.csv?v=1&csvType=full&useColumnShortNames=true\") %&gt;%\n  clean_names() %&gt;%\n  select(country = entity, date = day, unvax_unwilling = unwillingness_covid_vaccinate_this_week_pct_pop, \n         unvax_uncertain =  uncertain_covid_vaccinate_this_week_pct_pop , unvax_willing =  willingness_covid_vaccinate_this_week_pct_pop , vaccinated =  people_vaccinated_per_hundred ) \n\n\n\nclean it up\nI am interested in the comparison between Australia and the US so filter for those two countries and then make the data long, so that the percent values appear in one column, and the status categories in another. I make the status column a factor and pull the month out of the date variable.\n\nvax_long &lt;- vax %&gt;%\n  filter(country %in% c(\"Australia\", \"United States\")) %&gt;%\n  pivot_longer(names_to = \"status\", values_to = \"percent\", unvax_unwilling:vaccinated) %&gt;%\n  mutate(status = as_factor(status)) %&gt;%\n  mutate(month = month(date, label=TRUE))\n\nglimpse(vax_long)\n\nRows: 84\nColumns: 5\n$ country &lt;chr&gt; \"Australia\", \"Australia\", \"Australia\", \"Australia\", \"Australia…\n$ date    &lt;date&gt; 2021-03-15, 2021-03-15, 2021-03-15, 2021-03-15, 2021-04-15, 2…\n$ status  &lt;fct&gt; unvax_unwilling, unvax_uncertain, unvax_willing, vaccinated, u…\n$ percent &lt;dbl&gt; 27.72, 19.80, 51.77, 0.71, 31.32, 20.13, 43.73, 4.82, 31.14, 2…\n$ month   &lt;ord&gt; Mar, Mar, Mar, Mar, Apr, Apr, Apr, Apr, May, May, May, May, Ju…\n\n\n\n\nplot\n\njust Australia\nOK I am going to start by plotting Australia first and getting column graph, before adding the coord_polar() below. I want the plot to start with the March data, so relevel month as a factor.\n\noz &lt;- vax_long %&gt;%\n  filter(country == \"Australia\") \n\noz$month &lt;- fct_relevel(oz$month, \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\", \n                              \"Sep\", \"Oct\", \"Nov\", \"Dec\")\n\nlevels(oz$month)\n\n [1] \"Mar\" \"Apr\" \"May\" \"Jun\" \"Jul\" \"Aug\" \"Sep\" \"Oct\" \"Nov\" \"Dec\" \"Jan\" \"Feb\"\n\npalette &lt;- c(\"#c5001f\",\"#f6b79b\", \"#a8d0e4\", \"#498dc0\" )\n\noz %&gt;%\n  ggplot(aes(x = month, y = percent, fill = status)) +\n  geom_col() +\n  scale_fill_manual(values = palette)\n\n\n\n\n\n\n\n\nAdding coord_polar() to turn it into a Florence Nightengale plot. Here I have removed the y axis, made the background white and moved the legend to the bottom.\n\noz %&gt;%\n  ggplot(aes(x = month, y = percent, fill = status)) +\n  geom_col() +\n  scale_fill_manual(values = palette) +\n  coord_polar() +\n  easy_remove_axes(which = \"y\") +\n  theme(panel.background = element_rect(fill = 'white', colour = 'white')) +\n  easy_move_legend(to = \"bottom\") \n\n\n\n\n\n\n\n\n\n\nboth Australia and USA\nNow I want to use facet_wrap() to get a plot that compares this pattern for the US and Australia. In looking at the data, the USA data only goes until Oct, so I am filtering so that I have the same months represented for each country.\n\nmonths &lt;- c(\"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\", \n                              \"Sep\", \"Oct\")\n\nus_oz &lt;- vax_long %&gt;%\n  filter(month %in% months)\n\n\nus_oz %&gt;%\n  ggplot(aes(x = month, y = percent, fill = status)) +\n  geom_col() +\n  scale_fill_manual(values = palette) +\n  coord_polar() +\n  facet_wrap(~country) +\n  easy_remove_axes(which = \"y\") +\n  theme(panel.background = element_rect(fill = 'white', colour = 'white')) +\n  easy_move_legend(to = \"bottom\") +\n  labs(title = \"Willingness to get vaccinated against COVID-19\", \n       subtitle = \"Mar 15, 2021 to Oct 15, 2021\") +\n  easy_remove_axes(which = \"x\", what = \"title\")\n\n\n\n\n\n\n\n\nSuccess- this style of plot really nicely illustrates the lack change in willingness to get the COVID vaccine across this period in the US."
+  },
+  {
+    "objectID": "posts/2021-01-08-my-first-pull-request/index.html",
+    "href": "posts/2021-01-08-my-first-pull-request/index.html",
+    "title": "my first pull request",
+    "section": "",
+    "text": "There are so many lovely packages for colour palettes (see links at the bottom of this post for more).\nThis new one called feathers by Shandiya Balasubramanium is inspired by Australian birds and is delightful.\nThe vignette doesn’t have any pictures of the birds though, so I thought it might be a good opportunity to help Shandiya out and try my first pull request. I am documenting the process here, so I can refer back to it for next time."
+  },
+  {
+    "objectID": "posts/2021-01-08-my-first-pull-request/index.html#eastern-rosella",
+    "href": "posts/2021-01-08-my-first-pull-request/index.html#eastern-rosella",
+    "title": "my first pull request",
+    "section": "Eastern Rosella",
+    "text": "Eastern Rosella\n\n\n\n\n\n\n\n\n\nImage credit: JJ Harrison. This file is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported license. Image source: Wikimedia Commons."
+  },
+  {
+    "objectID": "posts/2021-01-08-my-first-pull-request/index.html#plains-wanderer",
+    "href": "posts/2021-01-08-my-first-pull-request/index.html#plains-wanderer",
+    "title": "my first pull request",
+    "section": "Plains wanderer",
+    "text": "Plains wanderer\n\n\n\n\n\n\n\n\n\nImage credit: Patrick_K59. This file is licensed under the CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=34831381. Image source: Wikimedia Commons."
+  },
+  {
+    "objectID": "posts/2021-01-08-my-first-pull-request/index.html#rose-crowned-fruit-dove",
+    "href": "posts/2021-01-08-my-first-pull-request/index.html#rose-crowned-fruit-dove",
+    "title": "my first pull request",
+    "section": "Rose crowned fruit dove",
+    "text": "Rose crowned fruit dove\n\n\n\n\n\n\n\n\n\nImage credit: Bjørn Christian Tørrissen, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=6874281"
+  },
+  {
+    "objectID": "posts/2021-01-08-my-first-pull-request/index.html#bee-eater",
+    "href": "posts/2021-01-08-my-first-pull-request/index.html#bee-eater",
+    "title": "my first pull request",
+    "section": "Bee eater",
+    "text": "Bee eater\n\n\n\n\n\n\n\n\n\nImage credit: JJ Harrison. This file is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported license. Image source: Wikimedia Commons."
   }
 ]
