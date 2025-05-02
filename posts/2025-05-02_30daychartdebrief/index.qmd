@@ -15,8 +15,7 @@ A few takeaways from the exercise...
 
 Making charts in the month of April, just for the fun of it, has reminded me about the value of play. Play is how children naturally test ideas, relate to each other, and learn about cause and effect. Play is intrinsically motivating. Children don’t need to be told that play matters; they do it because it feels good. Play is associated with flow, that state of focused, joyful engagement where time disappears and learning feels effortless.
 
-Yet somewhere along the path to adulthood, most of us are conditioned out of playful learning. We internalize the idea that learning should be serious, efficient, and outcome-driven. But when we give ourselves permission to play, perhaps via a challenge like the #30DayChartChallenge, it is possibel to remove the pressure. We might bravely try a new chart type we haven't used before (i.e. [ggbump for ranking data](https://jenrichmond.github.io/charts/2025-04-05_ranking/)) or reimagine a theme in a way that makes us laugh (i.e [`stars` could be Hollywood stars](https://jenrichmond.github.io/charts/2025-04-22_stars/)). And through that process, we can learn more deeply, because we’re fully engaged.
-
+Yet somewhere along the path to adulthood, most of us are conditioned out of playful learning. We internalize the idea that learning should be serious, efficient, and outcome-driven. But when we give ourselves permission to play, perhaps via a challenge like the #30DayChartChallenge, it is possible to remove the pressure. We might bravely try a new chart type we haven't used before (i.e. [ggbump for ranking data](https://jenrichmond.github.io/charts/2025-04-05_ranking/)) or reimagine a theme in a way that makes us laugh (i.e [`stars` could be Hollywood stars](https://jenrichmond.github.io/charts/2025-04-22_stars/)). And through that process, we can learn more deeply, because we are in the moment and not afraid to make mistakes. 
 
 ::: panel-tabset
 
@@ -39,7 +38,7 @@ Yet somewhere along the path to adulthood, most of us are conditioned out of pla
 
 I started the challenge trying to stick to data from [Our World in Data](https://ourworldindata.org/), but I found that I learned more when I released myself from that constraint and looked for data that was meaningful to me. Whether it was local temperature data for the [stripes plot](https://jenrichmond.github.io/charts/2025-04-11_stripes/), data comparing [egg prices](https://jenrichmond.github.io/charts/2025-04-19_smooth/) where I live to prices in the US, or the controversy surrounding the [native bird](https://jenrichmond.github.io/posts/2025-04-18_closeread/) that lives in the lake near my house, I found myself more having more fun when the topic touched my own life or community.
 
-That’s not a coincidence. When we connect learning to something we care about, we activate existing knowledge networks. In cognitive terms, this makes new information easier to integrate. The new learning doesn’t exist in isolation, it’s linked to other associations that we have built over time. In motivational terms, data we care about tap into curiosity and emotional investment. These values are far more powerful drivers of learning than arbitratary goals or practice for the sake of it.
+That’s not a coincidence. When we connect learning to something we care about, we activate existing knowledge networks. In cognitive terms, this makes new information easier to integrate. The new learning doesn’t exist in isolation, it’s linked to other associations that we have built over time. In motivational terms, data we care about taps into curiosity and emotional investment. These values are far more powerful drivers of learning than arbitrary goals or practice for the sake of it.
 
 Playing with data that is personally meaningful does more than keep you motivated. It also sharpens your thinking. During the challenge, I asked better questions, told better stories, and was more critical about how the data was presented, when I was working with data that was relevant to my life. 
 
@@ -66,7 +65,7 @@ This worked really well when I was trying out k-means clustering for the first t
 
 However, there is also value in questioning the familiar when learning new visualisation methods. I often encountered data that had been plotted in very familiar ways (points and lines or stacked bars) and rather than simply reproducing it, had to challenge myself to think outside the box to reimagine how a different chart type might tell a better story. 
 
-By taking data about vaccine hesitancy in Australia and the U.S. and plotting it using a Florence Nightingale-style "flower" plot,  the relative stability of vaccine hesitancy rates in the USA compared to Australia was more obvious, highlighting the impact of differences in public health messaging.  Similarly, in plotting measles case rates by state on a map, rather than in a faceted bar plot, the story really stood out. It was the same data, but by layering it onto geography, it is easy to see not only what the problem is, but also where it is, making the story about public health and regional variation clearer and more compelling. 
+By taking data about vaccine hesitancy in Australia and the U.S. and plotting it using a Florence Nightingale-style "flower" plot,  the relative stability of vaccine hesitancy rates in the USA compared to Australia was more obvious, highlighting the impact of differences in public health messaging.  Similarly, in plotting measles case rates by state on a map, rather than in a faceted bar plot, the story really stood out. It was the same data, but by layering it onto geography, it is easy to see not only what the problem is, but also where it is, making the story about public health and regional variation more compelling. 
 
 ::: panel-tabset
 
@@ -87,9 +86,9 @@ These examples taught me that familiarity is a powerful foundation, rather than 
 
 As I explored different ways of representing data, I was reminded again and again that plots are not neutral. Every design decision we make (scales, colors, chart types, comparisons) will shape how people understand a dataset. That means that we have an ethical responsibility to be intentional, transparent, and honest about the choices we make.
 
-One clear example came from working with data on noise levels during Super Bowl Sunday. The original plot had adjusted the y-axis scale in a way that made the differences in noise between Super Bowl Sunday and a typical Sunday look more dramatic than they really were. When I replotted the data using a regular, evenly spaced scale, the difference was still there, but it was less sensational. This made me realize how easy it is to unintentionally (or maybe intentionally) exaggerate effects through the choices we make, without manipulating the data itself. It is possible for a plot to be technically technically accurate, but misleading. 
+One clear example came from working with data on noise levels during Super Bowl Sunday. The [original plot](https://sph.umich.edu/applehearingstudy/study-updates/super-bowl-noise.html) had adjusted the y-axis scale in a way that made the differences in noise between Super Bowl Sunday and a typical Sunday look more dramatic than they really were. When I replotted the data using a regular, evenly spaced scale, the difference was still there, but it was less sensational. This reminded me how easy it is to unintentionally (or maybe intentionally) exaggerate effects through the choices we make, without manipulating the data itself. It is possible for a plot to be technically technically accurate, but misleading. 
 
-Similarly, when mapping measles vaccination rates by U.S. state, I experimented with filling each state on the map using either a continuous scale (e.g., exact percentages of vaccine coverage) or categorical groupings (e.g., 95%+, 90-94.9%, less than 90%). The decision wasn't just aesthetic, it was interpretive. A continuous scale may be more precise, but a categorical one might better serve public communication goals, like identifying at-risk states for intervention.
+Similarly, when mapping measles vaccination rates by U.S. state, I experimented with filling each state on the map using either a continuous scale (i.e. exact percentages of vaccine coverage) or categorical groupings (i.e. 95%+, 90-94.9%, less than 90%). The decision wasn't just aesthetic, it was interpretive. A continuous scale may be more precise, but a categorical one might better serve public communication goals, if we are interested in identifying at-risk states for intervention.
 
 
 ::: panel-tabset
@@ -116,7 +115,7 @@ Across the #30DayChartChallenge I have been thinking more and more about storyte
 
 ![Vote numbers for Bird of the Century 2023](puteketeke.png)
 
-The vote rate data clearly portrayed that something had happened to the competition that year, but by using the `closeread package` to create a [scrollytelling article](https://jenrichmond.github.io/posts/2025-04-18_closeread/) I was able to combine images, narrative and data visualizations, in a way that slowed down the viewer's experience, piqued their curiosity and helped them connect the data to the context. 
+The vote rate data clearly portray that something had happened to the competition that year, but by using the `closeread package` to create a [scrollytelling article](https://jenrichmond.github.io/posts/2025-04-18_closeread/) I was able to combine images, narrative and data visualizations, in a way that slowed down the viewer's experience, piqued their curiosity and helped them connect the data to the context. 
 
 ## take home
 
