@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jen Richmond">
-<meta name="dcterms.date" content="2025-04-25">
 
-<title>day 25 measles risk – Jen Richmond</title>
+<title>#30dayChartChallenge debrief – Jen Richmond</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -164,10 +128,12 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#vaccination-rates" id="toc-vaccination-rates" class="nav-link active" data-scroll-target="#vaccination-rates">vaccination rates</a>
-  <ul class="collapse">
-  <li><a href="#measles-cases" id="toc-measles-cases" class="nav-link" data-scroll-target="#measles-cases">measles cases</a></li>
-  </ul></li>
+  <li><a href="#learning-through-play" id="toc-learning-through-play" class="nav-link active" data-scroll-target="#learning-through-play">learning through play</a></li>
+  <li><a href="#learning-sticks-when-it-matters" id="toc-learning-sticks-when-it-matters" class="nav-link" data-scroll-target="#learning-sticks-when-it-matters">learning sticks when it matters</a></li>
+  <li><a href="#familiar-is-the-foundation" id="toc-familiar-is-the-foundation" class="nav-link" data-scroll-target="#familiar-is-the-foundation">familiar is the foundation</a></li>
+  <li><a href="#plots-are-not-neutral" id="toc-plots-are-not-neutral" class="nav-link" data-scroll-target="#plots-are-not-neutral">plots are not neutral</a></li>
+  <li><a href="#from-data-to-stories" id="toc-from-data-to-stories" class="nav-link" data-scroll-target="#from-data-to-stories">from data to stories</a></li>
+  <li><a href="#take-home" id="toc-take-home" class="nav-link" data-scroll-target="#take-home">take home</a></li>
   </ul>
 </nav>
     </div>
@@ -176,26 +142,14 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">day 25 measles risk</h1>
+<h1 class="title">#30dayChartChallenge debrief</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Jen Richmond </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">April 25, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -205,111 +159,136 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </header>
 
 
-<p>For the Day 25 prompt risk, I am going to try my hand at maps and reproduce the <a href="https://www.cdc.gov/measles/data-research/index.html#cdc_data_surveillance_section_7-mmr-vaccine-coverage-for-kindergarteners-by-school-year-2009%e2%80%932024">CDC plots</a> relating to measles vaccination and cases in the US.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usmap)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>vax <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"charts/2025-04-25_risk/kindy_vax _rates.csv"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">str_sub</span>(school_year, <span class="dv">1</span>,<span class="dv">4</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">state =</span> geography, year, estimate_pct, categories) <span class="sc">%&gt;%</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">estimate_pct =</span> <span class="fu">parse_number</span>(estimate_pct)) </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>cases2425 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"charts/2025-04-25_risk/cases20242025.csv"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">state =</span> geography, year, cases_calendar_year)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>vax<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(vax<span class="sc">$</span>year)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(vax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 769
-Columns: 4
-$ state        &lt;chr&gt; "Alabama", "Alaska", "Arizona", "Arkansas", "California",…
-$ year         &lt;dbl&gt; 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 202…
-$ estimate_pct &lt;dbl&gt; 93.8, 84.3, 89.3, 92.5, 96.2, 88.3, 97.7, 93.8, 92.0, 88.…
-$ categories   &lt;chr&gt; "90-94.9%", "Less than 90%", "Less than 90%", "90-94.9%",…</code></pre>
-</div>
-</div>
-<section id="vaccination-rates" class="level1">
-<h1>vaccination rates</h1>
-<p>It looks like there is data for the school year going back to 2009- maybe that would be cool to animate later but for the moment I am interested in the most recent school year.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>vax2324 <span class="ot">&lt;-</span> vax <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">"2023"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The dataset has vax rates as both percent estimate and categories. First I am going to try colouring by the numeric percent values. I would like the lowest to show up red.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(vax2324<span class="sc">$</span>estimate_pct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 79.6</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(vax2324<span class="sc">$</span>estimate_pct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 98.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_usmap</span>(<span class="at">data =</span> vax2324, <span class="at">values =</span> <span class="st">"estimate_pct"</span>, <span class="at">labels=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_continuous</span>(<span class="at">low =</span> <span class="st">"red"</span>, <span class="at">high =</span> <span class="st">"white"</span>, </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">name =</span> <span class="st">"percent"</span>, </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">75</span>,<span class="dv">100</span>)) <span class="sc">+</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Percent of kindergarten children vaccinated for measles by state"</span>, </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"School year 2023-24"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
+<p>Where did April go? The #30DayChartChallenge is all done. As predicted, I didn’t manage to do it every day, but committing to try and make charts related to each of the daily prompts was a super useful exercise in pushing my data visualisation and storytelling skills.</p>
+<p>A few takeaways from the exercise…</p>
+<section id="learning-through-play" class="level2">
+<h2 class="anchored" data-anchor-id="learning-through-play">learning through play</h2>
+<p>Making charts in the month of April, just for the fun of it, has reminded me about the value of play. Play is how children naturally test ideas, relate to each other, and learn about cause and effect. Play is intrinsically motivating. Children don’t need to be told that play matters; they do it because it feels good. Play is associated with flow, that state of focused, joyful engagement where time disappears and learning feels effortless.</p>
+<p>Yet somewhere along the path to adulthood, most of us are conditioned out of playful learning. We internalize the idea that learning should be serious, efficient, and outcome-driven. But when we give ourselves permission to play, perhaps via a challenge like the #30DayChartChallenge, it is possibel to remove the pressure. We might bravely try a new chart type we haven’t used before (i.e.&nbsp;<a href="https://jenrichmond.github.io/charts/2025-04-05_ranking/">ggbump for ranking data</a>) or reimagine a theme in a way that makes us laugh (i.e <a href="https://jenrichmond.github.io/charts/2025-04-22_stars/"><code>stars</code> could be Hollywood stars</a>). And through that process, we can learn more deeply, because we’re fully engaged.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">stars</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">ranking</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="stars.png" class="img-fluid figure-img"></p>
+<figcaption>Movie star love interests age differences</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="rd.png" class="img-fluid figure-img"></p>
+<figcaption>R&amp;D spending rankings</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>What would it look like if we used the categories instead?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>vax2324<span class="sc">$</span>categories <span class="ot">&lt;-</span> <span class="fu">fct_relevel</span>(vax2324<span class="sc">$</span>categories, <span class="fu">c</span>(<span class="st">"95%+"</span>, <span class="st">"90-94.9%"</span>, <span class="st">"Less than 90%"</span>))</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(vax2324<span class="sc">$</span>categories)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "95%+"          "90-94.9%"      "Less than 90%"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_usmap</span>(<span class="at">data =</span> vax2324, <span class="at">values =</span> <span class="st">"categories"</span>, <span class="at">labels=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#ffcccc"</span>, <span class="st">"#ff7380"</span>, <span class="st">"#ff1933"</span>))  <span class="sc">+</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Percent of kindergarten children vaccinated for measles by state"</span>, </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"School year 2023-24"</span>) <span class="sc">+</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<section id="measles-cases" class="level3">
-<h3 class="anchored" data-anchor-id="measles-cases">measles cases</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_usmap</span>(<span class="at">data =</span> cases2425, <span class="at">values =</span> <span class="st">"cases_calendar_year"</span>, <span class="at">labels=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_continuous</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"red"</span>, </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">name =</span> <span class="st">"cases"</span>, </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">600</span>)) <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"USA Measles cases by state"</span>, <span class="at">subtitle =</span> <span class="st">"Data as of April 17, 2025"</span>, <span class="at">caption =</span> <span class="st">"Data from CDC </span><span class="sc">\n</span><span class="st">https://www.cdc.gov/measles/data-research/index.html"</span>) <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> year) <span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.background =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">10</span>)</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-
-
 </section>
+<section id="learning-sticks-when-it-matters" class="level2">
+<h2 class="anchored" data-anchor-id="learning-sticks-when-it-matters">learning sticks when it matters</h2>
+<p>I started the challenge trying to stick to data from <a href="https://ourworldindata.org/">Our World in Data</a>, but I found that I learned more when I released myself from that constraint and looked for data that was meaningful to me. Whether it was local temperature data for the <a href="https://jenrichmond.github.io/charts/2025-04-11_stripes/">stripes plot</a>, data comparing <a href="https://jenrichmond.github.io/charts/2025-04-19_smooth/">egg prices</a> where I live to prices in the US, or the controversy surrounding the <a href="https://jenrichmond.github.io/posts/2025-04-18_closeread/">native bird</a> that lives in the lake near my house, I found myself more having more fun when the topic touched my own life or community.</p>
+<p>That’s not a coincidence. When we connect learning to something we care about, we activate existing knowledge networks. In cognitive terms, this makes new information easier to integrate. The new learning doesn’t exist in isolation, it’s linked to other associations that we have built over time. In motivational terms, data we care about tap into curiosity and emotional investment. These values are far more powerful drivers of learning than arbitratary goals or practice for the sake of it.</p>
+<p>Playing with data that is personally meaningful does more than keep you motivated. It also sharpens your thinking. During the challenge, I asked better questions, told better stories, and was more critical about how the data was presented, when I was working with data that was relevant to my life.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">stripes</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">smooth</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="temp.png" class="img-fluid figure-img"></p>
+<figcaption>Temperature in Queenstown</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="eggs.png" class="img-fluid figure-img"></p>
+<figcaption>Egg prices in NZ vs USA</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="familiar-is-the-foundation" class="level2">
+<h2 class="anchored" data-anchor-id="familiar-is-the-foundation">familiar is the foundation</h2>
+<p>When learning to write code to produce beautiful and meaningful visualisations you can quickly become overwhelmed because everything is new. I have started to realise that it can be helpful to reduce the cognitive load by controlling some variables (the data) while playing with others (the method). Sometimes it can be useful to pick a dataset that you know really well, so your mental energy can go toward grappling with the truly new parts of what you are trying to learn, rather than everything feeling novel all at once.</p>
+<p>This worked really well when I was trying out k-means clustering for the first time. Instead of choosing a random or unfamiliar dataset, I used the <code>palmerpenguins</code> dataset, which I had worked with many times before. I already knew the structure of the data, the kinds of patterns to expect, and how the species varied. This meant I could focus entirely on understanding how k-means works and how best to visualise the clusters, rather than trying to learn the method and the data and the context all at once. It was a good reminder that scaffolding new knowledge onto an existing base doesn’t just make learning easier, it also makes it stickier.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="clusters.png" class="img-fluid figure-img"></p>
+<figcaption>palmer penguins k-means clusters</figcaption>
+</figure>
+</div>
+<p>However, there is also value in questioning the familiar when learning new visualisation methods. I often encountered data that had been plotted in very familiar ways (points and lines or stacked bars) and rather than simply reproducing it, had to challenge myself to think outside the box to reimagine how a different chart type might tell a better story.</p>
+<p>By taking data about vaccine hesitancy in Australia and the U.S. and plotting it using a Florence Nightingale-style “flower” plot, the relative stability of vaccine hesitancy rates in the USA compared to Australia was more obvious, highlighting the impact of differences in public health messaging. Similarly, in plotting measles case rates by state on a map, rather than in a faceted bar plot, the story really stood out. It was the same data, but by layering it onto geography, it is easy to see not only what the problem is, but also where it is, making the story about public health and regional variation clearer and more compelling.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">COVID vaccine hesitancy</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">measles cases</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="vax.png" class="img-fluid figure-img"></p>
+<figcaption>vaccine hesitancy Australia vs USA</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="measles.png" class="img-fluid figure-img"></p>
+<figcaption>Measles case rates 2024-2025 by state</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>These examples taught me that familiarity is a powerful foundation, rather than a limitation. When we use the familiar as a starting point, we give ourselves the stability to take creative risks. We can experiment with new forms, tools, or techniques without being overwhelmed, because we’re not learning everything at once. And sometimes, taking a familiar plot and imagining how the data might be represented differently can reveal things about the data we might have otherwise missed.</p>
+</section>
+<section id="plots-are-not-neutral" class="level2">
+<h2 class="anchored" data-anchor-id="plots-are-not-neutral">plots are not neutral</h2>
+<p>As I explored different ways of representing data, I was reminded again and again that plots are not neutral. Every design decision we make (scales, colors, chart types, comparisons) will shape how people understand a dataset. That means that we have an ethical responsibility to be intentional, transparent, and honest about the choices we make.</p>
+<p>One clear example came from working with data on noise levels during Super Bowl Sunday. The original plot had adjusted the y-axis scale in a way that made the differences in noise between Super Bowl Sunday and a typical Sunday look more dramatic than they really were. When I replotted the data using a regular, evenly spaced scale, the difference was still there, but it was less sensational. This made me realize how easy it is to unintentionally (or maybe intentionally) exaggerate effects through the choices we make, without manipulating the data itself. It is possible for a plot to be technically technically accurate, but misleading.</p>
+<p>Similarly, when mapping measles vaccination rates by U.S. state, I experimented with filling each state on the map using either a continuous scale (e.g., exact percentages of vaccine coverage) or categorical groupings (e.g., 95%+, 90-94.9%, less than 90%). The decision wasn’t just aesthetic, it was interpretive. A continuous scale may be more precise, but a categorical one might better serve public communication goals, like identifying at-risk states for intervention.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">superbowl noise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">measles vax continuous</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">measles vax categorical</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<p><img src="superbowl.png" class="img-fluid"></p>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<p><img src="measlesvax_continuous.png" class="img-fluid"></p>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<p><img src="measlesvax_categorical.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>These experiences reinforced the idea that ethical visualisation is about clarity, fairness, and usefulness. Sometimes that means pulling back from precision to focus on communication. Sometimes it means thinking hard about whether you really want to plot to be more striking but less honest. We need to be asking ourselves: Is this visualisation telling the story that most needs to be told, for the people who are most affected by it?</p>
+</section>
+<section id="from-data-to-stories" class="level2">
+<h2 class="anchored" data-anchor-id="from-data-to-stories">from data to stories</h2>
+<p>Across the #30DayChartChallenge I have been thinking more and more about storytelling. One example that really brought this home was the story of the Pūteketeke, which won New Zealand’s Bird of the Year competition in 2023 under somewhat chaotic circumstances, largely thanks to a campaign by comedian John Oliver.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="puteketeke.png" class="img-fluid figure-img"></p>
+<figcaption>Vote numbers for Bird of the Century 2023</figcaption>
+</figure>
+</div>
+<p>The vote rate data clearly portrayed that something had happened to the competition that year, but by using the <code>closeread package</code> to create a <a href="https://jenrichmond.github.io/posts/2025-04-18_closeread/">scrollytelling article</a> I was able to combine images, narrative and data visualizations, in a way that slowed down the viewer’s experience, piqued their curiosity and helped them connect the data to the context.</p>
+</section>
+<section id="take-home" class="level2">
+<h2 class="anchored" data-anchor-id="take-home">take home</h2>
+<p>The real magic here isn’t just in making a good-looking plot, it’s in telling a good story. You can learn all the geoms in the world, but if you can’t use them to say something that is useful and memorable, what’s the point? I have learned that turning data into stories with code gives your technical skills purpose, and it is way more fun that just churning out plots all day.</p>
+<blockquote class="blockquote">
+<p>Acknowledgement: Thanks to chatGPT for assistance in crafting this post</p>
+</blockquote>
+
+
 </section>
 
 </main> <!-- /main -->

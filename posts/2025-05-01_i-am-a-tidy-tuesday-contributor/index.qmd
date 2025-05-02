@@ -18,7 +18,8 @@ Recently the #tidytuesday team have put this philosophy into action by creating 
 
 # How to use `tidytuesdayR` as a participant
 
-The package has a number of functions that make it super easy for you get the data into RStudio. No need to download the csv and read it back in. Just use the `tt_load()` with the date or year and week. Sometimes the dataset will contain more than one table so looking at the struture of hte object that `tt_load()` returns using `str()` will give you an idea of which dataframe might be of interest. 
+The package has a number of functions that make it super easy for you get the data into RStudio. No need to download the csv and read it back in. Just use the `tt_load()` with the date or year and week. 
+
 ```{r}
 
 # install.packages("tidytuesdayR")
@@ -30,6 +31,13 @@ tues_data <- tidytuesdayR::tt_load("2025-04-29")
 # OR use year and week
 # tues_data <- tidytuesdayR::tt_load(2025, week = 17) 
 
+
+```
+
+Your tues_data object will be a list that will sometimes contain more than one table so looking at the struture of the object that `tt_load()` returns using `str()` will give you an idea of which dataframe might be of interest. In this case the data is about the userR2025 conference schedule.
+
+```{r}
+
 str(tues_data)
 
 user25 <- tues_data$user2025
@@ -40,4 +48,55 @@ user25 <- tues_data$user2025
 
 # How to use `tidytuesdayR` as a contributor
 
-Do you have an idea of a dataset that might be of interest to other tidytuesdayers? 
+Do you have an idea of a dataset that might be of interest to other tidytuesdayers? Great! the new functions in `tidytuesdayR` make it super easy to contribute a dataset. 
+
+All you have to do is follow [these instructions](https://dslc-io.github.io/tidytuesdayR/articles/curating.html) 
+
+### Step 1: write a cleaning script 
+
+This function opens a cleaning.R script that you can use to write the code you need to get your data file from its raw state into a state that other people can use. 
+
+```{r eval=FALSE}
+tt_clean()
+```
+
+### Step 2: save your clean data to .csv
+
+Once you have written your cleaning.R script and checked that it produces clean dataframes, you can save your datafile. This function will save your dataframes as .csv in your submission folder. It will also open a .md file with a table that you can complete that describes each of the variables in your dataset. 
+
+```{r eval=FALSE}
+
+tt_save_dataset(nameofyourdf)
+
+```
+
+### Step 3: introduce your data
+
+This function opens another .md file that you can use to write an introduction to your dataset. You can describe the data, where it comes from and suggest some questions that people might like to explore. You also want to think about an image that can go along with the data. 
+
+```{r eval=FALSE}
+
+tt_intro()
+
+```
+
+### Step 4: meta data
+
+This bit was cool- this function walks you through a question and answer session, filling in all the details needed for the meta data. Once you are done answering the questions, it creates a meta.yaml file. 
+```{r eval=FALSE}
+
+tt_meta()
+
+```
+
+### Step 5: submit
+
+This bit creates a pull request, but relies on the project you are working in is linked to github. 
+
+```{r eval=FALSE}
+
+tt_submit()
+
+```
+
+### DONE!

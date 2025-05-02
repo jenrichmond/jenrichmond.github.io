@@ -68,6 +68,12 @@ plot_usmap(data = vax2324, values = "estimate_pct", labels=FALSE) +
 
 ```
 
+```{r}
+#| include: false
+ggsave(here::here("charts", "2025-03-31_challenge", "measlesvax_continuous.png"), width = 6, height = 4,  bg = "white")
+```
+
+
 What would it look like if we used the categories instead? 
 
 ```{r}
@@ -86,6 +92,12 @@ plot_usmap(data = vax2324, values = "categories", labels=FALSE) +
 
 ```
 
+```{r}
+#| include: false
+#| 
+ggsave(here::here("charts", "2025-03-31_challenge", "measlesvax_categorical.png"), width = 6, height = 4,  bg = "white")
+
+```
 
 
 ### measles cases
