@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jen Richmond">
+<meta name="dcterms.date" content="2021-08-31">
 
-<title>#30dayChartChallenge debrief – Jen Richmond</title>
+<title>parameterised penguins – Jen Richmond</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,12 +130,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-through-play" id="toc-learning-through-play" class="nav-link active" data-scroll-target="#learning-through-play">learning through play</a></li>
-  <li><a href="#learning-sticks-when-it-matters" id="toc-learning-sticks-when-it-matters" class="nav-link" data-scroll-target="#learning-sticks-when-it-matters">learning sticks when it matters</a></li>
-  <li><a href="#familiar-is-the-foundation" id="toc-familiar-is-the-foundation" class="nav-link" data-scroll-target="#familiar-is-the-foundation">familiar is the foundation</a></li>
-  <li><a href="#plots-are-not-neutral" id="toc-plots-are-not-neutral" class="nav-link" data-scroll-target="#plots-are-not-neutral">plots are not neutral</a></li>
-  <li><a href="#from-data-to-stories" id="toc-from-data-to-stories" class="nav-link" data-scroll-target="#from-data-to-stories">from data to stories</a></li>
-  <li><a href="#take-home" id="toc-take-home" class="nav-link" data-scroll-target="#take-home">take home</a></li>
+  <li><a href="#how-to-write-a-basic-report" id="toc-how-to-write-a-basic-report" class="nav-link active" data-scroll-target="#how-to-write-a-basic-report">how to write a basic report</a></li>
   </ul>
 </nav>
     </div>
@@ -142,14 +139,26 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">#30dayChartChallenge debrief</h1>
+<h1 class="title">parameterised penguins</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p><a href="https://jenrichmond.github.io/">Jen Richmond</a> </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 31, 2021</p>
+    </div>
+  </div>
   
     
   </div>
@@ -159,136 +168,79 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </header>
 
 
-<p>Where did April go? The #30DayChartChallenge is all done. As predicted, I didn’t manage to do it every day, but committing to try and make charts related to each of the daily prompts was a super useful exercise in pushing my data visualisation and storytelling skills. You can check out all the plots I made in April at this <a href="https://jenrichmond.github.io/charts.html">listing page</a>.</p>
-<p>A few takeaways from the exercise…</p>
-<section id="learning-through-play" class="level2">
-<h2 class="anchored" data-anchor-id="learning-through-play">learning through play</h2>
-<p>Making charts in the month of April, just for the fun of it, has reminded me about the value of play. Play is how children naturally test ideas, relate to each other, and learn about cause and effect. Play is intrinsically motivating. Children don’t need to be told that play matters; they do it because it feels good. Play is associated with flow, that state of focused, joyful engagement where time disappears and learning feels effortless.</p>
-<p>Yet somewhere along the path to adulthood, most of us are conditioned out of playful learning. We internalize the idea that learning should be serious, efficient, and outcome-driven. But when we give ourselves permission to play, perhaps via a challenge like the #30DayChartChallenge, it is possibel to remove the pressure. We might bravely try a new chart type we haven’t used before (i.e.&nbsp;<a href="https://jenrichmond.github.io/charts/2025-04-05_ranking/">ggbump for ranking data</a>) or reimagine a theme in a way that makes us laugh (i.e <a href="https://jenrichmond.github.io/charts/2025-04-22_stars/"><code>stars</code> could be Hollywood stars</a>). And through that process, we can learn more deeply, because we’re fully engaged.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">stars</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">ranking</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div class="quarto-figure quarto-figure-center">
+<p>I am beginning a project where we want to create a distill site that has lots of profile pages that all have the same format but pull different data from a dataframe. Here I am learning how to use set up parameters within RMarkdown so that I can use purrr to render many reports at once.</p>
+<section id="how-to-customise-your-yaml" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-customise-your-yaml">how to customise your yaml</h4>
+<p>yaml stands for “yet another markup language” and it is the code that you see at the top of your RMarkdown document that is between the sets of dashes.</p>
+<p>When you open a new Rmd document, the yaml just contains fields to insert the title, author, and date that your document was created and some info about what kind of output your want your Rmd to knit to, but you can customise the yaml to specify lots of different characteristics of your Rmd document.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
 <figure class="figure">
-<p><img src="stars.png" class="img-fluid figure-img"></p>
-<figcaption>Movie star love interests age differences</figcaption>
-</figure>
-</div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="rd.png" class="img-fluid figure-img"></p>
-<figcaption>R&amp;D spending rankings</figcaption>
+<p><img src="yaml.png" class="img-fluid figure-img" width="169"></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
+<p>In this yaml, I have set the output to be html and added the hpstr theme from the <code>prettydoc</code> package. I have also set how big I want the figures to be in my knitted document. Other options include adding a table of contents and allowing readers to show and hide code <a href="https://bookdown.org/yihui/rmarkdown/html-document.html">see details in the Yihui’s rmarkdown book here</a>.</p>
+<p>The new piece here is adding “params” (more about Rmd/params <a href="https://r4ds.had.co.nz/r-markdown.html#parameters">here</a>. Eventually I want to create a separate report for each type of penguin species so I have set the parameter I am interested in as <code>my_species</code>. As a first run, I am interested in Adelie penguins.</p>
 </section>
-<section id="learning-sticks-when-it-matters" class="level2">
-<h2 class="anchored" data-anchor-id="learning-sticks-when-it-matters">learning sticks when it matters</h2>
-<p>I started the challenge trying to stick to data from <a href="https://ourworldindata.org/">Our World in Data</a>, but I found that I learned more when I released myself from that constraint and looked for data that was meaningful to me. Whether it was local temperature data for the <a href="https://jenrichmond.github.io/charts/2025-04-11_stripes/">stripes plot</a>, data comparing <a href="https://jenrichmond.github.io/charts/2025-04-19_smooth/">egg prices</a> where I live to prices in the US, or the controversy surrounding the <a href="https://jenrichmond.github.io/posts/2025-04-18_closeread/">native bird</a> that lives in the lake near my house, I found myself more having more fun when the topic touched my own life or community.</p>
-<p>That’s not a coincidence. When we connect learning to something we care about, we activate existing knowledge networks. In cognitive terms, this makes new information easier to integrate. The new learning doesn’t exist in isolation, it’s linked to other associations that we have built over time. In motivational terms, data we care about tap into curiosity and emotional investment. These values are far more powerful drivers of learning than arbitratary goals or practice for the sake of it.</p>
-<p>Playing with data that is personally meaningful does more than keep you motivated. It also sharpens your thinking. During the challenge, I asked better questions, told better stories, and was more critical about how the data was presented, when I was working with data that was relevant to my life.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">stripes</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">smooth</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<div class="quarto-figure quarto-figure-center">
+<section id="how-to-write-a-basic-report" class="level1">
+<h1>how to write a basic report</h1>
+<p>Before I can render lots of reports, I need to write the code and make it run on the Adelie species. The first chunk of code in my report loads the packages needed, sets my default ggplot theme and loads in the penguin data. Then I use the species params that I set in the yaml to filter the penguins for only Adelie, creating a new species dataframe.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
 <figure class="figure">
-<p><img src="temp.png" class="img-fluid figure-img"></p>
-<figcaption>Temperature in Queenstown</figcaption>
-</figure>
-</div>
-</div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="eggs.png" class="img-fluid figure-img"></p>
-<figcaption>Egg prices in NZ vs USA</figcaption>
+<p><img src="chunk1.png" class="img-fluid figure-img" width="552"></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
-</section>
-<section id="familiar-is-the-foundation" class="level2">
-<h2 class="anchored" data-anchor-id="familiar-is-the-foundation">familiar is the foundation</h2>
-<p>When learning to write code to produce beautiful and meaningful visualisations you can quickly become overwhelmed because everything is new. I have started to realise that it can be helpful to reduce the cognitive load by controlling some variables (the data) while playing with others (the method). Sometimes it can be useful to pick a dataset that you know really well, so your mental energy can go toward grappling with the truly new parts of what you are trying to learn, rather than everything feeling novel all at once.</p>
-<p>This worked really well when I was trying out k-means clustering for the first time. Instead of choosing a random or unfamiliar dataset, I used the <code>palmerpenguins</code> dataset, which I had worked with many times before. I already knew the structure of the data, the kinds of patterns to expect, and how the species varied. This meant I could focus entirely on understanding how k-means works and how best to visualise the clusters, rather than trying to learn the method and the data and the context all at once. It was a good reminder that scaffolding new knowledge onto an existing base doesn’t just make learning easier, it also makes it stickier.</p>
-<div class="quarto-figure quarto-figure-center">
+<p>The next chunk uses that species dataframe to make a plot of body mass by flipper length. I can also refer to the params I set to make the level 1 header and subtitle of my plot reflect which species of penguin are being plotted.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
 <figure class="figure">
-<p><img src="clusters.png" class="img-fluid figure-img"></p>
-<figcaption>palmer penguins k-means clusters</figcaption>
-</figure>
-</div>
-<p>However, there is also value in questioning the familiar when learning new visualisation methods. I often encountered data that had been plotted in very familiar ways (points and lines or stacked bars) and rather than simply reproducing it, had to challenge myself to think outside the box to reimagine how a different chart type might tell a better story.</p>
-<p>By taking data about vaccine hesitancy in Australia and the U.S. and plotting it using a Florence Nightingale-style “flower” plot, the relative stability of vaccine hesitancy rates in the USA compared to Australia was more obvious, highlighting the impact of differences in public health messaging. Similarly, in plotting measles case rates by state on a map, rather than in a faceted bar plot, the story really stood out. It was the same data, but by layering it onto geography, it is easy to see not only what the problem is, but also where it is, making the story about public health and regional variation clearer and more compelling.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">COVID vaccine hesitancy</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">measles cases</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="vax.png" class="img-fluid figure-img"></p>
-<figcaption>vaccine hesitancy Australia vs USA</figcaption>
-</figure>
-</div>
-</div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="measles.png" class="img-fluid figure-img"></p>
-<figcaption>Measles case rates 2024-2025 by state</figcaption>
+<p><img src="chunk2.png" class="img-fluid figure-img" width="539"></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
-<p>These examples taught me that familiarity is a powerful foundation, rather than a limitation. When we use the familiar as a starting point, we give ourselves the stability to take creative risks. We can experiment with new forms, tools, or techniques without being overwhelmed, because we’re not learning everything at once. And sometimes, taking a familiar plot and imagining how the data might be represented differently can reveal things about the data we might have otherwise missed.</p>
-</section>
-<section id="plots-are-not-neutral" class="level2">
-<h2 class="anchored" data-anchor-id="plots-are-not-neutral">plots are not neutral</h2>
-<p>As I explored different ways of representing data, I was reminded again and again that plots are not neutral. Every design decision we make (scales, colors, chart types, comparisons) will shape how people understand a dataset. That means that we have an ethical responsibility to be intentional, transparent, and honest about the choices we make.</p>
-<p>One clear example came from working with data on noise levels during Super Bowl Sunday. The original plot had adjusted the y-axis scale in a way that made the differences in noise between Super Bowl Sunday and a typical Sunday look more dramatic than they really were. When I replotted the data using a regular, evenly spaced scale, the difference was still there, but it was less sensational. This made me realize how easy it is to unintentionally (or maybe intentionally) exaggerate effects through the choices we make, without manipulating the data itself. It is possible for a plot to be technically technically accurate, but misleading.</p>
-<p>Similarly, when mapping measles vaccination rates by U.S. state, I experimented with filling each state on the map using either a continuous scale (e.g., exact percentages of vaccine coverage) or categorical groupings (e.g., 95%+, 90-94.9%, less than 90%). The decision wasn’t just aesthetic, it was interpretive. A continuous scale may be more precise, but a categorical one might better serve public communication goals, like identifying at-risk states for intervention.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">superbowl noise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">measles vax continuous</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">measles vax categorical</a></li></ul>
-<div class="tab-content">
-<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
-<p><img src="superbowl.png" class="img-fluid"></p>
-</div>
-<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-<p><img src="measlesvax_continuous.png" class="img-fluid"></p>
-</div>
-<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
-<p><img src="measlesvax_categorical.png" class="img-fluid"></p>
-</div>
-</div>
-</div>
-<p>These experiences reinforced the idea that ethical visualisation is about clarity, fairness, and usefulness. Sometimes that means pulling back from precision to focus on communication. Sometimes it means thinking hard about whether you really want to plot to be more striking but less honest. We need to be asking ourselves: Is this visualisation telling the story that most needs to be told, for the people who are most affected by it?</p>
-</section>
-<section id="from-data-to-stories" class="level2">
-<h2 class="anchored" data-anchor-id="from-data-to-stories">from data to stories</h2>
-<p>Across the #30DayChartChallenge I have been thinking more and more about storytelling. One example that really brought this home was the story of the Pūteketeke, which won New Zealand’s Bird of the Year competition in 2023 under somewhat chaotic circumstances, largely thanks to a campaign by comedian John Oliver.</p>
-<div class="quarto-figure quarto-figure-center">
+<p>When I knit the document I end up with a pretty nice looking report about Adelie penguins <a href="https://rpubs.com/jenrichmond/adelie">see RPubs here</a>.</p>
+<section id="how-to-render-many-reports" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-render-many-reports">how to render many reports</h4>
+<p>Now that my report is working for one level of species and I have set params within my yaml, I can use purrr to automagically render a separate report for each species in the penguins dataset. I start by opening a new .R script and making a tibble that has three variables…</p>
+<ul>
+<li>species (the unique values of species from the penguin data)</li>
+<li>filename (a combo of penguin-report- and each of the species with .html extension)</li>
+<li>params (map across each levels of species)</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
 <figure class="figure">
-<p><img src="puteketeke.png" class="img-fluid figure-img"></p>
-<figcaption>Vote numbers for Bird of the Century 2023</figcaption>
+<p><img src="knit1.png" class="img-fluid figure-img" width="438"></p>
 </figure>
 </div>
-<p>The vote rate data clearly portrayed that something had happened to the competition that year, but by using the <code>closeread package</code> to create a <a href="https://jenrichmond.github.io/posts/2025-04-18_closeread/">scrollytelling article</a> I was able to combine images, narrative and data visualizations, in a way that slowed down the viewer’s experience, piqued their curiosity and helped them connect the data to the context.</p>
-</section>
-<section id="take-home" class="level2">
-<h2 class="anchored" data-anchor-id="take-home">take home</h2>
-<p>The real magic here isn’t just in making a good-looking plot, it’s in telling a good story. You can learn all the geoms in the world, but if you can’t use them to say something that is useful and memorable, what’s the point? I have learned that turning data into stories with code gives your technical skills purpose, and it is way more fun that just churning out plots all day.</p>
+</div>
+</div>
+<p>Then I take that tibble and pipe it into a <code>select()</code> function, selecting just the filename (which is renamed as output_file at the same time) and params. Pipe those two variables into <code>pwalk()</code>, which renders the parameterised_penguins.Rmd for each level of the params. When I run the code in my <code>knit_many_reports.R</code> script, I end up with 3 x .html reports, one for each species, in my files tab. Magic!!</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="knit2.png" class="img-fluid figure-img" width="440"></p>
+</figure>
+</div>
+</div>
+</div>
 <blockquote class="blockquote">
-<p>Acknowledgement: Thanks to chatGPT for assistance in crafting this post</p>
+<p>note: I am still getting my head around how purrr works, but my understanding is that <code>walk()</code> is a lot like <code>map()</code>, in that it iterates over a list of things, but it is useful when you want to keep the output of the code you are iterating (i.e.&nbsp;generating reports). I have used it before <a href="https://rpubs.com/jenrichmond/w5LL">here</a> to test out different ggplot palettes. <code>pwalk()</code> is like <code>walk()</code> except that there are multiple arguments, in this case both the output_file and each of the params.</p>
 </blockquote>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -3,10 +3,11 @@ title: "#30dayChartChallenge debrief"
 toc: true
 format: html
 reading-time: true
+image: featured.png
 ---
 
 
-Where did April go? The #30DayChartChallenge is all done. As predicted, I didn't manage to do it every day, but committing to try and make charts related to each of the daily prompts was a super useful exercise in pushing my data visualisation and storytelling skills. 
+Where did April go? The #30DayChartChallenge is all done. As predicted, I didn't manage to do it every day, but committing to try and make charts related to each of the daily prompts was a super useful exercise in pushing my data visualisation and storytelling skills. You can check out all the plots I made in April at this [listing page](https://jenrichmond.github.io/charts.html). 
 
 A few takeaways from the exercise...
 
