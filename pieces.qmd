@@ -1,0 +1,19 @@
+---
+title: "resume pieces"
+editor: visual
+---
+
+
+::: {.no-print}
+## PRESENTATIONS AND WORKSHOPS
+
+insert talks/links that dont print pdf here
+:::
+
+
+
+
+::: {.print-only}
+## References
+Available upon request
+:::

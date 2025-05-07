@@ -45,6 +45,7 @@ from: https://github.com/quarto-dev/quarto-cli/discussions/2538#discussioncommen
     font-family: 'Public Sans', sans-serif;
   }
 
+
   header {
     margin-block-end: 5em;
   }
@@ -86,4 +87,10 @@ from: https://github.com/quarto-dev/quarto-cli/discussions/2538#discussioncommen
     font-weight: 700;
     color: #36a7e9;
   }
+}
+
+/* ===== Outside @media print block ===== */
+
+header.quarto-title-block {
+  display: none;
 }

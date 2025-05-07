@@ -1,59 +1,17 @@
 [
   {
-    "objectID": "resume.html",
-    "href": "resume.html",
-    "title": "Jenny L. Richmond Ph.D",
-    "section": "",
-    "text": "email linkedin website"
-  },
-  {
-    "objectID": "resume.html#summary",
-    "href": "resume.html#summary",
-    "title": "Jenny L. Richmond Ph.D",
-    "section": "SUMMARY",
-    "text": "SUMMARY\nData analytics leader with 15+ years of experience transforming complex information into actionable insights across academic and research environments. Leveraging R for data visualization, statistical analysis, and communicating technical findings to diverse stakeholders. Successfully led cross-functional teams to complete evaluation and impact projects, resulting in measurable improvements in program quality and operational efficiency. Passionate about making complex data accessible through compelling narratives and visualizations, with experience scaling data literacy programs that reached 40,000+ learners. Ready to apply deep analytical expertise and storytelling capabilities to drive organisational impact through data."
-  },
-  {
-    "objectID": "resume.html#core-skills-and-key-competencies",
-    "href": "resume.html#core-skills-and-key-competencies",
-    "title": "Jenny L. Richmond Ph.D",
-    "section": "CORE SKILLS AND KEY COMPETENCIES",
-    "text": "CORE SKILLS AND KEY COMPETENCIES\n\nData Analysis & Visualization\n\nAdvanced R skills in data wrangling and visualisation (Tidyverse) and reproducible reporting (RMarkdown, Quarto)\nManage data using Excel/Google Sheets for efficient workflows\nFoundational skills in Python and SQL\n\n\n\nResearch and Evaluation\n\nDevelop and deploy surveys and experimental protocols to gather insights from diverse stakeholders\nExtract actionable insights from raw data via systematic analysis\nExecute comprehensive program evaluations using clear impact metrics\n\n\n\nProject Leadership\n\nLead cross-functional teams through complex, data-intensive projects with multiple stakeholders\nManage multi-stage projects from conception to final reporting and implementation\nScale diverse communities of practice characterised by inclusive culture\nDevelop reproducible reporting systems for streamlined compliance and informed decision-making\n\n\n\nCommunication & Knowledge Translation\n\nTransform technical analyses into clear narratives for diverse stakeholders\nDesign and deliver engaging data-focused workshops and training materials\nPresent complex findings in accessible presentations and comprehensive reports\nBuild data literacy skills via strategic development of educational resources"
-  },
-  {
-    "objectID": "resume.html#professional-experience",
-    "href": "resume.html#professional-experience",
-    "title": "Jenny L. Richmond Ph.D",
-    "section": "PROFESSIONAL EXPERIENCE",
-    "text": "PROFESSIONAL EXPERIENCE\n\nAssociate Professor | Director Academic Programs\nSchool of Psychology, University of New South Wales 2019-2025\n\nCreated data workflows that automated evaluation of 7 academic programs serving 1,300+ students, reducing compliance and quality assurance reporting time while improving data accuracy and consistency\nConducted data-informed program evaluations to monitor outcomes and align revisions with institutional goals and accreditation standards.\nLed data-driven quality assurance initiatives that translated complex student feedback into actionable course revisions, improving satisfaction scores across multiple programs\nEvaluated assessment outcomes informing school-wide policy changes regarding generative AI implementation, balancing innovation with academic integrity\n\n\n\nCo-founder and Data Community Lead\nR-Ladies Sydney 2018-2022\n\nFounded and grew the data community from startup to 1,000+ members, running 48 events, workshops and meetups in 4 years\nDesigned and implemented the #RYouWithMe program, creating interactive tutorials and video content that enabled 40,000 + learners to get started with R-based data wrangling and visualization YouTube channel\nBuilt a comprehensive data skills curriculum covering data import, cleaning (dplyr), visualization (ggplot2), and communication (RMarkdown), published as an open-source Quarto website\n\n\n\nChair, Human Ethics Committee\nUniversity of New South Wales 2017-2019\n\nChaired monthly meetings, reviewed research proposals, and ensured compliance with national ethical standards\nProvided feedback and guidance to researchers on complex ethical issues and protocol modifications\n\n\n\nLecturer | Senior Lecturer | Associate Professor\nSchool of Psychology, University of New South Wales 2008-2019\n\nAnalyzed complex electrophysiological and behavioral datasets to extract meaningful patterns and insights, publishing findings in peer-reviewed journals\nImplemented computational reproducibility practices through R-based workflows integrating statistical analysis with narrative reporting via RMarkdown\nSecured $430,000 in competitive funding for data-intensive research projects requiring sophisticated experimental design and statistical analysis\nDeveloped and taught courses on developmental psychology, data visualization and computational reproducibility, emphasizing practical applications of analytical techniques (N = 40 - 1200 students)\nSupervised 6 PhD and 30 honours students, building supportive lab culture and promoting career development"
-  },
-  {
-    "objectID": "resume.html#education",
-    "href": "resume.html#education",
-    "title": "Jenny L. Richmond Ph.D",
-    "section": "EDUCATION",
-    "text": "EDUCATION\nDoctor of Philosophy – Psychology  University of Otago August 2004"
-  },
-  {
-    "objectID": "resume.html#presentations-and-workshops",
-    "href": "resume.html#presentations-and-workshops",
-    "title": "Jenny L. Richmond Ph.D",
-    "section": "PRESENTATIONS AND WORKSHOPS",
-    "text": "PRESENTATIONS AND WORKSHOPS\ninsert talks/links that dont print pdf here"
-  },
-  {
-    "objectID": "resume.html#references",
-    "href": "resume.html#references",
-    "title": "Jenny L. Richmond Ph.D",
-    "section": "References",
-    "text": "References\nAvailable upon request"
-  },
-  {
     "objectID": "posts.html",
     "href": "posts.html",
     "title": "blog",
     "section": "",
     "text": "Want to support my blog? \n\n\n\n\n\n\n\n\n\n\n\n\nnsf grants terminated\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n30dayChartChallenge debrief\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPūteketeke Pandemonium\n\n\n\n\n\n\nJen Richmond\n\n\nApr 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nlearning python\n\n\n\npython\n\n\n\n\n\n\n\nJen Richmond\n\n\nJul 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrowwise %&gt;% mean\n\n\n\ndata wrangling\n\n\n\n\n\n\n\nJen Richmond\n\n\nMay 24, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nerror bars on plots\n\n\n\nidhgt\n\n\nggplot\n\n\n\n\n\n\n\nJen Richmond\n\n\nApr 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncolours that R knows\n\n\n\nggplot\n\n\n\n\n\n\n\nJen Richmond\n\n\nDec 14, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngit hints\n\n\n\n\n\n\nJen Richmond\n\n\nSep 28, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nanalysing smartwatch data\n\n\n\n\n\n\nJen Richmond\n\n\nJul 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nusing lists in R\n\n\n\n\n\n\nJen Richmond\n\n\nJun 27, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmy favourite things about R\n\n\n\n\n\n\nJen Richmond\n\n\nJan 17, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nuseful bash commands\n\n\n\n\n\n\nJen Richmond\n\n\nJan 16, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nparameterised penguins\n\n\n\n\n\n\nJen Richmond\n\n\nAug 31, 2021\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPAT for GitHub\n\n\n\n\n\n\nJen Richmond\n\n\nJun 22, 2021\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmy first pull request\n\n\n\n\n\n\nJen Richmond\n\n\nJan 8, 2021\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncleaning penguins with the janitor package\n\n\n\n\n\n\nJen Richmond\n\n\nNov 18, 2020\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome!",
+    "section": "",
+    "text": "I am a psychologist by training and have been teaching myself (and others) R for a few years now. I am a co-founder of R-Ladies Sydney and developer of #RYouWithMe. This is my place to keep notes about R (and python) things I am learning. This site makes my googling faster! I hope it is useful to you too."
   },
   {
     "objectID": "charts/2025-04-06_florence/index.html",
@@ -403,7 +361,7 @@
     "href": "posts/2025-04-18_closeread/index.html",
     "title": "Pūteketeke Pandemonium",
     "section": "",
-    "text": "This post is my first attempt at a closeread scrollytelling story. It tells the story of the Pūteketeke controversy that plagued the Forest and Bird NZ Bird of the Century competition in 2023.\nThe closeread extension makes it easy to turn a Quarto document into a scrollytelling story like this one. The closeread documentation and this tutorial by Gaston Sanchez were helpful in making this story.\n\nThis bird is called a Pūteketeke @cr-grebe\n\n\n\n\nPūteketeke\n\n\n\nIt is also known as the Australasian Crested Grebe.\nThere are fewer than 1000 Pūteketeke in New Zealand.\nThey are known for unique courtship behaviour… @cr-courtship\n\n\n\n\nPūteketeke courtship behaviour\n\n\n\n… and for being good parents @cr-parenting\n\n\n\n\nPūteketeke parent and chick\n\n\n\nIn my hometown, Wanaka NZ, the humans make the Pūteketeke floating platforms to build their nests on. Read about the Wanaka Grebe Project here. @cr-platform\n\n\n\n\nPūteketeke platform\n\n\n\nIn 2023, the Pūteketeke went global. @cr-bb\nBillboards appeared in cities across the world.\n\n\n\n\n\n\nFrom Wellington NZ … @cr-well\n\n\n\n… to Paris, France @cr-paris\n\n\n\n… to Manitowoc, Wisconsin @cr-wi\nHow did the Pūteketeke get this kind of international attention??\nIn 2023 Forest and Bird New Zealand was celebrating its centenary and had dubbed its annual competition “Bird of the Century”. @cr-plot1\nEach year Forest and Bird invites New Zealanders to vote for their favourite native bird.\nAnyone with a valid email address can enter.\n\n\n\n\n\n\n\n\n\n\n\nIn 2023, comedian John Oliver heard about the competition and threw his resources behind a campaign in support of the Pūteketeke. @cr-boty\n\n \n\nJohn Oliver himself described the campaign as “alarmingly aggressive” @cr-john\n\n\n\nJohn even appeared on Jimmy Fallon’s show in a Pūteketeke costume @cr-jimmy\n\n\n\nThis is not the first time that the Forest and Bird competition has attracted controversy.\nIn 2021, the Long-tailed bat (Pekapeka-tou-roa) won the Bird of the Year, even though it is definitely not a bird. @cr-bat\n\n\n\n\nPekapeka-tou-roa, Bird of the Year 2021\n\n\n\nThe Long-tailed bat (Pekapeka-tou-roa) is New Zealand’s only native land mammal and caused a bit of a stir when it was voted as New Zealand’s favourite bird in 2021. @cr-plot2\n\n\n\n\n\n\n\n\n\n\n\nThe results in 2022 caused less furor.\nWhile the Little Penguin / Kororā technically received the most #1 votes… @cr-penguin\n\n\n\n\nKororā, Bird of the Year runner up 2022\n\n\n\n…it was pipped at the post by the New Zealand Rock Wren / Pīwauwau… @cr-wren\n\n\n\n\nPīwauwau, Bird of the Year 2022\n\n\n\n…a tiny alpine bird that lives in the mountains of the South Island. @cr-plot3.\n\n\n\n\n\n\n\n\n\n\n\nIn 2023, @cr-plot4 the result of the John Oliver’s campaign was a resounding win for the Pūteketeke (more than 290K votes!) and a boost in donations to Forest and Bird.\n\n\n\n\n\n\n\n\n\n\n\nInterest in the Forest and Bird competition carried over into 2024, with vote rates higher than average. @cr-plot5\n\n\n\n\n\n\n\n\n\n\n\nLast year, the Yellow-eyed Penguin / Hoiho prevailed. @cr-ye\n\n\n\n\nHoiho, Bird of the Year 2024\n\n\n\nCheck out the Forest and Bird website to read about past winners, donate to conservation efforts, and vote for your favourite New Zealand bird in the 2025 competition (voting opens in September).\n\n\nMade with Quarto"
+    "text": "This post is my first attempt at a closeread scrollytelling story. It tells the story of the Pūteketeke controversy that plagued the Forest and Bird NZ Bird of the Century competition in 2023.\nThe closeread extension makes it easy to turn a Quarto document into a scrollytelling story like this one. The closeread documentation and this tutorial by Gaston Sanchez were helpful in making this story.\n\n\n\n\nThis bird is called a Pūteketeke\n\n\n\n\nIt is also known as the Australasian Crested Grebe.\n\n\n\n\nThere are fewer than 1000 Pūteketeke in New Zealand.\n\n\n\n\nThey are known for unique courtship behaviour…\n\n\n\n\n… and for being good parents\n\n\n\n\nIn my hometown, Wanaka NZ, the humans make the Pūteketeke floating platforms to build their nests on. Read about the Wanaka Grebe Project here.\n\n\n\n\nIn 2023, the Pūteketeke went global.\n\n\n\n\nBillboards appeared in cities across the world.\n\n\n\n\nFrom Wellington NZ …\n\n\n\n\n… to Paris, France\n\n\n\n\n… to Manitowoc, Wisconsin\n\n\n\n\nHow did the Pūteketeke get this kind of international attention??\n\n\n\n\nIn 2023 Forest and Bird New Zealand was celebrating its centenary and had dubbed its annual competition “Bird of the Century”.\n\n\n\n\nEach year Forest and Bird invites New Zealanders to vote for their favourite native bird.\n\n\n\n\nAnyone with a valid email address can enter.\n\n\n\n\nIn 2023, comedian John Oliver heard about the competition and threw his resources behind a campaign in support of the Pūteketeke.\n\n\n\n\nJohn Oliver himself described the campaign as “alarmingly aggressive”\n\n\n\n\nJohn even appeared on Jimmy Fallon’s show in a Pūteketeke costume\n\n\n\n\nThis is not the first time that the Forest and Bird competition has attracted controversy.\n\n\n\n\nIn 2021, the Long-tailed bat (Pekapeka-tou-roa) won the Bird of the Year, even though it is definitely not a bird.\n\n\n\n\nThe Long-tailed bat (Pekapeka-tou-roa) is New Zealand’s only native land mammal and caused a bit of a stir when it was voted as New Zealand’s favourite bird in 2021.\n\n\n\n\nThe results in 2022 caused less furor.\n\n\n\n\nWhile the Little Penguin / Kororā technically received the most #1 votes…\n\n\n\n\n…it was pipped at the post by the New Zealand Rock Wren / Pīwauwau…\n\n\n\n\n…a tiny alpine bird that lives in the mountains of the South Island.\n\n\n\n\nIn 2023,the result of the John Oliver’s campaign was a resounding win for the Pūteketeke (more than 290K votes!) and a boost in donations to Forest and Bird.\n\n\n\n\nInterest in the Forest and Bird competition carried over into 2024, with vote rates higher than average.\n\n\n\n\nLast year, the Yellow-eyed Penguin / Hoiho prevailed.\n\n\n\n\nCheck out the Forest and Bird website to read about past winners, donate to conservation efforts, and vote for your favourite New Zealand bird in the 2025 competition (voting opens in September).\n\n\n\n\n\n\n\n\n\nPūteketeke\n\n\n\n\n\n\n\nPūteketeke courtship behaviour\n\n\n\n\n\n\n\nPūteketeke parent and chick\n\n\n\n\n\n\n\nPūteketeke platform\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\nPekapeka-tou-roa, Bird of the Year 2021\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nKororā, Bird of the Year runner up 2022\n\n\n\n\n\n\n\nPīwauwau, Bird of the Year 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHoiho, Bird of the Year 2024\n\n\n\n\n\n\n\nMade with Quarto"
   },
   {
     "objectID": "posts/2022-06-27-using-lists-in-r/index.html",
@@ -411,6 +369,41 @@
     "title": "using lists in R",
     "section": "",
     "text": "One of my goals while on long service leave is to learn some new R things that have been on my radar for a while… the first of these is purrr. The purrr package allows you to iterate a function across different elements in a list or dataframe.\nI have started to try and learn purr before (see a list of resources here). I have copied other people’s purrr code a couple of times too…\n\nhow to use map to read in a LOT of .csv files and\nusing pwalk to output plots in different colour schemes\n\n… but when you copy purrr code from someone else and adjust it to suit you own problem… you can’t really say you know how to use purrr.\nThe first thing I think I need to get my head around in order to understand purrr is lists. Dataframes are the bread and butter of the tidyverse and up until now I have avoided them, or tried desperately to use as.dataframe() or unnest() to turn them into a data structure that i understand. Lists allow you to bundle together different kinds of data elements together, so now is the time to get my head around them.\n\nhow to make a list\nThis is a example I copied from a tutorial\nmyfirstlist &lt;-  list(2, \n                     \"hello\", \n                     c(3,5,4), \n                     1:5, \n                     list(FALSE, \n                          c(\"this\", \"is\",\"a\",\"list\"),\n                          c(FALSE,TRUE,TRUE,TRUE,FALSE))) \nThe list() function lets you put elements of all different types (and lengths) into a listy bundle; characters and numbers and logicals. One of the elements in this list of 5 items when others have 3 items or even 1. Another item is ANOTHER list made up of 3 items. Lists within lists— eeeekk. We can use the class() function to check that our list is a list and the str() function to get our head around what we are dealing with.\nclass(myfirstlist)\n## [1] \"list\"\nstr(myfirstlist)\n## List of 5\n##  $ : num 2\n##  $ : chr \"hello\"\n##  $ : num [1:3] 3 5 4\n##  $ : int [1:5] 1 2 3 4 5\n##  $ :List of 3\n##   ..$ : logi FALSE\n##   ..$ : chr [1:4] \"this\" \"is\" \"a\" \"list\"\n##   ..$ : logi [1:5] FALSE TRUE TRUE TRUE FALSE\nThis iconic image (which I think comes from a Jenny Bryan talk) is supposed to help me understand how to access elements of a list.\nLets see if I can unpack it.\n TBC…"
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "resume",
+    "section": "",
+    "text": "contact: jennyrichmond@gmail.com"
+  },
+  {
+    "objectID": "resume.html#summary",
+    "href": "resume.html#summary",
+    "title": "resume",
+    "section": "SUMMARY",
+    "text": "SUMMARY\nData analytics leader with 15+ years of experience transforming complex information into actionable insights across academic and research environments. Leveraging R for data visualization, statistical analysis, and communicating technical findings to diverse stakeholders. Successfully led cross-functional teams to complete evaluation and impact projects, resulting in measurable improvements in program quality and operational efficiency. Passionate about making complex data accessible through compelling narratives and visualizations, with experience scaling data literacy programs that reached 40,000+ learners. Ready to apply deep analytical expertise and storytelling capabilities to drive organisational impact through data."
+  },
+  {
+    "objectID": "resume.html#core-skills-and-key-competencies",
+    "href": "resume.html#core-skills-and-key-competencies",
+    "title": "resume",
+    "section": "CORE SKILLS AND KEY COMPETENCIES",
+    "text": "CORE SKILLS AND KEY COMPETENCIES\n\nData Analysis & Visualization\n\nAdvanced R skills in data wrangling and visualisation (Tidyverse), statistical analysis, and reproducible reporting (RMarkdown, Quarto)\nManage data using Excel/Google Sheets for efficient workflows\nFoundational skills in Python and SQL\n\n\n\nResearch and Evaluation\n\nDevelop and deploy surveys and experimental protocols to gather insights from diverse stakeholders\nExtract actionable insights from raw data via systematic analysis\nExecute comprehensive program evaluations using clear impact metrics\n\n\n\nProject Leadership\n\nLead cross-functional teams through complex, data-intensive projects with multiple stakeholders\nManage multi-stage projects from conception to final reporting and implementation\nScale diverse communities of practice characterised by inclusive culture\nDevelop reproducible reporting systems for streamlined compliance and informed decision-making\n\n\n\nCommunication & Knowledge Translation\n\nTransform technical analyses into clear narratives for diverse stakeholders\nDesign and deliver engaging data-focused workshops and training materials\nPresent complex findings in accessible presentations and comprehensive reports\nBuild data literacy skills via strategic development of educational resources"
+  },
+  {
+    "objectID": "resume.html#professional-experience",
+    "href": "resume.html#professional-experience",
+    "title": "resume",
+    "section": "PROFESSIONAL EXPERIENCE",
+    "text": "PROFESSIONAL EXPERIENCE\n\nAssociate Professor | Director Academic Programs\nSchool of Psychology, University of New South Wales 2019-2025\n\nCreated data workflows that automated evaluation of 7 academic programs serving 1,300+ students, reducing compliance and quality assurance reporting time while improving data accuracy and consistency\nConducted data-informed program evaluations to monitor outcomes and align revisions with institutional goals and accreditation standards.\nLed data-driven quality assurance initiatives that translated complex student feedback into actionable course revisions, improving satisfaction scores across multiple programs\nEvaluated assessment outcomes informing school-wide policy changes regarding generative AI implementation, balancing innovation with academic integrity\n\n\n\nCo-founder and Data Community Lead\nR-Ladies Sydney 2018-2022\n\nFounded and grew the data community from startup to 1,000+ members, running 48 events, workshops and meetups in 4 years\nDesigned and implemented the #RYouWithMe program, creating interactive tutorials and video content that enabled 40,000 + learners to get started with R-based data wrangling and visualization YouTube channel\nBuilt a comprehensive data skills curriculum covering data import, cleaning (dplyr), visualization (ggplot2), and communication (RMarkdown), published as an Quarto website\n\n\n\nChair, Human Ethics Committee\nUniversity of New South Wales 2017-2019\n\nChaired monthly meetings, reviewed research proposals, and ensured compliance with national ethical standards\nProvided feedback and guidance to researchers on complex ethical issues and protocol modifications\n\n\n\nLecturer | Senior Lecturer | Associate Professor\nSchool of Psychology, University of New South Wales 2008-2019\n\nAnalyzed complex electrophysiological and behavioral datasets to extract meaningful patterns and insights, publishing findings in peer-reviewed journals\nImplemented computational reproducibility practices through R-based workflows integrating statistical analysis with narrative reporting via RMarkdown\nSecured $430,000 in competitive funding for data-intensive research projects requiring sophisticated experimental design and statistical analysis\nDeveloped and taught courses on developmental psychology, data visualization and computational reproducibility, emphasizing practical applications of analytical techniques (N = 40 - 1200 students)\nSupervised 6 PhD and 30 honours students, building supportive lab culture and promoting career development"
+  },
+  {
+    "objectID": "resume.html#education",
+    "href": "resume.html#education",
+    "title": "resume",
+    "section": "EDUCATION",
+    "text": "EDUCATION\nDoctor of Philosophy – Psychology  University of Otago August 2004"
   },
   {
     "objectID": "posts/2022-09-28-git-hints/index.html",
@@ -677,5 +670,26 @@
     "title": "day 0 challenge",
     "section": "Day 30 finale",
     "text": "Day 30 finale\n\nmy plotr code\n\n\n\n\n\n\nchart_time %&gt;%\n  ggplot(aes(x = date, y = time, colour = challenge_week)) +\n  geom_point() +\n  geom_line() +\n  theme_minimal() +\n  scale_colour_manual(values = get_pal(\"Kereru\")) +\n  labs(x = \"Date\", y = \"Hours\", title = \"30 Day Chart Challenge April 2025\", subtitle = \"Daily time spent making plots\") +\n  scale_y_time(labels = c(0,1,2,3)) +\n  easy_remove_legend_title()"
+  },
+  {
+    "objectID": "pieces.html",
+    "href": "pieces.html",
+    "title": "resume pieces",
+    "section": "",
+    "text": "insert talks/links that dont print pdf here"
+  },
+  {
+    "objectID": "pieces.html#presentations-and-workshops",
+    "href": "pieces.html#presentations-and-workshops",
+    "title": "resume pieces",
+    "section": "",
+    "text": "insert talks/links that dont print pdf here"
+  },
+  {
+    "objectID": "pieces.html#references",
+    "href": "pieces.html#references",
+    "title": "resume pieces",
+    "section": "References",
+    "text": "References\nAvailable upon request"
   }
 ]

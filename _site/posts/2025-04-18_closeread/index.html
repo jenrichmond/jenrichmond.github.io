@@ -41,6 +41,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
+<script src="../../site_libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
+<script src="../../site_libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,9 +79,11 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </script>
+<meta cr-debug-mode="false">
+<meta cr-remove-header-space="false">
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../site_libs/quarto-contrib/quarto-project/qmd-lab/closeread/closeread.css">
 </head>
 
 <body class="nav-fixed">
@@ -126,14 +131,26 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
+      <!-- user-provided yaml closeread style options -->
+      <style>
+        :root {
+          --cr-section-background-color: #f7f6f5;
+--cr-narrative-outer-margin: #ffffff;
+--cr-narrative-overlay-max-width: 600px;
+--cr-narrative-font-family: Arial, sans-serif;
+--cr-narrative-font-size: 2em;
+--cr-narrative-background-color-overlay: #525252;
+--cr-poem-font-family: , “Times New Roman”, Times, serif;
+--cr-narrative-overlay-min-width: 300px;
+        }
+      </style>
+    
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -142,7 +159,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -168,9 +185,157 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 
 <p>This post is my first attempt at a <code>closeread</code> scrollytelling story. It tells the story of the <a href="https://www.forestandbird.org.nz/resources/bird-century-winner-announced-puteketeke-pandemonium-prevails?gad_source=1&amp;gclid=CjwKCAjwk43ABhBIEiwAvvMEBxXajWDGGQNmx6QbZjiQlec8hqOLnfd8OZ1hKKLJYBtjSOkwTdUc4RoCbiQQAvD_BwE">Pūteketeke controversy</a> that plagued the Forest and Bird NZ <em>Bird of the Century</em> competition in 2023.</p>
 <p>The <code>closeread</code> extension makes it easy to turn a Quarto document into a scrollytelling story like this one. The <code>closeread</code> <a href="https://closeread.dev/">documentation</a> and <a href="https://www.gastonsanchez.com/learn-closeread/">this tutorial</a> by Gaston Sanchez were helpful in making this story.</p>
-<div class="cr-section">
-<p>This bird is called a Pūteketeke <span class="citation" data-cites="cr-grebe">@cr-grebe</span></p>
-<div id="cr-grebe">
+<div class="cr-section cr-column-screen sidebar-left">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-grebe">
+<div class="narrative">
+<p>This bird is called a Pūteketeke</p>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<p>It is also known as the Australasian Crested Grebe.</p>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<p>There are fewer than 1000 Pūteketeke in New Zealand.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-courtship">
+<div class="narrative">
+<p>They are known for unique courtship behaviour…</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-parenting">
+<div class="narrative">
+<p>… and for being good parents</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-platform">
+<div class="narrative">
+<p>In my hometown, Wanaka NZ, the humans make the Pūteketeke floating platforms to build their nests on. Read about the <a href="https://wanakagrebes.org.nz/grebe-project/">Wanaka Grebe Project here</a>.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-bb">
+<div class="narrative">
+<p>In 2023, the Pūteketeke went global.</p>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<p>Billboards appeared in cities across the world.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-well">
+<div class="narrative">
+<p>From Wellington NZ …</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-paris">
+<div class="narrative">
+<p>… to Paris, France</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-wi">
+<div class="narrative">
+<p>… to Manitowoc, Wisconsin</p>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<p>How did the Pūteketeke get this kind of international attention??</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-plot1">
+<div class="narrative">
+<p>In 2023 Forest and Bird New Zealand was celebrating its centenary and had dubbed its annual competition “Bird of the Century”.</p>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<p>Each year Forest and Bird invites New Zealanders to vote for their favourite native bird.</p>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<p>Anyone with a valid email address can enter.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-boty">
+<div class="narrative">
+<p>In 2023, comedian John Oliver heard about the competition and threw his resources behind a campaign in support of the Pūteketeke.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-john">
+<div class="narrative">
+<p>John Oliver himself described the campaign as <a href="https://www.youtube.com/watch?v=6GF6Gd7wrlk">“alarmingly aggressive”</a></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-jimmy">
+<div class="narrative">
+<p>John even appeared on <a href="https://www.youtube.com/watch?v=uVE1hBzHn3s&amp;t=6s">Jimmy Fallon’s show</a> in a Pūteketeke costume</p>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<p>This is not the first time that the Forest and Bird competition has attracted controversy.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-bat">
+<div class="narrative">
+<p>In 2021, the Long-tailed bat (Pekapeka-tou-roa) won the Bird of the Year, even though it is definitely not a bird.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-plot2">
+<div class="narrative">
+<p>The Long-tailed bat (Pekapeka-tou-roa) is New Zealand’s only native land mammal and caused a bit of a stir when it was voted as New Zealand’s favourite bird in 2021.</p>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<p>The results in 2022 caused less furor.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-penguin">
+<div class="narrative">
+<p>While the Little Penguin / Kororā technically received the most #1 votes…</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-wren">
+<div class="narrative">
+<p>…it was pipped at the post by the New Zealand Rock Wren / Pīwauwau…</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-plot3">
+<div class="narrative">
+<p>…a tiny alpine bird that lives in the mountains of the South Island.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-plot4">
+<div class="narrative">
+<p>In 2023,the result of the John Oliver’s campaign was a resounding win for the Pūteketeke (more than 290K votes!) and a boost in donations to Forest and Bird.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-plot5">
+<div class="narrative">
+<p>Interest in the Forest and Bird competition carried over into 2024, with vote rates higher than average.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-ye">
+<div class="narrative">
+<p>Last year, the Yellow-eyed Penguin / Hoiho prevailed.</p>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<p>Check out the <a href="https://www.birdoftheyear.org.nz/">Forest and Bird website</a> to read about past winners, donate to conservation efforts, and vote for your favourite New Zealand bird in the 2025 competition (voting opens in September).</p>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-grebe" class="sticky">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/grebe.jpg" class="img-fluid figure-img"></p>
@@ -178,10 +343,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </figure>
 </div>
 </div>
-<p>It is also known as the Australasian Crested Grebe.</p>
-<p>There are fewer than 1000 Pūteketeke in New Zealand.</p>
-<p>They are known for unique courtship behaviour… <span class="citation" data-cites="cr-courtship">@cr-courtship</span></p>
-<div id="cr-courtship">
+<div id="cr-courtship" class="sticky">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://media1.tenor.com/m/pr8Ep6wpQoYAAAAd/Pūteketeke-bird.gif" class="img-fluid figure-img"></p>
@@ -189,8 +351,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </figure>
 </div>
 </div>
-<p>… and for being good parents <span class="citation" data-cites="cr-parenting">@cr-parenting</span></p>
-<div id="cr-parenting">
+<div id="cr-parenting" class="sticky">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://blog.forestandbird.org.nz/wp-content/uploads/love-you-mum-crested-grebe-steve-attwood.jpg" class="img-fluid figure-img"></p>
@@ -198,8 +359,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </figure>
 </div>
 </div>
-<p>In my hometown, Wanaka NZ, the humans make the Pūteketeke floating platforms to build their nests on. Read about the <a href="https://wanakagrebes.org.nz/grebe-project/">Wanaka Grebe Project here</a>. <span class="citation" data-cites="cr-platform">@cr-platform</span></p>
-<div id="cr-platform">
+<div id="cr-platform" class="sticky">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://wanakagrebes.org.nz/wp-content/uploads/2024/05/img-project-nest.jpg" class="img-fluid figure-img" style="width:75.0%"></p>
@@ -207,28 +367,19 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </figure>
 </div>
 </div>
-<p>In 2023, the Pūteketeke went global. <span class="citation" data-cites="cr-bb">@cr-bb</span></p>
-<p>Billboards appeared in cities across the world.</p>
-<div id="cr-bb">
+<div id="cr-bb" class="sticky">
 <p><img src="img/bb.webp" class="img-fluid"></p>
 </div>
-<div id="cr-well">
+<div id="cr-well" class="sticky">
 <p><img src="img/billboard.webp" class="img-fluid"></p>
 </div>
-<p>From Wellington NZ … <span class="citation" data-cites="cr-well">@cr-well</span></p>
-<div id="cr-paris">
+<div id="cr-paris" class="sticky">
 <p><img src="img/france.jpg" class="img-fluid"></p>
 </div>
-<p>… to Paris, France <span class="citation" data-cites="cr-paris">@cr-paris</span></p>
-<div id="cr-wi">
+<div id="cr-wi" class="sticky">
 <p><img src="img/bird-campaign WI.webp" class="img-fluid"></p>
 </div>
-<p>… to Manitowoc, Wisconsin <span class="citation" data-cites="cr-wi">@cr-wi</span></p>
-<p>How did the Pūteketeke get this kind of international attention??</p>
-<p>In 2023 Forest and Bird New Zealand was celebrating its centenary and had dubbed its annual competition “Bird of the Century”. <span class="citation" data-cites="cr-plot1">@cr-plot1</span></p>
-<p>Each year Forest and Bird invites New Zealanders to vote for their favourite native bird.</p>
-<p>Anyone with a valid email address can enter.</p>
-<div id="cr-plot1">
+<div id="cr-plot1" class="sticky">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -239,21 +390,16 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p>In 2023, comedian John Oliver heard about the competition and threw his resources behind a campaign in support of the Pūteketeke. <span class="citation" data-cites="cr-boty">@cr-boty</span></p>
-<div id="cr-boty">
+<div id="cr-boty" class="sticky">
 <p><img src="img/boty logo.png" class="img-fluid"> <img src="img/john-oliver-1920.avif" class="img-fluid"></p>
 </div>
-<p>John Oliver himself described the campaign as <a href="https://www.youtube.com/watch?v=6GF6Gd7wrlk">“alarmingly aggressive”</a> <span class="citation" data-cites="cr-john">@cr-john</span></p>
-<div id="cr-john">
+<div id="cr-john" class="sticky">
 <p><img src="https://media.rnztools.nz/rnz/image/upload/s--qVuRXVAg--/ar_16:10,c_fill,f_auto,g_auto,q_auto,w_1050/v1699320268/4KZWYV8_20231107_135316_jpg?_a=BACCd2AD.png" class="img-fluid"></p>
 </div>
-<p>John even appeared on <a href="https://www.youtube.com/watch?v=uVE1hBzHn3s&amp;t=6s">Jimmy Fallon’s show</a> in a Pūteketeke costume <span class="citation" data-cites="cr-jimmy">@cr-jimmy</span></p>
-<div id="cr-jimmy">
+<div id="cr-jimmy" class="sticky">
 <p><img src="img/the-tonight-show-john-oliver.jpg" class="img-fluid"></p>
 </div>
-<p>This is not the first time that the Forest and Bird competition has attracted controversy.</p>
-<p>In 2021, the Long-tailed bat (Pekapeka-tou-roa) won the Bird of the Year, even though it is definitely not a bird. <span class="citation" data-cites="cr-bat">@cr-bat</span></p>
-<div id="cr-bat">
+<div id="cr-bat" class="sticky">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/long-tailed-bat-hero-1920.webp" class="img-fluid figure-img" width="640"></p>
@@ -261,8 +407,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </figure>
 </div>
 </div>
-<p>The Long-tailed bat (Pekapeka-tou-roa) is New Zealand’s only native land mammal and caused a bit of a stir when it was voted as New Zealand’s favourite bird in 2021. <span class="citation" data-cites="cr-plot2">@cr-plot2</span></p>
-<div id="cr-plot2">
+<div id="cr-plot2" class="sticky">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -273,9 +418,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p>The results in 2022 caused less furor.</p>
-<p>While the Little Penguin / Kororā technically received the most #1 votes… <span class="citation" data-cites="cr-penguin">@cr-penguin</span></p>
-<div id="cr-penguin">
+<div id="cr-penguin" class="sticky">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/blue.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
@@ -283,8 +426,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </figure>
 </div>
 </div>
-<p>…it was pipped at the post by the New Zealand Rock Wren / Pīwauwau… <span class="citation" data-cites="cr-wren">@cr-wren</span></p>
-<div id="cr-wren">
+<div id="cr-wren" class="sticky">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/wren.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
@@ -292,8 +434,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </figure>
 </div>
 </div>
-<p>…a tiny alpine bird that lives in the mountains of the South Island. <span class="citation" data-cites="cr-plot3">@cr-plot3</span>.</p>
-<div id="cr-plot3">
+<div id="cr-plot3" class="sticky">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -304,8 +445,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p>In 2023, <span class="citation" data-cites="cr-plot4">@cr-plot4</span> the result of the John Oliver’s campaign was a resounding win for the Pūteketeke (more than 290K votes!) and a boost in donations to Forest and Bird.</p>
-<div id="cr-plot4">
+<div id="cr-plot4" class="sticky">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -316,8 +456,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p>Interest in the Forest and Bird competition carried over into 2024, with vote rates higher than average. <span class="citation" data-cites="cr-plot5">@cr-plot5</span></p>
-<div id="cr-plot5">
+<div id="cr-plot5" class="sticky">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -328,8 +467,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p>Last year, the Yellow-eyed Penguin / Hoiho prevailed. <span class="citation" data-cites="cr-ye">@cr-ye</span></p>
-<div id="cr-ye">
+<div id="cr-ye" class="sticky">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/yellow-eyed-penguins_0.avif" class="img-fluid figure-img" width="640"></p>
@@ -337,7 +475,8 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </figure>
 </div>
 </div>
-<p>Check out the <a href="https://www.birdoftheyear.org.nz/">Forest and Bird website</a> to read about past winners, donate to conservation efforts, and vote for your favourite New Zealand bird in the 2025 competition (voting opens in September).</p>
+</div>
+</div>
 </div>
 <div style="text-align: center; margin-top: 3rem; color: #666;">
 <p>Made with <a href="https://quarto.org/">Quarto</a></p>

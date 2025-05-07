@@ -1,5 +1,6 @@
 ---
-title: "Jenny L. Richmond Ph.D"
+title: "resume"
+title-block: false
 format:
   html:
     toc: true
@@ -11,9 +12,8 @@ format-links: [pdf]
 ---
 
 ::: {.print-only .contact-block}
-[email](jennyrichmond@gmail.com)
-[linkedin](https://www.linkedin.com/in/jenrichmondphd/)
-[website](https://jenrichmond.github.io/)
+contact: jennyrichmond@gmail.com
+
 :::
 
 ## SUMMARY
@@ -24,7 +24,7 @@ Data analytics leader with 15+ years of experience transforming complex informat
 ## CORE SKILLS AND KEY COMPETENCIES
 
 #### Data Analysis & Visualization
-- Advanced R skills in data wrangling and visualisation (Tidyverse) and reproducible reporting (RMarkdown, Quarto)
+- Advanced R skills in data wrangling and visualisation (Tidyverse), statistical analysis, and reproducible reporting (RMarkdown, Quarto)
 - Manage data using Excel/Google Sheets for efficient workflows
 - Foundational skills in Python and SQL
 
@@ -64,7 +64,7 @@ Data analytics leader with 15+ years of experience transforming complex informat
 
 - Founded and grew the data community from startup to 1,000+ members, running 48 events, workshops and meetups in 4 years 
 - Designed and implemented the #RYouWithMe program, creating interactive tutorials and video content that enabled 40,000 + learners to get started with R-based data wrangling and visualization [YouTube channel](https://www.youtube.com/watch?v=kfcX5DEMAp4&list=PLkAPliqRo9-kvZx8DkmI1OODBaJTAs0ld)
-- Built a comprehensive data skills curriculum covering data import, cleaning (dplyr), visualization (ggplot2), and communication (RMarkdown), published as an [open-source Quarto website](https://rladiessydney.org/courses/)
+- Built a comprehensive data skills curriculum covering data import, cleaning (dplyr), visualization (ggplot2), and communication (RMarkdown), published as an [Quarto website](https://rladiessydney.org/courses/)
 
 
 ### Chair, Human Ethics Committee
@@ -94,13 +94,3 @@ Data analytics leader with 15+ years of experience transforming complex informat
 
 
 
-::: {.no-print}
-## PRESENTATIONS AND WORKSHOPS
-
-insert talks/links that dont print pdf here
-:::
-
-::: {.print-only}
-## References
-Available upon request
-:::
