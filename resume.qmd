@@ -24,26 +24,27 @@ Data analytics leader with 15+ years of experience transforming complex informat
 ## CORE SKILLS AND KEY COMPETENCIES
 
 #### Data Analysis & Visualization
-- Advanced R skills in data wrangling and visualisation (Tidyverse), statistical analysis, and reproducible reporting (RMarkdown, Quarto)
-- Manage data using Excel/Google Sheets for efficient workflows
-- Foundational skills in Python and SQL
+- Analyze and visualize data using R (Tidyverse), including statistical modeling and reproducible reporting with RMarkdown and Quarto
+- Manage dataset in Excel and Google Sheets to support efficient workflows
+- Apply foundational skills in Python and SQL for exploratory data analysis
 
 #### Research and Evaluation 
-- Develop and deploy surveys and experimental protocols to gather insights from diverse stakeholders
-- Extract actionable insights from raw data via systematic analysis
-- Execute comprehensive program evaluations using clear impact metrics
+- Design and deploy surveys and experimental protocols to gather insights from diverse stakeholders
+- Extract actionable insights from raw data through systematic analysis
+- Evaluate programs using clearly defined impact metrics
 
 #### Project Leadership
-- Lead cross-functional teams through complex, data-intensive projects with multiple stakeholders
+- Lead cross-functional teams through complex, data-intensive projects
 - Manage multi-stage projects from conception to final reporting and implementation
-- Scale diverse communities of practice characterised by inclusive culture
-- Develop reproducible reporting systems for streamlined compliance and informed decision-making
+- Foster inclusive communities of practice and scale participation across diverse stakeholder groups
+- Develop reproducible reporting systems to support compliance and informed decision-making
+
 
 #### Communication & Knowledge Translation
-- Transform technical analyses into clear narratives for diverse stakeholders
-- Design and deliver engaging data-focused workshops and training materials
-- Present complex findings in accessible presentations and comprehensive reports
-- Build data literacy skills via strategic development of educational resources
+- Translate technical analyses into clear narratives for non-technical audiences
+- Design and deliver engaging, data-focused workshops and training resources
+- Present complex findings in accessible presentations and reports
+- Build data literacy through the development of strategic educational resources
 
 
 ## PROFESSIONAL EXPERIENCE{style="page-break-before: always"}
@@ -85,9 +86,7 @@ Data analytics leader with 15+ years of experience transforming complex informat
 - Developed and taught courses on developmental psychology, data visualization and computational reproducibility, emphasizing practical applications of analytical techniques (N = 40 - 1200 students) 
 - Supervised 6 PhD and 30 honours students, building supportive lab culture and promoting career development
 
-
-
-
+s
 ## EDUCATION
 
 **Doctor of Philosophy -- Psychology** <br> *University of Otago* [August 2004]{.cvdate}
