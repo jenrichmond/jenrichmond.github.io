@@ -1,17 +1,19 @@
 ---
-title: "resume"
+title: "Jenny L. Richmond Ph.D"
 format:
   html:
     toc: true
   pdf:
-    author: Jenny L. Richmond
+    author: Jenny L. Richmond Ph.D
     pdf-engine: weasyprint
 css: resume.css
 format-links: [pdf]
 ---
 
 ::: {.print-only .contact-block}
-jennyrichmond@gmail.com
+[email](jennyrichmond@gmail.com)
+[linkedin](https://www.linkedin.com/in/jenrichmondphd/)
+[website](https://jenrichmond.github.io/)
 :::
 
 ## SUMMARY
@@ -22,9 +24,7 @@ Data analytics leader with 15+ years of experience transforming complex informat
 ## CORE SKILLS AND KEY COMPETENCIES
 
 #### Data Analysis & Visualization
-- Advanced R skills 
-    - data wrangling and visualisation (Tidyverse)
-    - reproducible reporting (RMarkdown, Quarto)
+- Advanced R skills in data wrangling and visualisation (Tidyverse) and reproducible reporting (RMarkdown, Quarto)
 - Manage data using Excel/Google Sheets for efficient workflows
 - Foundational skills in Python and SQL
 
@@ -44,7 +44,6 @@ Data analytics leader with 15+ years of experience transforming complex informat
 - Design and deliver engaging data-focused workshops and training materials
 - Present complex findings in accessible presentations and comprehensive reports
 - Build data literacy skills via strategic development of educational resources
-
 
 
 ## PROFESSIONAL EXPERIENCE{style="page-break-before: always"}
@@ -68,8 +67,7 @@ Data analytics leader with 15+ years of experience transforming complex informat
 - Built a comprehensive data skills curriculum covering data import, cleaning (dplyr), visualization (ggplot2), and communication (RMarkdown), published as an [open-source Quarto website](https://rladiessydney.org/courses/)
 
 
-
-### Chair, Human Ethics Committee | 2017–2019
+### Chair, Human Ethics Committee
 
 ***University of New South Wales*** [2017-2019]{.cvdate}
 
