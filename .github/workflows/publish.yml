@@ -36,6 +36,11 @@ jobs:
         with:
           cache-version: 1
 
+      - name: Install WeasyPrint dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y weasyprint
+
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
