@@ -11,6 +11,8 @@ website:
       - about.qmd
       - posts.qmd
       - charts.qmd
+      - href: resume.qmd
+        text: resume
   search:
     location: navbar
     type: overlay

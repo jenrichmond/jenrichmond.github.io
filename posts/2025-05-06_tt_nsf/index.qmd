@@ -220,6 +220,7 @@ I wonder across state what proportion of the total funding lost was STEM Educati
 
 In almost half of the US states, STEM Education and SBE grants accounted for more than 70% of grants lost. 
 
+
 ```{r}
 #| code-fold: true
 

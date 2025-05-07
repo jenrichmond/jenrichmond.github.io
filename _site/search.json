@@ -411,5 +411,68 @@
     "title": "nsf grants terminated",
     "section": "STEM & SBE by state",
     "text": "STEM & SBE by state\nI am interested in the state distribution of funding loss in STEM Education and Social, Behavioral, and Economic Sciences. This plot includes states that lost more than 10 million USD in STEM and SBE grants.\n\n\nCode\namount_dir_state &lt;- state_dir %&gt;%\n  group_by(state, directorate) %&gt;%\n  summarise(amount = sum(usaspending_obligated, na.rm = TRUE)) %&gt;%\n  ungroup()\n\n\nstem_sbe &lt;- amount_dir_state %&gt;%\n  filter(directorate %in% c(\"STEM Education\", \"Social, Behavioral and Economic Sciences\")) %&gt;%\n  group_by(state) %&gt;%\n  mutate(total_stem_sbe = sum(amount)) %&gt;%\n  arrange(-total_stem_sbe) \n\n\nstem_sbe %&gt;%\n  filter(total_stem_sbe &gt; 10000000) %&gt;%\n  ggplot(aes(x = reorder(state, -total_stem_sbe), y = amount, fill = directorate)) +\n  geom_col() +\n  scale_y_continuous(limits = c(0,60000000), labels = unit_format(unit = \"M\", scale = 1e-6)) +\ntheme_minimal() +\n  easy_add_legend_title(\"Directorate\") +\n  easy_move_legend(to = c(\"bottom\")) +\n    scale_fill_brewer(palette = \"Set1\") +\n  labs(x = \"State\", y = \"Funding $\", \n       title = \"Value of STEM Education & Social, Behavioral, and Economic Sciences funding \\nterminated by state\", subtitle = \"States that have lost more than 10 million in STEM & SBE grants\")"
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "Jen Richmond",
+    "section": "",
+    "text": "jennyrichmond@gmail.com"
+  },
+  {
+    "objectID": "resume.html#education",
+    "href": "resume.html#education",
+    "title": "Jen Richmond",
+    "section": "EDUCATION",
+    "text": "EDUCATION\nDoctor of Philosophy – Psychology  University of Otago August 2004"
+  },
+  {
+    "objectID": "resume.html#work-experience",
+    "href": "resume.html#work-experience",
+    "title": "Resume",
+    "section": "WORK EXPERIENCE",
+    "text": "WORK EXPERIENCE\n\nData Scientist\nFreelance, Multiple Clients Jan 2020 – June 2021\nProviding data collection, pre-processing, exploratory analysis and modelling services to clients in the early R&D stages of developing data driven products. Projects include:\n\nData description and preliminary product feasibility insights for a start-up real estate bond platform; including assessing suitability of various property transaction databases for use in initial product prototype.\nDevelopment of statistical anomaly detection regimes and key historical insights from internet quality time-series data for use in parametric insurance products, including documenting analysis tools in an R package."
+  },
+  {
+    "objectID": "resume.html#presentations-and-workshops",
+    "href": "resume.html#presentations-and-workshops",
+    "title": "Jen Richmond",
+    "section": "PRESENTATIONS AND WORKSHOPS",
+    "text": "PRESENTATIONS AND WORKSHOPS\ninsert talks/links that dont print pdf here"
+  },
+  {
+    "objectID": "resume.html#references",
+    "href": "resume.html#references",
+    "title": "Jen Richmond",
+    "section": "References",
+    "text": "References\nAvailable upon request"
+  },
+  {
+    "objectID": "resume.html#summary",
+    "href": "resume.html#summary",
+    "title": "Jen Richmond",
+    "section": "SUMMARY",
+    "text": "SUMMARY\nData analytics leader with 15+ years of experience transforming complex information into actionable insights across academic and research environments. Leveraging R for data visualization, statistical analysis, and communicating technical findings to diverse stakeholders. Successfully led cross-functional teams to complete evaluation and impact projects, resulting in measurable improvements in program quality and operational efficiency. Passionate about making complex data accessible through compelling narratives and visualizations, with experience scaling data literacy programs that reached 40,000+ learners. Ready to apply deep analytical expertise and storytelling capabilities to drive organisational impact through data."
+  },
+  {
+    "objectID": "resume.html#core-skills-and-key-competencies",
+    "href": "resume.html#core-skills-and-key-competencies",
+    "title": "Jen Richmond",
+    "section": "CORE SKILLS AND KEY COMPETENCIES",
+    "text": "CORE SKILLS AND KEY COMPETENCIES\n\nData Analysis & Visualization\n\nAdvanced R skills\n\ndata wrangling and visualisation (Tidyverse)\nreproducible reporting (RMarkdown, Quarto)\n\nManage data using Excel/Google Sheets for efficient workflows\nFoundational skills in Python and SQL\n\n\n\nResearch and Evaluation\n\nDevelop and deploy surveys and experimental protocols to gather insights from diverse stakeholders\nExtract actionable insights from raw data via systematic analysis\nExecute comprehensive program evaluations using clear impact metrics\n\n\n\nProject Leadership\n\nLead cross-functional teams through complex, data-intensive projects with multiple stakeholders\nManage multi-stage projects from conception to final reporting and implementation\nScale diverse communities of practice characterised by inclusive culture\nDevelop reproducible reporting systems for streamlined compliance and informed decision-making\n\n\n\nCommunication & Knowledge Translation\n\nTransform technical analyses into clear narratives for diverse stakeholders\nDesign and deliver engaging data-focused workshops and training materials\nPresent complex findings in accessible presentations and comprehensive reports\nBuild data literacy skills via strategic development of educational resources"
+  },
+  {
+    "objectID": "resume.html#professional-experience",
+    "href": "resume.html#professional-experience",
+    "title": "Jen Richmond",
+    "section": "PROFESSIONAL EXPERIENCE",
+    "text": "PROFESSIONAL EXPERIENCE\n\nAssociate Professor | Director Academic Programs\nSchool of Psychology, University of New South Wales 2019-2025\n\nCreated data workflows that automated evaluation of 7 academic programs serving 1,300+ students, reducing compliance and quality assurance reporting time while improving data accuracy and consistency\nConducted data-informed program evaluations to monitor outcomes and align revisions with institutional goals and accreditation standards.\nLed data-driven quality assurance initiatives that translated complex student feedback into actionable course revisions, improving satisfaction scores across multiple programs\nEvaluated assessment outcomes informing school-wide policy changes regarding generative AI implementation, balancing innovation with academic integrity\n\n\n\nCo-founder and Data Community Lead\nR-Ladies Sydney 2018-2022\n\nFounded and grew the data community from startup to 1,000+ members, running 48 events, workshops and meetups in 4 years\nDesigned and implemented the #RYouWithMe program, creating interactive tutorials and video content that enabled 40,000 + learners to get started with R-based data wrangling and visualization YouTube channel\nBuilt a comprehensive data skills curriculum covering data import, cleaning (dplyr), visualization (ggplot2), and communication (RMarkdown), published as an open-source Quarto website\n\n\n\nChair, Human Ethics Committee | 2017–2019\nUniversity of New South Wales 2017-2019\n\nChaired monthly meetings, reviewed research proposals, and ensured compliance with national ethical standards\nProvided feedback and guidance to researchers on complex ethical issues and protocol modifications\n\n\n\nLecturer | Senior Lecturer | Associate Professor\nSchool of Psychology, University of New South Wales 2008-2019\n\nAnalyzed complex electrophysiological and behavioral datasets to extract meaningful patterns and insights, publishing findings in peer-reviewed journals\nImplemented computational reproducibility practices through R-based workflows integrating statistical analysis with narrative reporting via RMarkdown\nSecured $430,000 in competitive funding for data-intensive research projects requiring sophisticated experimental design and statistical analysis\nDeveloped and taught courses on developmental psychology, data visualization and computational reproducibility, emphasizing practical applications of analytical techniques (N = 40 - 1200 students)\nSupervised 6 PhD and 30 honours students, building supportive lab culture and promoting career development"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome!",
+    "section": "",
+    "text": "I am a psychologist by training and have been teaching myself (and others) R for a few years now. I am a co-founder of R-Ladies Sydney and developer of #RYouWithMe. This is my place to keep notes about R (and python) things I am learning. This site makes my googling faster! I hope it is useful to you too."
   }
 ]

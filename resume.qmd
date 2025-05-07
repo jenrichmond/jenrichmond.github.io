@@ -1,0 +1,108 @@
+---
+title: ""
+format:
+  html:
+    toc: true
+  pdf:
+    author: Jenny L. Richmond
+    pdf-engine: weasyprint
+css: resume.css
+format-links: [pdf]
+---
+
+::: {.print-only .contact-block}
+jennyrichmond@gmail.com
+:::
+
+## SUMMARY
+
+
+Data analytics leader with 15+ years of experience transforming complex information into actionable insights across academic and research environments. Leveraging R for data visualization, statistical analysis, and communicating technical findings to diverse stakeholders. Successfully led cross-functional teams to complete evaluation and impact projects, resulting in measurable improvements in program quality and operational efficiency. Passionate about making complex data accessible through compelling narratives and visualizations, with experience scaling data literacy programs that reached 40,000+ learners. Ready to apply deep analytical expertise and storytelling capabilities to drive organisational impact through data.
+
+## CORE SKILLS AND KEY COMPETENCIES
+
+#### Data Analysis & Visualization
+- Advanced R skills 
+    - data wrangling and visualisation (Tidyverse)
+    - reproducible reporting (RMarkdown, Quarto)
+- Manage data using Excel/Google Sheets for efficient workflows
+- Foundational skills in Python and SQL
+
+#### Research and Evaluation 
+- Develop and deploy surveys and experimental protocols to gather insights from diverse stakeholders
+- Extract actionable insights from raw data via systematic analysis
+- Execute comprehensive program evaluations using clear impact metrics
+
+#### Project Leadership
+- Lead cross-functional teams through complex, data-intensive projects with multiple stakeholders
+- Manage multi-stage projects from conception to final reporting and implementation
+- Scale diverse communities of practice characterised by inclusive culture
+- Develop reproducible reporting systems for streamlined compliance and informed decision-making
+
+#### Communication & Knowledge Translation
+- Transform technical analyses into clear narratives for diverse stakeholders
+- Design and deliver engaging data-focused workshops and training materials
+- Present complex findings in accessible presentations and comprehensive reports
+- Build data literacy skills via strategic development of educational resources
+
+
+
+## PROFESSIONAL EXPERIENCE{style="page-break-before: always"}
+
+### Associate Professor | Director Academic Programs
+
+***School of Psychology, University of New South Wales*** [2019-2025]{.cvdate}
+
+- Created data workflows that automated evaluation of 7 academic programs serving 1,300+ students, reducing compliance and quality assurance reporting time while improving data accuracy and consistency
+- Conducted data-informed program evaluations to monitor outcomes and align revisions with institutional goals and accreditation standards.
+- Led data-driven quality assurance initiatives that translated complex student feedback into actionable course revisions, improving satisfaction scores across multiple programs
+- Evaluated assessment outcomes informing school-wide policy changes regarding generative AI implementation, balancing innovation with academic integrity
+
+
+### Co-founder and Data Community Lead
+
+***R-Ladies Sydney*** [2018-2022]{.cvdate}
+
+- Founded and grew the data community from startup to 1,000+ members, running 48 events, workshops and meetups in 4 years 
+- Designed and implemented the #RYouWithMe program, creating interactive tutorials and video content that enabled 40,000 + learners to get started with R-based data wrangling and visualization [YouTube channel](https://www.youtube.com/watch?v=kfcX5DEMAp4&list=PLkAPliqRo9-kvZx8DkmI1OODBaJTAs0ld)
+- Built a comprehensive data skills curriculum covering data import, cleaning (dplyr), visualization (ggplot2), and communication (RMarkdown), published as an [open-source Quarto website](https://rladiessydney.org/courses/)
+
+
+
+### Chair, Human Ethics Committee | 2017–2019
+
+***University of New South Wales*** [2017-2019]{.cvdate}
+
+- Chaired monthly meetings, reviewed research proposals, and ensured compliance with national ethical standards
+- Provided feedback and guidance to researchers on complex ethical issues and protocol modifications
+
+
+### Lecturer | Senior Lecturer | Associate Professor 
+
+***School of Psychology, University of New South Wales*** [2008-2019]{.cvdate}
+
+- Analyzed complex electrophysiological and behavioral datasets to extract meaningful patterns and insights, publishing findings in peer-reviewed journals
+- Implemented computational reproducibility practices through R-based workflows integrating statistical analysis with narrative reporting via RMarkdown
+- Secured $430,000 in competitive funding for data-intensive research projects requiring sophisticated experimental design and statistical analysis
+- Developed and taught courses on developmental psychology, data visualization and computational reproducibility, emphasizing practical applications of analytical techniques (N = 40 - 1200 students) 
+- Supervised 6 PhD and 30 honours students, building supportive lab culture and promoting career development
+
+
+
+
+## EDUCATION
+
+**Doctor of Philosophy -- Psychology** <br> *University of Otago* [August 2004]{.cvdate}
+
+
+
+::: {.no-print}
+## PRESENTATIONS AND WORKSHOPS
+
+insert talks/links that dont print pdf here
+:::
+
+::: {.print-only}
+## References
+Available upon request
+:::
