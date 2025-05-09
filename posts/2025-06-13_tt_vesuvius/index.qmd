@@ -1,0 +1,87 @@
+---
+title: "vesuvius"
+editor: visual
+draft: TRUE
+---
+
+```{r eval = FALSE}
+library(tidyverse)
+library(here)
+library(janitor)
+library(RColorBrewer)
+library(ggeasy)
+
+tuesdata <- tidytuesdayR::tt_load(2025, week = 19)
+
+
+v <- tuesdata$vesuvius
+
+glimpse(v)
+
+```
+
+```{r eval = FALSE}
+
+v %>%
+  tabyl(type)
+
+v %>%
+  ggplot(aes(x = year, y = duration_magnitude_md)) +
+  geom_jitter()
+
+
+v %>%
+  group_by(year) %>%
+  summarise(count = n())
+```
+
+```{r eval = FALSE}
+theme_strip <- function(){ 
+  
+  theme_minimal() %+replace%
+  theme(
+    axis.text.y = element_blank(),
+    axis.line.y = element_blank(),
+    axis.title = element_blank(),
+    panel.grid.major = element_blank(),
+    legend.title = element_blank(),
+    axis.text.x = element_text(vjust = 3),
+    panel.grid.minor = element_blank(),
+    plot.title = element_text(size = 14, face = "bold"),
+    legend.key.width = unit(.5, "lines")
+  )
+}
+
+col_strip <- brewer.pal(11, "RdBu")
+```
+
+```{r eval = FALSE}
+
+maxmin <- range(v$duration_magnitude_md, na.rm = T)
+md <- mean(v$duration_magnitude_md, na.rm = T)
+
+v <- v %>%
+   mutate(date = ymd(time)) 
+
+glimpse(v)
+
+  group_by(year) %>%
+  summarise(annual= mean(duration_magnitude_md, na.rm = TRUE)) %>%
+ 
+
+v_year %>%
+    ggplot(aes(x = time, y = 1, fill = annual)) +
+  geom_tile() 
+
+glimpse(v)
+
++
+  scale_fill_gradientn(colors = rev(col_strip), 
+                       values = scales::rescale(c(maxmin[1], md, maxmin[2])), 
+                       na.value = "gray80") 
+
+
+
+```
+
+-   scale_x_continuous(limits = c(1972, 2022), expand = c(0,0), breaks = seq(1972,2022, 10)) + labs( title = "Queenstown 1972-2022", caption = "Data: Stats NZ", x = "Year") + coord_cartesian(expand = FALSE) + theme_strip() + easy_remove_axes(which = "x")

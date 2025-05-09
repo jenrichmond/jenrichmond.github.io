@@ -33,6 +33,7 @@ nsf <- tuesdata$nsf_terminations
 state_dir <- nsf %>%
   select(state = org_state, usaspending_obligated, directorate_abbrev, directorate) %>%
   mutate(directorate = str_remove_all(directorate, '["]'))
+
 ```
 
 # funding terminated by state

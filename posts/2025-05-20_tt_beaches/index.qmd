@@ -1,0 +1,17 @@
+---
+title: "beaches"
+format: html
+draft: TRUE
+---
+
+```{r}
+library(tidytuesdayR)
+library(tidyverse)
+library(janitor)
+
+tuesdata <- tidytuesdayR::tt_load(2025, week = 20)
+
+water_quality <- tuesdata$water_quality
+weather <- tuesdata$weather
+```
+
