@@ -170,13 +170,13 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
   <ul>
   <li><a href="#read-the-data" id="toc-read-the-data" class="nav-link active" data-scroll-target="#read-the-data">read the data</a></li>
   <li><a href="#create-stripe-theme" id="toc-create-stripe-theme" class="nav-link" data-scroll-target="#create-stripe-theme">create stripe theme</a></li>
-  <li><a href="#how-many-seismic-events-are-recorded-at-mt-vesuvius" id="toc-how-many-seismic-events-are-recorded-at-mt-vesuvius" class="nav-link" data-scroll-target="#how-many-seismic-events-are-recorded-at-mt-vesuvius">How many seismic events are recorded at Mt Vesuvius?</a>
+  <li><a href="#how-many-seismic-events-are-recorded-at-mt-vesuvius" id="toc-how-many-seismic-events-are-recorded-at-mt-vesuvius" class="nav-link" data-scroll-target="#how-many-seismic-events-are-recorded-at-mt-vesuvius">how many seismic events are recorded at Mt Vesuvius?</a>
   <ul class="collapse">
   <li><a href="#per-year" id="toc-per-year" class="nav-link" data-scroll-target="#per-year">per year</a></li>
   <li><a href="#per-month" id="toc-per-month" class="nav-link" data-scroll-target="#per-month">per month</a></li>
   </ul></li>
-  <li><a href="#how-big-are-the-seismic-events-at-mt-vesuvius" id="toc-how-big-are-the-seismic-events-at-mt-vesuvius" class="nav-link" data-scroll-target="#how-big-are-the-seismic-events-at-mt-vesuvius">How big are the seismic events at Mt Vesuvius?</a></li>
-  <li><a href="#is-the-number-of-events-related-to-the-duration-magnitude" id="toc-is-the-number-of-events-related-to-the-duration-magnitude" class="nav-link" data-scroll-target="#is-the-number-of-events-related-to-the-duration-magnitude">Is the number of events related to the duration magnitude?</a></li>
+  <li><a href="#how-big-are-the-seismic-events-at-mt-vesuvius" id="toc-how-big-are-the-seismic-events-at-mt-vesuvius" class="nav-link" data-scroll-target="#how-big-are-the-seismic-events-at-mt-vesuvius">how big are the seismic events at Mt Vesuvius?</a></li>
+  <li><a href="#is-the-number-of-events-related-to-the-duration-magnitude" id="toc-is-the-number-of-events-related-to-the-duration-magnitude" class="nav-link" data-scroll-target="#is-the-number-of-events-related-to-the-duration-magnitude">is the number of events related to the duration magnitude?</a></li>
   </ul>
 </nav>
     </div>
@@ -333,10 +333,10 @@ $ month                 &lt;ord&gt; Apr, Jun, Jan, Jan, Jan, Jan, Jan, Jan, Jan,
 </div>
 </section>
 <section id="how-many-seismic-events-are-recorded-at-mt-vesuvius" class="level1">
-<h1>How many seismic events are recorded at Mt Vesuvius?</h1>
+<h1>how many seismic events are recorded at Mt Vesuvius?</h1>
 <section id="per-year" class="level3">
 <h3 class="anchored" data-anchor-id="per-year">per year</h3>
-<p>Lets start with counting how many seismic events happen at Vesuvius each year. Most of the data was measured between 2013 and 2024, but there were a couple of events relating to 2011/2012 readings, so I am filtering those out.</p>
+<p>Lets start by counting how many seismic events happen at Vesuvius each year. Most of the data was measured between 2013 and 2024, but there were a couple of events relating to 2011/2012 readings, so I am filtering those out.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -376,7 +376,7 @@ $ month                 &lt;ord&gt; Apr, Jun, Jan, Jan, Jan, Jan, Jan, Jan, Jan,
 </section>
 <section id="per-month" class="level3">
 <h3 class="anchored" data-anchor-id="per-month">per month</h3>
-<p>What would that look like if we counted the number of events per month and plotted that as a stripe plot?</p>
+<p>What would that look like if we counted the number of events per month and plotted that as a stripe plot? This code is exactly the same as above, except I am grouping by both year and month because summarising the number of events.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -426,8 +426,8 @@ $ month                 &lt;ord&gt; Apr, Jun, Jan, Jan, Jan, Jan, Jan, Jan, Jan,
 </section>
 </section>
 <section id="how-big-are-the-seismic-events-at-mt-vesuvius" class="level1">
-<h1>How big are the seismic events at Mt Vesuvius?</h1>
-<p>The duration_magnitude_md variable captures the duration magnitude (Md) of each event, which is an index of the amount of energy released.</p>
+<h1>how big are the seismic events at Mt Vesuvius?</h1>
+<p>The duration_magnitude_md variable in the vesuvius dataset captures the duration magnitude (Md) of each event, which is an index of the amount of energy released. Here I am grouping by year and month before summarising the mean duration magnitude values per month.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -466,7 +466,7 @@ $ month                 &lt;ord&gt; Apr, Jun, Jan, Jan, Jan, Jan, Jan, Jan, Jan,
 </div>
 </section>
 <section id="is-the-number-of-events-related-to-the-duration-magnitude" class="level1">
-<h1>Is the number of events related to the duration magnitude?</h1>
+<h1>is the number of events related to the duration magnitude?</h1>
 <p>Ok this is kinda cool- I know nothing about how volcanos work, but if we line up these two plots using the <code>patchwork</code> package, it looks a bit like months that have LOTS of events tend to have smaller mean duration magnitude, whereas months that have fewer events, tend to have larger duration magnitudes.</p>
 <p>I guess it makes sense that the volcano is releasing pressure, either via many small events, or by fewer larger events.</p>
 <div class="cell">

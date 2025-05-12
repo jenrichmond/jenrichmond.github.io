@@ -110,11 +110,11 @@ theme_stripe_pw <- function(title_family = "lato") {
 col_stripe <- brewer.pal(9, "YlOrRd")
 ```
 
-# How many seismic events are recorded at Mt Vesuvius?
+# how many seismic events are recorded at Mt Vesuvius?
 
 ### per year
 
-Lets start with counting how many seismic events happen at Vesuvius each year. Most of the data was measured between 2013 and 2024, but there were a couple of events relating to 2011/2012 readings, so I am filtering those out.
+Lets start by counting how many seismic events happen at Vesuvius each year. Most of the data was measured between 2013 and 2024, but there were a couple of events relating to 2011/2012 readings, so I am filtering those out.
 
 ```{r}
 #| code-fold: true
@@ -148,7 +148,7 @@ Yikes! Looks like 2024 was a particularly active year for Vesuvius, with 1315 ev
 
 ### per month
 
-What would that look like if we counted the number of events per month and plotted that as a stripe plot?
+What would that look like if we counted the number of events per month and plotted that as a stripe plot? This code is exactly the same as above, except I am grouping by both year and month because summarising the number of events. 
 
 ```{r}
 #| message: false
@@ -194,9 +194,9 @@ events_month %>%
 
 Plotted by month, 2024 still looks like it had quite high activity, but not as high as periods in 2018 and 2019. In March 2019, there were 247 events recorded.
 
-# How big are the seismic events at Mt Vesuvius?
+# how big are the seismic events at Mt Vesuvius?
 
-The duration_magnitude_md variable captures the duration magnitude (Md) of each event, which is an index of the amount of energy released.
+The duration_magnitude_md variable in the vesuvius dataset captures the duration magnitude (Md) of each event, which is an index of the amount of energy released. Here I am grouping by year and month before summarising the mean duration magnitude values per month. 
 
 ```{r}
 #| message: false
@@ -231,7 +231,7 @@ mag_month %>%
 
 ```
 
-# Is the number of events related to the duration magnitude?
+# is the number of events related to the duration magnitude?
 
 Ok this is kinda cool- I know nothing about how volcanos work, but if we line up these two plots using the `patchwork` package, it looks a bit like months that have LOTS of events tend to have smaller mean duration magnitude, whereas months that have fewer events, tend to have larger duration magnitudes.
 
