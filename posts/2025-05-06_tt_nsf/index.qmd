@@ -66,7 +66,11 @@ plot_usmap(data = amount_by_state, values = "total", labels=FALSE) +
 
 ```
 
+::: {.callout-note}
 
+Update 2025-05-13: Libby Heeren made a great point on BlueSky last week about population. It is not necessarily surprising that CA, NY, and TX stick out on this map, because these are the most highly populated states. Check out her map that controls for population [here](https://bsky.app/profile/libbyheeren.bsky.social/post/3lonaphub4k2i)
+
+:::
 
 # number grants terminated by directorate
 
