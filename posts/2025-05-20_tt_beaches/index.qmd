@@ -1,10 +1,20 @@
 ---
-title: "beaches"
+title: "sydney beaches"
 format: html
-draft: TRUE
+date: 2025-05-20
+author: Jen Richmond
+
 ---
 
+My first TidyTuesday data curation!! This is a updated version of the dataset we used for #RYouWithMe, a series of online modules designed to get beginners into #rstats. 
+
+I am excited to dig in and learn something new about what is going on with poo at Sydney beaches. 
+
 ```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| 
 library(tidytuesdayR)
 library(tidyverse)
 library(janitor)

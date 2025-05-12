@@ -2,6 +2,7 @@
 title: "what happened? what now?"
 subtitle: "i quit my academic job a couple of months ago and as the news gets out, people keep asking what happened and what are you going to do now... this is my half-formed answer #quitlit"
 editor: visual
+author: Jen Richmond
 date: 2025-05-09
 bibliography: references.bib
 bibliographystyle: apa
