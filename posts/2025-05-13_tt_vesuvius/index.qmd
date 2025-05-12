@@ -289,7 +289,7 @@ count / mag +
 ```{r}
 #| include: false
 
-ggsave(here::here("posts", "2025-06-13_tt_vesuvius", "featured.png"), width = 6, height = 4,  bg = "white")
+ggsave(here::here("posts", "2025-05-13_tt_vesuvius", "featured.png"), width = 6, height = 4,  bg = "white")
 
 
 ```
