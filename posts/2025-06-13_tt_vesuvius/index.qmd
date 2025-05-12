@@ -1,87 +1,334 @@
 ---
 title: "vesuvius"
 editor: visual
-draft: TRUE
+author: Jen Richmond
+date: 2025-05-13
 ---
 
-```{r eval = FALSE}
+
+The TidyTuesday dataset this week is about seismic activity at Mt Vesuvius. Given we are talking about a volcano, I am expecting that there might be cyclical patterns in this data i.e. the volcano is active for a few months and then quietens down and then is active again.
+
+![Mt Vesuvius (image source: Wikipedia)](vesuvius.jpg)
+
+During the #30DayChart challenge I learned how to use `geom_tile()` to make a ["show us your stripes" plot](https://jenrichmond.github.io/charts/2025-04-11_stripes/) illustrating climate-related changes in temperature. Here I am testing whether a striped plot might be a good way to capture changes in seismic activity over time.
+
+### read the data
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| 
 library(tidyverse)
+library(showtext)
 library(here)
 library(janitor)
 library(RColorBrewer)
 library(ggeasy)
+library(patchwork)
+library(ggpubr)
+library(ggtext)
+
+options(scipen = 999)
 
 tuesdata <- tidytuesdayR::tt_load(2025, week = 19)
 
-
 v <- tuesdata$vesuvius
 
+v <- v %>%
+  mutate(month = month(time, label = TRUE))
+
 glimpse(v)
 
 ```
 
-```{r eval = FALSE}
+### create stripe theme
 
-v %>%
-  tabyl(type)
+This theme is adapted from [Dominic Roye's blog](https://dominicroye.github.io/blog/how-to-create-warming-stripes-in-r/index.html). It uses theme_minimal as a base and then gets rid of the y axis axis and labels, gridlines, legend title, adds some space to the x axis labels, makes the legend slightly narrower than default, adds a coloured background, more space around the plot and changes the titlefont.
 
-v %>%
-  ggplot(aes(x = year, y = duration_magnitude_md)) +
-  geom_jitter()
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
 
 
-v %>%
-  group_by(year) %>%
-  summarise(count = n())
-```
+font_add_google("Lato", "lato")
+showtext_auto()
 
-```{r eval = FALSE}
-theme_strip <- function(){ 
+theme_stripe <- function(title_family = "lato") { 
   
   theme_minimal() %+replace%
-  theme(
-    axis.text.y = element_blank(),
-    axis.line.y = element_blank(),
-    axis.title = element_blank(),
-    panel.grid.major = element_blank(),
-    legend.title = element_blank(),
-    axis.text.x = element_text(vjust = 3),
-    panel.grid.minor = element_blank(),
-    plot.title = element_text(size = 14, face = "bold"),
-    legend.key.width = unit(.5, "lines")
-  )
+    theme(
+      axis.text.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.title = element_blank(),
+      panel.grid.major = element_blank(),
+      legend.title = element_blank(),
+      axis.text.x = element_text(vjust = 3),
+      panel.grid.minor = element_blank(),
+      legend.key.width = unit(0.5, "lines"), 
+      plot.caption = element_textbox_simple(), # helps with social caption html
+      panel.background = element_rect(fill = "papayawhip", color = NA),
+      plot.background = element_rect(fill = "papayawhip", color = NA),
+      plot.margin = margin(t = 20, r = 20, b = 20, l = 20, unit = "pt"), 
+      plot.title = element_text(
+        family = title_family,
+        size = 14,
+        hjust = 0, 
+        color = "black"
+      )
+    )
 }
 
-col_strip <- brewer.pal(11, "RdBu")
+# specific theme for patchwork plot, less white space
+
+theme_stripe_pw <- function(title_family = "lato") { 
+  
+  theme_minimal() %+replace%
+    theme(
+      axis.text.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.title = element_blank(),
+      panel.grid.major = element_blank(),
+      legend.title = element_blank(),
+      axis.text.x = element_text(vjust = 3),
+      panel.grid.minor = element_blank(),
+      legend.key.width = unit(0.5, "lines"), 
+        plot.caption = element_textbox_simple(), # helps with social caption html
+      panel.background = element_rect(fill = "papayawhip", color = NA),
+      plot.background = element_rect(fill = "papayawhip", color = NA),
+      plot.margin = margin(t = 20, r = 10, b = 10, l = 10, unit = "pt"), 
+      plot.title = element_text(
+        family = title_family,
+        size = 14,
+        hjust = 0, 
+        color = "black"
+      )
+    )
+}
+
+
+col_stripe <- brewer.pal(9, "YlOrRd")
 ```
 
-```{r eval = FALSE}
 
-maxmin <- range(v$duration_magnitude_md, na.rm = T)
-md <- mean(v$duration_magnitude_md, na.rm = T)
 
-v <- v %>%
-   mutate(date = ymd(time)) 
+# How many seismic events are recorded at Mt Vesuvius?
 
-glimpse(v)
+### per year
 
+Lets start with counting how many seismic events happen at Vesuvius each year. Most of the data was measured between 2013 and 2024, but there were a couple of events relating to 2011/2012 readings, so I am filtering those out. 
+
+```{r}
+#| code-fold: true
+# count events per year
+events_year <- v %>%
   group_by(year) %>%
-  summarise(annual= mean(duration_magnitude_md, na.rm = TRUE)) %>%
- 
+  summarise(count = n()) %>%
+  filter(year >=2013)
 
-v_year %>%
-    ggplot(aes(x = time, y = 1, fill = annual)) +
-  geom_tile() 
+# get mean and range for use in gradient
 
-glimpse(v)
+year_maxmin <- range(events_year$count, na.rm = T)
+year_md <- mean(events_year$count, na.rm = T)
 
-+
-  scale_fill_gradientn(colors = rev(col_strip), 
-                       values = scales::rescale(c(maxmin[1], md, maxmin[2])), 
-                       na.value = "gray80") 
+# plot 
+events_year %>%
+    ggplot(aes(x = year, y = 1, fill = count)) +
+  geom_tile() +
+  scale_x_continuous(breaks = seq(2014, 2024, 2)) +
+  scale_fill_gradientn(colors = col_stripe, 
+                       values = scales::rescale(c(year_maxmin[1], year_md, year_maxmin[2])), 
+                       na.value = "gray80", 
+                         breaks = seq(0, 1500, 250),
+                      limits = c(0, 1500)) + 
+  theme_stripe()  +
+  labs(title = "Number of seismic events per year at Vesuvius")
+
+```
+
+Yikes! Looks like 2024 was a particularly active year for Vesuvius, with 1315 events recorded. 
+
+
+### per month
+
+What would that look like if we counted the number of events per month and plotted that as a stripe plot? 
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+
+events_month <- v %>%
+  group_by(year, month) %>%
+  summarise(count = n()) %>%
+  unite(year_month, c(year, month), sep = "_", remove = FALSE) %>%
+  arrange(year, month) %>%
+  filter(year >= 2013) %>%
+  ungroup()
+
+
+month_maxmin <- range(events_month$count, na.rm = T)
+month_md <- mean(events_month$count, na.rm = T)
+
+jan_each_year <- events_month %>% 
+              filter(str_detect(year_month, "_Jan$")) %>% 
+              pull(year_month)
+
+just_year <- events_month %>% 
+              filter(str_detect(year_month, "_Jan$")) %>% 
+              pull(year_month) %>% 
+              str_sub(1, 4)
+
+
+events_month %>%
+    ggplot(aes(x = year_month, y = 1, fill = count)) +
+  geom_tile() +
+  scale_fill_gradientn(colors = col_stripe, 
+                       values = scales::rescale(c(month_maxmin[1], month_md, month_maxmin[2])), 
+                       na.value = "gray80", 
+                        breaks = seq(0, 250, 50),
+                      limits = c(0, 250)) + 
+  scale_x_discrete(breaks = jan_each_year, labels = just_year) +
+  theme_stripe() +
+  labs(title = "Number of seismic events recorded per month at Vesuvius")
+  
+
+```
+
+Plotted by month, 2024 still looks like it had quite high activity, but not as high as periods in 2018 and 2019. In March 2019, there were 247 events recorded. 
+
+# How big are the seismic events at Mt Vesuvius?
+
+The duration_magnitude_md variable captures the duration magnitude (Md) of each event, which is an index of the amount of energy released. 
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| 
+mag_month <- v %>%
+  group_by(year, month) %>%
+  summarise(mean = mean(duration_magnitude_md, na.rm = TRUE)) %>%
+  unite(year_month, c(year, month), sep = "_", remove = FALSE) %>%
+  arrange(year, month) %>%
+  filter(year >= 2013) %>%
+  ungroup()
+
+
+mag_maxmin <- range(mag_month$mean, na.rm = T)
+mag_md <- mean(mag_month$mean, na.rm = T)
+
+mag_month %>%
+    ggplot(aes(x = year_month, y = 1, fill = mean)) +
+  geom_tile() +
+  scale_fill_gradientn(colors = col_stripe, 
+                       values = scales::rescale(c(mag_maxmin[1], mag_md, mag_maxmin[2])), 
+                       na.value = "gray80", 
+                        breaks = seq(-0.3, 0.5, 0.1),
+                      limits = c(-0.3, 0.5), 
+                      labels = scales::label_number(accuracy = 0.1)) +
+  theme_stripe() +
+  labs(title = "Mean duration magnitude of seismic events per month at Vesuvius") +
+    scale_x_discrete(breaks = jan_each_year, labels = just_year)
+
+
+```
+
+
+# Is the number of events related to the duration magnitude?
+
+Ok this is kinda cool- I know nothing about how volcanos work, but if we line up these two plots using the `patchwork` package, it looks a bit like months that have LOTS of events tend to have smaller mean duration magnitude, whereas months that have fewer events, tend to have larger duration magnitudes. 
+
+I guess it makes sense that the volcano is releasing pressure, either via many small events, or by fewer larger events. 
+
+```{r}
+#| include: false
+
+count <- events_month %>%
+    ggplot(aes(x = year_month, y = 1, fill = count)) +
+  geom_tile() +
+  scale_fill_gradientn(colors = col_stripe, 
+                       values = scales::rescale(c(month_maxmin[1], month_md, month_maxmin[2])), 
+                       na.value = "gray80", 
+                        breaks = seq(0, 250, 50),
+                      limits = c(0, 250)) + 
+  scale_x_discrete(breaks = jan_each_year, labels = just_year) +
+  theme_stripe() +
+  labs(subtitle = "Number of seismic events recorded per month at Vesuvius")
+
+count
+
+mag <- mag_month %>%
+    ggplot(aes(x = year_month, y = 1, fill = mean)) +
+  geom_tile() +
+  scale_fill_gradientn(colors = col_stripe, 
+                       values = scales::rescale(c(mag_maxmin[1], mag_md, mag_maxmin[2])), 
+                       na.value = "gray80", 
+                        breaks = seq(-0.3, 0.5, 0.1),
+                      limits = c(-0.3, 0.5), 
+                      labels = scales::label_number(accuracy = 0.1)) +
+  theme_stripe() +
+  labs(subtitle = "Mean duration magnitude of seismic events per month at Vesuvius") +
+    scale_x_discrete(breaks = jan_each_year, labels = just_year)
+
+mag
 
 
 
 ```
 
--   scale_x_continuous(limits = c(1972, 2022), expand = c(0,0), breaks = seq(1972,2022, 10)) + labs( title = "Queenstown 1972-2022", caption = "Data: Stats NZ", x = "Year") + coord_cartesian(expand = FALSE) + theme_strip() + easy_remove_axes(which = "x")
+
+```{r}
+#| code-fold: true
+#| 
+
+
+count / mag +
+  plot_annotation(title = "The frequency and magnitude of seismic events at Mt Vesuvius",
+                  subtitle = "Pressure is released either in many small events or fewer larger events",
+                  caption = "Data from Italian Istituto Nazionale di Geofisica e Vulcanologia (INGV)",
+                  theme = theme_stripe_pw())
+
+```
+
+
+```{r}
+#| include: false
+
+ggsave(here::here("posts", "2025-06-13_tt_vesuvius", "featured.png"), width = 6, height = 4,  bg = "white")
+
+
+```
+
+
+
+Here I am combining the summarising I did above to get the count of events and mean duration magnitude in the same dataframe and switching to the `ggpubr::ggscatter` to make it easy to add correlation coefficients to the plot. 
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| 
+mag_count <- v %>%
+  group_by(year, month) %>%
+  summarise(count = n(), mean_mag = mean(duration_magnitude_md, na.rm = TRUE)) %>%
+  unite(year_month, c(year, month), sep = "_", remove = FALSE) %>%
+  arrange(year, month) %>%
+  filter(year >= 2013) %>%
+  ungroup()
+
+mag_count %>%
+  ggscatter(x = "count", y = "mean_mag",
+   add = "reg.line",  # Add regressin line
+   add.params = list(color = "blue", fill = "lightgray"), # Customize reg. line
+   conf.int = TRUE, # Add confidence interval
+   cor.coef = TRUE, # Add correlation coefficient. see ?stat_cor
+   cor.coeff.args = list(method = "pearson", label.x = 150, label.sep = "\n"), 
+   title = "At Mt Vesuvius, months with more seismic activity tend to \nhave, on average, smaller events", 
+   caption = "Data from 2013-2024",
+   xlab = "Number of seismic events per month", 
+   ylab = "Mean monthly duration magnitude"
+   )
+```
+

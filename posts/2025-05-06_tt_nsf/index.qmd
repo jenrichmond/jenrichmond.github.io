@@ -1,6 +1,8 @@
 ---
 title: "nsf grants terminated"
 format: html
+date: 2024-05-06
+author: Jen Richmond
 ---
 
 
