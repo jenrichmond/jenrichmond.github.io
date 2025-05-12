@@ -3,12 +3,13 @@ title: "sydney beaches"
 format: html
 date: 2025-05-20
 author: Jen Richmond
+image: featured.png
 
 ---
 
-My first TidyTuesday data curation!! This is a updated version of the dataset we used for #RYouWithMe, a series of online modules designed to get beginners into #rstats. 
+My first TidyTuesday data curation!! This is an updated version of the dataset we used for #RYouWithMe, a series of online modules designed to get beginners into #rstats. I am excited to dig in and learn something new about what is going on with poo at Sydney beaches. 
 
-I am excited to dig in and learn something new about what is going on with poo at Sydney beaches. 
+### read the data
 
 ```{r}
 #| message: false
@@ -24,4 +25,4 @@ tuesdata <- tidytuesdayR::tt_load(2025, week = 20)
 water_quality <- tuesdata$water_quality
 weather <- tuesdata$weather
 ```
-
+### to be continued

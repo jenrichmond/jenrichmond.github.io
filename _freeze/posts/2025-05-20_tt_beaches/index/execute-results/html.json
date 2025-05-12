@@ -1,8 +1,8 @@
 {
-  "hash": "1803a57d7b3be46159dcbc1b8223a2c3",
+  "hash": "689095bec4fba7c90fb3da444a4c5038",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"sydney beaches\"\nformat: html\ndate: 2025-05-20\nauthor: Jen Richmond\n\n---\n\n\n\nMy first TidyTuesday data curation!! This is a updated version of the dataset we used for #RYouWithMe, a series of online modules designed to get beginners into #rstats. \n\nI am excited to dig in and learn something new about what is going on with poo at Sydney beaches. \n\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\"}\nlibrary(tidytuesdayR)\nlibrary(tidyverse)\nlibrary(janitor)\n\ntuesdata <- tidytuesdayR::tt_load(2025, week = 20)\n\nwater_quality <- tuesdata$water_quality\nweather <- tuesdata$weather\n```\n:::\n",
+    "markdown": "---\ntitle: \"sydney beaches\"\nformat: html\ndate: 2025-05-20\nauthor: Jen Richmond\nimage: featured.png\n\n---\n\n\n\nMy first TidyTuesday data curation!! This is an updated version of the dataset we used for #RYouWithMe, a series of online modules designed to get beginners into #rstats. I am excited to dig in and learn something new about what is going on with poo at Sydney beaches. \n\n### read the data\n\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\"}\nlibrary(tidytuesdayR)\nlibrary(tidyverse)\nlibrary(janitor)\n\ntuesdata <- tidytuesdayR::tt_load(2025, week = 20)\n\nwater_quality <- tuesdata$water_quality\nweather <- tuesdata$weather\n```\n:::\n\n\n### to be continued\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
