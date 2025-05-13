@@ -20,6 +20,8 @@ Recently the Jon Harmon and the #tidytuesday team have put this philosophy into 
 The package has a number of functions that make it super easy for you get the data into RStudio. No need to download the csv and read it back in. Just use the `tt_load()` with the date or year and week. 
 
 ```{r}
+#| code-fold: true
+
 library(tidyverse)
 # install.packages("tidytuesdayR")
 library(tidytuesdayR)
@@ -37,6 +39,7 @@ Your tues_data object will be a list that will sometimes contain more than one t
 ```{r}
 str(tues_data)
 ```
+
 In this case the data is about the userR2025 conference schedule.  We can pull out the dataframe from the list using `list$dataframe` to get started. 
 
 ```{r}

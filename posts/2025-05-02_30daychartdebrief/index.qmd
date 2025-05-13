@@ -1,7 +1,7 @@
 ---
 title: "#30dayChartChallenge debrief"
 toc: true
-date: 2024-05-02
+date: 2025-05-02
 author: Jen Richmond
 format: html
 reading-time: true

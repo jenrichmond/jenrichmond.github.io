@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jen Richmond">
-<meta name="dcterms.date" content="2025-05-16">
+<meta name="dcterms.date" content="2025-05-20">
 
-<title>cool stuff from tidytuesdayR – Jen Richmond</title>
+<title>sydney beaches – Jen Richmond</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -148,10 +148,6 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <a class="nav-link" href="../../charts.html"> 
 <span class="menu-text">30daycharts</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../resume.html"> 
-<span class="menu-text">resume</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -168,16 +164,8 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-to-use-tidytuesdayr-as-a-participant" id="toc-how-to-use-tidytuesdayr-as-a-participant" class="nav-link active" data-scroll-target="#how-to-use-tidytuesdayr-as-a-participant">How to use <code>tidytuesdayR</code> as a participant</a></li>
-  <li><a href="#how-to-use-tidytuesdayr-as-a-contributor" id="toc-how-to-use-tidytuesdayr-as-a-contributor" class="nav-link" data-scroll-target="#how-to-use-tidytuesdayr-as-a-contributor">How to use <code>tidytuesdayR</code> as a contributor</a>
-  <ul class="collapse">
-  <li><a href="#step-1-write-a-cleaning-script" id="toc-step-1-write-a-cleaning-script" class="nav-link" data-scroll-target="#step-1-write-a-cleaning-script">Step 1: write a cleaning script</a></li>
-  <li><a href="#step-2-save-your-clean-data-to-.csv" id="toc-step-2-save-your-clean-data-to-.csv" class="nav-link" data-scroll-target="#step-2-save-your-clean-data-to-.csv">Step 2: save your clean data to .csv</a></li>
-  <li><a href="#step-3-introduce-your-data" id="toc-step-3-introduce-your-data" class="nav-link" data-scroll-target="#step-3-introduce-your-data">Step 3: introduce your data</a></li>
-  <li><a href="#step-4-meta-data" id="toc-step-4-meta-data" class="nav-link" data-scroll-target="#step-4-meta-data">Step 4: meta data</a></li>
-  <li><a href="#step-5-submit" id="toc-step-5-submit" class="nav-link" data-scroll-target="#step-5-submit">Step 5: submit</a></li>
-  <li><a href="#done" id="toc-done" class="nav-link" data-scroll-target="#done">DONE!</a></li>
-  </ul></li>
+  <li><a href="#read-the-data" id="toc-read-the-data" class="nav-link active" data-scroll-target="#read-the-data">read the data</a></li>
+  <li><a href="#to-be-continued" id="toc-to-be-continued" class="nav-link" data-scroll-target="#to-be-continued">to be continued</a></li>
   </ul>
 </nav>
     </div>
@@ -186,7 +174,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">cool stuff from tidytuesdayR</h1>
+<h1 class="title">sydney beaches</h1>
 </div>
 
 
@@ -196,14 +184,14 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p><a href="https://jenrichmond.github.io/">Jen Richmond</a> </p>
+             <p>Jen Richmond </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 16, 2025</p>
+      <p class="date">May 20, 2025</p>
     </div>
   </div>
   
@@ -215,163 +203,27 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </header>
 
 
-<p>Have you tried #TidyTuesday? It is a weekly data challenge where the team from the Data Science Learning Community curate and post a dataset to their github repository, then data nerds from all over the world have a go at making a cool visualisation with it and everyone shares what they came up with on social media via the hashtag #tidytuesday.</p>
-<p>Data organising within the #rstats community takes work; TidyTuesday doesn’t just happen. Ted Laderas has <a href="https://laderast.github.io/meetup_burnout/">talked a lot about burnout</a> among organisers. It is common in volunteer settings for 20% of the people to do 80% of the work, but this can lead to unsustainable communities. Ted points to importance of expanding your core group of organisers and making it easy for people to contribute, as ways to make a data initiative work better for everyone; many hands make light work.</p>
-<p>Recently the Jon Harmon and the #tidytuesday team have put this philosophy into action by creating some functions within the <code>tidytuesdayR</code> package that make it easy to curate and contribute a dataset to the challenge.</p>
-<section id="how-to-use-tidytuesdayr-as-a-participant" class="level1">
-<h1>How to use <code>tidytuesdayR</code> as a participant</h1>
-<p>The package has a number of functions that make it super easy for you get the data into RStudio. No need to download the csv and read it back in. Just use the <code>tt_load()</code> with the date or year and week.</p>
+<p>My first TidyTuesday data curation!! This is an updated version of the dataset we used for #RYouWithMe, a series of online modules designed to get beginners into #rstats. I am excited to dig in and learn something new about what is going on with poo at Sydney beaches.</p>
+<section id="read-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="read-the-data">read the data</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.2     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tidytuesdayR")</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytuesdayR)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>tues_data <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">"2025-04-29"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>---- Compiling #TidyTuesday Information for 2025-04-29 ----
---- There is 1 file available ---
-
-
-── Downloading files ───────────────────────────────────────────────────────────
-
-  1 of 1: "user2025.csv"</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OR use year and week</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tues_data &lt;- tidytuesdayR::tt_load(2025, week = 17) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytuesdayR)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="dv">2025</span>, <span class="at">week =</span> <span class="dv">20</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>water_quality <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>water_quality</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>weather <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>weather</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Your tues_data object will be a list that will sometimes contain more than one table so using <code>str()</code> will give you an idea of which dataframe might be of interest.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tues_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>List of 1
- $ user2025: spc_tbl_ [128 × 11] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
-  ..$ id             : num [1:128] 170 79 30 31 39 169 94 163 13 51 ...
-  ..$ session        : chr [1:128] "Virtual" "Virtual" "Virtual" "Virtual" ...
-  ..$ date           : Date[1:128], format: "2025-08-01" "2025-08-01" ...
-  ..$ time           : chr [1:128] "TBD" "TBD" "TBD" "TBD" ...
-  ..$ room           : chr [1:128] "Online" "Online" "Online" "Online" ...
-  ..$ title          : chr [1:128] "A Robust and Informative Application for viewing the dataframes in R" "A first look at Positron" "Analyzing Census Data in R: Techniques and Applications" "Automating workflows with webhooks and plumber in R" ...
-  ..$ content        : chr [1:128] "In R programming, the View() function from the Utils package provides a basic interface for viewing the datafra"| __truncated__ "Positron is a next generation data science IDE built by the creators of RStudio. It has been available for beta"| __truncated__ "This talk provides an introduction to working with IPUMS Census American Community Survey (ACS) data in R, focu"| __truncated__ "Webhooks have brought to us new possibilities for automating workflows. With such, we can eliminate the need fo"| __truncated__ ...
-  ..$ video_recording: chr [1:128] "✅" "✅" "✅" "✅" ...
-  ..$ keywords       : chr [1:128] "statistical programming, clinical trials data, dataset interface, workflow" "ide, workflow, tooling" "demography, frameworks, census data, equity ml/ai, anti-discrimination in ml/ai" "automation, event-driven workflows, plumber api, github webhooks" ...
-  ..$ speakers       : chr [1:128] "Madhan Kumar Nagaraji" "Julia Silge (Posit PBC)" "Joanne Rodrigues" "CLINTON DAVID" ...
-  ..$ co_authors     : chr [1:128] NA NA NA NA ...
-  ..- attr(*, "spec")=
-  .. .. cols(
-  .. ..   id = col_double(),
-  .. ..   session = col_character(),
-  .. ..   date = col_date(format = ""),
-  .. ..   time = col_character(),
-  .. ..   room = col_character(),
-  .. ..   title = col_character(),
-  .. ..   content = col_character(),
-  .. ..   video_recording = col_character(),
-  .. ..   keywords = col_character(),
-  .. ..   speakers = col_character(),
-  .. ..   co_authors = col_character()
-  .. .. )
-  ..- attr(*, "problems")=&lt;externalptr&gt; 
- - attr(*, ".tt")= 'tt' chr "user2025.csv"
-  ..- attr(*, ".files")='data.frame':   1 obs. of  3 variables:
-  .. ..$ data_files: chr "user2025.csv"
-  .. ..$ data_type : chr "csv"
-  .. ..$ delim     : chr ","
-  ..- attr(*, ".readme")=List of 2
-  .. ..$ node:&lt;externalptr&gt; 
-  .. ..$ doc :&lt;externalptr&gt; 
-  .. ..- attr(*, "class")= chr [1:2] "xml_document" "xml_node"
-  ..- attr(*, ".date")= Date[1:1], format: "2025-04-29"
- - attr(*, "class")= chr "tt_data"</code></pre>
-</div>
-</div>
-<p>In this case the data is about the userR2025 conference schedule. We can pull out the dataframe from the list using <code>list$dataframe</code> to get started.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>user25 <span class="ot">&lt;-</span> tues_data<span class="sc">$</span>user2025</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(user25)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 128
-Columns: 11
-$ id              &lt;dbl&gt; 170, 79, 30, 31, 39, 169, 94, 163, 13, 51, 144, 145, 1…
-$ session         &lt;chr&gt; "Virtual", "Virtual", "Virtual", "Virtual", "Virtual",…
-$ date            &lt;date&gt; 2025-08-01, 2025-08-01, 2025-08-01, 2025-08-01, 2025-…
-$ time            &lt;chr&gt; "TBD", "TBD", "TBD", "TBD", "TBD", "TBD", "TBD", "TBD"…
-$ room            &lt;chr&gt; "Online", "Online", "Online", "Online", "Online", "Onl…
-$ title           &lt;chr&gt; "A Robust and Informative Application for viewing the …
-$ content         &lt;chr&gt; "In R programming, the View() function from the Utils …
-$ video_recording &lt;chr&gt; "✅", "✅", "✅", "✅", "✅", "✅", "✅", "✅", "✅", "✅", "✅",…
-$ keywords        &lt;chr&gt; "statistical programming, clinical trials data, datase…
-$ speakers        &lt;chr&gt; "Madhan Kumar Nagaraji", "Julia Silge (Posit PBC)", "J…
-$ co_authors      &lt;chr&gt; NA, NA, NA, NA, "Abbie Brookes (Data Scientist @ Datac…</code></pre>
-</div>
-</div>
 </section>
-<section id="how-to-use-tidytuesdayr-as-a-contributor" class="level1">
-<h1>How to use <code>tidytuesdayR</code> as a contributor</h1>
-<p>Do you have an idea of a dataset that might be of interest to other tidytuesdayers? Great! The new functions in <code>tidytuesdayR</code> make it super easy to contribute a dataset.</p>
-<p>All you have to do is follow <a href="https://dslc-io.github.io/tidytuesdayR/articles/curating.html">these instructions</a>.</p>
-<p>Here are some notes I made for myself while I was curating the week 20 water quality dataset. Make sure you have the <code>tidytuesdayR</code> installed and loaded, and a github account sorted before you begin.</p>
-<section id="step-1-write-a-cleaning-script" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-write-a-cleaning-script">Step 1: write a cleaning script</h3>
-<p>This function opens a cleaning.R script that you can use to write the code you need to get your data file from its raw state into a state that other people can use.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tt_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="step-2-save-your-clean-data-to-.csv" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-save-your-clean-data-to-.csv">Step 2: save your clean data to .csv</h3>
-<p>Once you have written your cleaning.R script and checked that it produces clean dataframes, you can save your datafile. This function will save your dataframes as .csv in your submission folder. It will also open a .md file with a table that you can complete that describes each of the variables in your dataset.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tt_save_dataset</span>(nameofyourdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="step-3-introduce-your-data" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-introduce-your-data">Step 3: introduce your data</h3>
-<p>This function opens another .md file that you can use to write an introduction to your dataset. You can describe the data, where it comes from and suggest some questions that people might like to explore. You also want to think about an image that can go along with the data.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tt_intro</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="step-4-meta-data" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-meta-data">Step 4: meta data</h3>
-<p>This bit was cool: this function walks you through a question and answer session, filling in all the details needed for the meta data. Once you are done answering the questions, it creates a meta.yaml file.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tt_meta</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="step-5-submit" class="level3">
-<h3 class="anchored" data-anchor-id="step-5-submit">Step 5: submit</h3>
-<p>This bit creates a pull request (i.e.&nbsp;a request that the tidytuesday team pull in your curated dataset to their repo). Make sure you have a github account sorted before embarking on this last step.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tt_submit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="done" class="level3">
-<h3 class="anchored" data-anchor-id="done">DONE!</h3>
+<section id="to-be-continued" class="level3">
+<h3 class="anchored" data-anchor-id="to-be-continued">to be continued</h3>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
