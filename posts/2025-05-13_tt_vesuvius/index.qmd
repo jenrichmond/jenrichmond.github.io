@@ -66,7 +66,6 @@ theme_stripe <- function(title_family = "lato") {
       axis.text.x = element_text(vjust = 3),
       panel.grid.minor = element_blank(),
       legend.key.width = unit(0.5, "lines"), 
-      plot.caption = element_textbox_simple(), # helps with social caption html
       panel.background = element_rect(fill = "papayawhip", color = NA),
       plot.background = element_rect(fill = "papayawhip", color = NA),
       plot.margin = margin(t = 20, r = 20, b = 20, l = 20, unit = "pt"), 
@@ -90,21 +89,19 @@ theme_stripe_pw <- function(title_family = "lato") {
       axis.title = element_blank(),
       panel.grid.major = element_blank(),
       legend.title = element_blank(),
-      axis.text.x = element_text(vjust = 3),
       panel.grid.minor = element_blank(),
       legend.key.width = unit(0.5, "lines"), 
-        plot.caption = element_textbox_simple(), # helps with social caption html
       panel.background = element_rect(fill = "papayawhip", color = NA),
       plot.background = element_rect(fill = "papayawhip", color = NA),
       plot.margin = margin(t = 20, r = 10, b = 10, l = 10, unit = "pt"), 
-      plot.title = element_text(
-        family = title_family,
-        size = 14,
-        hjust = 0, 
-        color = "black"
-      )
+      plot.title = element_text(family = title_family,size = 16,hjust = 0, color = "black"), 
+      plot.subtitle = element_text(size = 14),
+    axis.text.x = element_text(vjust = 3, size = 16),
+    legend.text = element_text(size = 14),
+    plot.caption = element_text(size = 12)
     )
 }
+
 
 
 col_stripe <- brewer.pal(9, "YlOrRd")
@@ -148,7 +145,7 @@ Yikes! Looks like 2024 was a particularly active year for Vesuvius, with 1315 ev
 
 ### per month
 
-What would that look like if we counted the number of events per month and plotted that as a stripe plot? This code is exactly the same as above, except I am grouping by both year and month because summarising the number of events. 
+What would that look like if we counted the number of events per month and plotted that as a stripe plot? This code is exactly the same as above, except I am grouping by both year and month because summarising the number of events.
 
 ```{r}
 #| message: false
@@ -196,7 +193,7 @@ Plotted by month, 2024 still looks like it had quite high activity, but not as h
 
 # how big are the seismic events at Mt Vesuvius?
 
-The duration_magnitude_md variable in the vesuvius dataset captures the duration magnitude (Md) of each event, which is an index of the amount of energy released. Here I am grouping by year and month before summarising the mean duration magnitude values per month. 
+The duration_magnitude_md variable in the vesuvius dataset captures the duration magnitude (Md) of each event, which is an index of the amount of energy released. Here I am grouping by year and month before summarising the mean duration magnitude values per month.
 
 ```{r}
 #| message: false
@@ -271,6 +268,7 @@ mag
 
 
 
+
 ```
 
 ```{r}
@@ -278,18 +276,24 @@ mag
 #| 
 
 
-count / mag +
+combo <- count / mag +
   plot_annotation(title = "The frequency and magnitude of seismic events at Mt Vesuvius",
                   subtitle = "Pressure is released either in many small events or fewer larger events",
                   caption = "Data from Italian Istituto Nazionale di Geofisica e Vulcanologia (INGV)",
                   theme = theme_stripe_pw())
+
+combo 
+   
 
 ```
 
 ```{r}
 #| include: false
 
-ggsave(here::here("posts", "2025-05-13_tt_vesuvius", "featured.png"), width = 6, height = 4,  bg = "white")
+ggsave(here::here("posts", "2025-05-13_tt_vesuvius", "featured.png"),
+       width = 10, height = 7,      # Adjust these dimensions as needed
+       dpi = 300,                   # Higher resolution
+       bg = "papayawhip")           # Match your background color
 
 
 ```
