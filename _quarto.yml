@@ -11,11 +11,34 @@ website:
       - about.qmd
       - posts.qmd
       - charts.qmd
-      - href: resume.qmd
-        text: resume
+      
+    right:
+      - icon: github
+        href: https://github.com/jenrichmond
+      - icon: linkedin
+        href: https://www.linkedin.com/in/jenrichmondphd/
+      - text: "{{< iconify fa6-brands bluesky size=1.1em title='Bluesky' >}}"
+        href: https://bsky.app/profile/jenrichmondphd.bsky.social
+      - icon: envelope
+        text: Email
+        href: mailto:jennyrichmond@gmail.com
+
+
   search:
     location: navbar
     type: overlay
+  page-footer:
+      left: "&#169; 2024 Jen Richmond"
+      center: |
+        <a class="link-dark me-1" href="https://github.com/jenrichmond" title="github" target="_blank" rel="noopener">{{< iconify fa6-brands github >}}</a>
+        <a class="link-dark me-1" href="https://www.linkedin.com/in/jenrichmondphd/" title="LinkedIn" target="_blank" rel="noopener">{{< iconify fa6-brands linkedin >}}</a>
+        <a class="link-dark me-1" href="https://bsky.app/profile/jenrichmondphd.bsky.social" title="Bluesky" target="_blank" rel="noopener">{{< iconify fa6-brands bluesky >}}</a>
+      right: |
+        <a class="link-dark me-1" href="https://github.com/jenrichmond/jenrichmond.github.io">{{< iconify fa6-brands github >}} Source</a>
+
+
+
+
 format:
   html:
     theme: cosmo
