@@ -5,6 +5,19 @@ image: profile.png
 about:
   template: jolla
   image-shape: round
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/jenrichmond
+    - icon: linkedin 
+      text: LinkedIn
+      href: https://www.linkedin.com/in/jenrichmondphd/
+    - icon: fa-bluesky
+      text: "{{< iconify fa6-brands bluesky >}} Bluesky" 
+      href: https://bsky.app/profile/jenrichmondphd.bsky.social
+    - icon: envelope
+      text: Email
+      href: mailto:jennyrichmond@gmail.com
 ---
 
 
