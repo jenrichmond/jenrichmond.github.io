@@ -72,7 +72,6 @@ theme_beaches <- function() {
     plot.subtitle = element_text(size = 12, hjust = 0.1, 
                                  colour = "black",  margin = margin(b = 10)),
     plot.title.position = "plot",  # Position at the "plot" level rather than "panel"
-    plot.subtitle.position = "plot",  # Position at the "plot" level rather than "panel"
     panel.background = element_rect(fill = "antiquewhite2", color = NA),
     plot.background = element_rect(fill = "antiquewhite2", color = NA),
     plot.margin = margin(t = 20, r = 20, b = 20, l = 20, unit = "pt"), 
