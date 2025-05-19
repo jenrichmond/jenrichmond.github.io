@@ -1,4 +1,61 @@
 ---
 title: "font notes"
 editor: visual
+date: 2025-02-01
+author: Jen Richmond
+image: featured.png
 ---
+
+
+Notes from a super useful [Cara Thompson post re getting fonts to work]("https://www.cararthompson.com/posts/2024-01-12-using-fonts-in-r-for-dataviz/2024-01-12_getting-fonts-to-work#choose-a-font"), for the next time fonts are misbehaving. 
+
+
+### 1. check you have `systemfonts()`
+
+```{r eval = FALSE}
+systemfonts::system_fonts()
+
+# if not install.packages("systemfonts")
+```
+
+### 2. check you have the font you want
+
+View() will bring up a dataframe and you can search it to check the font you want is installed
+
+```{r eval = FALSE}
+ systemfonts::system_fonts() |> View()
+```
+
+If not install from Google Fonts, restart RStudio and check the install as above. 
+
+### 3. set graphics device to AGG
+
+> Tools > Global options > General-Graphics
+
+
+### 4. make a plot, check that your font shows up
+
+```{r eval = FALSE}
+p +
+theme_minimal() +
+  theme(text = element_text(family = "Karla"),
+        legend.position = "none")
+```
+
+### 5. test ggsave to make sure the fonts show up there too
+
+```{r eval = FALSE}
+ggsave(filename = "path/to/file.png",
+       dpi = 400,
+       height = 5, width = 8,
+       bg = "#FFFFFF")
+```
+
+### 6. set graphics in your quarto set up chunk
+
+```{r eval = FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      dev = "ragg_png",
+                      dpi = 400)
+```
+

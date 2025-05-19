@@ -1,0 +1,15 @@
+{
+  "hash": "5748736915d80098b7e6210b19806b43",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"font notes\"\neditor: visual\ndate: 2025-02-01\nauthor: Jen Richmond\nimage: featured.png\n---\n\n\n\n\nNotes from a super useful [Cara Thompson post re getting fonts to work](\"https://www.cararthompson.com/posts/2024-01-12-using-fonts-in-r-for-dataviz/2024-01-12_getting-fonts-to-work#choose-a-font\"), for the next time fonts are misbehaving. \n\n\n### 1. check you have `systemfonts()`\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nsystemfonts::system_fonts()\n\n# if not install.packages(\"systemfonts\")\n```\n:::\n\n\n\n### 2. check you have the font you want\n\nView() will bring up a dataframe and you can search it to check the font you want is installed\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n systemfonts::system_fonts() |> View()\n```\n:::\n\n\n\nIf not install from Google Fonts, restart RStudio and check the install as above. \n\n### 3. set graphics device to AGG\n\n> Tools > Global options > General-Graphics\n\n\n### 4. make a plot, check that your font shows up\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\np +\ntheme_minimal() +\n  theme(text = element_text(family = \"Karla\"),\n        legend.position = \"none\")\n```\n:::\n\n\n\n### 5. test ggsave to make sure the fonts show up there too\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggsave(filename = \"path/to/file.png\",\n       dpi = 400,\n       height = 5, width = 8,\n       bg = \"#FFFFFF\")\n```\n:::\n\n\n\n### 6. set graphics in your quarto set up chunk\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nknitr::opts_chunk$set(echo = TRUE,\n                      dev = \"ragg_png\",\n                      dpi = 400)\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
