@@ -16,9 +16,20 @@ I am most interested in data in the last 5 years so have filtered to only includ
 
 ![](key.png)
 
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      dev = "ragg_png",
+                      dpi = 400)
+```
+
+
 ### read the data
 
 Here I am reading the data from TidyTuesday, filtering for date, renaming the enterococci variable to make it a bit easier to deal with and adding a new column that codes each bug level as either Good, Fair, Poor, or Bad, according to the BeachWatch key.
+
+
 
 ```{r}
 #| message: false
@@ -29,6 +40,9 @@ library(tidytuesdayR)
 library(tidyverse)
 library(janitor)
 library(gt)
+library(showtext)
+
+
 
 my_colours <- RColorBrewer::brewer.pal(4, "RdYlGn")
 
@@ -46,8 +60,33 @@ water <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday
 
 glimpse(water)
 
+# plot theme
+
+theme_beaches <- function() { 
+  
+  theme_minimal() %+replace%
+    theme(
+      text = element_text(family = "Karla"), 
+    plot.title = element_text( size = 16, hjust = 0.1, 
+                              colour = "black",  margin = margin(b = 10)),
+    plot.subtitle = element_text( size = 12, hjust = 0.1, 
+                                 colour = "black",  margin = margin(b = 10)),
+    plot.title.position = "plot",  # Position at the "plot" level rather than "panel"
+    panel.background = element_rect(fill = "antiquewhite2", color = NA),
+    plot.background = element_rect(fill = "antiquewhite2", color = NA),
+    plot.margin = margin(t = 20, r = 20, b = 20, l = 20, unit = "pt"), 
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.title = element_blank()
+      )
+    
+}
+
 
 ```
+
+
+
 
 ## how many days are good for swimming
 
@@ -83,16 +122,10 @@ good_days_city_long %>%
   coord_flip() +
   labs(x = "Beach", y = "Count of ratings", title = "Water quality at Sydney City Beaches", 
         subtitle= "Data from BeachWatch NSW 2020-2025") +
-    theme_minimal() +
-  theme(
-    plot.title = element_text(hjust = 0.1),  # Left align the title
-    plot.subtitle = element_text(hjust = 0.1),
-    plot.title.position = "plot"  # Position at the "plot" level rather than "panel"
-  ) 
+  theme_beaches()
 
-  
- 
 
+ggsave("fonttest.png")
 
 ```
 
@@ -124,12 +157,7 @@ good_days_city_long_percent %>%
   coord_flip() +
   labs(x = "Beach", y = "Percent of ratings", title = "Water quality at Sydney City Beaches", 
        subtitle= "Data from BeachWatch NSW 2020-2025") +
-    theme_minimal() +
-  theme(
-    plot.title = element_text(hjust = 0.1),  # Left align the title
-     plot.subtitle = element_text(hjust = 0.1),
-    plot.title.position = "plot"  # Position at the "plot" level rather than "panel"
-  ) 
+    theme_beaches()
 
 ```
 
@@ -196,13 +224,7 @@ plot_region_data_raw <- function(df, region_name) {
       y = "Count of ratings",
       fill = "Rating"
     ) +
-    theme_minimal() +
-    theme(
-      axis.text.y = element_text(size = 8),
-       plot.title = element_text(hjust = 0.1),  # Left align the title
-      plot.subtitle = element_text(hjust = 0.1),
-      plot.title.position = "plot"  # Position at the "plot" level rather than "panel"
-    )
+    theme_beaches() 
   
   return(plot)
 }
@@ -291,16 +313,10 @@ plot_region_data_percent <- function(df, region_name) {
       title = paste("Water Quality Ratings in", region_name),
       subtitle= "Data from BeachWatch NSW 2020-2025",
       x = "Beach",
-      y = "Count of ratings",
+      y = "Percent of ratings",
       fill = "Rating"
     ) +
-    theme_minimal() +
-    theme(
-      axis.text.y = element_text(size = 8),
-       plot.title = element_text(hjust = 0.1),  # Left align the title
-      plot.subtitle = element_text(hjust = 0.1),
-      plot.title.position = "plot"  # Position at the "plot" level rather than "panel"
-    )
+    theme_beaches() 
   
   return(plot)
 }
@@ -354,8 +370,50 @@ region_plots_percent[[4]]
 ```{r}
 #| echo: false
 region_plots_percent[[5]]
+
+
 ```
 :::
+
+
+
+
+```{r include = FALSE}
+
+city <- region_plots_percent[[3]]
+
+west <- region_plots_percent[[5]]
+
+city2 <- city +
+  labs(title = "Water Quality Ratings at Sydney Beaches", 
+       subtitle = "Sydney City ocean beaches, which are in the affulent Eastern Suburbs, are rated as Good for swimming \non at least 75% of testing days. \nIn Western Sydney, where swimming sites are creeks and rivers, only Penrith Beach is frequently safe to swim. \nWestern Sydney suburbs are frequently X degrees warmer than parts of the city closer to the ocean. The residents of the Western suburbs are in need of safe places to swim", x = "Sydney City Beaches")
+
+city2
+
+
+```
+
+
+```{r include = FALSE}
+
+west2 <- west +
+  labs(title = "",
+    caption = "Data from BeachWatch NSW 2020-2025", 
+       subtitle = "", x = "Western Sydney Beaches")
+
+west2
+
+library(patchwork)
+
+city2 / west2
+
+
+ggsave(here::here("posts", "2025-05-20_tt_beaches", "test.png"), width = 10, height = 8,  bg = "white")
+
+
+
+```
+
 
 
 ## what is going on in Western Sydney?
@@ -385,7 +443,6 @@ It is clear that while the water quality in most regions is tested about once a 
 This plot would suggest the latter is true. 
 
 ```{r}
-
 #| code-fold: true
 #| 
 ws <- freq %>%

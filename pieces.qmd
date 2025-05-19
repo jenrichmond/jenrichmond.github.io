@@ -3,17 +3,14 @@ title: "resume pieces"
 editor: visual
 ---
 
-
-::: {.no-print}
+::: no-print
 ## PRESENTATIONS AND WORKSHOPS
 
 insert talks/links that dont print pdf here
 :::
 
-
-
-
-::: {.print-only}
+::: print-only
 ## References
+
 Available upon request
 :::
