@@ -245,7 +245,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(showtext)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggeasy)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
@@ -289,20 +289,21 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">%+replace%</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Karla"</span>), </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>( <span class="at">size =</span> <span class="dv">16</span>, <span class="at">hjust =</span> <span class="fl">0.1</span>, </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>, <span class="at">hjust =</span> <span class="fl">0.1</span>, </span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                              <span class="at">colour =</span> <span class="st">"black"</span>,  <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>)),</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>( <span class="at">size =</span> <span class="dv">12</span>, <span class="at">hjust =</span> <span class="fl">0.1</span>, </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">hjust =</span> <span class="fl">0.1</span>, </span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">colour =</span> <span class="st">"black"</span>,  <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>)),</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span>,  <span class="co"># Position at the "plot" level rather than "panel"</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"antiquewhite2"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"antiquewhite2"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">20</span>, <span class="at">r =</span> <span class="dv">20</span>, <span class="at">b =</span> <span class="dv">20</span>, <span class="at">l =</span> <span class="dv">20</span>, <span class="at">unit =</span> <span class="st">"pt"</span>), </span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle.position =</span> <span class="st">"plot"</span>,  <span class="co"># Position at the "plot" level rather than "panel"</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"antiquewhite2"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"antiquewhite2"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">20</span>, <span class="at">r =</span> <span class="dv">20</span>, <span class="at">b =</span> <span class="dv">20</span>, <span class="at">l =</span> <span class="dv">20</span>, <span class="at">unit =</span> <span class="st">"pt"</span>), </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -339,19 +340,16 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle=</span> <span class="st">"Data from BeachWatch NSW 2020-2025"</span>) <span class="sc">+</span></span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_beaches</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot_theme(plot): The `plot.subtitle.position` theme element is not defined in the element
+hierarchy.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="2800"></p>
 </figure>
 </div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"fonttest.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Saving 7 x 5 in image</code></pre>
 </div>
 </div>
 </section>
@@ -361,27 +359,31 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>good_days_city_long_percent <span class="ot">&lt;-</span> good_days_city <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"rating"</span>, <span class="at">values_to =</span> <span class="st">"count"</span>, Good<span class="sc">:</span>Bad) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rating =</span> <span class="fu">fct_relevel</span>(rating, <span class="fu">c</span>(<span class="st">"Bad"</span>, <span class="st">"Poor"</span>, <span class="st">"Fair"</span>, <span class="st">"Good"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(swim_site) <span class="sc">%&gt;%</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_days =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> count<span class="sc">/</span>total_days) <span class="sc">%&gt;%</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(swim_site) <span class="sc">%&gt;%</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">good_percent =</span> percent[rating <span class="sc">==</span> <span class="st">"Good"</span>]) <span class="sc">%&gt;%</span> <span class="co">#pull good % for use in reorder</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>good_days_city_long_percent <span class="sc">%&gt;%</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(swim_site, good_percent), <span class="at">y =</span> percent, <span class="at">fill =</span> rating)) <span class="sc">+</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> my_colours) <span class="sc">+</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Beach"</span>, <span class="at">y =</span> <span class="st">"Percent of ratings"</span>, <span class="at">title =</span> <span class="st">"Water quality at Sydney City Beaches"</span>, </span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span> <span class="st">"Data from BeachWatch NSW 2020-2025"</span>) <span class="sc">+</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_beaches</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>good_days_city_long_percent <span class="ot">&lt;-</span> good_days_city <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"rating"</span>, <span class="at">values_to =</span> <span class="st">"count"</span>, Good<span class="sc">:</span>Bad) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rating =</span> <span class="fu">fct_relevel</span>(rating, <span class="fu">c</span>(<span class="st">"Bad"</span>, <span class="st">"Poor"</span>, <span class="st">"Fair"</span>, <span class="st">"Good"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(swim_site) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_days =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> count<span class="sc">/</span>total_days) <span class="sc">%&gt;%</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(swim_site) <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">good_percent =</span> percent[rating <span class="sc">==</span> <span class="st">"Good"</span>]) <span class="sc">%&gt;%</span> <span class="co">#pull good % for use in reorder</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>good_days_city_long_percent <span class="sc">%&gt;%</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(swim_site, good_percent), <span class="at">y =</span> percent, <span class="at">fill =</span> rating)) <span class="sc">+</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> my_colours) <span class="sc">+</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Beach"</span>, <span class="at">y =</span> <span class="st">"Percent of ratings"</span>, <span class="at">title =</span> <span class="st">"Water quality at Sydney City Beaches"</span>, </span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span> <span class="st">"Data from BeachWatch NSW 2020-2025"</span>) <span class="sc">+</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_beaches</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot_theme(plot): The `plot.subtitle.position` theme element is not defined in the element
+hierarchy.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -401,23 +403,23 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(region) <span class="sc">%&gt;%</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="grhpizfxnc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#grhpizfxnc table {
+<div id="fkpmrbetvy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fkpmrbetvy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#grhpizfxnc thead, #grhpizfxnc tbody, #grhpizfxnc tfoot, #grhpizfxnc tr, #grhpizfxnc td, #grhpizfxnc th {
+#fkpmrbetvy thead, #fkpmrbetvy tbody, #fkpmrbetvy tfoot, #fkpmrbetvy tr, #fkpmrbetvy td, #fkpmrbetvy th {
   border-style: none;
 }
 
-#grhpizfxnc p {
+#fkpmrbetvy p {
   margin: 0;
   padding: 0;
 }
 
-#grhpizfxnc .gt_table {
+#fkpmrbetvy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -443,12 +445,12 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-left-color: #D3D3D3;
 }
 
-#grhpizfxnc .gt_caption {
+#fkpmrbetvy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#grhpizfxnc .gt_title {
+#fkpmrbetvy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -460,7 +462,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-bottom-width: 0;
 }
 
-#grhpizfxnc .gt_subtitle {
+#fkpmrbetvy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -472,7 +474,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-top-width: 0;
 }
 
-#grhpizfxnc .gt_heading {
+#fkpmrbetvy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -484,13 +486,13 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-right-color: #D3D3D3;
 }
 
-#grhpizfxnc .gt_bottom_border {
+#fkpmrbetvy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#grhpizfxnc .gt_col_headings {
+#fkpmrbetvy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -505,7 +507,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-right-color: #D3D3D3;
 }
 
-#grhpizfxnc .gt_col_heading {
+#fkpmrbetvy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -525,7 +527,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   overflow-x: hidden;
 }
 
-#grhpizfxnc .gt_column_spanner_outer {
+#fkpmrbetvy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -537,15 +539,15 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   padding-right: 4px;
 }
 
-#grhpizfxnc .gt_column_spanner_outer:first-child {
+#fkpmrbetvy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#grhpizfxnc .gt_column_spanner_outer:last-child {
+#fkpmrbetvy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#grhpizfxnc .gt_column_spanner {
+#fkpmrbetvy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -557,11 +559,11 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   width: 100%;
 }
 
-#grhpizfxnc .gt_spanner_row {
+#fkpmrbetvy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#grhpizfxnc .gt_group_heading {
+#fkpmrbetvy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -587,7 +589,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   text-align: left;
 }
 
-#grhpizfxnc .gt_empty_group_heading {
+#fkpmrbetvy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -602,15 +604,15 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   vertical-align: middle;
 }
 
-#grhpizfxnc .gt_from_md > :first-child {
+#fkpmrbetvy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#grhpizfxnc .gt_from_md > :last-child {
+#fkpmrbetvy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#grhpizfxnc .gt_row {
+#fkpmrbetvy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -629,7 +631,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   overflow-x: hidden;
 }
 
-#grhpizfxnc .gt_stub {
+#fkpmrbetvy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -642,7 +644,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   padding-right: 5px;
 }
 
-#grhpizfxnc .gt_stub_row_group {
+#fkpmrbetvy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -656,15 +658,15 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   vertical-align: top;
 }
 
-#grhpizfxnc .gt_row_group_first td {
+#fkpmrbetvy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#grhpizfxnc .gt_row_group_first th {
+#fkpmrbetvy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#grhpizfxnc .gt_summary_row {
+#fkpmrbetvy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -674,16 +676,16 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   padding-right: 5px;
 }
 
-#grhpizfxnc .gt_first_summary_row {
+#fkpmrbetvy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#grhpizfxnc .gt_first_summary_row.thick {
+#fkpmrbetvy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#grhpizfxnc .gt_last_summary_row {
+#fkpmrbetvy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -693,7 +695,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-bottom-color: #D3D3D3;
 }
 
-#grhpizfxnc .gt_grand_summary_row {
+#fkpmrbetvy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -703,7 +705,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   padding-right: 5px;
 }
 
-#grhpizfxnc .gt_first_grand_summary_row {
+#fkpmrbetvy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -713,7 +715,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-top-color: #D3D3D3;
 }
 
-#grhpizfxnc .gt_last_grand_summary_row_top {
+#fkpmrbetvy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -723,11 +725,11 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-bottom-color: #D3D3D3;
 }
 
-#grhpizfxnc .gt_striped {
+#fkpmrbetvy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#grhpizfxnc .gt_table_body {
+#fkpmrbetvy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -736,7 +738,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-bottom-color: #D3D3D3;
 }
 
-#grhpizfxnc .gt_footnotes {
+#fkpmrbetvy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -750,7 +752,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-right-color: #D3D3D3;
 }
 
-#grhpizfxnc .gt_footnote {
+#fkpmrbetvy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -759,7 +761,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   padding-right: 5px;
 }
 
-#grhpizfxnc .gt_sourcenotes {
+#fkpmrbetvy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -773,7 +775,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-right-color: #D3D3D3;
 }
 
-#grhpizfxnc .gt_sourcenote {
+#fkpmrbetvy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -781,72 +783,72 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   padding-right: 5px;
 }
 
-#grhpizfxnc .gt_left {
+#fkpmrbetvy .gt_left {
   text-align: left;
 }
 
-#grhpizfxnc .gt_center {
+#fkpmrbetvy .gt_center {
   text-align: center;
 }
 
-#grhpizfxnc .gt_right {
+#fkpmrbetvy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#grhpizfxnc .gt_font_normal {
+#fkpmrbetvy .gt_font_normal {
   font-weight: normal;
 }
 
-#grhpizfxnc .gt_font_bold {
+#fkpmrbetvy .gt_font_bold {
   font-weight: bold;
 }
 
-#grhpizfxnc .gt_font_italic {
+#fkpmrbetvy .gt_font_italic {
   font-style: italic;
 }
 
-#grhpizfxnc .gt_super {
+#fkpmrbetvy .gt_super {
   font-size: 65%;
 }
 
-#grhpizfxnc .gt_footnote_marks {
+#fkpmrbetvy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#grhpizfxnc .gt_asterisk {
+#fkpmrbetvy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#grhpizfxnc .gt_indent_1 {
+#fkpmrbetvy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#grhpizfxnc .gt_indent_2 {
+#fkpmrbetvy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#grhpizfxnc .gt_indent_3 {
+#fkpmrbetvy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#grhpizfxnc .gt_indent_4 {
+#fkpmrbetvy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#grhpizfxnc .gt_indent_5 {
+#fkpmrbetvy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#grhpizfxnc .katex-display {
+#fkpmrbetvy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#grhpizfxnc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fkpmrbetvy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -954,6 +956,10 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot_theme(plot): The `plot.subtitle.position` theme element is not defined in the element
+hierarchy.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -965,6 +971,10 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot_theme(plot): The `plot.subtitle.position` theme element is not defined in the element
+hierarchy.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -976,6 +986,10 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot_theme(plot): The `plot.subtitle.position` theme element is not defined in the element
+hierarchy.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -987,6 +1001,10 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot_theme(plot): The `plot.subtitle.position` theme element is not defined in the element
+hierarchy.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -998,6 +1016,10 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 </div>
 <div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot_theme(plot): The `plot.subtitle.position` theme element is not defined in the element
+hierarchy.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1013,42 +1035,42 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plot_region_data_percent <span class="ot">&lt;-</span> <span class="cf">function</span>(df, region_name) {</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  processed_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Bad <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">|</span> Fair <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">|</span> Good <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">|</span> Poor <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(swim_site, Good, Fair, Poor, Bad) <span class="sc">%&gt;%</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"rating"</span>, <span class="at">values_to =</span> <span class="st">"count"</span>, Good<span class="sc">:</span>Bad) <span class="sc">%&gt;%</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">rating =</span> <span class="fu">fct_relevel</span>(rating, <span class="fu">c</span>(<span class="st">"Bad"</span>, <span class="st">"Poor"</span>, <span class="st">"Fair"</span>, <span class="st">"Good"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">group_by</span>(swim_site) <span class="sc">%&gt;%</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_days =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> count<span class="sc">/</span>total_days) <span class="sc">%&gt;%</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(swim_site) <span class="sc">%&gt;%</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">good_percent =</span> percent[rating <span class="sc">==</span> <span class="st">"Good"</span>]) <span class="sc">%&gt;%</span> <span class="co">#pull good % for use in reorder</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(processed_df, </span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(swim_site, good_percent), <span class="at">y =</span> percent, <span class="at">fill =</span> rating)) <span class="sc">+</span></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>     <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> my_colours) <span class="sc">+</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Water Quality Ratings in"</span>, region_name),</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle=</span> <span class="st">"Data from BeachWatch NSW 2020-2025"</span>,</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">"Beach"</span>,</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"Percent of ratings"</span>,</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">"Rating"</span></span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_beaches</span>() </span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(plot)</span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>region_plots_percent <span class="ot">&lt;-</span> <span class="fu">map2</span>(good_days_region,  <span class="co"># list of data frames</span></span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(good_days_region),  <span class="co"># Names of each list element</span></span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>  plot_region_data_percent <span class="co"># function to map </span></span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plot_region_data_percent <span class="ot">&lt;-</span> <span class="cf">function</span>(df, region_name) {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  processed_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Bad <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">|</span> Fair <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">|</span> Good <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">|</span> Poor <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(swim_site, Good, Fair, Poor, Bad) <span class="sc">%&gt;%</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"rating"</span>, <span class="at">values_to =</span> <span class="st">"count"</span>, Good<span class="sc">:</span>Bad) <span class="sc">%&gt;%</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">rating =</span> <span class="fu">fct_relevel</span>(rating, <span class="fu">c</span>(<span class="st">"Bad"</span>, <span class="st">"Poor"</span>, <span class="st">"Fair"</span>, <span class="st">"Good"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">group_by</span>(swim_site) <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_days =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> count<span class="sc">/</span>total_days) <span class="sc">%&gt;%</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(swim_site) <span class="sc">%&gt;%</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">good_percent =</span> percent[rating <span class="sc">==</span> <span class="st">"Good"</span>]) <span class="sc">%&gt;%</span> <span class="co">#pull good % for use in reorder</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(processed_df, </span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(swim_site, good_percent), <span class="at">y =</span> percent, <span class="at">fill =</span> rating)) <span class="sc">+</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>     <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> my_colours) <span class="sc">+</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Water Quality Ratings in"</span>, region_name),</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle=</span> <span class="st">"Data from BeachWatch NSW 2020-2025"</span>,</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">"Beach"</span>,</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"Percent of ratings"</span>,</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">"Rating"</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_beaches</span>() </span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(plot)</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>region_plots_percent <span class="ot">&lt;-</span> <span class="fu">map2</span>(good_days_region,  <span class="co"># list of data frames</span></span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(good_days_region),  <span class="co"># Names of each list element</span></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>  plot_region_data_percent <span class="co"># function to map </span></span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -1059,6 +1081,10 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot_theme(plot): The `plot.subtitle.position` theme element is not defined in the element
+hierarchy.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1070,6 +1096,10 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot_theme(plot): The `plot.subtitle.position` theme element is not defined in the element
+hierarchy.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1081,6 +1111,10 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 </div>
 <div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot_theme(plot): The `plot.subtitle.position` theme element is not defined in the element
+hierarchy.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1092,6 +1126,10 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 </div>
 <div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot_theme(plot): The `plot.subtitle.position` theme element is not defined in the element
+hierarchy.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1103,6 +1141,10 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 </div>
 <div id="tabset-2-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-5-tab">
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot_theme(plot): The `plot.subtitle.position` theme element is not defined in the element
+hierarchy.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1124,36 +1166,36 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>freq <span class="ot">&lt;-</span> water <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(region, swim_site, bugs, stars, date) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(swim_site, date) <span class="sc">%&gt;%</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">testing_gap =</span> <span class="fu">difftime</span>(date, <span class="fu">lag</span>(date), <span class="at">units =</span> <span class="st">"days"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">testing_gap =</span> <span class="fu">as.numeric</span>(testing_gap)) <span class="sc">%&gt;%</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(testing_gap <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>freq <span class="sc">%&gt;%</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_time_lapsed =</span> <span class="fu">mean</span>(testing_gap, <span class="at">na.rm=</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>freq <span class="ot">&lt;-</span> water <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(region, swim_site, bugs, stars, date) <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(swim_site, date) <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">testing_gap =</span> <span class="fu">difftime</span>(date, <span class="fu">lag</span>(date), <span class="at">units =</span> <span class="st">"days"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">testing_gap =</span> <span class="fu">as.numeric</span>(testing_gap)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(testing_gap <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>freq <span class="sc">%&gt;%</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_time_lapsed =</span> <span class="fu">mean</span>(testing_gap, <span class="at">na.rm=</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="lioqjesbnr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lioqjesbnr table {
+<div id="lekfhcjhik" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lekfhcjhik table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lioqjesbnr thead, #lioqjesbnr tbody, #lioqjesbnr tfoot, #lioqjesbnr tr, #lioqjesbnr td, #lioqjesbnr th {
+#lekfhcjhik thead, #lekfhcjhik tbody, #lekfhcjhik tfoot, #lekfhcjhik tr, #lekfhcjhik td, #lekfhcjhik th {
   border-style: none;
 }
 
-#lioqjesbnr p {
+#lekfhcjhik p {
   margin: 0;
   padding: 0;
 }
 
-#lioqjesbnr .gt_table {
+#lekfhcjhik .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1179,12 +1221,12 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-left-color: #D3D3D3;
 }
 
-#lioqjesbnr .gt_caption {
+#lekfhcjhik .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lioqjesbnr .gt_title {
+#lekfhcjhik .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1196,7 +1238,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-bottom-width: 0;
 }
 
-#lioqjesbnr .gt_subtitle {
+#lekfhcjhik .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1208,7 +1250,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-top-width: 0;
 }
 
-#lioqjesbnr .gt_heading {
+#lekfhcjhik .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1220,13 +1262,13 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-right-color: #D3D3D3;
 }
 
-#lioqjesbnr .gt_bottom_border {
+#lekfhcjhik .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lioqjesbnr .gt_col_headings {
+#lekfhcjhik .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1241,7 +1283,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-right-color: #D3D3D3;
 }
 
-#lioqjesbnr .gt_col_heading {
+#lekfhcjhik .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1261,7 +1303,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   overflow-x: hidden;
 }
 
-#lioqjesbnr .gt_column_spanner_outer {
+#lekfhcjhik .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1273,15 +1315,15 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   padding-right: 4px;
 }
 
-#lioqjesbnr .gt_column_spanner_outer:first-child {
+#lekfhcjhik .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lioqjesbnr .gt_column_spanner_outer:last-child {
+#lekfhcjhik .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lioqjesbnr .gt_column_spanner {
+#lekfhcjhik .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1293,11 +1335,11 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   width: 100%;
 }
 
-#lioqjesbnr .gt_spanner_row {
+#lekfhcjhik .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lioqjesbnr .gt_group_heading {
+#lekfhcjhik .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1323,7 +1365,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   text-align: left;
 }
 
-#lioqjesbnr .gt_empty_group_heading {
+#lekfhcjhik .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1338,15 +1380,15 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   vertical-align: middle;
 }
 
-#lioqjesbnr .gt_from_md > :first-child {
+#lekfhcjhik .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lioqjesbnr .gt_from_md > :last-child {
+#lekfhcjhik .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lioqjesbnr .gt_row {
+#lekfhcjhik .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1365,7 +1407,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   overflow-x: hidden;
 }
 
-#lioqjesbnr .gt_stub {
+#lekfhcjhik .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1378,7 +1420,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   padding-right: 5px;
 }
 
-#lioqjesbnr .gt_stub_row_group {
+#lekfhcjhik .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1392,15 +1434,15 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   vertical-align: top;
 }
 
-#lioqjesbnr .gt_row_group_first td {
+#lekfhcjhik .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lioqjesbnr .gt_row_group_first th {
+#lekfhcjhik .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lioqjesbnr .gt_summary_row {
+#lekfhcjhik .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1410,16 +1452,16 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   padding-right: 5px;
 }
 
-#lioqjesbnr .gt_first_summary_row {
+#lekfhcjhik .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lioqjesbnr .gt_first_summary_row.thick {
+#lekfhcjhik .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lioqjesbnr .gt_last_summary_row {
+#lekfhcjhik .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1429,7 +1471,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-bottom-color: #D3D3D3;
 }
 
-#lioqjesbnr .gt_grand_summary_row {
+#lekfhcjhik .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1439,7 +1481,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   padding-right: 5px;
 }
 
-#lioqjesbnr .gt_first_grand_summary_row {
+#lekfhcjhik .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1449,7 +1491,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-top-color: #D3D3D3;
 }
 
-#lioqjesbnr .gt_last_grand_summary_row_top {
+#lekfhcjhik .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1459,11 +1501,11 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-bottom-color: #D3D3D3;
 }
 
-#lioqjesbnr .gt_striped {
+#lekfhcjhik .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lioqjesbnr .gt_table_body {
+#lekfhcjhik .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1472,7 +1514,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-bottom-color: #D3D3D3;
 }
 
-#lioqjesbnr .gt_footnotes {
+#lekfhcjhik .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1486,7 +1528,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-right-color: #D3D3D3;
 }
 
-#lioqjesbnr .gt_footnote {
+#lekfhcjhik .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1495,7 +1537,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   padding-right: 5px;
 }
 
-#lioqjesbnr .gt_sourcenotes {
+#lekfhcjhik .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1509,7 +1551,7 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   border-right-color: #D3D3D3;
 }
 
-#lioqjesbnr .gt_sourcenote {
+#lekfhcjhik .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1517,72 +1559,72 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
   padding-right: 5px;
 }
 
-#lioqjesbnr .gt_left {
+#lekfhcjhik .gt_left {
   text-align: left;
 }
 
-#lioqjesbnr .gt_center {
+#lekfhcjhik .gt_center {
   text-align: center;
 }
 
-#lioqjesbnr .gt_right {
+#lekfhcjhik .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lioqjesbnr .gt_font_normal {
+#lekfhcjhik .gt_font_normal {
   font-weight: normal;
 }
 
-#lioqjesbnr .gt_font_bold {
+#lekfhcjhik .gt_font_bold {
   font-weight: bold;
 }
 
-#lioqjesbnr .gt_font_italic {
+#lekfhcjhik .gt_font_italic {
   font-style: italic;
 }
 
-#lioqjesbnr .gt_super {
+#lekfhcjhik .gt_super {
   font-size: 65%;
 }
 
-#lioqjesbnr .gt_footnote_marks {
+#lekfhcjhik .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lioqjesbnr .gt_asterisk {
+#lekfhcjhik .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lioqjesbnr .gt_indent_1 {
+#lekfhcjhik .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lioqjesbnr .gt_indent_2 {
+#lekfhcjhik .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lioqjesbnr .gt_indent_3 {
+#lekfhcjhik .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lioqjesbnr .gt_indent_4 {
+#lekfhcjhik .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lioqjesbnr .gt_indent_5 {
+#lekfhcjhik .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lioqjesbnr .katex-display {
+#lekfhcjhik .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lioqjesbnr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lekfhcjhik div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1626,22 +1668,22 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ws <span class="ot">&lt;-</span> freq <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">==</span> <span class="st">"Western Sydney"</span>) </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>ws <span class="sc">%&gt;%</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y=</span> testing_gap)) <span class="sc">+</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>swim_site) <span class="sc">+</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Days between data points in Western Sydney"</span>, <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Testing gap"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ws <span class="ot">&lt;-</span> freq <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">==</span> <span class="st">"Western Sydney"</span>) </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>ws <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y=</span> testing_gap)) <span class="sc">+</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>swim_site) <span class="sc">+</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Days between data points in Western Sydney"</span>, <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Testing gap"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="2800"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="2800"></p>
 </figure>
 </div>
 </div>
@@ -1650,23 +1692,23 @@ $ stars               &lt;chr&gt; "Good", "Good", "Fair", "Good", "Good", "Good"
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ws_monthly_count <span class="ot">&lt;-</span> ws <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">month</span>(date, <span class="at">label =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month, swim_site) <span class="sc">%&gt;%</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>()) </span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>ws_monthly_count <span class="sc">%&gt;%</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> count)) <span class="sc">+</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>swim_site) <span class="sc">+</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Water quality testing is seasonal in Western Sydney"</span>, <span class="at">x =</span> <span class="st">"Month"</span>, <span class="at">y =</span> <span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ws_monthly_count <span class="ot">&lt;-</span> ws <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">month</span>(date, <span class="at">label =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month, swim_site) <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>()) </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>ws_monthly_count <span class="sc">%&gt;%</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> count)) <span class="sc">+</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>swim_site) <span class="sc">+</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Water quality testing is seasonal in Western Sydney"</span>, <span class="at">x =</span> <span class="st">"Month"</span>, <span class="at">y =</span> <span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="2800"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="2800"></p>
 </figure>
 </div>
 </div>

@@ -40,7 +40,7 @@ library(tidytuesdayR)
 library(tidyverse)
 library(janitor)
 library(gt)
-library(showtext)
+library(ggeasy)
 
 
 
@@ -67,11 +67,12 @@ theme_beaches <- function() {
   theme_minimal() %+replace%
     theme(
       text = element_text(family = "Karla"), 
-    plot.title = element_text( size = 16, hjust = 0.1, 
+    plot.title = element_text(size = 16, hjust = 0.1, 
                               colour = "black",  margin = margin(b = 10)),
-    plot.subtitle = element_text( size = 12, hjust = 0.1, 
+    plot.subtitle = element_text(size = 12, hjust = 0.1, 
                                  colour = "black",  margin = margin(b = 10)),
     plot.title.position = "plot",  # Position at the "plot" level rather than "panel"
+    plot.subtitle.position = "plot",  # Position at the "plot" level rather than "panel"
     panel.background = element_rect(fill = "antiquewhite2", color = NA),
     plot.background = element_rect(fill = "antiquewhite2", color = NA),
     plot.margin = margin(t = 20, r = 20, b = 20, l = 20, unit = "pt"), 
@@ -125,7 +126,6 @@ good_days_city_long %>%
   theme_beaches()
 
 
-ggsave("fonttest.png")
 
 ```
 
@@ -378,37 +378,66 @@ region_plots_percent[[5]]
 
 
 
-```{r include = FALSE}
+```{r ggsave chunk}
+#| include: false
 
 city <- region_plots_percent[[3]]
 
 west <- region_plots_percent[[5]]
 
+long_city <- "Sydney City ocean beaches, in the affluent Eastern Suburbs, are rated as Good for swimming on at least 75% of testing days. "
+
+# Wrap at 80 characters (you can tweak this)
+subtitle_city <- str_wrap(long_city, width = 110)
+
+
 city2 <- city +
-  labs(title = "Water Quality Ratings at Sydney Beaches", 
-       subtitle = "Sydney City ocean beaches, which are in the affulent Eastern Suburbs, are rated as Good for swimming \non at least 75% of testing days. \nIn Western Sydney, where swimming sites are creeks and rivers, only Penrith Beach is frequently safe to swim. \nWestern Sydney suburbs are frequently X degrees warmer than parts of the city closer to the ocean. The residents of the Western suburbs are in need of safe places to swim", x = "Sydney City Beaches")
+  labs(title = "Water Quality by Sydney region", 
+       subtitle = subtitle_city, x = "") +
+  easy_remove_legend() +
+  theme(plot.margin = margin(t = 20, r = 20, b = 5, l = 20), 
+    plot.title.position = "plot",    # Align title and subtitle together
+    plot.title = element_text(hjust = 0),
+    plot.subtitle = element_text(hjust = 0.1)
+  )
+ 
 
 city2
 
+long_west <- "In Western Sydney, where swimming sites are creeks and rivers, only Penrith Beach is frequently safe to swim."
 
-```
-
-
-```{r include = FALSE}
+# Wrap at 80 characters (you can tweak this)
+subtitle_west <- str_wrap(long_west, width = 110)
 
 west2 <- west +
   labs(title = "",
     caption = "Data from BeachWatch NSW 2020-2025", 
-       subtitle = "", x = "Western Sydney Beaches")
-
+        subtitle = subtitle_west, x = "") +
+  easy_move_legend(to = c("bottom")) +
+ scale_fill_manual(
+    values = c(
+      "Bad" = "#D7191C",
+      "Poor" = "#FDAE61",
+      "Fair" = "#A6D96A",
+      "Good" = "#1A9641"
+    ),
+    breaks = c("Good", "Fair", "Poor", "Bad") ) +
+  theme(plot.margin = margin(t = 5, r = 20, b = 20, l = 20), 
+        plot.title.position = "plot",    # Align title and subtitle together
+    plot.title = element_text(hjust = 0),
+    plot.subtitle = element_text(hjust = 0.1)
+  )
+    
+    
 west2
 
 library(patchwork)
 
-city2 / west2
+city2 / west2 
 
 
-ggsave(here::here("posts", "2025-05-20_tt_beaches", "test.png"), width = 10, height = 8,  bg = "white")
+ggsave(here::here("posts", "2025-05-20_tt_beaches", "toshare.png"),
+       width = 10, height = 8,  bg = "antiquewhite2")
 
 
 
