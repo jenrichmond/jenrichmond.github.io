@@ -2,9 +2,11 @@
 title: "Dungeons and Dragons Monsters"
 subtitle: "Tidy Tuesday Week 21"
 date: today
-output: html_document
 author: Jen Richmond
+format: html
+image: featured.png
 ---
+
 
 This week for TidyTuesday I decided to look at dragons and practice writing a ggplot function that makes it easy to create the same plot for each level of a variable. In this case, I wanted a function that would spit me out a boxplot comparing the different dragon types on each of the key measures (strength, intelligence, wisdom, charisma, dexerity, and constitution). 
 
