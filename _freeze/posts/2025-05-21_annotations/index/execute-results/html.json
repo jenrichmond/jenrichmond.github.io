@@ -1,0 +1,17 @@
+{
+  "hash": "59403d1e8f4fb5e02ff55df0e0417e9c",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"annotations\"\nformat: html\n---\n\n### load packages/make dataframe\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors\n```\n\n\n:::\n\n```{.r .cell-code}\n## make fake data\ndf <- data.frame(\n             level = as.factor(c(\"Level A\", \"Level A\", \"Level B\", \"Level B\", \"Level C\", \"Level C\", \n                                 \"Level D\", \"Level D\", \"Level E\", \"Level E\")),\n              gender = as.factor(c(\"Female\",\"Male\",\"Female\",\"Male\",\"Female\",\"Male\",\"Female\",\"Male\", \"Female\",\"Male\")),\n             score = c(12L, 23L, 13L, 20L, 16L, 18L, 15L, 20L, 11L, 22L)\n      )\n\n## checking that levels are behaving\n\nlevels(df$level)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"Level A\" \"Level B\" \"Level C\" \"Level D\" \"Level E\"\n```\n\n\n:::\n\n```{.r .cell-code}\n## make new variables for annotation values\n\ndf <- df %>%\n  mutate(f_values = case_when(gender == \"Female\" ~ score), \n         m_values = case_when(gender == \"Male\" ~ score)) \n  \n## plot\n\ndf %>%\n  ggplot(aes(x = level, y = score, colour = gender, group = gender)) +\n  geom_point() + \n  geom_line() +\n  geom_text(aes(label = m_values), vjust = -2, size = 3) +\n  geom_text(aes(label = f_values), vjust = 2, size = 3) +\n  scale_y_continuous(limits = c(0,30)) +\n  theme_minimal()\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning: Removed 5 rows containing missing values or values outside the scale range\n(`geom_text()`).\nRemoved 5 rows containing missing values or values outside the scale range\n(`geom_text()`).\n```\n\n\n:::\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n\n\n\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
