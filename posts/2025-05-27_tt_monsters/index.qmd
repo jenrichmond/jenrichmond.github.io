@@ -1,5 +1,5 @@
 ---
-title: "Dungeons and Dragons Monsters"
+title: "dungeons and dragons monsters"
 subtitle: "Tidy Tuesday Week 21"
 date: today
 author: Jen Richmond
