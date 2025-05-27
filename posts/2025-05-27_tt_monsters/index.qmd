@@ -138,9 +138,9 @@ Now to turn that code into a function. Here my function takes a dataframe and a 
 
 
 ```{r}
-plot_dragon_index <- function(data, variable) {
+plot_dragon_index <- function(data, var) {
   filtered_data <- data %>%
-    filter(index == variable) 
+    filter(index == var) 
   
   measure <- filtered_data$measure[1]
   
