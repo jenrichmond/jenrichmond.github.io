@@ -403,7 +403,7 @@ city2 <- city +
 
 city2
 
-long_west <- "In Western Sydney, where swimming sites are creeks and rivers, only Penrith Beach is frequently safe to swim."
+long_west <- "In Western Sydney, where swimming sites are lagoons and rivers, only Penrith Beach is frequently safe to swim."
 
 # Wrap at 80 characters (you can tweak this)
 subtitle_west <- str_wrap(long_west, width = 110)

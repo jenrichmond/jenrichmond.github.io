@@ -1,0 +1,46 @@
+---
+title: "annotations"
+format: html
+---
+
+### load packages/make dataframe
+```{r}
+
+library(tidyverse)
+
+## make fake data
+df <- data.frame(
+             level = as.factor(c("Level A", "Level A", "Level B", "Level B", "Level C", "Level C", 
+                                 "Level D", "Level D", "Level E", "Level E")),
+              gender = as.factor(c("Female","Male","Female","Male","Female","Male","Female","Male", "Female","Male")),
+             score = c(12L, 23L, 13L, 20L, 16L, 18L, 15L, 20L, 11L, 22L)
+      )
+
+## checking that levels are behaving
+
+levels(df$level)
+
+
+## make new variables for annotation values
+
+df <- df %>%
+  mutate(f_values = case_when(gender == "Female" ~ score), 
+         m_values = case_when(gender == "Male" ~ score)) 
+  
+## plot
+
+df %>%
+  ggplot(aes(x = level, y = score, colour = gender, group = gender)) +
+  geom_point() + 
+  geom_line() +
+  geom_text(aes(label = m_values), vjust = -2, size = 3) +
+  geom_text(aes(label = f_values), vjust = 2, size = 3) +
+  scale_y_continuous(limits = c(0,30)) +
+  theme_minimal()
+
+
+```
+
+
+
+
