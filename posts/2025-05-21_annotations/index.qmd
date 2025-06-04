@@ -124,4 +124,13 @@ df %>%
 ```
 
 
+```{r}
+#| include: false
+
+ggsave(here::here("posts", "2025-05-21_annotations", "featured.png"), width = 6, height = 4,  bg = "white")
+
+
+```
+
+
 SUCCESS!
