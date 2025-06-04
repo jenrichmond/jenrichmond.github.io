@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jen Richmond">
-<meta name="dcterms.date" content="2025-02-01">
+<meta name="dcterms.date" content="2025-06-01">
 
 <title>font notes – Jen Richmond</title>
 <style>
@@ -219,7 +219,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 1, 2025</p>
+      <p class="date">June 1, 2025</p>
     </div>
   </div>
   
@@ -231,7 +231,8 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </header>
 
 
-<p>Notes from a super useful <a href="&quot;https://www.cararthompson.com/posts/2024-01-12-using-fonts-in-r-for-dataviz/2024-01-12_getting-fonts-to-work#choose-a-font&quot;">Cara Thompson post re getting fonts to work</a>, for the next time fonts are misbehaving.</p>
+<p>I have been getting brave with fonts in my ggplots and running into problems with fonts not appearing the same in my quarto doc and exported png files. BlueSky advice was check out posts from data viz queen Cara Thompson.</p>
+<p>Here are my notes from Cara’s post re <a href="&quot;https://www.cararthompson.com/posts/2024-01-12-using-fonts-in-r-for-dataviz/2024-01-12_getting-fonts-to-work#choose-a-font&quot;">getting fonts to work</a> for the next time fonts are misbehaving.</p>
 <section id="check-you-have-systemfonts" class="level3">
 <h3 class="anchored" data-anchor-id="check-you-have-systemfonts">1. check you have <code>systemfonts()</code></h3>
 <div class="cell">
@@ -244,9 +245,10 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 <h3 class="anchored" data-anchor-id="check-you-have-the-font-you-want">2. check you have the font you want</h3>
 <p>View() will bring up a dataframe and you can search it to check the font you want is installed</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a> systemfonts<span class="sc">::</span><span class="fu">system_fonts</span>() <span class="sc">|&gt;</span> <span class="fu">View</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a> systemfonts<span class="sc">::</span><span class="fu">system_fonts</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">View</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>If not install from Google Fonts, restart RStudio and check the install as above.</p>
+<p>If the font you want doesn’t appear when you use the search bar in the View(), install it from Google Fonts, restart RStudio, and check again.</p>
 </section>
 <section id="set-graphics-device-to-agg" class="level3">
 <h3 class="anchored" data-anchor-id="set-graphics-device-to-agg">3. set graphics device to AGG</h3>
@@ -266,7 +268,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 <section id="test-ggsave-to-make-sure-the-fonts-show-up-there-too" class="level3">
 <h3 class="anchored" data-anchor-id="test-ggsave-to-make-sure-the-fonts-show-up-there-too">5. test ggsave to make sure the fonts show up there too</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"path/to/file.png"</span>,</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"test_plot.png"</span>,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">dpi =</span> <span class="dv">400</span>,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">5</span>, <span class="at">width =</span> <span class="dv">8</span>,</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">bg =</span> <span class="st">"#FFFFFF"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

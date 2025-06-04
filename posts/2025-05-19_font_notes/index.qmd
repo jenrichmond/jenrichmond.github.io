@@ -1,12 +1,14 @@
 ---
 title: "font notes"
 editor: visual
-date: 2025-02-01
+date: 2025-06-01
 author: Jen Richmond
 image: featured.png
 ---
 
-Notes from a super useful [Cara Thompson post re getting fonts to work](%22https://www.cararthompson.com/posts/2024-01-12-using-fonts-in-r-for-dataviz/2024-01-12_getting-fonts-to-work#choose-a-font%22), for the next time fonts are misbehaving.
+I have been getting brave with fonts in my ggplots and running into problems with fonts not appearing the same in my quarto doc and exported png files. BlueSky advice was check out posts from data viz queen Cara Thompson. 
+
+Here are my notes from Cara's post re [getting fonts to work](%22https://www.cararthompson.com/posts/2024-01-12-using-fonts-in-r-for-dataviz/2024-01-12_getting-fonts-to-work#choose-a-font%22) for the next time fonts are misbehaving.
 
 ### 1. check you have `systemfonts()`
 
@@ -21,10 +23,11 @@ systemfonts::system_fonts()
 View() will bring up a dataframe and you can search it to check the font you want is installed
 
 ```{r eval = FALSE}
- systemfonts::system_fonts() |> View()
+ systemfonts::system_fonts() |> 
+    View()
 ```
 
-If not install from Google Fonts, restart RStudio and check the install as above.
+If the font you want doesn't appear when you use the search bar in the View(), install it from Google Fonts, restart RStudio, and check again.
 
 ### 3. set graphics device to AGG
 
@@ -42,7 +45,7 @@ theme_minimal() +
 ### 5. test ggsave to make sure the fonts show up there too
 
 ```{r eval = FALSE}
-ggsave(filename = "path/to/file.png",
+ggsave(filename = "test_plot.png",
        dpi = 400,
        height = 5, width = 8,
        bg = "#FFFFFF")
