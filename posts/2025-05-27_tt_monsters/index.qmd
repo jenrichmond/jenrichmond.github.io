@@ -1,7 +1,7 @@
 ---
 title: "dungeons and dragons monsters"
 subtitle: "Tidy Tuesday Week 21"
-date: today
+date: 2025-05-27
 author: Jen Richmond
 format: html
 image: featured.png
