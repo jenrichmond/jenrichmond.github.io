@@ -1,47 +1,127 @@
 ---
-title: "annotations"
+title: "selective annotations"
 format: html
-draft: true
+author: Jen Richmond
+date: 2025-05-23
+code-fold: show
 ---
 
+My friend Lisa called me with a ggplot challenge the other day. She was trying to work out how to have only some of her points labelled with annotations. Here are some notes about how you can label some points but not others. 
+
 ### load packages/make dataframe
+
+
 ```{r}
+#| message: false
+#| warning: false
 
 library(tidyverse)
 
-## make fake data
+## make up some data
+
 df <- data.frame(
-             level = as.factor(c("Level A", "Level A", "Level B", "Level B", "Level C", "Level C", 
-                                 "Level D", "Level D", "Level E", "Level E")),
-              gender = as.factor(c("Female","Male","Female","Male","Female","Male","Female","Male", "Female","Male")),
+             level = as.factor(c("Level A", "Level A", 
+                                 "Level B", "Level B", 
+                                 "Level C", "Level C", 
+                                 "Level D", "Level D",
+                                 "Level E", "Level E")),
+              gender = as.factor(c("Female","Male",
+                                   "Female","Male",
+                                   "Female","Male",
+                                   "Female","Male", 
+                                   "Female","Male")),
              score = c(12L, 23L, 13L, 20L, 16L, 18L, 15L, 20L, 11L, 22L)
       )
 
-## checking that levels are behaving
+glimpse(df)
+
+```
+
+# data setup 
+
+First, check that levels are behaving and then create new variables that contain just the values you want to print on your plot. 
+
+```{r}
 
 levels(df$level)
 
 
-## make new variables for annotation values
-
 df <- df %>%
   mutate(f_values = case_when(gender == "Female" ~ score), 
          m_values = case_when(gender == "Male" ~ score)) 
+
+glimpse(df)
   
-## plot
+```
+
+
+# basic plot
+
+```{r}
+#| message: false
+#| warning: false
 
 df %>%
-  ggplot(aes(x = level, y = score, colour = gender, group = gender)) +
+  ggplot(aes(x = level, y = score, 
+             colour = gender, group = gender)) +
   geom_point() + 
   geom_line() +
-  geom_text(aes(label = m_values), vjust = -2, size = 3) +
-  geom_text(aes(label = f_values), vjust = 2, size = 3) +
   scale_y_continuous(limits = c(0,30)) +
   theme_minimal()
 
 
 ```
 
+# plot with selective annotations
+
+Here we have added two `geom_text()` calls, one for m_values and one for f_values. Unfortunately the values end up on top of the points.  
+
+```{r}
+#| message: false
+#| warning: false
+df %>%
+  ggplot(aes(x = level, y = score, 
+             colour = gender, group = gender)) +
+  geom_point() + 
+  geom_line() +
+  scale_y_continuous(limits = c(0,30)) +
+  theme_minimal() +
+  geom_text(aes(label = m_values), size = 3) +
+  geom_text(aes(label = f_values), size = 3) 
+```
+
+Add a little vjust to shift the points up and down a little from the points. Don't love what has happened to the legend though...
+
+```{r}
+#| message: false
+#| warning: false
+df %>%
+  ggplot(aes(x = level, y = score, 
+             colour = gender, group = gender)) +
+  geom_point() + 
+  geom_line() +
+  scale_y_continuous(limits = c(0,30)) +
+  theme_minimal() +
+  geom_text(aes(label = m_values), vjust = -2, size = 3) +
+  geom_text(aes(label = f_values), vjust = 2, size = 3) 
+```
 
 
+Adding show.legend = FALSE to let R know that I don't want the text labels to appear in the legend. 
 
+
+```{r}
+#| message: false
+#| warning: false
+df %>%
+  ggplot(aes(x = level, y = score, colour = gender, group = gender)) +
+  geom_point() + 
+  geom_line() +
+  scale_y_continuous(limits = c(0,30)) +
+  theme_minimal() +
+  geom_text(aes(label = m_values), vjust = -2, size = 3, show.legend = FALSE) +
+  geom_text(aes(label = f_values), vjust = 2, size = 3, show.legend = FALSE) 
+```
+
+
+SUCCESS!
