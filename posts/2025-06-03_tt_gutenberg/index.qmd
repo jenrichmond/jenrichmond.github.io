@@ -278,7 +278,10 @@ book_codes %>%
   easy_remove_legend() +
   labs(title = "Number of books in the Gutenberg database by language", 
        subtitle = "Top 10 languages", 
-       caption = "Data source `gutenbergr` package Tidy Tuesday")
+       caption = "Data source `gutenbergr` package Tidy Tuesday") +
+   theme(text = element_text(family = "Karla"), 
+         plot.background = element_rect("antiquewhite")) +
+  easy_caption_size(8)
 ```
 
 ```{r}
@@ -327,7 +330,7 @@ a <- meta_authors %>%
   geom_histogram(binwidth = 100) +
   theme_minimal() +
   scale_y_continuous(limits = c(0,150)) +
-  labs(subtitle = "Pre-Modern", y = "Number of books", x = "Author birthdate")
+  labs(subtitle = "Pre-Modern", y = "Number of books", x = "Author birthdate") 
 
 
 
@@ -337,11 +340,10 @@ m <- meta_authors %>%
   geom_histogram(binwidth = 20) +
   theme_minimal() +
   scale_y_continuous(limits = c(0,20000)) +
-  labs(subtitle = "Modern", y = "Number of books", x = "Author birthdate")
+  labs(subtitle = "Modern", y = "Number of books", x = "Author birthdate") 
 
 a + m +
   plot_annotation(title = "Project Gutenberg: Books by historial period", subtitle = "The majority of books in the Gutenberg database were written by authors during in \nthe 19th century, however, there are also books from Ancient Greek and Roman \nliterature and the Medieval period")
-
 
 ```
 

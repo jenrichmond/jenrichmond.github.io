@@ -6,9 +6,7 @@ author: Jen Richmond
 image: featured.png
 ---
 
-
-Notes from a super useful [Cara Thompson post re getting fonts to work]("https://www.cararthompson.com/posts/2024-01-12-using-fonts-in-r-for-dataviz/2024-01-12_getting-fonts-to-work#choose-a-font"), for the next time fonts are misbehaving. 
-
+Notes from a super useful [Cara Thompson post re getting fonts to work](%22https://www.cararthompson.com/posts/2024-01-12-using-fonts-in-r-for-dataviz/2024-01-12_getting-fonts-to-work#choose-a-font%22), for the next time fonts are misbehaving.
 
 ### 1. check you have `systemfonts()`
 
@@ -26,12 +24,11 @@ View() will bring up a dataframe and you can search it to check the font you wan
  systemfonts::system_fonts() |> View()
 ```
 
-If not install from Google Fonts, restart RStudio and check the install as above. 
+If not install from Google Fonts, restart RStudio and check the install as above.
 
 ### 3. set graphics device to AGG
 
-> Tools > Global options > General-Graphics
-
+> Tools \> Global options \> General-Graphics
 
 ### 4. make a plot, check that your font shows up
 
@@ -58,4 +55,3 @@ knitr::opts_chunk$set(echo = TRUE,
                       dev = "ragg_png",
                       dpi = 400)
 ```
-
