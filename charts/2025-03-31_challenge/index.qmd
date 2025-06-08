@@ -6,7 +6,6 @@ date: 2025-03-31
 image: featured.png
 ---
 
-I have some time on my hands at the moment and thought the #30DayChartChallenge might be a good way to refresh my ggplot skills.
 
 ![](featured.png)
 
