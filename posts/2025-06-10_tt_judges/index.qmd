@@ -231,7 +231,7 @@ ggplot() +
 ```{r}
 #| include: false
 
- ggsave(here::here("posts", "2025-06-10_tt_judges", "featured.png"), width = 6, height = 12,  bg = "antiquewhite")
+ ggsave(here::here("posts", "2025-06-10_tt_judges", "featured.png"), width = 6, height = 12,  bg = "whitesmoke")
 
 
 ```
