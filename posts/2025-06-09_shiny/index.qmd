@@ -1,0 +1,23 @@
+---
+title: "shiny"
+author:
+  - name: Jen Richmond
+    url: https://jenrichmond.github.io/
+format: html
+editor: source
+draft: true
+image: featured.jpg
+---
+
+## Learning goal: Make a Shiny app
+
+Inspired by the apps i have seen built around #TidyTuesday data in recent weeks, this week I am going to make an app. I don't know what the data is about yet, which seems risky, but lets give it a go.
+
+Starting with [Getting Started documentation](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/), I have made a new R Project, choosing the Shiny Application option.
+
+![](newproject.png)
+
+
+This project template has the famous Old Faithful Geyser example embedded, so a working app.R file renders this app when I choose the Run App option from the top tool bar. 
+
+![](runapp.png)

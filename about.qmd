@@ -3,9 +3,10 @@ title: "about"
 image: profile.png
 about:
   template: trestles
+
 ---
 
-## a bit more about me 
+## a bit more about me ...
 
 
 
