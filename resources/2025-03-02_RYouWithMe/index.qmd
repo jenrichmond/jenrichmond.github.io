@@ -1,0 +1,16 @@
+---
+title: "RYouWithMe"
+editor: visual
+---
+
+I co-founded [RLadies Sydney](https://www.meetup.com/rladies-sydney) in 2018 and grew the community to more than 900 members over 4 years.
+
+I also created the [#RYouWithMe course](https://rladiessydney.org/courses/01-basicbasics-0), a set of modules by beginners for beginners to get users started with R.
+
+![](rls.png)
+
+The course is highlighted on the RStudio Education website as a recommended learning resource. The YouTube videos have been by more the 40K new R learners.
+
+![](bb.png)
+
+The #RYouWithMe modules got a Quarto update in Feb 2025, you can find the new structure on the [RLadies Sydney website](https://rladiessydney.org/courses/01-basicbasics-0) and the videos are all on YouTube, start with [Basic Basics here](https://www.youtube.com/watch?v=kfcX5DEMAp4&list=PLkAPliqRo9-kvZx8DkmI1OODBaJTAs0ld%3E)

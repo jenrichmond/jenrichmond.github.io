@@ -1,0 +1,308 @@
+---
+title: "Jenny’s (very opinionated) tips for academic writing"
+editor: visual
+---
+
+I was an academic in Psychology for more than 15 years. I supervised 6 PhD students and 30 honours students and over that time, I created this guide to academic writing for them. It is just my opinion. If anything in it differs from the advice your research supervisor gives you, always go with their opinion.
+
+
+## The language of academic writing
+
+### Words
+
+1. Make friends with the [Grammar Girl](http://www.quickanddirtytips.com/grammar-girl)
+
+
+2. Be careful about subject-verb agreement 
+
+> The processes underlying X has been a topic of debate -> The processes underlying X have been a topic of debate
+
+3. Avoid the undefined "this". If there is any doubt about what "this" refers to, spell it out. Also the undefined “they”. Are you talking about participants? Or the study authors?
+
+4. Almost always use “because” instead of “as”. Read [Grammar Girl’s opinion here](http://www.quickanddirtytips.com/education/grammar/because-due-to-since-and-as?page=1)
+
+> “Happy and angry expressions were chosen as/because they elicit the most distinct muscle activity. “As” can confuse the reader… 
+
+5. Be careful about “which” vs. “that”. A good rule of thumb is that *which* almost always needs a comma before it and the which phrase is optional, see [Grammar Girl’s opinion here](http://www.quickanddirtytips.com/education/grammar/which-versus-that-0?page=1) 
+
+> “Stimuli were presented to participants using Eprime 3.0 software, which was synchronized with the Powerlab system” 
+
+6. Choose your verb carefully when describing research. Some students like to use So & So (2016) *demonstrated* that….. but it is often more accurate to say *reported* or if even just *showed*. See [Thesis Whisperer’s verb tips tips](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnx0d2JsYWNrbGluZW1hc3RlcnN8Z3g6MTUxZTVhZTc2OTg3MWNkYQ). 
+
+7. This is your thesis and it is ok to take responsibility for the work you did by [using first person](https://www.editage.com/insights/is-it-acceptable-to-use-first-person-pronouns-in-scientific-writing). When you try and avoid pronouns you inevitably end up writing in the passive i.e. “it was discovered that….”, which should be avoided.
+
+8.  Be careful about words that are most commonly used to refer to statistical effects (i.e. significant, moderate, mediate, correlated). If you are not using them to refer to particular stat findings, probably best to think of another word. Your reader might assume that when you say “In addition to moderating the effect of X….” you are actually talking about statistical moderation. 
+
+9. Remember that greater and lesser (and more and less) require a comparison. 
+
+> "muscles involved in frowning (*corrugator supercili*) show greater activity when an individual mimics angry expressions.” This needs to include the comparison; greater than what?
+
+10. Avoid acronyms and abbreviations. It might feel like you can save lots of words by not spelling out repeated phrases over and over, but acronyms tax your reader’s working memory (particularly when they are unfamiliar and there is more than one) making it less likely that your reader will get into a “flow” as they read. More about how they [alienate your reader here](https://www.psychologicalscience.org/observer/alienating-the-audience-how-abbreviations-hamper-scientific-communication). 
+
+
+
+### Sentences
+
+1. Try to avoid writing in passive voice by bringing whoever is doing the action to the front of the sentence.
+
+> instead of "the participant will be told about a memory of the experimenter to ensure the child understands the concept of the task" it is better to say "the experimenter will share a memory with the child to ensure they understand the task".
+
+2. Nominalisation can also make you write in passive voice; [avoid creating zombie nouns](https://www.youtube.com/watch?v=dNlkHtMgcPQ)
+
+
+3. Semicolons- use them accurately or not at all. It is often less risky to just [use a full stop instead](http://www.quickanddirtytips.com/education/grammar/semicolons)
+
+4. Make your sentence construction is balanced
+
+  - unbalanced: 
+    - for children in the play group, the toys present were identical to the child-preferable exemplars while children in the Current First and Future first groups played with toys that were unrelated to the study
+  - balanced: 
+    - for children in the play group, the toys present were identical to the child-preferable exemplars and for children in the Current First and Future first groups, the toys were unrelated to the study”
+  - unbalanced: 
+    - It is the ability to bring to mind personally-relevant and perceptually-rich events or episodes that have happened in the past (i.e. episodic memory) or that may possibly happen in the future (i.e episodic future thinking) (Atance & O’Neil, 2001; Tulving, 1985)."
+  - balanced: 
+    - rephrase to use the same structure across both parts of the sentence... "It is the ability to bring to mind personally-relevant and perceptually-rich events or episodes that have happened in the past (i.e. episodic memory) or could happen in the future (i.e episodic future thinking) (Atance & O’Neil, 2001; Tulving, 1985)."
+
+5. Remember that simple sentence structures (and simple words) are easier to read. You don’t want to make the reader wait for the main message. Front load your sentences so that you give away the main message first.
+
+  - rather than... “When affiliation and forming relationships is deemed important, adults have been shown to engage in higher levels of mimicry”
+  - try... “Adults have been shown to engage in higher levels of mimicry, when affiliation and forming relationships is deemed important”
+  - or even better, see how many simple words you can swap for complex ones, or how many you can remove entirely… “Adults show more mimicry, when affiliation and forming relationships are important”
+
+6. TIP if you find yourself repeating an idea and explaining it in simple terms, scrap the jargony description and just use the one that you thought you needed to reexplain the complicated one using  “That is… much simpler description in lay language”
+
+
+
+### Paragraphs
+
+1. Make sure that each paragraph has a topic sentence (what is the take home message I want to convey in this paragraph?) and then 2-3+ sentences providing support (i.e. explanation, examples, evidence) for that idea. Here is a [good video](https://vimeo.com/222034325) about paragraph recipes.
+
+2. Make sure your topic sentences are pulling their weight. The TS should state what the main point of the paragraph is, allowing you to go on to talk about research that supports that main point.
+
+3. Never start a paragraph with "A recent study by So & So (2016) showed that ...." or even worse “So & So (2016) showed that…” Use your topic sentence to explain to the reader the point of the paragraph and use the research as an example for your main point. 
+
+4. Never start a topic sentence with "Other research/studies...." tell the reader how these new studies are related and what they show.
+
+5. Your topic sentences should guide the reader through your rationale so clearly that if you put all the [topic sentences into 1 paragraph](https://explorationsofstyle.com/2014/10/15/topic-sentence-paragraphs/) (i.e. make a topic sentence paragraph) it should read like an argument. 
+
+6. Avoid abrupt transitions, make sure your topic sentence holds your readers hand when there is a switch of focus For example, to move from talking about prosocial behaviour in adults and switching to talk about development, you can use your topic sentence to reach back to the previous paragraph and forward to your next point 
+  - “While we most commonly think of adults behaving prosocially toward each other, the origins of helping behaviour can be seen early in development” 
+
+
+## The structure of academic writing
+
+### Intros
+
+1. Introductory paragraphs are important. They determine what the reader will expect from the rest of your proposal/thesis. Your introductory paragraph should introduce the general research area that you are planning to study and explain to the reader why this is an interesting area of research to address AND why it is significant/important.
+
+2. Re structure- doesn’t matter what you are writing (proposal, thesis intro, manuscript intro, grant) they ALL HAVE THE SAME STRUCTURE 
+
+  - a. This is what this project is about (broad overview of the problem)
+  - b. This is what we know about the problem
+  - c. This is what we don’t know about it
+  - d. This is how THIS project fills that gap in what we don’t know
+
+3. Layers of subheading can sometimes let topic sentences off the hook. If you TSs are working hard they should negate the need for lots of sections. They should hold the reader’s hand through transitions by linking back to what you just said and outlining how it is related to what you are going to say. Only use a subheading if you are really switching gears and talking about something quite different.
+
+4. A literature review should be funnel shaped, starting really broad and gradually getting more specific (detailed) as you work your way towards your rationale. BUT the size of your funnel should differ depending on what you are writing. Your proposal (where your lit review needs to be 4-5 pages) needs to start at its broadest point more narrowly than your thesis (where your lit review needs to be \~15 pages)
+
+5. When describing a study, be sure to describe what they did, what they measured AND what they found. Always explain methods/procedures in the most simply jargon free concrete terms possible; what did the kids experience?
+
+6. If there is a history to the literature, describe it is chronological order. Talk about the seminal study first, and then what has happened since, leading up to what is missing, and what you are going to do.
+
+7. When you are writing hypotheses, it is really important to explain (in terms of theoretical and/or empirical work) WHY you are predicting what you predict. You can't just say "it is hypothesised that....." You need to say "Given what we know about X and Y, and previous work showing Z, we predict that..."
+
+8. Include a minimethod between your aims and hypotheses. Hypotheses are difficult for your marker to follow if you haven’t provided a little bit of detail about what participants will do and what you will measure
+
+9. Your job is to ***SYNTHESISE  the literature, not just describe it.***
+
+> The Thesis Whisperer does a really great job in [this post](https://thesiswhisperer.com/2017/09/27/academic-writing-is-a-painful-upper-middle-class-dinner-party/) of describing how mostly science writers don't use *verbs* as effectively as they could. Using verbs strategically is a great way to show your marker that you are synthesising the literature and critically evaluating it, rather than just describing it and leaving the thinking to the reader (your marker is WAY too tired to think hard while they read). This [Verb cheat sheet ](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnx0d2JsYWNrbGluZW1hc3RlcnN8Z3g6MTUxZTVhZTc2OTg3MWNkYQ) might be useful 
+
+> Prof Gernsbacher also makes the distinction between synthesising the literature and “mad-libbing” it in this video <https://vimeo.com/223781358>
+
+
+
+### Methods
+
+1. Participants do what they do for us because they want to, not because we require them to. They give informed consent and can withdraw from the experience or refuse any part of the procedure without consequence. When describing what participants experience, avoid using "participants will have to do X..." or “participants will be required to…”
+
+2. Use APA style when using numbers. 
+
+> If the number is less than 10, write it out (i.e. These three tasks will be ....). There are exceptions to this, including age and time. We always use digits for age (i.e. 4-year-old children) and time (i.e. 10 minute delay), except when starting a sentence, then [use the word (i.e. Four-year olds were recruited...)](https://www.editage.com/insights/scientific-writing-avoid-starting-sentences-with-a-number-or-abbreviation)
+
+3. In your methods section, make sure everything about the equipment and stimuli stays in the Apparatus/Stimuli . Your Procedure section should describe in simple terms what the participants experienced.
+
+
+### Results
+
+1. Remember that "data" is plural, you always collect more than one datum
+
+> Data from three infants was were excluded from this looking time analysis
+> There was no difference in the magnitude of preferences across trial 1 and 2, t(19)= .762, p= .455, d=.17, so data was were averaged.
+
+2. Be careful in the way you describe correlational analyses. Relationships refer to people not variables. Variables can be related or there can be a relation between variables but they don't have relationships :) 
+
+
+
+### Discussion
+
+1. For multiple studies, I often suggest writing a Results & Discussion section, rather than a mini discussion by itself. The role of the mini discussion is just to summarise the findings from that experiment, what we have learned thus far and what we don’t yet know. You need just enough detail to provide aims/rationale for your second study. Your mini discussion should only be a few paragraphs long. Save the big picture stuff  (relating findings to past work, theory, practical implications, limitations etc) [for the General Discussion](https://www.apa.org/gradpsych/2006/01/findings)
+
+2.  Your general discussion should make “moves” that your marker expects
+
+  a. what do we NOW know about the problem?
+  b. how does that relate to what we knew before?
+  c. what can we say about theory/real world that we couldn't before?
+  d. what problems/limitations do we need to acknowledge?
+  e. what do we still not know... what are the next steps/future directions? 
+  f.what is the take home message?
+
+3. This [twitter thread](https://twitter.com/carlton_fong/status/1387793098500190210) from Prof Carlton Fong re *planning* your general discussion is REALLY good
+
+a. start by writing the limitations---future directions (its the easiest bit)
+    - avoid the suicide discussion- aka “We did everything wrong and nothing worked and therefore this thesis was a waste of time.”
+    - frame limitations as opportunities for future work rather than a list of reasons why you didn’t get what you thought you would.  
+    - make sure suggestions for future research are genuine ideas for the next step in the research program. Simply suggesting that the tasks should be tried with a different age group or with different stimuli is a cop out; these suggestions will apply to EVERY thesis in your markers pile and doesn’t help your marker distinguish between students who can really think vs those who are just using a script to write their GD. Explain to your marker WHY they should care about the next question in this research program and HOW you would conduct that study, specifically. Your marker is looking for you to show them that you have ACTUALLY thought about it. 
+    
+b. pick the 3-5 (probably only 3) most important findings, for each map out…([Spider diagrams](https://sites.google.com/site/twblacklinemasters/using-a-spider-diagram-to-make-research-questions?authuser=0) might be helpful here)
+    - what did you find
+    - how does the finding relate to past research, are the findings consistent? 
+      - if yes, unpack how...
+      - if no, why not? here you will need to go back to your data or to the literature to try and explain why you got the pattern of results you got
+    - what does this finding add to the literature? 
+    - what do we know now that we didn’t know before?
+c. for each above, think about how that finding relates to/advances theory
+d. for each above, think about practical/policy/real world implications/applications
+e. DON’T TRY TO COVER EVERYTHING, much better to do a deep dive on a handful of important ideas than to skim over a zillion possibilities but leave your reader unconvinced of any one of them 
+f.  Check out [these phrases ](https://apastyle.apa.org/instructional-aids/discussion-phrases-guide.pdf) from the APA style guide to help
+g. Good tips for striking a balance in your [General Discussion here ](https://www.apa.org/gradpsych/2006/01/findings)
+h. Thesis Whisperer posts
+    - [How do I start my discussion chapter](https://thesiswhisperer.com/2012/01/23/how-do-i-start-my-discussion-chapter/)
+    - [The difficult discussion](https://thesiswhisperer.com/2016/04/20/the-difficult-discussion-chapter/)
+    - [Spider diagrams](https://sites.google.com/site/twblacklinemasters/using-a-spider-diagram-to-make-research-questions?authuser=0)
+
+
+
+## General writing advice
+
+1. NEVER use quotes- yes in undergrad we say that if you really can't write something any other way then put it in quotes, but real scientists can always write something in another way. When i am marking honours theses and I see ideas in quotes, my gut reaction is the student doesn’t understand that idea enough to write it in their own words.
+2. Find the original source.
+    - It is mostly not sufficient to base your lit review on review articles or meta-analysis. You need to find the articles that are cited in these reviews and cite the original authors.
+    - similarly secondary citations are not cool (i.e. According to Datyner (2015) So & So (1982) suggest.....) no, you need to find So and So (1982) read it yourself and write about what they actually say, not about what Datyner says that they say (you can’t guarantee that other people have represented the old ideas accurately)
+3.  Write phrases that are balanced in their construction. For example, rather than "Recollecting memories and imagining future events ..." say "Remembering past events and imagining future events...."
+4.  If there is a list of things, use signposting. The aims of the current research are twofold. First…. Second…. But don't use Firstly.... Secondly.....[or so says Grammar Girl](http://www.quickanddirtytips.com/education/grammar/%E2%80%98first%E2%80%99-or-%E2%80%98firstly%E2%80%99)
+5. Phrases to avoid
+    - A study by So & So (2016) …… \[not only is this passive, but it puts the emphasis on WHO did the research rather than what they did and what they found\]
+6. Use APA style consistently
+    - in [your results](https://depts.washington.edu/psych/files/writing_center/stats.pdf)
+7. More good advice by Morton Ann Gernsbacher re [writing for clarity and memorability here ](https://journals.sagepub.com/doi/10.1177/2515245918754485)
+
+
+
+## Your thesis
+
+More often than not, honours students have a hard time "expanding" their proposal intro into a thesis intro and waste one of the two times I’m allowed to read their intro on a piece that has the scope or specificity wrong. You are aiming to fill 14-16 pages; if it is shorter than 14 pages (double spaced 2 cm margins) DON’T SEND IT TO ME. Instead do a reverse outline and put together a topic sentence paragraph and send that to me first. Remember that you turn a 4 pg proposal intro into a 14-16 pg thesis intro by starting MUCH broader AND then eventually getting MUCH more specific/detailed. **REMEMBER that your intro should NOT read like a list of study descriptions.**
+
+If it sounds like, So & So did this and then Jo and Co did that and then Big Dudes did the next thing, you need to look carefully at your topic sentences and make sure they are pulling their weight. Use your topic sentences to carve out an argument and then use specific examples of research to support your argument.
+
+Your literature review should [tell a story](https://academicmuse.org/simple-plot-literature-review)
+
+### Citations and references
+
+Your thesis is a BIG document and you will have a lot of citations to keep track of. APA formatting is important but to be honest I no longer remember the actual formatting rules. APA changes its mind so often, I don’t bother keeping up with the latest version, but I can do that because I use software to automatically format citations/references for me. 
+
+I would HIGHLY recommend using software to deal with the references in your thesis. **Don't use Endnote.** It gets really annoyed when there is the same author who is listed on different pubs in different format. It thinks they are different people. Libraries can get corrupted and cause disaster (right when you want to print your thesis and hand it in).
+
+At the moment I use Mendeley and really like it. You can download an app to your desktop/laptop and use it in the cloud. You can drag pdfs into the software and it will extract the details it can from the pdf (although it has a hard time with older ones). It is important to check that it has the details right (particularly abbreviations on the journal name and authors).
+
+You can add an addin to your Word so Mendeley buttons appear under the References tab. When you add citations it will automatically order them, format them, recognise when you are citing a long list of authors the first time vs subsequent times, it is really good.
+
+## Recommended Resources
+
+### Blogs I like
+
+- [www.thesiswhisperer.com](http://www.thesiswhisperer.com)
+    - [how to unfuck your writing post](https://thesiswhisperer.com/2022/06/01/how-to-unfuck-your-writing-a-check-list/)
+
+- [Pat Thompson](https://patthomson.net/)
+
+- [Explorations of style](<https://explorationsofstyle.com/>)
+
+### Twitter threads I like
+
+Jessica Rodrigues \@rodriguesjm6 [5 tips for academic writing](https://threadreaderapp.com/thread/1436355550388932614.html)
+
+Sara Hart \@ saraannhart [Best academic writing tips](https://twitter.com/saraannhart/status/1126222700895195136)
+
+Carlton Fong \@carlton_fong [Tips for Discussion writing](https://threadreaderapp.com/thread/1387793098500190210.html)
+
+### Books I think are good
+
+[Becoming an academic writer- Patricia Goodson](https://www.amazon.com.au/Becoming-Academic-Writer-Exercises-Productive-ebook/dp/B01DQYA5FQ)
+
+[Air, light time and space- Helen Sword](https://www.amazon.com.au/Air-Light-Time-Space-Successful-ebook/dp/B06XW8W77D/ref=pd_sim_351_3?_encoding=UTF8&psc=1&refRID=EHGQS4YHAYH7K287RY9J)
+
+[How to write a lot- Paul Silvia](https://www.amazon.com.au/How-Write-Lot-Practical-Productive-ebook/dp/B001Y35G60/ref=pd_sim_351_5?_encoding=UTF8&psc=1&refRID=EHGQS4YHAYH7K287RY9J)
+
+[Write it up- Paul Silvia](https://www.amazon.com.au/Write-Practical-Strategies-Publishing-Lifetools-ebook/dp/B00WNF9UFQ/ref=pd_sim_351_1?_encoding=UTF8&psc=1&refRID=EHGQS4YHAYH7K287RY9J)
+
+### Phrases that might be useful
+
+(find more REALLY GOOD discussion examples from [APA here](https://apastyle.apa.org/instructional-aids/discussion-phrases-guide.pdf) and from [Manchester Academic Phrasebank](https://www.phrasebank.manchester.ac.uk/)
+
+#### Summarise
+
+-   The results indicate that…
+-   There was a correlation between…
+-   This analysis supports/opposes the theory that…
+-   The data suggests that…
+-   The analysis identifies X and Y as key factors in….
+
+#### Interpret
+
+-   Contrary to the hypothesized association…
+-   In line with the hypothesis…
+-   The results contradict the claims of Smith (2007) that…
+-   The results might suggest that *X*. However, based on the findings of similar studies, a more plausible explanation is *Y*.
+
+#### Implications
+
+
+-   These results build on existing evidence of...
+-   The results do not fit with the theory that…
+-   The experiment provides a new insight into the relationship between…
+-   These results should be taken into account when considering how to…
+-   The data contributes a clearer understanding of…
+-   While previous research has focused on *X*, these results demonstrate that *Y*.
+
+#### Limitations
+
+-   The generalizability of the results is limited by…
+-   The [reliability](https://www.scribbr.com/methodology/reliability-vs-validity/) of this data is impacted by…
+-   Due to the lack of data on *X*, the results cannot confirm…
+-   The methodological choices were constrained by…
+-   It is beyond the scope of this study to…
+
+### Thinking bundles
+
+From Thesis Whisperer [thinking bundles](https://sites.google.com/site/twblacklinemasters/thinking-bundles?authuser=0)
+
+Practice thinking about the literature, methods, or your contribution using these thinking bundle templates. 
+
+
+1. A large and growing body of literature has investigated ...... Numerous scholars have argued that ....... (for example, Smith , 1996; Kelly, 1998; Johnson, 2002). In her seminal study, Mewburn (2010) showed that …….. One question that needs to be asked, however, is .........
+
+2.  Most studies of this phenomena suffer from some serious *\[pick one word from the following\]* limitations / weaknesses / disadvantages / drawbacks / flaws. It was decided that the best method to adopt for this investigation was ......................... This method is \[pick one\] The chief advantage of this method is……………….. Some limitations of this method that should be noted are……………..
+
+3. One of the more significant findings to emerge from this study is that ........... it was also shown that......... The results of this research support the idea that ....... The most important limitation lies in the fact that ...... Further work needs to be done on ...... These findings suggest several courses of action for ...... The findings of this study have a number of important implications for future practice, especially ……
+
+
+#### Joining words
+
+([from TW](https://sites.google.com/site/twblacklinemasters/conjunctive-adverb-conjurer?authuser=0))
+
+#### Opinionated verbs
+
+([also from TW](https://sites.google.com/site/twblacklinemasters/verb-cheat-sheet?authuser=0))
+
+

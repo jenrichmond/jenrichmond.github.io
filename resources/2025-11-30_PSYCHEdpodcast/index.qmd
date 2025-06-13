@@ -1,0 +1,42 @@
+---
+title: "PsychEd podcast"
+editor: visual
+---
+
+I have run lots of workshops for Psychology students about writing.
+
+In 2024, my collegaue Lisa Williams and I turned some of these workshop materials into a podcast that we called PSYCHEd. The podcast is available [on Spotify](https://open.spotify.com/show/5pCOyvuFSaeFaYjjIKnY3j).
+
+![](psyched.png){width="600"}
+
+## Crafting your introduction
+
+### [Part 1](https://open.spotify.com/episode/4FhRiLnLpuED2h7dyGOYXZ?si=VOh8ZFjRQ3SMC-CZcXMQhA)
+
+In this episode, A/Prof Jenny Richmond and A/Prof Lisa Williams share their expertise on writing introductions for honours theses and proposals. They discuss the four essential "moves" of a strong introduction, strategies for effective literature review, and the importance of creating perceptual fluency for readers. The hosts offer invaluable insights on structuring arguments, being selective with content, and adapting approaches for proposals versus full theses.
+
+### [Part 2](https://open.spotify.com/episode/1ZaaJ8SPPkFgGEMkXrta2S?si=5oooQCqcTZ-mIacoOtQefQ)
+
+In this follow-up episode, the hosts dive deeper into the art of writing a compelling thesis introduction, focusing on the structure and flow of your paragraphs. They emphasize the importance of guiding your reader through your argument with clear topic sentences, transitions, and signposting. With their expert advice, you’ll learn how to create smooth, logical flow throughout your introduction, ensuring that your reader stays engaged and follows your argument effortlessly.
+
+### [Part 3](https://open.spotify.com/episode/7uNBVy26HrHmLiadcTK8Nu?si=DqfVPSs3SIyg-oAJIfatlQ)
+
+In this episode, the hosts share strategies for polishing your thesis or proposal. They delve into the art of clear and concise academic writing, emphasizing the importance of clarity over complexity. Listeners will learn practical tips for refining their drafts, including the significance of defining key concepts, using consistent terminology, and the effective use of acronyms. The hosts also introduce the "1-5-25 rule" for structuring paragraphs and discuss techniques for editing, such as reading aloud to catch awkward phrasing. This episode is a must-listen for students seeking to enhance their writing skills and ensure their work stands out to supervisors and markers.
+
+[Useful slides](⁠https://jennyslides.netlify.app/reviewerhat/#/title-slide)
+
+## The Art of General Discussion writing
+
+### [Part 1](https://open.spotify.com/episode/1LtG9S3aK5LR4xODNIvwPL?si=_sOlEvnJRPe4fa1CMqNRPQ)
+
+In this episode, A/Prof Jenny Richmond and A/Prof Lisa Williams share their wealth of experience in supervising and marking honours theses. They focus on the often-dreaded general discussion section, breaking down its purpose and structure. Learn why unexpected results can be a blessing in disguise and how to approach your discussion with confidence. The hosts provide a clear six-step formula for crafting a compelling discussion that will impress your markers. Whether you're currently writing your thesis or preparing for future academic writing, this episode offers valuable insights to help you succeed. )
+
+### [Part 2](https://open.spotify.com/episode/6bM67UCmzOEs2BvHFLevWE?si=X71cCkj2SEiVdmYp2xFRcQ)
+
+In this episode, the hosts dive deep into the art of writing the General Discussion section for an honours thesis. They share invaluable tips on summarizing results effectively, relating findings to existing literature, and handling unexpected outcomes. The hosts emphasize the importance of demonstrating critical thinking skills and provide strategies for explaining results that don't align with hypotheses. This episode is essential listening for any student working on their thesis, offering insights that can elevate their writing from good to outstanding.
+
+### [Part 3](https://open.spotify.com/episode/4DYx8baY3IqfERlpY7BNae?si=wy9XbNvxQtOTiFjaP0s4BA)
+
+In this episode, the hosts continue exploring the “moves” your marker will expect you to make in your General Discussion section They offering invaluable advice on discussing theoretical and real-world implications, addressing limitations, proposing future directions, and crafting a strong conclusion. The hosts emphasize the importance of strategic thinking, internal consistency, and finishing strong. This episode is crucial for students looking to elevate their thesis writing and impress their markers.
+
+[Useful slides](https://jennyslides.netlify.app/gd/#/title-slide)

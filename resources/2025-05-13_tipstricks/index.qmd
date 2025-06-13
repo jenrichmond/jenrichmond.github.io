@@ -1,0 +1,36 @@
+---
+title: "tips and tricks"
+editor: visual
+---
+
+I love learning new #rstats things and sharing what I learn with the R community. This [YouTube series](https://www.youtube.com/playlist?list=PLo7u2ckYa5eYyz805B2MzfpeYU9d9Mft5) captures quick tips and tricks to make your coding life more fun.
+
+## customise your RStudio
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kGQAn384jeY?si=LhV8zD7FCbGpEYRn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
+
+## find fun data
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OLq0fpsglJU?si=KWCnCVe5tFcmA3bP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
+
+## clean up with janitor
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VvXElkQ_Y8w?si=iDcZtzm6n1GG-0aU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
+
+## making ggplot easy
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PX8m69owHAs?si=mI6nXtLvu7QZU5z2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
+
+## make datapasta
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/utQmq0M2jQ8?si=nIEoaJHB9-aAuv5k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
