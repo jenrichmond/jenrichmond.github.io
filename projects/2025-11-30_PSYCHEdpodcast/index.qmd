@@ -1,11 +1,10 @@
 ---
 title: "PsychEd podcast"
 editor: visual
+date: 2024-11-30
 ---
 
-I have run lots of workshops for Psychology students about writing.
-
-In 2024, my collegaue Lisa Williams and I turned some of these workshop materials into a podcast that we called PSYCHEd. The podcast is available [on Spotify](https://open.spotify.com/show/5pCOyvuFSaeFaYjjIKnY3j).
+I have run lots of workshops for Psychology students about writing. In 2024, my colleague Lisa Williams and I turned some of these workshop materials into a podcast that we called PSYCHEd. The podcast is available [on Spotify](https://open.spotify.com/show/5pCOyvuFSaeFaYjjIKnY3j).
 
 ![](psyched.png){width="600"}
 

@@ -2,6 +2,7 @@
 title: "Jenny’s (very opinionated) tips for academic writing"
 editor: visual
 image: featured.png
+date: 2024-05-02
 ---
 
 I was an academic in Psychology for more than 15 years. I supervised 6 PhD students and 30 honours students and over that time, I created this guide to academic writing for them. It is just my opinion. If anything in it differs from the advice your research supervisor gives you, always go with their opinion.

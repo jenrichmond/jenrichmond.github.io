@@ -1,0 +1,13 @@
+---
+title: "careers"
+editor: visual
+date: 2024-10-30
+---
+
+In my work with Psychology students, I led several projects related to career preparation and work integrated learning (WIL).
+
+I led a Student Experience grant that culminated in the [Psychology Alumni gateway](https://alumni.psy.unsw.edu.au/), a site that showcases the diverse career paths that Psychology students pursue following graduation.
+
+The site has interviews with recent alumni explaining how they use their Psychology skills in their chosen career.
+
+![](scroll.mov)
