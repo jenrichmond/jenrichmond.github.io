@@ -20,7 +20,6 @@ about:
       href: mailto:jennyrichmond@gmail.com
 ---
 
-
 I am a psychologist by training and have been teaching myself (and others) R for a few years now. 
 
 I am one of the founders of R-Ladies Sydney and developer of [#RYouWithMe](https://rladiessydney.org/courses/). 
