@@ -62,5 +62,9 @@
       "/posts/2021-01-08-my-first-pull-request/index.html",
       "/posts/2020-11-18-digging-into-the-janitor-package/index.html"
     ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": []
   }
 ]

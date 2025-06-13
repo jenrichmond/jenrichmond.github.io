@@ -27,8 +27,7 @@ I am one of the founders of R-Ladies Sydney and developer of [#RYouWithMe](https
 
 I like to learn new things and write about what I have learned on [my blog](https://jenrichmond.github.io/posts.html). 
 
-I like to identify a gap and then make something to fill it; 
-[my resources page](https://jenrichmond.github.io/resources.html) showcases some of my favourite projects. 
+I am good at identifying a gap and then make something to fill it. This page showcases some of [my favourite projects](https://jenrichmond.github.io/projects.html).
 
 I LOVE data viz and storytelling; check out [my portfolio](https://jenrichmond.github.io/charts.html).
 
