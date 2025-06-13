@@ -1,6 +1,7 @@
 ---
 title: "RYouWithMe"
 editor: visual
+image: featured.png
 ---
 
 I co-founded [RLadies Sydney](https://www.meetup.com/rladies-sydney) in 2018 and grew the community to more than 900 members over 4 years.

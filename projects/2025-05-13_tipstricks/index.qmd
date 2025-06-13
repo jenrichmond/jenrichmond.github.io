@@ -1,9 +1,11 @@
 ---
 title: "tips and tricks"
 editor: visual
+image: featured.png
 ---
 
 I love learning new #rstats things and sharing what I learn with the R community. This [YouTube series](https://www.youtube.com/playlist?list=PLo7u2ckYa5eYyz805B2MzfpeYU9d9Mft5) captures quick tips and tricks to make your coding life more fun.
+
 
 ## customise your RStudio
 
