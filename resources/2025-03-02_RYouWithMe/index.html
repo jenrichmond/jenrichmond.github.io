@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jen Richmond">
-<meta name="dcterms.date" content="2021-01-08">
 
-<title>my first pull request – Jen Richmond</title>
+<title>RYouWithMe – Jen Richmond</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -183,56 +146,22 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#trying-out-the-feathers-package" id="toc-trying-out-the-feathers-package" class="nav-link active" data-scroll-target="#trying-out-the-feathers-package">Trying out the feathers package</a></li>
-  <li><a href="#adding-bird-images-for-each-palette" id="toc-adding-bird-images-for-each-palette" class="nav-link" data-scroll-target="#adding-bird-images-for-each-palette">Adding bird images for each palette</a>
-  <ul class="collapse">
-  <li><a href="#eastern-rosella" id="toc-eastern-rosella" class="nav-link" data-scroll-target="#eastern-rosella">Eastern Rosella</a></li>
-  <li><a href="#plains-wanderer" id="toc-plains-wanderer" class="nav-link" data-scroll-target="#plains-wanderer">Plains wanderer</a></li>
-  <li><a href="#rose-crowned-fruit-dove" id="toc-rose-crowned-fruit-dove" class="nav-link" data-scroll-target="#rose-crowned-fruit-dove">Rose crowned fruit dove</a></li>
-  <li><a href="#bee-eater" id="toc-bee-eater" class="nav-link" data-scroll-target="#bee-eater">Bee eater</a></li>
-  </ul></li>
-  <li><a href="#contributing-to-a-package-with-a-pull-request" id="toc-contributing-to-a-package-with-a-pull-request" class="nav-link" data-scroll-target="#contributing-to-a-package-with-a-pull-request">Contributing to a package with a pull request</a>
-  <ul class="collapse">
-  <li><a href="#step-1-fork-the-repo" id="toc-step-1-fork-the-repo" class="nav-link" data-scroll-target="#step-1-fork-the-repo">Step 1: fork the repo</a></li>
-  <li><a href="#step-2-clone-the-repo" id="toc-step-2-clone-the-repo" class="nav-link" data-scroll-target="#step-2-clone-the-repo">Step 2: clone the repo</a></li>
-  <li><a href="#step-3-make-changes-to-your-local-copy" id="toc-step-3-make-changes-to-your-local-copy" class="nav-link" data-scroll-target="#step-3-make-changes-to-your-local-copy">Step 3: make changes to your local copy</a></li>
-  <li><a href="#step-4-push-your-changes-to-your-forked-copy" id="toc-step-4-push-your-changes-to-your-forked-copy" class="nav-link" data-scroll-target="#step-4-push-your-changes-to-your-forked-copy">Step 4: push your changes to your forked copy</a></li>
-  <li><a href="#step-5-make-a-pull-request" id="toc-step-5-make-a-pull-request" class="nav-link" data-scroll-target="#step-5-make-a-pull-request">Step 5: make a pull request</a></li>
-  <li><a href="#my-favourite-colour-palettes" id="toc-my-favourite-colour-palettes" class="nav-link" data-scroll-target="#my-favourite-colour-palettes">my favourite colour palettes</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">my first pull request</h1>
+<h1 class="title">RYouWithMe</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p><a href="https://jenrichmond.github.io/">Jen Richmond</a> </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 8, 2021</p>
-    </div>
-  </div>
   
     
   </div>
@@ -242,268 +171,14 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </header>
 
 
-<p>There are so many lovely packages for colour palettes (see links at the bottom of <a href="http://jenrichmond.rbind.io/post/idhtg-how-to-use-colour-palettes-with-ggplot/">this post</a> for more).</p>
-<p>This new one called <code>feathers</code> by <a href="https://github.com/shandiya/feathers">Shandiya Balasubramanium</a> is inspired by Australian birds and is delightful.</p>
-<p>The vignette doesn’t have any pictures of the birds though, so I thought it might be a good opportunity to help <a href="https://twitter.com/ShandiyaB">Shandiya</a> out and try my first pull request. I am documenting the process here, so I can refer back to it for next time.</p>
-<section id="trying-out-the-feathers-package" class="level1">
-<h1>Trying out the feathers package</h1>
-<p>I’ve installed the feathers package from github…</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"shandiya/feathers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>… and loaded the palette names</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(feathers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>You can print each palette by using the <code>get_pal()</code> function and the <code>print_pal()</code> function. There is the palette for the Eastern Rosella</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>er <span class="ot">&lt;-</span> <span class="fu">get_pal</span>(<span class="st">"eastern_rosella"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print_pal</span>(er)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="adding-bird-images-for-each-palette" class="level1">
-<h1>Adding bird images for each palette</h1>
-<section id="eastern-rosella" class="level2">
-<h2 class="anchored" data-anchor-id="eastern-rosella">Eastern Rosella</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Platycercus_eximius_diemenensis_male.jpg/800px-Platycercus_eximius_diemenensis_male.jpg" style="width:75.0%;height:75.0%" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Image credit: <a href="https://www.jjharrison.com.au/">JJ Harrison</a>. This file is licensed under the <a href="https://en.wikipedia.org/wiki/Creative_Commons">Creative Commons</a> <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">Attribution-Share Alike 3.0 Unported license</a>. Image source: <a href="https://commons.wikimedia.org/wiki/File:Platycercus_eximius_diemenensis_male.jpg">Wikimedia Commons</a>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="plains-wanderer" class="level2">
-<h2 class="anchored" data-anchor-id="plains-wanderer">Plains wanderer</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Pedionomus_torquatus%2C_NSW_1.jpg/1024px-Pedionomus_torquatus%2C_NSW_1.jpg" style="width:75.0%;height:75.0%" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Image credit: <a href="https://www.flickr.com/photos/patrick_k59/14368940377/">Patrick_K59</a>. This file is licensed under the CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=34831381. Image source: <a href="https://commons.wikimedia.org/wiki/File:Pedionomus_torquatus,_NSW_1.jpg">Wikimedia Commons</a>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="rose-crowned-fruit-dove" class="level2">
-<h2 class="anchored" data-anchor-id="rose-crowned-fruit-dove">Rose crowned fruit dove</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Rose-Crowned_Fruit_Dove.jpg/800px-Rose-Crowned_Fruit_Dove.jpg" style="width:60.0%;height:60.0%" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Image credit: <a href="http://bjornfree.com/galleries.html">Bjørn Christian Tørrissen</a>, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=6874281</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="bee-eater" class="level2">
-<h2 class="anchored" data-anchor-id="bee-eater">Bee eater</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Merops_ornatus_-_Centenary_Lakes.jpg/800px-Merops_ornatus_-_Centenary_Lakes.jpg" style="width:50.0%;height:50.0%" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Image credit: <a href="https://www.jjharrison.com.au/">JJ Harrison</a>. This file is licensed under the <a href="https://en.wikipedia.org/wiki/Creative_Commons">Creative Commons</a> <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">Attribution-Share Alike 3.0 Unported license</a>. Image source: <a href="https://commons.wikimedia.org/wiki/File:Merops_ornatus_-_Centenary_Lakes.jpg">Wikimedia Commons</a>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="contributing-to-a-package-with-a-pull-request" class="level1">
-<h1>Contributing to a package with a pull request</h1>
-<p>When making a pull request you are asking the person who wrote the package (or who owns the repo) to pull the changes you have made into the original repo.</p>
-<p><a href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork">pull request from a fork</a></p>
-<section id="step-1-fork-the-repo" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-fork-the-repo">Step 1: fork the repo</h3>
-<p>Forking is the process of creating a copy of a repo owned by someone else in your github account. There is a button on the top right corner of every github repo that allows you to Fork a copy.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="fork.png" class="img-fluid figure-img" width="390"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="step-2-clone-the-repo" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-clone-the-repo">Step 2: clone the repo</h3>
-<p>Once you have a copy of the repo in your github account, use the green button to clone the forked copy on to your machine.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="clone.png" class="img-fluid figure-img" width="390"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>You can copy the url and within RStudio use File-New project-From Version control. Or in the terminal use…</p>
-<ol type="1">
-<li><code>pwd</code> to print your working directory and then</li>
-<li><code>cd</code> to navigate to the folder where you want to clone</li>
-<li><code>git clone "paste URL"</code> to clone the repo into that location</li>
-</ol>
-<pre><code>
-pwd 
-
-cd Users/jenny/Desktop/git
-
-git clone "paste URL here"
-</code></pre>
-</section>
-<section id="step-3-make-changes-to-your-local-copy" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-make-changes-to-your-local-copy">Step 3: make changes to your local copy</h3>
-<p>Once you clone the repo to your machine, you can make changes. I open the README.Rmd file added the images linked above. I knitted the README to check it that it looked OK and saved the file.</p>
-</section>
-<section id="step-4-push-your-changes-to-your-forked-copy" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-push-your-changes-to-your-forked-copy">Step 4: push your changes to your forked copy</h3>
-<p>Once I had the README looking like I wanted, I pushed my changes to the forked copy in my repo using these commands in the terminal.</p>
-<pre><code>git add .
-
-git commit -m "adding bird images to README"
-
-git push
-</code></pre>
-</section>
-<section id="step-5-make-a-pull-request" class="level3">
-<h3 class="anchored" data-anchor-id="step-5-make-a-pull-request">Step 5: make a pull request</h3>
-<p>Now for the hard bit, fingers crossed. I’m following the <a href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork">instructions here</a>.</p>
-<ol type="1">
-<li><p>Refresh the browser on your forked repo and check that the README now includes your changes.</p></li>
-<li><p>Navigate to the original repo (where you created the fork in the first place) and choose the Pull requests tab.</p></li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="pr1.png" class="img-fluid figure-img" width="944"></p>
-</figure>
-</div>
-</div>
-</div>
-<ol start="3" type="1">
-<li>Choose New pull request and the “compare across forks” option</li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="pr2.png" class="img-fluid figure-img" width="941"></p>
-</figure>
-</div>
-</div>
-</div>
-<ol start="4" type="1">
-<li>Choose your fork as the head repository to compare and see whether your changes can be merged automatically. Click Create pull request.</li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="pr3.png" class="img-fluid figure-img" width="880"></p>
-</figure>
-</div>
-</div>
-</div>
-<ol start="5" type="1">
-<li>Write a note to the repo owner as an issue.</li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="pr4.png" class="img-fluid figure-img" width="814"></p>
-</figure>
-</div>
-</div>
-</div>
-<ol start="6" type="1">
-<li>Wait and see if they like your changes :)</li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="pr5.png" class="img-fluid figure-img" width="712"></p>
-</figure>
-</div>
-</div>
-</div>
-<ol start="7" type="1">
-<li>Celebrate!</li>
-</ol>
-<iframe src="https://giphy.com/embed/3oz8xRF0v9WMAUVLNK" width="480" height="320" frameborder="0" class="giphy-embed" allowfullscreen="">
-</iframe>
-<p>
-<a href="https://giphy.com/gifs/studiosoriginals-3oz8xRF0v9WMAUVLNK">via GIPHY</a>
-</p>
-</section>
-<section id="my-favourite-colour-palettes" class="level2">
-<h2 class="anchored" data-anchor-id="my-favourite-colour-palettes">my favourite colour palettes</h2>
-<ul>
-<li><a href="https://github.com/G-Thomson/Manu">Manu (NZ birds)</a></li>
-<li><a href="https://github.com/aljrico/harrypotter">Harry Potter</a></li>
-<li><a href="https://github.com/karthik/wesanderson">wesanderson</a></li>
-<li><a href="https://github.com/jakelawlor/PNWColors">PNWColors</a></li>
-<li><a href="https://github.com/shandiya/feathers">feathers (Oz birds)</a></li>
-</ul>
-<p>And many many more to be found in <a href="https://github.com/EmilHvitfeldt/r-color-palettes">Emil’s list</a></p>
+<p>I co-founded <a href="https://www.meetup.com/rladies-sydney">RLadies Sydney</a> in 2018 and grew the community to more than 900 members over 4 years.</p>
+<p>I also created the <a href="https://rladiessydney.org/courses/01-basicbasics-0">#RYouWithMe course</a>, a set of modules by beginners for beginners to get users started with R.</p>
+<p><img src="rls.png" class="img-fluid"></p>
+<p>The course is highlighted on the RStudio Education website as a recommended learning resource. The YouTube videos have been by more the 40K new R learners.</p>
+<p><img src="bb.png" class="img-fluid"></p>
+<p>The #RYouWithMe modules got a Quarto update in Feb 2025, you can find the new structure on the <a href="https://rladiessydney.org/courses/01-basicbasics-0">RLadies Sydney website</a> and the videos are all on YouTube, start with <a href="https://www.youtube.com/watch?v=kfcX5DEMAp4&amp;list=PLkAPliqRo9-kvZx8DkmI1OODBaJTAs0ld%3E">Basic Basics here</a></p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
