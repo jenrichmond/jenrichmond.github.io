@@ -8,4 +8,6 @@ listing:
   page-size: 50
 ---
 
+I love data viz! I made the charts in this portfolio as part of the #30DayChartChallenge in April 2025. 
+
 Want to support my chart making? <a href="https://buymeacoffee.com/jennyrichm9" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" height="30"></a>
