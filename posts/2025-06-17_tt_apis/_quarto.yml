@@ -1,0 +1,40 @@
+project:
+  type: default
+
+format:
+  html:
+    theme: flatly
+    toc: true
+    toc-location: right
+    toc-depth: 3
+    code-fold: show
+    code-summary: "Code"
+    code-tools: 
+      source: true
+      toggle: true
+      caption: none
+    fig-width: 10
+    fig-height: 6
+    fig-dpi: 300
+    highlight-style: github
+    embed-resources: true
+    
+execute:
+  freeze: auto
+  warning: false
+  message: false
+  echo: true
+  cache: true
+  fig-align: center
+  
+knitr:
+  opts_chunk:
+    dev: "ragg_png"
+    dpi: 300
+    fig.showtext: true
+    collapse: true
+    comment: "#>"
+
+editor: visual
+
+engine: knitr

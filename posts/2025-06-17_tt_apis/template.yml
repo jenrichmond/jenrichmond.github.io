@@ -1,0 +1,43 @@
+title: "TidyTuesday R Analysis Template"
+description: "Comprehensive template for R-based data analysis using tidyverse and ggplot2"
+author: "Your Name"
+version: "1.0.0"
+quarto-required: ">=1.3.0"
+contributes:
+  formats:
+    - html
+
+dependencies:
+  - name: "R/setup.R"
+    description: "R package setup and custom functions"
+
+categories:
+  - tidytuesday
+  - data-analysis
+  - r
+  - visualization
+
+keywords:
+  - tidytuesday
+  - r
+  - tidyverse
+  - ggplot2
+  - data-analysis
+  - statistics
+
+requirements:
+  r-packages:
+    - tidyverse
+    - scales
+    - here
+    - janitor
+    - skimr
+    - patchwork
+    - ggtext
+    - showtext
+    - ragg
+
+files:
+  - template.qmd
+  - _quarto.yml
+  - R/setup.R
