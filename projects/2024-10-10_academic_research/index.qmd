@@ -1,6 +1,8 @@
 ---
 title: "research"
 editor: source
+date: 2024-10-10
+image: featured.jpg
 ---
 
 I am a developmental psychologist by training and my research expertise are in learning and memory in early life. My research uses electrophysiology and eye-tracking to ask questions about how infants learn and under what conditions they will remember.
