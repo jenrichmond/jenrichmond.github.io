@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Welcome!",
     "section": "",
-    "text": "I am a psychologist by training and have been teaching myself (and others) R for a few years now.\nI am one of the founders of R-Ladies Sydney and developer of #RYouWithMe.\nI like to learn new things and write about what I have learned on my blog.\nI am good at identifying a gap and then make something to fill it.\nThis page showcases some of my favourite projects.\nI LOVE data viz and storytelling; check out my portfolio."
+    "text": "I am a psychologist by training and have been teaching myself (and others) R for a few years now.\nI am one of the founders of R-Ladies Sydney and developer of #RYouWithMe.\nI like to learn new things and write about what I have learned on my blog.\nI like identifying a gap and then creating something to fill it.\nThis page showcases some of my favourite projects.\nI LOVE data viz and storytelling; check out my portfolio."
   },
   {
     "objectID": "pieces.html",
@@ -830,7 +830,7 @@
     "href": "projects/2025-03-02_RYouWithMe/index.html",
     "title": "RYouWithMe",
     "section": "",
-    "text": "I co-founded RLadies Sydney in 2018 and grew the community to more than 900 members over 4 years.\nI also created the #RYouWithMe course, a set of modules by beginners for beginners to get users started with R.\n\nThe course is highlighted on the RStudio Education website as a recommended learning resource. The YouTube videos have been by more the 40K new R learners.\n\nThe #RYouWithMe modules got a Quarto update in Feb 2025, you can find the new structure on the RLadies Sydney website and the videos are all on YouTube, start with Basic Basics here"
+    "text": "I co-founded RLadies Sydney in 2018 and grew the community to more than 1000 members over 4 years.\nI also created the #RYouWithMe course, a set of modules by beginners for beginners to get users started with R.\n\nThe course is highlighted on the RStudio Education website as a recommended learning resource. The YouTube videos have been by more the 40K new R learners.\n\nThe #RYouWithMe modules got a Quarto update in Feb 2025, you can find the new structure on the RLadies Sydney website and the videos are all on YouTube, start with Basic Basics here"
   },
   {
     "objectID": "projects/2024-10-30_alumni_gateway/index.html",
@@ -949,6 +949,13 @@
     "href": "projects.html",
     "title": "projects",
     "section": "",
-    "text": "tips and tricks\n\n\n\n\n\n\n\n\nMay 13, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nRYouWithMe\n\n\n\n\n\n\n\n\nMar 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nPsychEd podcast\n\n\n\n\n\n\n\n\nNov 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\ncareers\n\n\n\n\n\n\n\n\nOct 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nJenny’s (very opinionated) tips for academic writing\n\n\n\n\n\n\n\n\nMay 2, 2024\n\n\n\n\n\nNo matching items"
+    "text": "research\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntips and tricks\n\n\n\n\n\n\n\n\nMay 13, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nRYouWithMe\n\n\n\n\n\n\n\n\nMar 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nPsychEd podcast\n\n\n\n\n\n\n\n\nNov 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\ncareers\n\n\n\n\n\n\n\n\nOct 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nJenny’s (very opinionated) tips for academic writing\n\n\n\n\n\n\n\n\nMay 2, 2024\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/2024-10-10_academic_research/index.html",
+    "href": "projects/2024-10-10_academic_research/index.html",
+    "title": "research",
+    "section": "",
+    "text": "I am a developmental psychologist by training and my research expertise are in learning and memory in early life. My research uses electrophysiology and eye-tracking to ask questions about how infants learn and under what conditions they will remember.\n\nIn the last few years, my research has expanded into the Scholarship of Learning and Teaching. I have worked on questions related to student well-being and impact of integrating generative AI into Psychology assessment practices.\nIn my time in academia, I mentored 6 PhD students and 30 honours students.\nPublications available at Scopus"
   }
 ]
