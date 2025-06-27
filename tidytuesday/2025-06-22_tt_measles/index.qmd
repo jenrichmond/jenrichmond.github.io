@@ -1,0 +1,21 @@
+---
+title: "measles"
+subtitle: "tidy tuesday week 25"
+date: 2025-06-22
+format: html
+author: Jen Richmond
+image: featured.png
+---
+
+Super quick post today, mostly just a link to the Shiny dashboard I made with this week's Tidy Tuesday data, which comes from provisional WHO data about measles and rubella cases worldwide.
+
+![](featured.png)
+
+I made the app with LOTS of help from Claude. I do not know Shiny, but it turns out with some help, I can DO Shiny :)
+
+
+The code for my app code is available on [github](https://github.com/jenrichmond/shinymeasles).
+
+The app is deployed (for free) via Posit connect cloud.
+
+Play with it here [www.tinyurl.com/myfirstshinyapp](tinyurl.com/myfirstshinyapp)

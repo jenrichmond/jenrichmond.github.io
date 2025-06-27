@@ -970,7 +970,7 @@
     "href": "charts_tidytuesday.html",
     "title": "tidytuesday",
     "section": "",
-    "text": "Tidy Tuesday is a weekly community challenge run by Jon Harmon and team in the Data Science Learning Community. Each week the team post a dataset to their github page and data enthusiasts from around the world make something with it and share their creations using the #TidyTuesday hashtag.\nI document my TidyTuesday process here, creating useful resources for the community about how my plot came about. Recently I have also curated datasets for Tidy Tuesday (see Week 20 re Sydney Beaches and Week 25 re global measles cases).\n\n\n\n\n\n\n\n\n\n\n\n\nnsf grants terminated\n\n\n\n\n\n\nJen Richmond\n\n\nMay 6, 2025\n\n\n\n\n\n\n\n\n\n\n\nvesuvius\n\n\n\n\n\n\nJen Richmond\n\n\nMay 13, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\ncool stuff from tidytuesdayR\n\n\n\n\n\n\nJen Richmond\n\n\nMay 16, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nsydney beaches\n\n\n\n\n\n\nJen Richmond\n\n\nMay 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\ndungeons and dragons monsters\n\n\n\n\n\n\nJen Richmond\n\n\nMay 27, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\ngutenberg\n\n\n\n\n\n\nJen Richmond\n\n\nJun 3, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nhistorydata: judges\n\n\n\n\n\n\nJen Richmond\n\n\nJun 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\napis\n\n\n\n\n\n\nJen Richmond\n\n\nJun 20, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Tidy Tuesday is a weekly community challenge run by Jon Harmon and team in the Data Science Learning Community. Each week the team post a dataset to their github page and data enthusiasts from around the world make something with it and share their creations using the #TidyTuesday hashtag.\nI document my TidyTuesday process here, creating useful resources for the community about how my plot came about. Recently I have also curated datasets for Tidy Tuesday (see Week 20 re Sydney Beaches and Week 25 re global measles cases).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmeasles\n\n\n\n\n\n\nJen Richmond\n\n\nJun 22, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\napis\n\n\n\n\n\n\nJen Richmond\n\n\nJun 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nhistorydata: judges\n\n\n\n\n\n\nJen Richmond\n\n\nJun 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\ngutenberg\n\n\n\n\n\n\nJen Richmond\n\n\nJun 3, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\ndungeons and dragons monsters\n\n\n\n\n\n\nJen Richmond\n\n\nMay 27, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nsydney beaches\n\n\n\n\n\n\nJen Richmond\n\n\nMay 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\ncool stuff from tidytuesdayR\n\n\n\n\n\n\nJen Richmond\n\n\nMay 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nvesuvius\n\n\n\n\n\n\nJen Richmond\n\n\nMay 13, 2025\n\n\n\n\n\n\n\n\n\n\n\nnsf grants terminated\n\n\n\n\n\n\nJen Richmond\n\n\nMay 6, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "tidytuesday/2025-05-20_tt_beaches/index.html",
@@ -1048,5 +1048,12 @@
     "title": "tips and tricks",
     "section": "change data types across many columns",
     "text": "change data types across many columns"
+  },
+  {
+    "objectID": "tidytuesday/2025-06-22_tt_measles/index.html",
+    "href": "tidytuesday/2025-06-22_tt_measles/index.html",
+    "title": "measles",
+    "section": "",
+    "text": "Super quick post today, mostly just a link to the Shiny dashboard I made with this week’s Tidy Tuesday data, which comes from provisional WHO data about measles and rubella cases worldwide.\n\nI made the app with LOTS of help from Claude. I do not know Shiny, but it turns out with some help, I can DO Shiny :)\nThe code for my app code is available on github.\nThe app is deployed (for free) via Posit connect cloud.\nPlay with it here www.tinyurl.com/myfirstshinyapp"
   }
 ]

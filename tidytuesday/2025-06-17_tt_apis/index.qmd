@@ -1,6 +1,6 @@
 ---
 title: "apis"
-subtitle: "tidy tuesday week 25"
+subtitle: "tidy tuesday week 24"
 date: 2025-06-20
 format: html
 author: Jen Richmond
