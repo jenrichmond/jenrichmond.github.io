@@ -10,7 +10,12 @@ website:
         text: home
       - about.qmd
       - posts.qmd
-      - charts.qmd
+      - text: "data viz"
+        menu: 
+          - text: "30DayChallenge"
+            href: charts_30day.qmd
+          - text: "TidyTuesday"
+            href: charts_tidytuesday.qmd
       - projects.qmd
       
     right:

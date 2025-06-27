@@ -36,3 +36,12 @@ I love learning new #rstats things and sharing what I learn with the R community
 <iframe width="560" height="315" src="https://www.youtube.com/embed/utQmq0M2jQ8?si=nIEoaJHB9-aAuv5k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
 
 </iframe>
+
+
+## replace unexpected values with NA
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/99L5j45Hkec?si=y8QgGE59aVhs5Bri" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## change data types across many columns
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1H1w4KhTfn8?si=uPT-2czGA-1JOEYR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

@@ -1,0 +1,268 @@
+---
+title: "nsf grants terminated"
+format: html
+date: 2025-05-06
+author: Jen Richmond
+---
+
+
+The TidyTuesday challenge this week comes from a crowdsourced dataset put together by [GrantWatch](https://grant-watch.us/) about the National Science Foundation grants that have been terminated this year by the Trump administration. The data includes information about the state from which the researchers were operating, as well as the award type and directorate, which gives a sense of the kind of research that is being targeted. 
+
+I am particularly interested in the amount of grant funding that has been lost by state and the kinds of research grants that are being targeted by the administration. 
+
+
+## read/clean data
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| 
+library(tidytuesdayR)
+library(tidyverse)
+library(janitor)
+library(scales)
+library(usmap)
+library(gt)
+library(ggeasy)
+library(patchwork)
+
+tuesdata <- tidytuesdayR::tt_load(2025, week = 18)
+
+nsf <- tuesdata$nsf_terminations
+
+
+state_dir <- nsf %>%
+  select(state = org_state, usaspending_obligated, directorate_abbrev, directorate) %>%
+  mutate(directorate = str_remove_all(directorate, '["]'))
+
+```
+
+# funding terminated by state
+
+The `usmap` package makes it pretty easy to plot values on a state map. Here I am grouping by state and summing the total amount of funding terminated and displaying those total values on the map. It is clear that California has been particularly impacted, with more than 70 million dollars worth of grants being lost in California alone.
+
+
+```{r}
+#| code-fold: true
+
+amount_by_state <- state_dir %>%
+  group_by(state) %>%
+  summarise(total = sum(usaspending_obligated, na.rm = TRUE)) %>%
+  arrange(desc(total))
+
+options(scipen = 999)
+
+plot_usmap(data = amount_by_state, values = "total", labels=FALSE) +
+ scale_fill_distiller(limits = c(0,80000000),
+    palette = "Reds",
+    direction = 1,
+    name = "USD", labels = unit_format(unit = "M", 
+                                             scale = 1e-6)
+  ) +
+  easy_move_legend(to = c("right")) +
+  labs(title = "Value of NSF funding lost by state", 
+       subtitle = "Research institutions in California have lost more than $70 million USD in NSF grant terminations")
+
+```
+
+::: {.callout-note}
+
+Update 2025-05-13: Libby Heeren made a great point on BlueSky last week about population. It is not necessarily surprising that CA, NY, and TX stick out on this map, because these are the most highly populated states. Check out her map that controls for population [here](https://bsky.app/profile/libbyheeren.bsky.social/post/3lonaphub4k2i)
+
+:::
+
+# number grants terminated by directorate
+
+Next I am interested in the number of grants that have been terminated across different directorates. It seems that "STEM Education" and "Social, Behavioural and Economic sciences" grants, account for more than 65% of the grants that have been cut. 
+
+
+::: panel-tabset
+
+### plot
+
+
+```{r}
+#| code-fold: true
+
+count_by_directorate <- state_dir %>%
+  tabyl(directorate) %>%
+  mutate(percent = round(percent * 100, 2)) %>%
+  select(-valid_percent) %>%
+  arrange(-n) 
+
+count_by_directorate %>%
+  na.omit() %>%
+  ggplot(aes(x = reorder(directorate, percent), 
+             y = percent, fill = directorate)) +
+  geom_col() +
+  coord_flip() +
+  theme_minimal() +
+  easy_remove_legend() +
+     scale_fill_brewer(palette = "Spectral") +
+  scale_y_continuous(limits = c(0,50)) +
+  labs(x = "Directorate", y = "Percent", 
+       title = "Percent of grant terminations by research directorate") +
+  theme(
+    plot.title = element_text(hjust = 0.2),  # Left align the title
+    plot.title.position = "plot"  # Position at the "plot" level rather than "panel"
+  )
+
+
+```
+
+
+### table
+
+
+```{r}
+#| code-fold: true
+
+gt(count_by_directorate)
+
+```
+
+
+:::
+
+
+# amount of funding lost by directorate
+
+STEM Education and SBE grants have clearly been targeted and that is even more apparent when we plot the amount of funding that has been terminated across each directorate. More than $300 million has been cut from STEM Education research. 
+
+
+::: panel-tabset
+
+### plot
+
+
+```{r}
+#| code-fold: true
+#| 
+amount_by_directorate <- state_dir %>%
+  group_by(directorate) %>%
+  summarise(amount = sum(usaspending_obligated, na.rm = TRUE)) %>%
+  arrange(-amount)
+
+
+ amount_by_directorate %>%
+  na.omit() %>%
+  ggplot(aes(x = reorder(directorate, amount), 
+             y = amount, fill = directorate)) +
+  geom_col() +
+  coord_flip() +
+  theme_minimal() +
+  easy_remove_legend() +
+    scale_fill_brewer(palette = "Spectral") +
+  scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6)) +
+  labs(x = "Directorate", y = "Funding $", 
+       title = "Value of terminated grants (USD millions)") +
+  theme(
+    plot.title = element_text(hjust = 0.2),  # Left align the title
+    plot.title.position = "plot"  # Position at the "plot" level rather than "panel"
+  )
+```
+
+```{r}
+#| include: false
+
+ggsave(here::here("tidytuesday", "2025-05-06_tt_nsf", "stem.png"), width = 6, height = 4,  bg = "white")
+
+
+```
+
+
+### table
+
+```{r}
+#| code-fold: true
+
+gt(amount_by_directorate)
+
+```
+
+:::
+
+## STEM & SBE by state 
+
+I am interested in the state distribution of funding loss in STEM Education and Social, Behavioral, and Economic Sciences. This plot includes states that lost more than 10 million USD in STEM and SBE grants.  
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| 
+amount_dir_state <- state_dir %>%
+  group_by(state, directorate) %>%
+  summarise(amount = sum(usaspending_obligated, na.rm = TRUE)) %>%
+  ungroup()
+
+
+stem_sbe <- amount_dir_state %>%
+  filter(directorate %in% c("STEM Education", "Social, Behavioral and Economic Sciences")) %>%
+  group_by(state) %>%
+  mutate(total_stem_sbe = sum(amount)) %>%
+  arrange(-total_stem_sbe) 
+
+
+stem_sbe %>%
+  filter(total_stem_sbe > 10000000) %>%
+  ggplot(aes(x = reorder(state, -total_stem_sbe), y = amount, fill = directorate)) +
+  geom_col() +
+  scale_y_continuous(limits = c(0,60000000), labels = unit_format(unit = "M", scale = 1e-6)) +
+theme_minimal() +
+  easy_add_legend_title("Directorate") +
+  easy_move_legend(to = c("bottom")) +
+    scale_fill_brewer(palette = "Set1") +
+  labs(x = "State", y = "Funding $", 
+       title = "Value of STEM Education & Social, Behavioral, and Economic Sciences funding \nterminated by state", subtitle = "States that have lost more than 10 million in STEM & SBE grants") 
+
+
+```
+
+# STEM + SBE as percent of total
+
+I wonder across state what proportion of the total funding lost was STEM Education and SBE grants. Here I am creating a new dataframe that summarises the amount that each state lost in STEM and SBE grants and joining that to the amount_by_state dataframe. Then I am calculating what percent of funding lost in each state came from STEM and SBE grants and plotting that on a state map.  
+
+
+In almost half of the US states, STEM Education and SBE grants accounted for more than 70% of grants lost. 
+
+
+```{r}
+#| code-fold: true
+
+stem_sbe_by_state <- amount_dir_state %>%
+  filter(directorate %in% c("STEM Education", "Social, Behavioral and Economic Sciences")) %>%
+  group_by(state) %>%
+  summarise(total_stem_sbe = sum(amount, na.rm = TRUE)) %>%
+  arrange(-total_stem_sbe) 
+
+stem_sbe_total <- left_join(amount_by_state, stem_sbe_by_state, by = "state") 
+
+stem_sbe_total <- stem_sbe_total %>%
+  rowwise() %>%
+  mutate(percent_stem_sbe = round((total_stem_sbe / total)*100, 2)) %>%
+  arrange(-percent_stem_sbe)
+
+
+
+plot_usmap(data = stem_sbe_total, values = "percent_stem_sbe", labels=FALSE) +
+scale_fill_distiller(
+    palette = "YlOrRd",
+    direction = 1,
+    name = "Percent funding lost\n(STEM+SBE/Total)"
+  ) +
+  labs(title = "STEM Education and Social, Behavioral & Economic Sciences grants have been targeted by the \nTrump administration", 
+       subtitle = "In 24 of 50 states, more than 70% of funding lost came from STEM and SBE directorates") +
+  easy_move_legend(to = c("right"))
+
+```
+```{r}
+#| include: false
+
+ggsave(here::here("tidytuesday", "2025-05-06_tt_nsf", "map.png"), width = 6, height = 4,  bg = "white")
+
+ggsave(here::here("tidytuesday", "2025-05-06_tt_nsf", "featured.png"), width = 6, height = 4,  bg = "white")
+
+```
+

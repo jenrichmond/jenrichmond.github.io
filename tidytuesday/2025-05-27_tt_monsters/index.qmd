@@ -1,0 +1,312 @@
+---
+title: "dungeons and dragons monsters"
+subtitle: "Tidy Tuesday Week 21"
+date: 2025-05-27
+author: Jen Richmond
+format: html
+image: featured.png
+---
+
+
+This week for TidyTuesday I decided to look at dragons and practice writing a ggplot function that makes it easy to create the same plot for each level of a variable. In this case, I wanted a function that would spit me out a boxplot comparing the different dragon types on each of the key measures (strength, intelligence, wisdom, charisma, dexerity, and constitution). 
+
+# load packages
+
+```{r libraries, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(tidytuesdayR)
+library(janitor)
+library(ggeasy)
+library(patchwork)
+library(Hmisc) # for %nin%
+
+# adjust year/week values here
+year = 2025
+week = 21
+```
+
+# get the data
+
+```{r get}
+
+tt <- tt_load(year, week)
+
+df <- tt[[1]]
+
+head(df)
+```
+
+# make a plot theme
+
+```{r}
+# plot theme
+
+theme_dragons <- function() { 
+  
+  theme_minimal() %+replace%
+    theme(
+    plot.title = element_text(size = 16, hjust = 0.05, 
+                              colour = "black",  
+                              margin = margin(b = 5)),
+    plot.subtitle = element_text(size = 12, hjust = 0.05, 
+                                 colour = "black",  
+                                 margin = margin(b = 5)),
+    plot.title.position = "plot",  # Position at the "plot" level rather than "panel"
+    panel.background = element_rect(fill = "ghostwhite", color = NA),
+    plot.background = element_rect(fill = "ghostwhite", color = NA),
+    plot.margin = margin(t = 20, r = 20, b = 20, l = 20, unit = "pt")
+    
+      )
+    
+}
+
+
+```
+
+
+```{r}
+
+# set the custom theme to apply to all plots in this document 
+
+theme_set(theme_dragons())
+
+```
+
+
+# wrangling
+
+Here I am deciding to look at dragons. I need to filter out dragon types that only have a single row in the data. I am making the data long and adding a new column that is the mean_score on each of the variables for each dragon type (to allow for ordering later on). 
+```{r clean}
+
+df %>%
+  tabyl(type) %>%
+  arrange(-n) %>%
+  head()
+
+dragons <- df %>%
+  filter(type == "Dragon") %>%
+  select(name, category, type, str:cha) 
+
+dragons %>%
+  tabyl(category) %>%
+   arrange(n) %>%
+  head()
+
+single_dragons <- c("Dragon Turtle", "Half-Dragon", "Kobold", "Pseudodragon", "Wyvern")
+
+dragons_long <- dragons %>%
+  filter(category %nin% single_dragons) %>%
+  pivot_longer(names_to = "index", values_to = "score", str:cha) %>%
+  mutate(measure = case_when(index == "str" ~ "Strength", 
+                                  index == "dex" ~ "Dexterity", 
+                                  index == "con" ~ "Constitution", 
+                                  index == "int" ~ "Intelligence", 
+                                  index == "wis" ~ "Wisdom", 
+                                  index == "cha" ~ "Charisma", 
+                                  ))
+
+dragons_long <- dragons_long %>%
+  group_by(category, index) %>%
+  mutate(mean_score = mean(score))
+
+```
+
+
+# make a plot
+
+I make a basic plot using just the strength scores and work out how to order the boxplots by mean strength scores (see what i learned below for alternative options I played with). 
+
+
+```{r}
+dragons_long %>% 
+  filter(index == "str") %>%
+    ggplot(aes(x = reorder(category, mean_score), y = score, fill = category)) +
+    geom_boxplot(alpha = 0.5) +
+    coord_flip() +
+    labs(
+      x = "Type of dragon",
+      y = "Score",
+      title = "Dragon Strength Scores"
+    ) +
+    easy_remove_legend()
+```
+
+
+# write a function
+
+Now to turn that code into a function. Here my function takes a dataframe and a value of the variable we are interested in (in this case index). It filters the data for that value, pulls out the value of measure (to use as a subtitle label), then plots the filtered data. 
+
+
+```{r}
+plot_dragon_index <- function(data, var) {
+  filtered_data <- data %>%
+    filter(index == var) 
+  
+  measure <- filtered_data$measure[1]
+  
+  filtered_data %>%
+    ggplot(aes(x = reorder(category, mean_score), y = score, fill = category)) +
+    geom_boxplot(alpha = 0.5) +
+    coord_flip() +
+    labs(
+      x = "Type of dragon",
+      y = "Score",
+      subtitle = paste(measure, "Scores")
+    ) +
+    easy_remove_legend()
+}
+```
+
+# test the function
+
+```{r}
+
+plot_dragon_index(dragons_long, "str")
+
+```
+
+
+# combine plots
+
+```{r}
+
+plot_dragon_index(dragons_long, "str") + plot_dragon_index(dragons_long, "int") +
+      plot_annotation(
+             title = "Characteristics by Dragon Type",
+              theme = theme(
+      plot.title = element_text(
+        hjust = 0,            # align left
+        size = 16,
+        color = "black",
+        margin = margin(b = 5))  # spacing below title
+    )
+  )
+
+
+```
+
+
+```{r include = FALSE, eval = FALSE}
+
+ggsave("strength_intelligence.png", width = 6, height = 4,  bg = "white")
+
+```
+
+```{r}
+  
+plot_dragon_index(dragons_long, "wis") + plot_dragon_index(dragons_long, "cha") +
+  plot_annotation(
+             title = "Characteristics by Dragon Type",
+              theme = theme(
+      plot.title = element_text(
+        hjust = 0,            # align left
+        size = 16,
+        color = "black",
+        margin = margin(b = 5))  # spacing below title
+    )
+  )
+
+```
+
+```{r include = FALSE}
+
+ggsave("wisdom_charisma.png", width = 6, height = 4,  bg = "white")
+
+```
+
+
+# three things I learned... 
+
+
+## 1. theme_set()
+
+You can make a custom ggplot theme and then automatically use it for all the plots in your Quarto Document using `theme_set()`. In this case, I called my theme `theme_dragons()`
+
+```{r eval=FALSE}
+theme_set(theme_dragons())
+```
+
+
+## 2. plot_annotation
+
+When using the `patchwork` package to combine plots you can use `plot_annotation()` to add titles etc to your combined plot. You can also use theme() functions, in much the same way you would for ggplot to control your title, margins or background. See [patchwork vignette](http://patchwork.data-imaginist.com/reference/plot_annotation.html).
+
+```{r eval = FALSE}
+
+plot1 + plot2 +
+    plot_annotation(title = "My title",
+              theme = 
+                theme(plot.background = element_rect(fill = "ghostwhite"),
+                      plot.margin = margin(20, 20, 20, 20),  # T, R, B, L 
+                      plot.title = element_text(hjust = 0, # align left
+                                  size = 16,  color = "black",  
+                      margin = margin(b = 5))  # spacing below title
+    )
+  )
+```
+
+
+## 3. how to reorder x axis in ggplot 
+
+`coorid_flip()` is handy when you want x axis labels to display more clearly, but it is a bit aanoying that the order L-R gets translated B-T. I played for a little bit working out how to use `fct_rev()` to make the dragons display in alphabetical order from top to bottom, before deciding that ordering the bars by the mean_score would make for a more meaningful plot. Here is the code for each of those options in a panel-tabset. 
+
+```{r}
+#| include: false
+
+# set the custom theme to apply to all plots in this document 
+
+theme_set(theme_dragons())
+
+```
+
+::: panel-tabset
+
+### default
+
+```{r}
+dragons_long %>% 
+  filter(index == "str") %>%
+    ggplot(aes(x = category, y = score)) +
+   geom_boxplot(fill = "lavender") 
+
+```
+### coord_flip
+
+```{r}
+dragons_long %>% 
+  filter(index == "str") %>%
+    ggplot(aes(x = category, y = score)) +
+   geom_boxplot(fill = "lavender")  +
+  coord_flip() 
+
+```
+### fct_rev
+
+```{r}
+
+dragons_long %>% 
+  filter(index == "str") %>%
+    ggplot(aes(x = fct_rev(category), y = score)) +
+  geom_boxplot(fill = "lavender") +
+    coord_flip() 
+
+```
+
+### reorder
+
+```{r}
+
+dragons_long %>% 
+  filter(index == "str") %>%
+    ggplot(aes(x = reorder(category,mean_score), y = score)) +
+ geom_boxplot(fill = "lavender") +    
+  coord_flip() 
+
+```
+
+:::
+
+
+
+
+

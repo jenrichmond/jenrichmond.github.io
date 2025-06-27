@@ -1,0 +1,13 @@
+---
+title: "tidytuesday"
+listing: 
+  contents: tidytuesday # this name must match the name of the folder you created in step #1; here, all Quarto docs in the `posts` directory will be included on your listing page
+  type: grid # or `default` or `table`; each type has its own set of yaml options to include
+  sort: "date" # can also sort on more than one field
+  categories: true # allows you to sort posts by assigned categories 
+  page-size: 50
+---
+
+Tidy Tuesday is a weekly community challenge run by Jon Harmon and team in the Data Science Learning Community. Each week the team post a dataset to their [github page](https://github.com/rfordatascience/tidytuesday/blob/main/README.md) and data enthusiasts from around the world make something with it and share their creations using the #TidyTuesday hashtag. 
+
+I document my TidyTuesday process here, creating useful resources for the community about how my plot came about. Recently I have also curated datasets for Tidy Tuesday (see Week 20 re Sydney Beaches and Week 25 re global measles cases). 
