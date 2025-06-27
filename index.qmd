@@ -30,6 +30,8 @@ I like identifying a gap and then creating something to fill it.
 
 This page showcases some of [my favourite projects](https://jenrichmond.github.io/projects.html).
 
-I LOVE data viz and storytelling; check out [#30DayChart challenge](https://jenrichmond.github.io/charts_30day.html) portfolio and my weekly [#TidyTuesday](https://jenrichmond.github.io/charts_tidytuesday.html) attempts. 
+I LOVE data viz and storytelling. 
+
+Check out my [#30DayChart challenge](https://jenrichmond.github.io/charts_30day.html) portfolio and my weekly [#TidyTuesday](https://jenrichmond.github.io/charts_tidytuesday.html) attempts. 
 
 
