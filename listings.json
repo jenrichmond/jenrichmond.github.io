@@ -1,29 +1,10 @@
 [
   {
-    "listing": "/projects.html",
-    "items": [
-      "/projects/2025-05-13_tipstricks/index.html",
-      "/projects/2025-03-02_RYouWithMe/index.html",
-      "/projects/2025-11-30_PSYCHEdpodcast/index.html",
-      "/projects/2024-10-30_alumni_gateway/index.html",
-      "/projects/2024-10-10_academic_research/index.html",
-      "/projects/2025-02_02_academic_writing/index.html"
-    ]
-  },
-  {
     "listing": "/posts.html",
     "items": [
-      "/posts/2025-06-17_tt_apis/index.html",
-      "/posts/2025-06-10_tt_judges/index.html",
-      "/posts/2025-06-03_tt_gutenberg/index.html",
       "/posts/2025-05-19_font_notes/index.html",
-      "/posts/2025-05-27_tt_monsters/index.html",
       "/posts/2025-05-21_annotations/index.html",
-      "/posts/2025-05-20_tt_beaches/index.html",
-      "/posts/2025-05-14_cool-stuff-tidytuesdayR/index.html",
-      "/posts/2025-05-13_tt_vesuvius/index.html",
       "/posts/2025-05-09-what_happened_what_now/index.html",
-      "/posts/2025-05-06_tt_nsf/index.html",
       "/posts/2025-05-02_30daychartdebrief/index.html",
       "/posts/2025-04-18_closeread/index.html",
       "/posts/2024-07-04-learning_python/index.html",
@@ -42,7 +23,20 @@
     ]
   },
   {
-    "listing": "/charts.html",
+    "listing": "/charts_tidytuesday.html",
+    "items": [
+      "/tidytuesday/2025-05-06_tt_nsf/index.html",
+      "/tidytuesday/2025-05-13_tt_vesuvius/index.html",
+      "/tidytuesday/2025-05-14_cool-stuff-tidytuesdayR/index.html",
+      "/tidytuesday/2025-05-20_tt_beaches/index.html",
+      "/tidytuesday/2025-05-27_tt_monsters/index.html",
+      "/tidytuesday/2025-06-03_tt_gutenberg/index.html",
+      "/tidytuesday/2025-06-10_tt_judges/index.html",
+      "/tidytuesday/2025-06-17_tt_apis/index.html"
+    ]
+  },
+  {
+    "listing": "/charts_30day.html",
     "items": [
       "/charts/2025-03-31_challenge/index.html",
       "/charts/2025-04-01_fractions/index.html",
@@ -64,6 +58,17 @@
       "/charts/2025-04-27_noise/index.html",
       "/charts/2025-04-28_inclusion/index.html",
       "/charts/2025-04-30_natgeo/index.html"
+    ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/2025-05-13_tipstricks/index.html",
+      "/projects/2025-03-02_RYouWithMe/index.html",
+      "/projects/2025-11-30_PSYCHEdpodcast/index.html",
+      "/projects/2024-10-30_alumni_gateway/index.html",
+      "/projects/2024-10-10_academic_research/index.html",
+      "/projects/2025-02_02_academic_writing/index.html"
     ]
   }
 ]
