@@ -1,0 +1,76 @@
+---
+title: "gas prices"
+subtitle: "tidy tuesday week 26"
+date: 2025-07-02
+format:
+  html:
+    code-fold: true
+    code-summary: "Show code"
+author: Jen Richmond
+image: featured.png
+---
+
+# get data
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(tidytuesdayR)
+library(Hmisc)
+library(scales)
+
+tt <-  tt_load(2025, week = 26)
+
+gas <- tt$weekly_gas_prices
+
+
+```
+
+# wrangle
+
+```{r}
+g <- gas %>%
+  filter(
+    fuel == "diesel" & grade == "all" |
+    (fuel == "gasoline" & grade == "regular" & formulation == "all")) %>%
+  select(date, fuel, price) %>%
+  filter(date >= "1994-03-21") %>%
+  group_by(date) %>%
+  mutate(
+    diff = price[fuel == "diesel"] - price[fuel == "gasoline"]
+  ) %>%
+  ungroup()
+
+
+
+```
+
+# plot
+
+```{r}
+#| message: false
+#| warning: false
+g %>%
+  filter(fuel == "gasoline") %>%
+  ggplot(aes(x = date, y = diff)) +
+  geom_line(colour = "darkgrey") +
+  geom_smooth(se = FALSE, colour = "red") +
+  labs(y = "Diesel price - Gasoline price \n($ per gallon)", x = "Date", 
+       title = "Difference in Diesel and Gasoline prices in the US", 
+       subtitle = "Since 2005, diesel prices have exceeded gasoline prices, peaking in 2022 \nmore than $1.50 more expensive per gallon", 
+       caption = "TidyTuesday Week 26 2025 \nData source: Energy Information Administration (EIA)") +
+  scale_x_date(
+        breaks = seq(as.Date("1995-01-01"), as.Date("2025-01-01"), by = "5 years"),
+        date_labels = "%Y",
+        limits = c(as.Date("1995-01-01"), as.Date("2025-01-01"))) +
+  scale_y_continuous(labels = dollar_format()) +
+  theme_minimal()  +
+  theme(plot.caption = element_text(hjust = 0.5, size = 8, color = "gray50"))
+
+```
+
+```{r}
+#| include: false
+ggsave("featured.png", bg = "white")
+```
+
