@@ -223,7 +223,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(10)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -254,7 +254,46 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1750550400000" data-listing-file-modified-sort="1751343326054" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="80">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1751414400000" data-listing-file-modified-sort="1751416004574" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="253">
+<a href="./tidytuesday/2025-07-02_tt_gas/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./tidytuesday/2025-07-02_tt_gas/featured.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+gas prices
+</h5>
+<div class="card-text listing-description delink">
+
+
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu">library</span>(tidytuesdayR)</span>
+<span id="cb1-3"><span class="fu">library</span>(Hmisc)</span>
+<span id="cb1-4"><span class="fu">library</span>(scales)</span>
+<span id="cb1-5"></span>
+<span id="cb1-6">tt <span class="ot">&lt;-</span>  <span class="fu">tt_load</span>(<span class="dv">2025</span>, <span class="at">week =</span> <span class="dv">26</span>)</span>
+<span id="cb1-7"></span>
+<span id="cb1-8">gas <span class="ot">&lt;-</span> tt<span class="sc">$</span>weekly_gas_prices</span></code></pre></div>
+</details>
+</div>
+
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Jen Richmond
+</div>
+<div class="listing-date">
+Jul 2, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-date-sort="1750550400000" data-listing-file-modified-sort="1751416004573" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="80">
 <a href="./tidytuesday/2025-06-22_tt_measles/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -278,7 +317,7 @@ Jun 22, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1750377600000" data-listing-file-modified-sort="1751343326047" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="932">
+<div class="g-col-1" data-index="2" data-listing-date-sort="1750377600000" data-listing-file-modified-sort="1751416004565" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="932">
 <a href="./tidytuesday/2025-06-17_tt_apis/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -302,7 +341,7 @@ Jun 20, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1749513600000" data-listing-file-modified-sort="1751343326036" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1905">
+<div class="g-col-1" data-index="3" data-listing-date-sort="1749513600000" data-listing-file-modified-sort="1751416004554" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1905">
 <a href="./tidytuesday/2025-06-10_tt_judges/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -326,7 +365,7 @@ Jun 10, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-listing-date-sort="1748908800000" data-listing-file-modified-sort="1751343326000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="28" data-listing-word-count-sort="5490">
+<div class="g-col-1" data-index="4" data-listing-date-sort="1748908800000" data-listing-file-modified-sort="1751416004518" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="28" data-listing-word-count-sort="5490">
 <a href="./tidytuesday/2025-06-03_tt_gutenberg/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -350,7 +389,7 @@ Jun 3, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-listing-date-sort="1748304000000" data-listing-file-modified-sort="1751343325999" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1736">
+<div class="g-col-1" data-index="5" data-listing-date-sort="1748304000000" data-listing-file-modified-sort="1751416004516" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1736">
 <a href="./tidytuesday/2025-05-27_tt_monsters/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -374,7 +413,7 @@ May 27, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-listing-date-sort="1747699200000" data-listing-file-modified-sort="1751343325960" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2454">
+<div class="g-col-1" data-index="6" data-listing-date-sort="1747699200000" data-listing-file-modified-sort="1751416004476" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2454">
 <a href="./tidytuesday/2025-05-20_tt_beaches/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -398,7 +437,7 @@ May 20, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-listing-date-sort="1747353600000" data-listing-file-modified-sort="1751343325959" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
+<div class="g-col-1" data-index="7" data-listing-date-sort="1747353600000" data-listing-file-modified-sort="1751416004476" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="./tidytuesday/2025-05-14_cool-stuff-tidytuesdayR/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -422,7 +461,7 @@ May 16, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-listing-date-sort="1747094400000" data-listing-file-modified-sort="1751343325957" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2352">
+<div class="g-col-1" data-index="8" data-listing-date-sort="1747094400000" data-listing-file-modified-sort="1751416004474" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2352">
 <a href="./tidytuesday/2025-05-13_tt_vesuvius/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="tidytuesday/2025-05-13_tt_vesuvius/vesuvius.jpg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -444,7 +483,7 @@ May 13, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-listing-date-sort="1746489600000" data-listing-file-modified-sort="1751343325948" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1204">
+<div class="g-col-1" data-index="9" data-listing-date-sort="1746489600000" data-listing-file-modified-sort="1751416004464" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1204">
 <a href="./tidytuesday/2025-05-06_tt_nsf/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="tidytuesday/2025-05-06_tt_nsf/index_files/figure-html/unnamed-chunk-2-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
