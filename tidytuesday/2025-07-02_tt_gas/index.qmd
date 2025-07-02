@@ -30,28 +30,58 @@ gas <- tt$weekly_gas_prices
 
 # wrangle
 
+I want to get the difference between diesel and gasoline prices and my first instinct is to make the data wide and when subtract across columns. Here I worked out how to get difference scores without making the data wide first.  
+
+::: panel-tabset
+
+### group_by |> mutate
+
+
 ```{r}
-g <- gas %>%
+#| code-fold: false
+g_long <- gas %>%
   filter(
     fuel == "diesel" & grade == "all" |
     (fuel == "gasoline" & grade == "regular" & formulation == "all")) %>%
   select(date, fuel, price) %>%
   filter(date >= "1994-03-21") %>%
   group_by(date) %>%
-  mutate(
-    diff = price[fuel == "diesel"] - price[fuel == "gasoline"]
-  ) %>%
+  mutate(diff = price[fuel == "diesel"] - price[fuel == "gasoline"]) %>%
   ungroup()
 
 
 ```
+
+### pivot_wider |> rowwise |> mutate
+
+
+```{r}
+#| code-fold: false
+g_wide <- gas %>%
+  filter(
+    fuel == "diesel" & grade == "all" |
+    (fuel == "gasoline" & grade == "regular" & formulation == "all")) %>%
+  select(date, fuel, price) %>%
+  filter(date >= "1994-03-21") %>%
+  pivot_wider(names_from = fuel, values_from = price) %>%
+  rowwise() %>%
+  mutate(diff = diesel - gasoline) %>%
+  ungroup()
+
+
+```
+
+
+:::
+
 
 # plot
 
 ```{r}
 #| message: false
 #| warning: false
-g %>%
+#| 
+g_long %>%
   filter(fuel == "gasoline") %>%
   ggplot(aes(x = date, y = diff)) +
   geom_line(colour = "darkgrey") +
