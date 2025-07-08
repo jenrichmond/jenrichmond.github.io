@@ -1,0 +1,17 @@
+{
+  "hash": "25ecb2085c5f25ac10a29e9b1ac5bd99",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"gross colours\"\nformat: html\nauthor: Jen Richmond\ndate: 2025-07-08\n---\n\n\nThe Tidy Tuesday data this week was curated by Nicola Rennie and comes from the [xkcd Color Survey](https://blog.xkcd.com/2010/05/03/color-survey-results/) . In this study, hundreds of thousands of participants were asked to name colour swatches and the responses were analysed to produce a set of 954 colour names. \n\nI was interested that people labelled some colours as puke and vomit and was curious whether other bodily fluids might feature in the dataset. As it turns out, colloquial terms for urine, faecal matter, snot, and vomit all feature in the colour names. There are many colours that remind respondents of infant's bodily fluids! \n\nCheck out my Gross Colours `geom_tile()` plot below. \n\n\n# get data\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\"}\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\nlibrary(janitor)\nlibrary(gt)\nlibrary(plotly)\nlibrary(ggeasy)\n\nyear = 2025\nweek = 27\n\ntt <- tt_load(year, week)\n\nranks <- tt[[2]]\n\nrm(tt)\n```\n:::\n\n\n\n# wrangle\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\"}\ngross_colors <- ranks %>%\n   filter(str_detect(color, \"diarrhea|piss|poo|poop|shit|booger|snot|vomit|puke\")) %>%\n   mutate(fluid = case_when(\n     str_detect(color, \"piss\") ~ \"pee\",\n     str_detect(color, \"diarrhea|poo|poop|shit\") ~ \"poo\",\n     str_detect(color, \"booger|snot\") ~ \"snot\", \n     str_detect(color, \"vomit|puke\") ~ \"vomit\",\n     TRUE ~ \"other\")) %>%\n  mutate(category = case_when(fluid == \"poo\" ~ 1, \n                                fluid == \"snot\" ~ 3, \n                              fluid == \"vomit\" ~ 2, \n                              fluid == \"pee\" ~ 4, \n                              )) %>%\n  arrange(color, hex) %>%\n  group_by(fluid) %>%\n  mutate(row = row_number()) \n```\n:::\n\n\n# plot\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\"}\ngross_colors %>%\n  ggplot(aes(x = row, y = reorder(fluid, -category), label = color, fill = hex)) +\n   geom_tile() +\n  geom_text(family = \"Lato\", size = 2.5, color = \"black\", vjust = 0.5) + \n  scale_fill_identity() +\n  easy_remove_legend() +\n  theme_minimal() +\n  coord_flip() +\n  labs(title = \"Gross Colours: xkcd responses inspired by bodily fluids\", \n       subtitle = \"The 2010 xkcd Colour Name survey asked 222,500 participants to name a set of colour \\nswatches, resulting in a set of 954 crowdsourced colour names. \\nResponses inspired by bodily fluids included piss, booger, snot, vomit, puke, poo, poop, shit, \\nand diarrhea. Babies' bodily fluids feature prominently.\", \n       caption = \"TidyTuesday Week 27 2025 \\nData source: xkcd Colour Survey\") +\n  easy_remove_axes(which = c(\"both\")) +\neasy_title_size(14) +\n  easy_subtitle_size(10) +\n  easy_caption_size(8) +\ntheme(text = element_text(family = \"Lato\"), \n        plot.background = element_rect(\"#f8f9fa\"), \n      plot.caption = element_text(hjust = 0.95, size = 8, colour = \"gray50\"))\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n\n\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
