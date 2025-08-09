@@ -1,0 +1,15 @@
+{
+  "hash": "d91a8c91520ef38c5a3f23a4809aa942",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"MTA Art Collection\"\nformat: html\n---\n\n\n\n\n\n![Fast Track and Speedwheels](\"https://new.mta.info/agency/arts-design/collection/fast-track-speedwheels\")\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

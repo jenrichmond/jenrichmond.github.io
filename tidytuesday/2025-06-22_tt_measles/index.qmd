@@ -18,4 +18,4 @@ The code for my app code is available on [github](https://github.com/jenrichmond
 
 The app is deployed (for free) via Posit connect cloud.
 
-Play with it here [www.tinyurl.com/myfirstshinyapp](tinyurl.com/myfirstshinyapp)
+Play with it here [www.tinyurl.com/myfirstshinyapp](https://tinyurl.com/myfirstshinyapp)
