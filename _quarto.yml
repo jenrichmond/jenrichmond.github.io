@@ -43,8 +43,6 @@ website:
         <a class="link-dark me-1" href="https://github.com/jenrichmond/jenrichmond.github.io">{{< iconify fa6-brands github >}} Source</a>
 
 
-
-
 format:
   html:
     theme: cosmo

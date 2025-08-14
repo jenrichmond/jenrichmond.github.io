@@ -1,0 +1,94 @@
+---
+title: "extreme weather"
+format: html
+author: Jen Richmond
+date: 2025-08-12
+---
+
+# get data
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+library(tidyverse)
+library(tidytuesdayR)
+library(janitor)
+library(gt)
+library(ggeasy)
+
+year = 2025
+week = 32
+
+tt <- tt_load(year, week)
+
+ex <- tt[[1]]
+
+rm(tt)
+```
+
+# wrangle
+
+what kinds of events are most frequently studied in attribution studies
+```{r}
+ex <- ex %>%
+   mutate(class = case_when(classification == "More severe or more likely to occur" ~ "more severe or more likely", 
+                           classification == "Decrease, less severe or less likely to occur" ~ "less severe or less likely", 
+                            classification == "Insufficient data/inconclusive" ~ "insufficient data/inconclusive",
+                           classification == "No discernible human influence" ~ "no discernible human influence", 
+                           )) %>%
+    mutate(class = fct_relevel(class, c("less severe or less likely","no discernible human influence", "more severe or more likely", "insufficient data/inconclusive" ))) 
+
+ex_summary <- ex %>%
+  tabyl(event_type, class) 
+
+ex_summary %>%
+  gt()
+
+ex_summary %>%
+  write_csv("ex_summary.csv")
+
+ex_summary_long <- ex_summary %>%
+  pivot_longer(names_to = "category", values_to = "count", `less severe or less likely`:`insufficient data/inconclusive`) %>%
+  filter(category != "insufficient data/inconclusive") %>%
+  mutate(category = fct_relevel(category, c("more severe or more likely", "no discernible human influence", "less severe or less likely")))
+
+  ex_summary_long %>%
+    ggplot(aes(x = event_type, y =  count, fill = category)) +
+    geom_col() +
+    coord_flip() +
+    theme_minimal() +
+    easy_move_legend(to = c("bottom")) 
+
+```
+
+What is going on in NZ/AU
+```{r}
+
+aunz <- ex %>%
+  filter(cb_region == "Australia and New Zealand") %>%
+  filter(classification != "Insufficient data/inconclusive") %>%
+  mutate(class = case_when(classification == "More severe or more likely to occur" ~ "more severe or more likely", 
+                           classification == "Decrease, less severe or less likely to occur" ~ "less severe or less likely", 
+                           classification == "No discernible human influence" ~ "no discernible human influence", 
+                           )) %>%
+    mutate(class = as_factor(class)) 
+
+
+glimpse(aunz)
+
+aunz_summary <- aunz %>%
+  tabyl(event_type, class) 
+
+aunz_summary %>%
+  gt()
+
+
+
+```
+
+```{r}
+ex %>%
+  tabyl(event_type, class) 
+```
+

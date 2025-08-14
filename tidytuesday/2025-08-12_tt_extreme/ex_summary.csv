@@ -1,0 +1,13 @@
+event_type,less severe or less likely,no discernible human influence,more severe or more likely,insufficient data/inconclusive
+Atmosphere,0,1,5,1
+"Cold, snow & ice",37,7,6,7
+Compound,1,0,32,0
+Drought,1,20,74,11
+Heat,0,2,196,9
+Impact,2,1,30,0
+Oceans,0,0,23,2
+Rain & flooding,20,32,110,15
+River flow,2,0,1,0
+Storm,3,6,46,6
+Sunshine,0,0,4,0
+Wildfire,0,2,27,2
