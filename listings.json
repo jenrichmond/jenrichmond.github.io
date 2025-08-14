@@ -18,6 +18,7 @@
       "/posts/2025-05-09-what_happened_what_now/index.html",
       "/posts/2025-05-02_30daychartdebrief/index.html",
       "/posts/2025-04-18_closeread/index.html",
+      "/posts/2024-10-03-what-i-learned-at-positconf/index.html",
       "/posts/2024-07-04-learning_python/index.html",
       "/posts/2023-05-24-rowwise-mean/index.html",
       "/posts/2023-04-25-error-bars-on-plots/index.html",
@@ -62,6 +63,7 @@
     "listing": "/charts_tidytuesday.html",
     "items": [
       "/tidytuesday/2025-07-29_tt_netflix/analysis.embed.html",
+      "/tidytuesday/2025-08-12_tt_extreme/index.html",
       "/tidytuesday/2025-07-08_tt_colours/index.html",
       "/tidytuesday/2025-07-02_tt_gas/index.html",
       "/tidytuesday/2025-06-22_tt_measles/index.html",
