@@ -1,94 +1,132 @@
 ---
 title: "extreme weather"
 format: html
-author: Jen Richmond
-date: 2025-08-12
+editor: visual
 ---
 
-# get data
+# load/wrangle data
 
 ```{r}
 #| message: false
 #| warning: false
 #| code-fold: true
-library(tidyverse)
 library(tidytuesdayR)
+library(tidyverse)
 library(janitor)
-library(gt)
+library(treemapify)
 library(ggeasy)
+library(gt)
 
-year = 2025
 week = 32
+year = 2025
 
 tt <- tt_load(year, week)
 
-ex <- tt[[1]]
+att <- tt[[1]]
 
-rm(tt)
+
+event_class <- att %>%
+  tabyl(event_type, classification) %>%
+  clean_names() %>%
+  pivot_longer(names_to = "category", values_to = "count", 2:5) %>%
+   mutate(across(where(is.character), as_factor))
+
 ```
 
-# wrangle
+# treemap plot
 
-what kinds of events are most frequently studied in attribution studies
 ```{r}
-ex <- ex %>%
-   mutate(class = case_when(classification == "More severe or more likely to occur" ~ "more severe or more likely", 
-                           classification == "Decrease, less severe or less likely to occur" ~ "less severe or less likely", 
-                            classification == "Insufficient data/inconclusive" ~ "insufficient data/inconclusive",
-                           classification == "No discernible human influence" ~ "no discernible human influence", 
-                           )) %>%
-    mutate(class = fct_relevel(class, c("less severe or less likely","no discernible human influence", "more severe or more likely", "insufficient data/inconclusive" ))) 
+#| message: false
+#| warning: false
+#| code-fold: true
 
-ex_summary <- ex %>%
-  tabyl(event_type, class) 
+event_class %>%
+  ggplot(aes(area = count, fill = event_type)) +
+  geom_treemap() +
+  facet_wrap(~category)
 
-ex_summary %>%
+```
+
+# colours
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+
+
+palette <- c("Atmosphere" = "#93ABBFFF", 
+             "Cold, snow & ice" = "#A1C2EDFF", 
+             "Compound" = "#F9E0E8FF", 
+             "Drought" = "#E9A800FF", 
+             "Heat" = "#EE6100FF",
+             "Impact" = "#EBA49EFF", 
+             "Oceans" = "#1A318BFF", 
+             "Rain & flooding" = "#4060C8FF",
+             "River flow" = "#034AA6FF",
+             "Storm"= "#9093A2FF", 
+             "Sunshine"= "#FFED4DFF", 
+             "Wildfire" = "#D72000FF" )
+
+
+
+id <- event_class %>%
+  filter(category %in% c("decrease_less_severe_or_less_likely_to_occur", "more_severe_or_more_likely_to_occur")) %>% 
+  mutate(category = fct_relevel(category, c("more_severe_or_more_likely_to_occur", "decrease_less_severe_or_less_likely_to_occur"))) %>%
+  mutate(event_type = fct_relevel(event_type, c("Heat", "Drought", "Sunshine", "Wildfire", "Atmosphere", "Compound", "Impact", "Oceans", "Cold, snow & ice", "Rain & flooding", "River flow", "Storm"))) 
+
+
+
+id %>%
+  ggplot(aes(area = count, fill = event_type)) +
+  geom_treemap() +
+ facet_wrap(~category, labeller = as_labeller(
+                     c(decrease_less_severe_or_less_likely_to_occur = "Less severe or less likely",                        more_severe_or_more_likely_to_occur = "More severe or more likely"))) +
+    scale_fill_manual(values = palette) 
+
+
+```
+
+# labels
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+#| 
+id %>%
+  group_by(category) %>%
+  summarise(total_studies = sum(count)) %>%
   gt()
 
-ex_summary %>%
-  write_csv("ex_summary.csv")
 
-ex_summary_long <- ex_summary %>%
-  pivot_longer(names_to = "category", values_to = "count", `less severe or less likely`:`insufficient data/inconclusive`) %>%
-  filter(category != "insufficient data/inconclusive") %>%
-  mutate(category = fct_relevel(category, c("more severe or more likely", "no discernible human influence", "less severe or less likely")))
-
-  ex_summary_long %>%
-    ggplot(aes(x = event_type, y =  count, fill = category)) +
-    geom_col() +
-    coord_flip() +
-    theme_minimal() +
-    easy_move_legend(to = c("bottom")) 
-
-```
-
-What is going on in NZ/AU
-```{r}
-
-aunz <- ex %>%
-  filter(cb_region == "Australia and New Zealand") %>%
-  filter(classification != "Insufficient data/inconclusive") %>%
-  mutate(class = case_when(classification == "More severe or more likely to occur" ~ "more severe or more likely", 
-                           classification == "Decrease, less severe or less likely to occur" ~ "less severe or less likely", 
-                           classification == "No discernible human influence" ~ "no discernible human influence", 
-                           )) %>%
-    mutate(class = as_factor(class)) 
-
-
-glimpse(aunz)
-
-aunz_summary <- aunz %>%
-  tabyl(event_type, class) 
-
-aunz_summary %>%
-  gt()
-
-
+id %>%
+  ggplot(aes(area = count, fill = event_type, 
+             label = paste(event_type, count, sep = "\n"))) +
+  geom_treemap() +
+ facet_wrap(~category, labeller = as_labeller(
+                     c(decrease_less_severe_or_less_likely_to_occur = "Less severe or less likely N = 66",                        more_severe_or_more_likely_to_occur = "More severe or more likely N = 554"))) +
+    scale_fill_manual(values = palette) +
+  theme_minimal() +
+ easy_add_legend_title("Climate event") +
+  geom_treemap_text(colour = "black",
+                    place = "topleft",
+                    size = 7, 
+                    grow = FALSE) + # option from ggfittext to NOT make font fit box
+  easy_remove_legend() +
+labs(title = "Extreme Weather Attribution Studies", 
+     subtitle = "Most extreme weather attribution studies conclude that human influence on climate has made \nextreme events more severe or more likely. Heat, Rain & flooding, and Drought are most \nfrequently reported among studies that conclude extreme events are becoming more likely.", caption = "TidyTuesday Week 32 2025 \nData source: Carbon Brief") +
+  easy_subtitle_size(size = 10) +
+  theme(text = element_text(family = "Lato"), 
+      plot.caption = element_text(hjust = 0.95, size = 8, colour = "gray50"))
 
 ```
 
 ```{r}
-ex %>%
-  tabyl(event_type, class) 
-```
+#| include: false
 
+ggsave(here::here("tidytuesday", "2025-08-12_tt_extreme", "treemap.png"), width = 6, height = 4,  bg = "#f8f9fa")
+
+
+ggsave(here::here("tidytuesday", "2025-08-12_tt_extreme","featured.png"), width = 6, height = 4, bg = "#f8f9fa")
+```

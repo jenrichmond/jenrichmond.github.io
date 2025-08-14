@@ -6,8 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jen Richmond">
-<meta name="dcterms.date" content="2025-08-12">
 
 <title>extreme weather – Jen Richmond</title>
 <style>
@@ -203,8 +201,10 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#get-data" id="toc-get-data" class="nav-link active" data-scroll-target="#get-data">get data</a></li>
-  <li><a href="#wrangle" id="toc-wrangle" class="nav-link" data-scroll-target="#wrangle">wrangle</a></li>
+  <li><a href="#loadwrangle-data" id="toc-loadwrangle-data" class="nav-link active" data-scroll-target="#loadwrangle-data">load/wrangle data</a></li>
+  <li><a href="#treemap-plot" id="toc-treemap-plot" class="nav-link" data-scroll-target="#treemap-plot">treemap plot</a></li>
+  <li><a href="#colours" id="toc-colours" class="nav-link" data-scroll-target="#colours">colours</a></li>
+  <li><a href="#labels" id="toc-labels" class="nav-link" data-scroll-target="#labels">labels</a></li>
   </ul>
 </nav>
     </div>
@@ -220,19 +220,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Jen Richmond </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 12, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -242,610 +230,44 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </header>
 
 
-<section id="get-data" class="level1">
-<h1>get data</h1>
+<section id="loadwrangle-data" class="level1">
+<h1>load/wrangle data</h1>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytuesdayR)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytuesdayR)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggeasy)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>year <span class="ot">=</span> <span class="dv">2025</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>week <span class="ot">=</span> <span class="dv">32</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>tt <span class="ot">&lt;-</span> <span class="fu">tt_load</span>(year, week)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ex <span class="ot">&lt;-</span> tt[[<span class="dv">1</span>]]</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(tt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>year <span class="ot">=</span> <span class="dv">2025</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>tt <span class="ot">&lt;-</span> <span class="fu">tt_load</span>(year, week)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>att <span class="ot">&lt;-</span> tt[[<span class="dv">1</span>]]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>event_class <span class="ot">&lt;-</span> att <span class="sc">%&gt;%</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(event_type, classification) <span class="sc">%&gt;%</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"category"</span>, <span class="at">values_to =</span> <span class="st">"count"</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), as_factor))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
-<section id="wrangle" class="level1">
-<h1>wrangle</h1>
-<p>what kinds of events are most frequently studied in attribution studies</p>
+<section id="treemap-plot" class="level1">
+<h1>treemap plot</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ex <span class="ot">&lt;-</span> ex <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">class =</span> <span class="fu">case_when</span>(classification <span class="sc">==</span> <span class="st">"More severe or more likely to occur"</span> <span class="sc">~</span> <span class="st">"more severe or more likely"</span>, </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                           classification <span class="sc">==</span> <span class="st">"Decrease, less severe or less likely to occur"</span> <span class="sc">~</span> <span class="st">"less severe or less likely"</span>, </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                            classification <span class="sc">==</span> <span class="st">"Insufficient data/inconclusive"</span> <span class="sc">~</span> <span class="st">"insufficient data/inconclusive"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                           classification <span class="sc">==</span> <span class="st">"No discernible human influence"</span> <span class="sc">~</span> <span class="st">"no discernible human influence"</span>, </span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                           )) <span class="sc">%&gt;%</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">class =</span> <span class="fu">fct_relevel</span>(class, <span class="fu">c</span>(<span class="st">"less severe or less likely"</span>,<span class="st">"no discernible human influence"</span>, <span class="st">"more severe or more likely"</span>, <span class="st">"insufficient data/inconclusive"</span> ))) </span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ex_summary <span class="ot">&lt;-</span> ex <span class="sc">%&gt;%</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(event_type, class) </span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>ex_summary <span class="sc">%&gt;%</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="yicembecie" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yicembecie table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#yicembecie thead, #yicembecie tbody, #yicembecie tfoot, #yicembecie tr, #yicembecie td, #yicembecie th {
-  border-style: none;
-}
-
-#yicembecie p {
-  margin: 0;
-  padding: 0;
-}
-
-#yicembecie .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#yicembecie .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#yicembecie .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#yicembecie .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#yicembecie .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#yicembecie .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#yicembecie .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#yicembecie .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#yicembecie .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#yicembecie .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#yicembecie .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#yicembecie .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#yicembecie .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#yicembecie .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#yicembecie .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#yicembecie .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#yicembecie .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#yicembecie .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#yicembecie .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#yicembecie .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#yicembecie .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#yicembecie .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#yicembecie .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#yicembecie .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#yicembecie .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#yicembecie .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#yicembecie .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#yicembecie .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#yicembecie .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#yicembecie .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#yicembecie .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#yicembecie .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#yicembecie .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#yicembecie .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#yicembecie .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#yicembecie .gt_left {
-  text-align: left;
-}
-
-#yicembecie .gt_center {
-  text-align: center;
-}
-
-#yicembecie .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#yicembecie .gt_font_normal {
-  font-weight: normal;
-}
-
-#yicembecie .gt_font_bold {
-  font-weight: bold;
-}
-
-#yicembecie .gt_font_italic {
-  font-style: italic;
-}
-
-#yicembecie .gt_super {
-  font-size: 65%;
-}
-
-#yicembecie .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#yicembecie .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#yicembecie .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#yicembecie .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#yicembecie .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#yicembecie .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#yicembecie .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#yicembecie .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#yicembecie div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="gt_col_headings header">
-<th id="event_type" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">event_type</th>
-<th id="less-severe-or-less-likely" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">less severe or less likely</th>
-<th id="no-discernible-human-influence" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">no discernible human influence</th>
-<th id="more-severe-or-more-likely" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">more severe or more likely</th>
-<th id="insufficient-data/inconclusive" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">insufficient data/inconclusive</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="event_type">Atmosphere</td>
-<td class="gt_row gt_right" headers="less severe or less likely">0</td>
-<td class="gt_row gt_right" headers="no discernible human influence">1</td>
-<td class="gt_row gt_right" headers="more severe or more likely">5</td>
-<td class="gt_row gt_right" headers="insufficient data/inconclusive">1</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="event_type">Cold, snow &amp; ice</td>
-<td class="gt_row gt_right" headers="less severe or less likely">37</td>
-<td class="gt_row gt_right" headers="no discernible human influence">7</td>
-<td class="gt_row gt_right" headers="more severe or more likely">6</td>
-<td class="gt_row gt_right" headers="insufficient data/inconclusive">7</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="event_type">Compound</td>
-<td class="gt_row gt_right" headers="less severe or less likely">1</td>
-<td class="gt_row gt_right" headers="no discernible human influence">0</td>
-<td class="gt_row gt_right" headers="more severe or more likely">32</td>
-<td class="gt_row gt_right" headers="insufficient data/inconclusive">0</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="event_type">Drought</td>
-<td class="gt_row gt_right" headers="less severe or less likely">1</td>
-<td class="gt_row gt_right" headers="no discernible human influence">20</td>
-<td class="gt_row gt_right" headers="more severe or more likely">74</td>
-<td class="gt_row gt_right" headers="insufficient data/inconclusive">11</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="event_type">Heat</td>
-<td class="gt_row gt_right" headers="less severe or less likely">0</td>
-<td class="gt_row gt_right" headers="no discernible human influence">2</td>
-<td class="gt_row gt_right" headers="more severe or more likely">196</td>
-<td class="gt_row gt_right" headers="insufficient data/inconclusive">9</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="event_type">Impact</td>
-<td class="gt_row gt_right" headers="less severe or less likely">2</td>
-<td class="gt_row gt_right" headers="no discernible human influence">1</td>
-<td class="gt_row gt_right" headers="more severe or more likely">30</td>
-<td class="gt_row gt_right" headers="insufficient data/inconclusive">0</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="event_type">Oceans</td>
-<td class="gt_row gt_right" headers="less severe or less likely">0</td>
-<td class="gt_row gt_right" headers="no discernible human influence">0</td>
-<td class="gt_row gt_right" headers="more severe or more likely">23</td>
-<td class="gt_row gt_right" headers="insufficient data/inconclusive">2</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="event_type">Rain &amp; flooding</td>
-<td class="gt_row gt_right" headers="less severe or less likely">20</td>
-<td class="gt_row gt_right" headers="no discernible human influence">32</td>
-<td class="gt_row gt_right" headers="more severe or more likely">110</td>
-<td class="gt_row gt_right" headers="insufficient data/inconclusive">15</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="event_type">River flow</td>
-<td class="gt_row gt_right" headers="less severe or less likely">2</td>
-<td class="gt_row gt_right" headers="no discernible human influence">0</td>
-<td class="gt_row gt_right" headers="more severe or more likely">1</td>
-<td class="gt_row gt_right" headers="insufficient data/inconclusive">0</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="event_type">Storm</td>
-<td class="gt_row gt_right" headers="less severe or less likely">3</td>
-<td class="gt_row gt_right" headers="no discernible human influence">6</td>
-<td class="gt_row gt_right" headers="more severe or more likely">46</td>
-<td class="gt_row gt_right" headers="insufficient data/inconclusive">6</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="event_type">Sunshine</td>
-<td class="gt_row gt_right" headers="less severe or less likely">0</td>
-<td class="gt_row gt_right" headers="no discernible human influence">0</td>
-<td class="gt_row gt_right" headers="more severe or more likely">4</td>
-<td class="gt_row gt_right" headers="insufficient data/inconclusive">0</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="event_type">Wildfire</td>
-<td class="gt_row gt_right" headers="less severe or less likely">0</td>
-<td class="gt_row gt_right" headers="no discernible human influence">2</td>
-<td class="gt_row gt_right" headers="more severe or more likely">27</td>
-<td class="gt_row gt_right" headers="insufficient data/inconclusive">2</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ex_summary <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">"ex_summary.csv"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ex_summary_long <span class="ot">&lt;-</span> ex_summary <span class="sc">%&gt;%</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"category"</span>, <span class="at">values_to =</span> <span class="st">"count"</span>, <span class="st">`</span><span class="at">less severe or less likely</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">insufficient data/inconclusive</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(category <span class="sc">!=</span> <span class="st">"insufficient data/inconclusive"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">category =</span> <span class="fu">fct_relevel</span>(category, <span class="fu">c</span>(<span class="st">"more severe or more likely"</span>, <span class="st">"no discernible human influence"</span>, <span class="st">"less severe or less likely"</span>)))</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  ex_summary_long <span class="sc">%&gt;%</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> event_type, <span class="at">y =</span>  count, <span class="at">fill =</span> category)) <span class="sc">+</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">easy_move_legend</span>(<span class="at">to =</span> <span class="fu">c</span>(<span class="st">"bottom"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>event_class <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">area =</span> count, <span class="at">fill =</span> event_type)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_treemap</span>() <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -854,61 +276,78 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p>What is going on in NZ/AU</p>
+</section>
+<section id="colours" class="level1">
+<h1>colours</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>aunz <span class="ot">&lt;-</span> ex <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cb_region <span class="sc">==</span> <span class="st">"Australia and New Zealand"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(classification <span class="sc">!=</span> <span class="st">"Insufficient data/inconclusive"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class =</span> <span class="fu">case_when</span>(classification <span class="sc">==</span> <span class="st">"More severe or more likely to occur"</span> <span class="sc">~</span> <span class="st">"more severe or more likely"</span>, </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                           classification <span class="sc">==</span> <span class="st">"Decrease, less severe or less likely to occur"</span> <span class="sc">~</span> <span class="st">"less severe or less likely"</span>, </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                           classification <span class="sc">==</span> <span class="st">"No discernible human influence"</span> <span class="sc">~</span> <span class="st">"no discernible human influence"</span>, </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                           )) <span class="sc">%&gt;%</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">class =</span> <span class="fu">as_factor</span>(class)) </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(aunz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 46
-Columns: 15
-$ event_name        &lt;chr&gt; "Australia record summer temperatures", "New Zealand…
-$ event_period      &lt;chr&gt; "2013", "December 2011", "2011-2012", "2012", "2013"…
-$ event_year        &lt;chr&gt; "2013", "2011", "2011-2012", "2012", "2013", "2013",…
-$ study_focus       &lt;chr&gt; "Event", "Event", "Event", "Event", "Event", "Event"…
-$ iso_country_code  &lt;chr&gt; "AUS", "NZL", "AUS", "AUS", "AUS", "AUS", "AUS", "AU…
-$ cb_region         &lt;chr&gt; "Australia and New Zealand", "Australia and New Zeal…
-$ event_type        &lt;chr&gt; "Heat", "Rain &amp; flooding", "Rain &amp; flooding", "Rain …
-$ classification    &lt;chr&gt; "More severe or more likely to occur", "More severe …
-$ summary_statement &lt;chr&gt; "\"It was very likely (&gt;90% confidence) there was at…
-$ publication_year  &lt;dbl&gt; 2013, 2013, 2013, 2013, 2014, 2014, 2014, 2014, 2014…
-$ citation          &lt;chr&gt; "Lewis et al., 2013: Anthropogenic contributions to …
-$ source            &lt;chr&gt; "Geophysical Research Letters", "Bulletin of the Ame…
-$ rapid_study       &lt;chr&gt; "No", "No", "No", "No", "No", "No", "No", "No", "No"…
-$ link              &lt;chr&gt; "http://onlinelibrary.wiley.com/doi/10.1002/grl.5067…
-$ class             &lt;fct&gt; more severe or more likely, more severe or more like…</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>aunz_summary <span class="ot">&lt;-</span> aunz <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(event_type, class) </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>aunz_summary <span class="sc">%&gt;%</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>palette <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Atmosphere"</span> <span class="ot">=</span> <span class="st">"#93ABBFFF"</span>, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Cold, snow &amp; ice"</span> <span class="ot">=</span> <span class="st">"#A1C2EDFF"</span>, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Compound"</span> <span class="ot">=</span> <span class="st">"#F9E0E8FF"</span>, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Drought"</span> <span class="ot">=</span> <span class="st">"#E9A800FF"</span>, </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Heat"</span> <span class="ot">=</span> <span class="st">"#EE6100FF"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Impact"</span> <span class="ot">=</span> <span class="st">"#EBA49EFF"</span>, </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Oceans"</span> <span class="ot">=</span> <span class="st">"#1A318BFF"</span>, </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Rain &amp; flooding"</span> <span class="ot">=</span> <span class="st">"#4060C8FF"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>             <span class="st">"River flow"</span> <span class="ot">=</span> <span class="st">"#034AA6FF"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Storm"</span><span class="ot">=</span> <span class="st">"#9093A2FF"</span>, </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sunshine"</span><span class="ot">=</span> <span class="st">"#FFED4DFF"</span>, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Wildfire"</span> <span class="ot">=</span> <span class="st">"#D72000FF"</span> )</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> event_class <span class="sc">%&gt;%</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"decrease_less_severe_or_less_likely_to_occur"</span>, <span class="st">"more_severe_or_more_likely_to_occur"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">category =</span> <span class="fu">fct_relevel</span>(category, <span class="fu">c</span>(<span class="st">"more_severe_or_more_likely_to_occur"</span>, <span class="st">"decrease_less_severe_or_less_likely_to_occur"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">event_type =</span> <span class="fu">fct_relevel</span>(event_type, <span class="fu">c</span>(<span class="st">"Heat"</span>, <span class="st">"Drought"</span>, <span class="st">"Sunshine"</span>, <span class="st">"Wildfire"</span>, <span class="st">"Atmosphere"</span>, <span class="st">"Compound"</span>, <span class="st">"Impact"</span>, <span class="st">"Oceans"</span>, <span class="st">"Cold, snow &amp; ice"</span>, <span class="st">"Rain &amp; flooding"</span>, <span class="st">"River flow"</span>, <span class="st">"Storm"</span>))) </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>id <span class="sc">%&gt;%</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">area =</span> count, <span class="at">fill =</span> event_type)) <span class="sc">+</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_treemap</span>() <span class="sc">+</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a> <span class="fu">facet_wrap</span>(<span class="sc">~</span>category, <span class="at">labeller =</span> <span class="fu">as_labeller</span>(</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">c</span>(<span class="at">decrease_less_severe_or_less_likely_to_occur =</span> <span class="st">"Less severe or less likely"</span>,                        <span class="at">more_severe_or_more_likely_to_occur =</span> <span class="st">"More severe or more likely"</span>))) <span class="sc">+</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> palette) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
-<div id="gpqldaopup" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gpqldaopup table {
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="labels" class="level1">
+<h1>labels</h1>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>id <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(category) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_studies =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="xxzkyuuhyj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xxzkyuuhyj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gpqldaopup thead, #gpqldaopup tbody, #gpqldaopup tfoot, #gpqldaopup tr, #gpqldaopup td, #gpqldaopup th {
+#xxzkyuuhyj thead, #xxzkyuuhyj tbody, #xxzkyuuhyj tfoot, #xxzkyuuhyj tr, #xxzkyuuhyj td, #xxzkyuuhyj th {
   border-style: none;
 }
 
-#gpqldaopup p {
+#xxzkyuuhyj p {
   margin: 0;
   padding: 0;
 }
 
-#gpqldaopup .gt_table {
+#xxzkyuuhyj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -934,12 +373,12 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   border-left-color: #D3D3D3;
 }
 
-#gpqldaopup .gt_caption {
+#xxzkyuuhyj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gpqldaopup .gt_title {
+#xxzkyuuhyj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -951,7 +390,7 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   border-bottom-width: 0;
 }
 
-#gpqldaopup .gt_subtitle {
+#xxzkyuuhyj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -963,7 +402,7 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   border-top-width: 0;
 }
 
-#gpqldaopup .gt_heading {
+#xxzkyuuhyj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -975,13 +414,13 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   border-right-color: #D3D3D3;
 }
 
-#gpqldaopup .gt_bottom_border {
+#xxzkyuuhyj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gpqldaopup .gt_col_headings {
+#xxzkyuuhyj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -996,7 +435,7 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   border-right-color: #D3D3D3;
 }
 
-#gpqldaopup .gt_col_heading {
+#xxzkyuuhyj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1016,7 +455,7 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   overflow-x: hidden;
 }
 
-#gpqldaopup .gt_column_spanner_outer {
+#xxzkyuuhyj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1028,15 +467,15 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   padding-right: 4px;
 }
 
-#gpqldaopup .gt_column_spanner_outer:first-child {
+#xxzkyuuhyj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gpqldaopup .gt_column_spanner_outer:last-child {
+#xxzkyuuhyj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gpqldaopup .gt_column_spanner {
+#xxzkyuuhyj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1048,11 +487,11 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   width: 100%;
 }
 
-#gpqldaopup .gt_spanner_row {
+#xxzkyuuhyj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gpqldaopup .gt_group_heading {
+#xxzkyuuhyj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1078,7 +517,7 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   text-align: left;
 }
 
-#gpqldaopup .gt_empty_group_heading {
+#xxzkyuuhyj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1093,15 +532,15 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   vertical-align: middle;
 }
 
-#gpqldaopup .gt_from_md > :first-child {
+#xxzkyuuhyj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gpqldaopup .gt_from_md > :last-child {
+#xxzkyuuhyj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gpqldaopup .gt_row {
+#xxzkyuuhyj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1120,7 +559,7 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   overflow-x: hidden;
 }
 
-#gpqldaopup .gt_stub {
+#xxzkyuuhyj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1133,7 +572,7 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   padding-right: 5px;
 }
 
-#gpqldaopup .gt_stub_row_group {
+#xxzkyuuhyj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1147,15 +586,15 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   vertical-align: top;
 }
 
-#gpqldaopup .gt_row_group_first td {
+#xxzkyuuhyj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gpqldaopup .gt_row_group_first th {
+#xxzkyuuhyj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gpqldaopup .gt_summary_row {
+#xxzkyuuhyj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1165,16 +604,16 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   padding-right: 5px;
 }
 
-#gpqldaopup .gt_first_summary_row {
+#xxzkyuuhyj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gpqldaopup .gt_first_summary_row.thick {
+#xxzkyuuhyj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gpqldaopup .gt_last_summary_row {
+#xxzkyuuhyj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1184,7 +623,7 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   border-bottom-color: #D3D3D3;
 }
 
-#gpqldaopup .gt_grand_summary_row {
+#xxzkyuuhyj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1194,7 +633,7 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   padding-right: 5px;
 }
 
-#gpqldaopup .gt_first_grand_summary_row {
+#xxzkyuuhyj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1204,7 +643,7 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   border-top-color: #D3D3D3;
 }
 
-#gpqldaopup .gt_last_grand_summary_row_top {
+#xxzkyuuhyj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1214,11 +653,11 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   border-bottom-color: #D3D3D3;
 }
 
-#gpqldaopup .gt_striped {
+#xxzkyuuhyj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gpqldaopup .gt_table_body {
+#xxzkyuuhyj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1227,7 +666,7 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   border-bottom-color: #D3D3D3;
 }
 
-#gpqldaopup .gt_footnotes {
+#xxzkyuuhyj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1241,7 +680,7 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   border-right-color: #D3D3D3;
 }
 
-#gpqldaopup .gt_footnote {
+#xxzkyuuhyj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1250,7 +689,7 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   padding-right: 5px;
 }
 
-#gpqldaopup .gt_sourcenotes {
+#xxzkyuuhyj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1264,7 +703,7 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   border-right-color: #D3D3D3;
 }
 
-#gpqldaopup .gt_sourcenote {
+#xxzkyuuhyj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1272,72 +711,72 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
   padding-right: 5px;
 }
 
-#gpqldaopup .gt_left {
+#xxzkyuuhyj .gt_left {
   text-align: left;
 }
 
-#gpqldaopup .gt_center {
+#xxzkyuuhyj .gt_center {
   text-align: center;
 }
 
-#gpqldaopup .gt_right {
+#xxzkyuuhyj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gpqldaopup .gt_font_normal {
+#xxzkyuuhyj .gt_font_normal {
   font-weight: normal;
 }
 
-#gpqldaopup .gt_font_bold {
+#xxzkyuuhyj .gt_font_bold {
   font-weight: bold;
 }
 
-#gpqldaopup .gt_font_italic {
+#xxzkyuuhyj .gt_font_italic {
   font-style: italic;
 }
 
-#gpqldaopup .gt_super {
+#xxzkyuuhyj .gt_super {
   font-size: 65%;
 }
 
-#gpqldaopup .gt_footnote_marks {
+#xxzkyuuhyj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gpqldaopup .gt_asterisk {
+#xxzkyuuhyj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gpqldaopup .gt_indent_1 {
+#xxzkyuuhyj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gpqldaopup .gt_indent_2 {
+#xxzkyuuhyj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gpqldaopup .gt_indent_3 {
+#xxzkyuuhyj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gpqldaopup .gt_indent_4 {
+#xxzkyuuhyj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gpqldaopup .gt_indent_5 {
+#xxzkyuuhyj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gpqldaopup .katex-display {
+#xxzkyuuhyj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gpqldaopup div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xxzkyuuhyj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1345,103 +784,52 @@ $ class             &lt;fct&gt; more severe or more likely, more severe or more 
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
-<th id="event_type" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">event_type</th>
-<th id="more-severe-or-more-likely" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">more severe or more likely</th>
-<th id="no-discernible-human-influence" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">no discernible human influence</th>
-<th id="less-severe-or-less-likely" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">less severe or less likely</th>
+<th id="category" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">category</th>
+<th id="total_studies" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">total_studies</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="event_type">Atmosphere</td>
-<td class="gt_row gt_right" headers="more severe or more likely">1</td>
-<td class="gt_row gt_right" headers="no discernible human influence">0</td>
-<td class="gt_row gt_right" headers="less severe or less likely">0</td>
+<td class="gt_row gt_center" headers="category">more_severe_or_more_likely_to_occur</td>
+<td class="gt_row gt_right" headers="total_studies">554</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="event_type">Cold, snow &amp; ice</td>
-<td class="gt_row gt_right" headers="more severe or more likely">2</td>
-<td class="gt_row gt_right" headers="no discernible human influence">0</td>
-<td class="gt_row gt_right" headers="less severe or less likely">0</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="event_type">Drought</td>
-<td class="gt_row gt_right" headers="more severe or more likely">6</td>
-<td class="gt_row gt_right" headers="no discernible human influence">0</td>
-<td class="gt_row gt_right" headers="less severe or less likely">0</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="event_type">Heat</td>
-<td class="gt_row gt_right" headers="more severe or more likely">16</td>
-<td class="gt_row gt_right" headers="no discernible human influence">0</td>
-<td class="gt_row gt_right" headers="less severe or less likely">0</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="event_type">Impact</td>
-<td class="gt_row gt_right" headers="more severe or more likely">5</td>
-<td class="gt_row gt_right" headers="no discernible human influence">0</td>
-<td class="gt_row gt_right" headers="less severe or less likely">0</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="event_type">Oceans</td>
-<td class="gt_row gt_right" headers="more severe or more likely">3</td>
-<td class="gt_row gt_right" headers="no discernible human influence">0</td>
-<td class="gt_row gt_right" headers="less severe or less likely">0</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="event_type">Rain &amp; flooding</td>
-<td class="gt_row gt_right" headers="more severe or more likely">2</td>
-<td class="gt_row gt_right" headers="no discernible human influence">6</td>
-<td class="gt_row gt_right" headers="less severe or less likely">1</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="event_type">Storm</td>
-<td class="gt_row gt_right" headers="more severe or more likely">1</td>
-<td class="gt_row gt_right" headers="no discernible human influence">0</td>
-<td class="gt_row gt_right" headers="less severe or less likely">0</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="event_type">Wildfire</td>
-<td class="gt_row gt_right" headers="more severe or more likely">3</td>
-<td class="gt_row gt_right" headers="no discernible human influence">0</td>
-<td class="gt_row gt_right" headers="less severe or less likely">0</td>
+<td class="gt_row gt_center" headers="category">decrease_less_severe_or_less_likely_to_occur</td>
+<td class="gt_row gt_right" headers="total_studies">66</td>
 </tr>
 </tbody>
 </table>
 
 </div>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>id <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">area =</span> count, <span class="at">fill =</span> event_type, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">label =</span> <span class="fu">paste</span>(event_type, count, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_treemap</span>() <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">facet_wrap</span>(<span class="sc">~</span>category, <span class="at">labeller =</span> <span class="fu">as_labeller</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">c</span>(<span class="at">decrease_less_severe_or_less_likely_to_occur =</span> <span class="st">"Less severe or less likely N = 66"</span>,                        <span class="at">more_severe_or_more_likely_to_occur =</span> <span class="st">"More severe or more likely N = 554"</span>))) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> palette) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a> <span class="fu">easy_add_legend_title</span>(<span class="st">"Climate event"</span>) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_treemap_text</span>(<span class="at">colour =</span> <span class="st">"black"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">place =</span> <span class="st">"topleft"</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> <span class="dv">7</span>, </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">grow =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="co"># option from ggfittext to NOT make font fit box</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">easy_remove_legend</span>() <span class="sc">+</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Extreme Weather Attribution Studies"</span>, </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"Most extreme weather attribution studies conclude that human influence on climate has made </span><span class="sc">\n</span><span class="st">extreme events more severe or more likely. Heat, Rain &amp; flooding, and Drought are most </span><span class="sc">\n</span><span class="st">frequently reported among studies that conclude extreme events are becoming more likely."</span>, <span class="at">caption =</span> <span class="st">"TidyTuesday Week 32 2025 </span><span class="sc">\n</span><span class="st">Data source: Carbon Brief"</span>) <span class="sc">+</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">easy_subtitle_size</span>(<span class="at">size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Lato"</span>), </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.95</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">colour =</span> <span class="st">"gray50"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ex <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(event_type, class) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       event_type less severe or less likely no discernible human influence
-       Atmosphere                          0                              1
- Cold, snow &amp; ice                         37                              7
-         Compound                          1                              0
-          Drought                          1                             20
-             Heat                          0                              2
-           Impact                          2                              1
-           Oceans                          0                              0
-  Rain &amp; flooding                         20                             32
-       River flow                          2                              0
-            Storm                          3                              6
-         Sunshine                          0                              0
-         Wildfire                          0                              2
- more severe or more likely insufficient data/inconclusive
-                          5                              1
-                          6                              7
-                         32                              0
-                         74                             11
-                        196                              9
-                         30                              0
-                         23                              2
-                        110                             15
-                          1                              0
-                         46                              6
-                          4                              0
-                         27                              2</code></pre>
 </div>
 </div>
 
