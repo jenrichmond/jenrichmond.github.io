@@ -1,8 +1,14 @@
 ---
 title: "extreme weather"
+subtitle: "Tidy Tuesday Week 32"
 format: html
+author: Jen Richmond
+date: 2025-08-12
 editor: visual
 ---
+
+Practicing my tree map skills with the extreme weather attribution studies data for Tidy Tuesday. 
+
 
 # load/wrangle data
 
