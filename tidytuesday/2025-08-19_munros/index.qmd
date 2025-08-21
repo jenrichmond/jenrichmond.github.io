@@ -85,7 +85,8 @@ plot <- ggplot() +
   scale_color_viridis_c(name = "Height (m)", 
                         option = "turbo") +
   coord_sf(xlim = c(-8, 0), ylim = c(55.5, 61)) +
-  labs(y = "Latitude", x = "Longitude", title = "Where are the tallest Scottish Munros?")
+  labs(y = "Latitude", x = "Longitude", title = "Where are the tallest Scottish Munros?") +
+  theme_bw()
 
 
 ggsave(here::here("tidytuesday", "2025-08-19_munros", "featured.png"), width = 8, height = 6,  bg = "white")
@@ -103,6 +104,5 @@ ggplotly(plot)
 
 
 ```
-
 
 
