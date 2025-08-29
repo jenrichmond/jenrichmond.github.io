@@ -1,0 +1,15 @@
+{
+  "hash": "b838047f980267cbc2e9afcdc02732a9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Billboard Hot 100 Number Ones\"\nsubtitle: \"TidyTuesday Week 34\"\nauthor: Jen Richmond\ndate: 2025-08-30\nformat: html\ncode-fold: true\n---\n\nThe Tidy Tuesday data this week comes from a gogole sheet that Chris Dalla Riva compiled in the process of writing his book: [Uncharted Territory: What Numbers Tell Us about the Biggest Hit Songs and Ourselves](https://bio.site/uncharted_territory). It is a big dataset (105 variables) of information about every Billboard Hot 100 Number One hit from 1958 to 2025. \n\nIt contains variables related to everything from the number of weeks the song spent at number one, the makeup of the song writing team, to the key that the song is in and what instruments were featured. \n\nMy TidyTuesday strategy with a big dataset like this is to find a tiny question to answer. I am curious about obscure instruments, so this week have focused on Number One song that feature a cowbell. \n\nIt seems that the cowbell is rather out of fashion. \n\n![](featured.png)\n\n\n# get data\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidytuesdayR)\nlibrary(tidyverse)\nlibrary(ggeasy)\nlibrary(gt)\n\n\ntheme_set(theme_bw())\n\ntt <- tt_load(2025, 34)\n\nbill <- tt[[1]]\n\ntopics <- tt[[2]]\n```\n:::\n\n\n# wrangle\n\n\n::: {.cell}\n\n```{.r .cell-code}\ncow <- bill %>%\n  select(1:4, overall_rating, bpm:happiness, cowbell) %>%\n  filter(cowbell == 1) %>%\n  pivot_longer(values_to = \"score\", names_to = \"measure\", energy:happiness)\n```\n:::\n\n\n# plot\n\n\n::: {.cell}\n\n```{.r .cell-code}\nplot <- cow %>%\n  ggplot(aes(x = date, y = score, colour = song)) +\n  geom_rect(aes(xmin = as.POSIXct(\"1967-01-01\"), \n                xmax = as.POSIXct(\"1992-12-31\"),\n                ymin = -Inf, \n                ymax = Inf), \n            fill = \"lightblue\", alpha = .5, inherit.aes = FALSE) +\n  geom_point(size = 2) +\n  facet_wrap(~measure) +\n  labs(title = \"Billboard Hot 100 Number Ones that feature a cowbell\", \n       subtitle = \"The Billboard Hot 100 Number Ones database contains more than 1000 songs released \\nbetween 1958 and 2025. There are 7 songs in the database that include a cowbell. \\nThere haven't been any Number One songs featuring a cowbell since 1991.\",  \n       x = \"Date\", y = \"Score\") +\n  scale_x_datetime(limits = c(min(bill$date), max(bill$date))) +\neasy_move_legend(to = c(\"bottom\")) +\n  easy_remove_legend_title() +\n  theme(text = element_text(family = \"Lato\"))\n\n\n  ggsave(here::here(\"tidytuesday\", \"2025-08-26_billboard\", \"featured.png\"), width = 8, height = 6)\n```\n:::\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "hash": "e9e546a93c86030fdcbc63a97e567829",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Untitled\"\nformat: html\n---\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidytuesdayR)\n\ntt <- tt_load(2025, 34)\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\n---- Compiling #TidyTuesday Information for 2025-08-26 ----\n--- There are 2 files available ---\n\n\n── Downloading files ───────────────────────────────────────────────────────────\n\n  1 of 2: \"billboard.csv\"\n  2 of 2: \"topics.csv\"\n```\n\n\n:::\n\n```{.r .cell-code}\nbill <- tt[[1]]\n```\n:::\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
