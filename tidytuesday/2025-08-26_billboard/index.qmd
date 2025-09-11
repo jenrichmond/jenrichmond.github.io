@@ -7,7 +7,7 @@ format: html
 code-fold: true
 ---
 
-The Tidy Tuesday data this week comes from a gogole sheet that Chris Dalla Riva compiled in the process of writing his book: [Uncharted Territory: What Numbers Tell Us about the Biggest Hit Songs and Ourselves](https://bio.site/uncharted_territory). It is a big dataset (105 variables) of information about every Billboard Hot 100 Number One hit from 1958 to 2025. 
+The Tidy Tuesday data this week comes from a google sheet that Chris Dalla Riva compiled in the process of writing his book: [Uncharted Territory: What Numbers Tell Us about the Biggest Hit Songs and Ourselves](https://bio.site/uncharted_territory). It is a big dataset (105 variables) of information about every Billboard Hot 100 Number One hit from 1958 to 2025. 
 
 It contains variables related to everything from the number of weeks the song spent at number one, the makeup of the song writing team, to the key that the song is in and what instruments were featured. 
 
