@@ -11,7 +11,7 @@ The Tidy Tuesday data this week comes from a google sheet that Chris Dalla Riva 
 
 It contains variables related to everything from the number of weeks the song spent at number one, the makeup of the song writing team, to the key that the song is in and what instruments were featured. 
 
-My TidyTuesday strategy with a big dataset like this is to find a tiny question to answer. I am curious about obscure instruments, so this week have focused on Number One song that feature a cowbell. 
+My TidyTuesday strategy with a big dataset like this is to find a tiny question to answer. I am curious about obscure instruments, so this week have focused on Number One songs that feature a cowbell. 
 
 It seems that the cowbell is rather out of fashion. 
 
