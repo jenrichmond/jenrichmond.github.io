@@ -10,4 +10,4 @@ listing:
 
 Tidy Tuesday is a weekly community challenge run by Jon Harmon and team in the Data Science Learning Community. Each week the team post a dataset to their [github page](https://github.com/rfordatascience/tidytuesday/blob/main/README.md) and data enthusiasts from around the world make something with it and share their creations using the #TidyTuesday hashtag. 
 
-I document my TidyTuesday process here, creating useful resources for the community about how my plot came about. Recently I have also curated datasets for Tidy Tuesday (see Week 20 re Sydney Beaches and Week 25 re global measles cases). 
+I document my TidyTuesday process here, creating useful resources for the community about how my plot came about. Recently I have also curated datasets for Tidy Tuesday (see Week 20 re Sydney Beaches, Week 25 re global measles cases, and Week 34 re Billboard Number Ones). 
