@@ -12,6 +12,8 @@ The Tidy Tuesday data this week is about APIs. Jon Harmon is writing a book abou
 
 I was interested in the API categories. Most of the API names have 2 categories associated with them; which API categories tend to go together?
 
+![](featured.png)
+
 # load packages
 
 ```{r libraries, message=FALSE, warning=FALSE}
