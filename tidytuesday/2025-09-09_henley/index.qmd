@@ -4,6 +4,7 @@ subtitle: "Tidy Tuesday Week 36"
 author: "Jen Richmond"
 date: 2025-09-09
 format: html
+image: featured.png
 code-fold: true
 ---
 
