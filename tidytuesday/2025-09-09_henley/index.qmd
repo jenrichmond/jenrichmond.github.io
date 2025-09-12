@@ -1,5 +1,132 @@
 ---
-title: "index"
+title: "Passport power"
+subtitle: "Tidy Tuesday Week 36"
+author: "Jen Richmond"
+date: 2025-09-09
 format: html
+code-fold: true
 ---
 
+
+I learned about the Henley Passport Index via this [CNN article about the decline of the US passport](https://edition.cnn.com/2025/07/22/travel/world-most-powerful-passports-july-2025). I was curious about how the relative ranking of the US passport over time compared to the passport that is currently the most powerful, that is the Singapore passport. 
+
+It is interesting that over the last ~ 20 years the US passport has gone from Number 1 in the rankings to Number 10, while at the same time the Singapore passport has gone from Number 11 to Number 1. 
+
+
+![](featured.png)
+
+Even more interesting is that this shift in rankings is caused by relatively small differences in the number of countries that travellers possessing each passport can visit without obtaining a visa in advance. When plotted in terms of visa-free country access, Singapore has passed the United States in access since 2017, but only by 5-10 countries.
+
+![](visafree.png)
+
+
+# load packages / data
+```{r}
+#| message: false
+#| warning: false
+library(tidytuesdayR)
+library(tidyverse)
+library(janitor)
+library(ggeasy)
+library(gt)
+library(ggtext)
+
+year <- 2025
+week <- 36
+
+tt <- tidytuesdayR::tt_load(year, week)
+
+country <- tt[[1]]
+
+rank <- tt[[2]]
+
+
+```
+
+
+
+# wrangle
+
+```{r}
+countries <- c("United States", "Singapore")
+
+us_sing <- rank %>%
+  filter(country %in% countries) %>%
+  arrange(country, year) %>%
+  filter(visa_free_count > 0)
+
+rank2025 <- rank %>%
+  filter(year == 2025) %>%
+  filter(rank <= 10)
+
+pp25 <- as.vector(rank2025$country)
+
+top10 <- rank %>%
+  filter(country %in% pp25) %>%
+  filter(visa_free_count > 0)
+```
+
+# plot
+
+### by rank
+
+```{r}
+
+pal <- c("Singapore" = "indianred3","United States" = "royalblue3")
+
+p1 <-  us_sing %>%
+  ggplot(aes(x = year, y = rank, colour = country)) +
+  geom_point(size = 3) +
+  geom_line(linewidth = 1) +
+  scale_colour_manual(values = pal) +
+ scale_y_reverse(limits = c(11, 1), breaks = c(1, 3, 5, 7, 9, 11)) +
+  scale_x_continuous(limits = c(2005, 2025)) +
+  theme_bw() +
+  easy_remove_legend() +
+  easy_text_size(12) +
+  labs(x = "Year", y = "Passport Rank", title = "Passport Power by rank", 
+subtitle = "The Henley Passport Index reports the number of countries in which a traveller in possession of that passport can enter without obtaining a visa in advance and passports are commonly ranked on this metric. In these rankings, the relative power of the **<span style='color:royalblue3'>United States</span>** passport has declined, such that in 2025 it is at risk of falling out of the Top 10. In contrast, the **<span style='color:indianred3'>Singapore</span>** passport, which is currently ranked Number 1, has seen consistent gains in the rankings.") + 
+  theme(text = element_text(family = "Lato"), 
+      plot.subtitle = element_textbox_simple(width = unit(1, "npc"), 
+                                             halign = 0,
+                              margin = margin(t = 10, r = 0, b = 15, l = 0)))
+
+
+```
+
+```{r}
+#| include: false
+  ggsave(here::here("tidytuesday", "2025-09-09_henley", "featured.png"), 
+         width = 8, height = 6)
+```
+
+### by visa free countries
+```{r}
+
+p2 <-  us_sing %>%
+    ggplot(aes(x = year, y = visa_free_count, colour = country)) +
+  geom_point(size = 3) +
+  geom_line(linewidth = 1) +
+    scale_colour_manual(values = pal) +
+ scale_y_continuous(limits = c(120, 200)) +
+  scale_x_continuous(limits = c(2005, 2025)) +
+  theme_bw() +
+  easy_text_size(12) +
+  labs(x = "Year", y = "Visa free count", title = "Passport Power by visa free countries", 
+       subtitle = "The Henley Passport Index reports the number of countries in which a traveller in possession of that passport can enter without obtaining a visa in advance. The number of visa free countries available to travellers on a **<span style='color:indianred3'>Singapore</span>** passport has exceeded those available to travellers on a **<span style='color:royalblue3'>United States</span>** passport since 2017.") + 
+  easy_remove_legend() +
+  theme(text = element_text(family = "Lato"), 
+      plot.subtitle = element_textbox_simple(width = unit(1, "npc"), 
+                                             halign = 0,
+                              margin = margin(t = 5, r = 0, b = 15, l = 0)))
+
+
+
+
+```
+
+```{r}
+#| include: false
+  ggsave(here::here("tidytuesday", "2025-09-09_henley", "visafree.png"), 
+         width = 8, height = 6)
+```
