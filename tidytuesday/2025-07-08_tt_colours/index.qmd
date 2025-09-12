@@ -12,6 +12,8 @@ I was interested that people labelled some colours as puke and vomit and was cur
 
 Check out my Gross Colours `geom_tile()` plot below. 
 
+![](featured.png)
+
 
 # get data
 
@@ -65,7 +67,7 @@ gross_colors <- ranks %>%
 
 ```{r}
 #| code-fold: true
-gross_colors %>%
+plot <- gross_colors %>%
   ggplot(aes(x = row, y = reorder(fluid, -category), label = color, fill = hex)) +
    geom_tile() +
   geom_text(family = "Lato", size = 2.5, color = "black", vjust = 0.5) + 

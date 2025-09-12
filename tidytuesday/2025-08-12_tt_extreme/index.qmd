@@ -7,8 +7,9 @@ date: 2025-08-12
 editor: visual
 ---
 
-Practicing my tree map skills with the extreme weather attribution studies data for Tidy Tuesday. 
+Practicing my tree map skills with the extreme weather attribution studies data for Tidy Tuesday.
 
+![](featured.png)
 
 # load/wrangle data
 

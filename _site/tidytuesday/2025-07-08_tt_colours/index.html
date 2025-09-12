@@ -246,6 +246,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 <p>The Tidy Tuesday data this week was curated by Nicola Rennie and comes from the <a href="https://blog.xkcd.com/2010/05/03/color-survey-results/">xkcd Color Survey</a> . In this study, hundreds of thousands of participants were asked to name colour swatches and the responses were analysed to produce a set of 954 colour names.</p>
 <p>I was interested that people labelled some colours as puke and vomit and was curious whether other bodily fluids might feature in the dataset. As it turns out, colloquial terms for urine, faecal matter, snot, and vomit all feature in the colour names. There are many colours that remind respondents of infant’s bodily fluids!</p>
 <p>Check out my Gross Colours <code>geom_tile()</code> plot below.</p>
+<p><img src="featured.png" class="img-fluid"></p>
 <section id="get-data" class="level1">
 <h1>get data</h1>
 <div class="cell">
@@ -298,7 +299,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gross_colors <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> gross_colors <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> row, <span class="at">y =</span> <span class="fu">reorder</span>(fluid, <span class="sc">-</span>category), <span class="at">label =</span> color, <span class="at">fill =</span> hex)) <span class="sc">+</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">family =</span> <span class="st">"Lato"</span>, <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
@@ -317,13 +318,6 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="st">"#f8f9fa"</span>), </span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.95</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">colour =</span> <span class="st">"gray50"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
 </div>
 
 

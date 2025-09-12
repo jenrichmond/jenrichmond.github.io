@@ -12,6 +12,8 @@ image: featured.png
 
 The TidyTuesday data this week are about gasoline and diesel prices in the US. I have plotted the price differential between regular gasoline and diesel. 
 
+![](featured.png)
+
 # get data
 ```{r}
 #| message: false
@@ -81,7 +83,7 @@ g_wide <- gas %>%
 #| message: false
 #| warning: false
 #| 
-g_long %>%
+plot <- g_long %>%
   filter(fuel == "gasoline") %>%
   ggplot(aes(x = date, y = diff)) +
   geom_line(colour = "darkgrey") +
