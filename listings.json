@@ -1,5 +1,16 @@
 [
   {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/2025-05-13_tipstricks/index.html",
+      "/projects/2025-03-02_RYouWithMe/index.html",
+      "/projects/2025-11-30_PSYCHEdpodcast/index.html",
+      "/projects/2024-10-30_alumni_gateway/index.html",
+      "/projects/2024-10-10_academic_research/index.html",
+      "/projects/2025-02_02_academic_writing/index.html"
+    ]
+  },
+  {
     "listing": "/charts_30day.html",
     "items": [
       "/charts/2025-03-31_challenge/index.html",
@@ -66,17 +77,6 @@
       "/posts/2021-06-22-pat-for-github/index.html",
       "/posts/2021-01-08-my-first-pull-request/index.html",
       "/posts/2020-11-18-digging-into-the-janitor-package/index.html"
-    ]
-  },
-  {
-    "listing": "/projects.html",
-    "items": [
-      "/projects/2025-05-13_tipstricks/index.html",
-      "/projects/2025-03-02_RYouWithMe/index.html",
-      "/projects/2025-11-30_PSYCHEdpodcast/index.html",
-      "/projects/2024-10-30_alumni_gateway/index.html",
-      "/projects/2024-10-10_academic_research/index.html",
-      "/projects/2025-02_02_academic_writing/index.html"
     ]
   }
 ]
