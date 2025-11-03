@@ -1,0 +1,16 @@
+---
+title: "Day 0: themes"
+editor: source
+author: Jen Richmond
+date: 2025-10-31
+image: featured.png
+---
+
+
+I can't resist a 30 Day DataViz Challenge and November is all about maps! I can count the number of maps I have made with R on one hand, so this challenge is going to have me learning LOTS of new things. 
+
+Here are the daily [#30DayMapChallenge](https://30daymapchallenge.com/) themes... 
+
+
+![](featured.png)
+

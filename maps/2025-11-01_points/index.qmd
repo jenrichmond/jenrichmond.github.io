@@ -109,7 +109,7 @@ ggplot() +
   scale_color_npg() +
   easy_add_legend_title("Track type") +
   guides(color = guide_legend(override.aes = list(size = 3))) + # Larger dots in the legend
-  labs(title = "Which New Zealand Great Walks had the most traffic in the 2023-2024 season?", 
+  labs(title = "Which New Zealand Great Walk had the most traffic in the 2023-2024 season?", 
        subtitle = "There are 11 Great Walks in New Zealand. More than 14000 people walked the \nAbel Tasman Coast track in the 2023-2024 season. Tracks in Fiordland were also popular. \nThe Routeburn and Kepler tracks each saw between 6000 and 7000 visitors.", 
        caption = "Note: Visitor numbers for the Hump Ridge track and the \nLake Waikaremoana track were unavailable.")
 
