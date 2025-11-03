@@ -20,9 +20,12 @@ Recently the Jon Harmon and the #tidytuesday team have put this philosophy into 
 The package has a number of functions that make it super easy for you get the data into RStudio. No need to download the csv and read it back in. Just use the `tt_load()` with the date or year and week. 
 
 ```{r}
+#| message: false
+#| warning: false
 #| code-fold: true
 
 library(tidyverse)
+
 # install.packages("tidytuesdayR")
 library(tidytuesdayR)
 
@@ -56,6 +59,10 @@ glimpse(user25)
 Do you have an idea of a dataset that might be of interest to other tidytuesdayers? Great! The new functions in `tidytuesdayR` make it super easy to contribute a dataset. 
 
 All you have to do is follow [these instructions](https://dslc-io.github.io/tidytuesdayR/articles/curating.html). 
+
+::: {.callout-note}
+Update Oct 2025- I screenrecorded myself walking through the curation process. You can watch how easy it is [here on YouTube](https://www.youtube.com/watch?v=Kp7pyYwLcwc&t=9s). 
+:::
 
 Here are some notes I made for myself while I was curating the week 20 water quality dataset. Make sure you have the `tidytuesdayR` installed and loaded, and a github account sorted before you begin. 
 
