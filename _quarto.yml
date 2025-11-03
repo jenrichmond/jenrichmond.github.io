@@ -12,10 +12,12 @@ website:
       - posts.qmd
       - text: "data viz"
         menu: 
-          - text: "30DayChallenge"
+          - text: "30DayChartChallenge"
             href: charts_30day.qmd
           - text: "TidyTuesday"
             href: charts_tidytuesday.qmd
+          - text: "30DayMapChallenge"
+            href: maps_30day.qmd
       - projects.qmd
       
     right:

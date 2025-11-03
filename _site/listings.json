@@ -59,6 +59,8 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/2025-10-17_tefap/index.html",
+      "/posts/index.html",
       "/posts/2025-05-19_font_notes/index.html",
       "/posts/2025-05-21_annotations/index.html",
       "/posts/2025-05-09-what_happened_what_now/index.html",
@@ -78,6 +80,12 @@
       "/posts/2021-06-22-pat-for-github/index.html",
       "/posts/2021-01-08-my-first-pull-request/index.html",
       "/posts/2020-11-18-digging-into-the-janitor-package/index.html"
+    ]
+  },
+  {
+    "listing": "/maps_30day.html",
+    "items": [
+      "/maps/2025-11-01_points/index.html"
     ]
   }
 ]

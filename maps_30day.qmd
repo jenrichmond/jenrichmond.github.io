@@ -1,0 +1,12 @@
+---
+title: "30DayMaps"
+listing: 
+  contents: maps # this name must match the name of the folder you created in step #1; here, all Quarto docs in the `posts` directory will be included on your listing page
+  type: default # or `default` or `table`; each type has its own set of yaml options to include
+  sort: "date" # can also sort on more than one field
+  categories: true # allows you to sort posts by assigned categories 
+  page-size: 50
+---
+
+I am learning to make maps with R. I made these maps as part of the #30DayMapChallenge in November 2025. 
+

@@ -1,0 +1,231 @@
+---
+title: "Rethinking data science education in the age of genAI"
+author: Jenny Richmond Ph.D
+subtitle: "how to we know what students know when chatGPT can do the tasks we have traditionally relied on to assess learning?"
+date: 2025-10-05
+draft: TRUE
+---
+
+I spent a lovely few days in Melbourne last week visiting Monash and attending WOMBAT (Workshop Organised by Monash Business Analytics Team).
+
+::: column-margin
+![WOMBAT is an annual data science event that brings together data science students, educators, and practitioners. https://wombat2025.numbat.space/](https://wombat2025.numbat.space/img/wombat/hex-offwhite.svg)
+:::
+
+Di Cook and her collegaues in Department of Econometrics and Business Statistics at Monash have a tradition of naming software packages, events, and even their research group after Australian animals and the WOMBAT event is an annual excuse for R people from academia and industry to come together and share new packages, practices, and problems.
+
+When Cynthia Huang (who was organising the program) invited me to speak about the impact of generative AI on data science education, I was excited to dive into how large language models (LLMs) are changing the way educators are thinking about what students need to learn and how they need to learn it.
+
+If the #positconf2025 program is anything to go by, it seems that data scientce practitioners are "all in" on LLMs. The new Positron IDE has an AI assistant and a DataBot agent embedded and Posit are developing packages like `ellmer` and `chatlas` that make using LLMs within your R and Python workflow easy. It is clear that the landscape is changing rapidly and Posit have also launched a [fortnightly AI newsletter](https://posit.co/blog/2025-08-29-ai-newsletter/) to help the community keep up with AI developments.
+
+![AI packages/tools from Posit](https://posit.co/wp-content/uploads/2025/08/PST-Blog-AI-Newsletter-v2.jpg)
+
+::: column-margin
+![The research group at Monash is known as NUMBATS (Non-Uniform Monash Business Analytics Team), a nod to the stripey marsupial from Western Australia.](https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Numbat_0A2A0187.jpg/500px-Numbat_0A2A0187.jpg)
+:::
+
+There is a lot of talk about how data science practitioners can leverage LLMs to speed up data science workflows, but not many people are talking about learning. In this talk, I wanted to dig into what students are doing with LLMs, what universities are doing to counter misuse, and most importantly, what we as a community of data science educators are doing (and can do) to support students in learning to navigate the new learning environment they find themselves in.
+
+# what are students doing?
+
+Stories about students "cheating" their way into (and through) university assessments are pretty common, but I wanted to find some data about how many students are using chatGPT, what they are using it for, and why. The results of the [Student Generative AI Survey 2025](https://www.hepi.ac.uk/wp-content/uploads/2025/02/HEPI-Kortext-Student-Generative-AI-Survey-2025.pdf) is particularly useful on this front because it is an annual survey so it is pretty interesting to compare the responses in 2025 to those from the same survey 12 months ago.
+
+The survey was conducted by the Higher Education Policy Institute in the UK and the results from more than 1000 students were released in Feb 2025. It is pretty concerning that the percentage of students admitting to using generative AI at all is up from 66% in 2024 to 92% in 2025, and in the more recent cohort, more than 88% of students admit to using generative AI for university assessment. Most students are using it to genrate text, and of relevance to data science educators, the percent of students using it to write code is up to 15% from 6% last year.
+
+![What? Student Generative AI Survey 2025](HEPIsurvey2025.png)
+
+Student motivations are what concern me most about this data. The most frequently reported reason that students are using AI is to save them time and reasons relating to learning and support are much further down this list. Learning isn't supposed to be quick or easy and these results tell me that students are using chatGPT in ways that are likely to be shortcutting the process of learning.
+
+![Why? Student Generative AI Survey 2025](HEPIwhy.png)
+
+# what are educators doing?
+
+On BlueSky I see lots of educators warning students about the risks of outsourcing the process of learning. [Prof Nick Sousanis](https://spinweaveandcut.com/fall-2025-syllabi/) from San Francisco State draws his course syllabus as a comic each year and in Fall 2025 his syllabus highlights to students that learning is all about mistakes and struggles and surprises. The syllabus warns students that generative AI makes it too easy to skip the process of learning. 
+
+![](comicAI_nickSousanis.jpg){fig-align="center" width="300"}
+
+Data science educators are also sharing what they are doing in their data science courses to warn students about the dangers of using generative AI ([see Prof Andrew Heiss](https://www.andrewheiss.com/ai/)) or to require them to acknowledge whether they have used AI or not ([see Prof Claus Wilke](https://substack.com/@clauswilke/p-172827783)).
+
+![Lopez-Miranda, Timbers, & Alexander](lm_timbers_alexander.png){width="600"}
+
+Some educators are thinking about assessment reform, although fewer than I had imagined given that we are almost 3 years into this "crisis". A [preprint](https://arxiv.org/abs/2509.12283) from Tiffany Timbers (UBC) and Rohan Alexander (UToronto) came out recently, reporting on interviews that they conducted with 42 data science educators, from 30 institutions in 10 countries. In interviews, educators were asked questions about their attitudes toward LLMs in general and in the context of teaching data science, questions about the impact that they have seen AI have on students attitudes and motivation, and changes that they have made to their assessment practices in response to LLM availability.
+
+Not surprisingly, educators are most concerned about students short cutting the process of learning, not acquiring the understanding and skills that the course is designed to build, and getting a false sense of how much they actually know.
+
+![Concerns](concern.png)
+
+In terms of student motivation, the theme of *speed* came up again. Educators reported that students use AI primarily to speed up the process of getting assessment tasks done but ironically, that students are also concerned about the value of learning skills that tools like chatGPT can do easily.
+
+![Attitudes & motivation](student%20motivation.png)
+
+I thought the most interesting thing to come out of this paper was answers to the questions about what educators are doing to assessment in their courses in response to the arrival of generative AI. The majority of educators are responding by turning back toward in-class assessment and reducing the weight of assessment tasks that are completed outside of the classroom. Relatively few respondents talked about redesigning assessments in a way that integrated AI or involved students learning how to use it responsibly.
+
+![Assessment change](change.png)
+
+## why are educators not adapting more quickly?
+
+There seems to be a fair amount of status quo bias going on and this paper by [Corbin et al., 2025](https://www.tandfonline.com/doi/full/10.1080/02602938.2025.2553340)) out of the Deacon Cradle group might help to explain why educators are feeling a bit stuck.
+
+They also interviewed academics about how they were responding to AI and coded their responses in terms of Rittel and Webber's (1975) wicked problem characteristics. They found that the problem of generative AI and assessment met all 10 characteristics of a "wicked problem".
+
+![Rittel & Webber's (1973) criteria for "wickedness"](wicked.jpg)
+
+In talking to academics about the AI and assessment, Corbin and colleagues found that there was little agreement about what the problem actually is. Some academics were most concerned about academic integrity, others about the risk of ignoring AI and students not being workforce ready. Some were concerned about student engagement in learning while at the same time being worried about staff workload. It is difficult to solve a problem that doesn't have a clear definition.
+
+When asked about what they thought the solution was, academics were overwhelmed by the number of possible responses, and concerned that there no real way to know whether any one of them had been successful. They also talked about how solutions were never perfect and had knock-on effects; there were lots of trade offs. Potential solutions that might work for one course or context, probably won't work in another environment and the technology is changing so quickly that solutions that seem to be useful now, might not work next semester. Educators feel like the stakes of trying something new are really high. 
+
+I don't know about you, but this paper makes me feel better. Educators are feeling overwhelmed and stuck, searching for a solution that will "solve" the problem, and feeling like they are failing when it doesn't materialise. By defining the problem as wicked, we can let go of the idea that there is a "solution". The uncertainty that we are swimming in is permanent and that means that it is ok to experiment, compromise, define what works for our context in this moment, and then iterate on that. 
+
+# my approach to the wicked problem of generative AI
+
+disclaimer: this is example is probably only applicable to my context
+
+So what do you wanna do is tell you about a course that I used to run at Unsw and how I approached starting to make change in light of this wicked problem that we have with generative AI now acknowledge that because this is a wicked problem my response is specific to my context And it’s only one of any number of possible choices I might have made. I don’t know whether it worked I will never know whether it worked but what I want to do today is give you some ideas for how you might integrate the idea of learning to learn into the assessment in your courses in a way that counters some of the risks of generative AI.
+
+## learning to learn
+
+No I wanna stop by just talking a little bit about what learning looks like because I think that we assume that students arrive at university knowing how to regulate their own learning and I don’t think that’s true so the Zimmerman model of self regulated learning is one that I really like Because it lays out this process whereby learners set goals and plan what they need to learn and how they might go about that they implement effective strategies given the context of the problem that they’re dealing with. They monitor how things are going and adjust those strategies or ask for help if they need they are reflecting on both the process and the product evaluating their own work and then they set more goals and the process continues and I think as educators This processes Justin our DNA and I think it’s an example of where we might suffer from the curse of knowledge and it is helpful for our students if we embed components of this planning execution metacognition reflection process in learning activities and assessment in a way that models what good learning looks like
+
+Self regulated learners succeed because they
+
+-   set goals and plan
+-   implement effective strategies
+-   monitor how things are going and seek help if needed
+-   evaluate their own work
+-   set more goals...
+
+![Zimmerman & Moylan 2009 Self-regulated learning model](zimmerman_3_phase.png)
+
+## Learning (re)design
+
+So the context I wanna tell you about today is a third year research internship course that I used to run at Unsw. This is a course that runs for about 40 students in the last year of the undergraduate program before honours. This is an invite only course and so the students are not average. The course was originally designed to get students hands-on research experience in a lab so students would be assigned a supervisor they would write a research proposal, run a small project, collect data, analyse it, and write it up. That was great until 2020 when students couldn’t be physically in the lab any more so we redesigned the course to centre around compututational reproducibility, giving the students the opporunity to gain similar data skills by working with open data.
+
+And thinking about the changes that we needed to make to assessment in that context it’s important to us two questions first. What do you want Students to learn? What do you want them to be able to do by the end of their time with you? In this context, We wanted students to come to understand the challenge of computational reproducibility, to gain practical skills in visualisation and reproducible reporting and to learn how teamwork works in the real world
+
+-   Who: N = \~40 3rd year Psych students, WAM \> 75% invited, tracking into honours
+
+### WHAT do I want them to learn?
+
+I want students to be able to...
+
+-   understand the challenge of computational reproducibility
+-   visualise data using code
+-   document their process in a reproducible report
+-   work in a team
+
+## HOW do I want them to learn it?
+
+how might they learn that?
+
+I wanted them to learn together. I wanted to embed those self regulated learning skills of metacognition and self reflection in the process and critically for today I wanted them to learn how to leverage generative responsibly.
+
+I want students to ...
+
+-   learn together
+-   engage in metacognition and self reflection
+-   leverage generative AI responsibly
+
+### code like caterpillars
+
+<iframe width="800" height="400" src="https://www.youtube.com/embed/SV7UX7eNGj8?si=jPVUhIlRFBfMwAbP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
+
+## reproducibility project
+
+Okay so the major assessment in this course is a reproduceability project that is modelled on a new type of registered report article that psychology journals have begun to adopt in response to issues with computational reproducibility - verification report. I think Cortex might’ve been the 1st to start to offer the opportunity for researcher is to write a registered report outlining how they would like to re-examine some already published data.
+
+For our students we leveraged the fact that psychological science which is the flagship APA journal has for a few years now required that all authors make their data open and we assigned each group of students a psych science paper and challenged them to use the open data that was available and their relatively new R skills to reproduce the descriptive statistics and the plots in the paper.
+
+The assessment involved working as a group to produce the code that reproduce the descriptives and plots and then individually submitting a verification report that documented that process in a reproducible way using RMarkdown.
+
+Before they started these projects they got some basic dyplr and ggplot skills under their belt in the first 3 to 4 weeks of the course. In week four they took a Foundations test. And then from week 5 to 8 they worked in groups on their reproducibility project.
+
+In week eight they presented their project to the class and then in week nine and 10 they worked individually on their verification submissions.
+
+Now I think what is key here is that when i say document the process, I really mean the process. Yes it’s important to document code on what it’s doing but in this case we really emphasised the value of writing documentation that outlines your thinking process. And by putting most of the marks for the final submission into our students documented the process of reproducing these plots we were able to make ChatGPT less useful because of course the process that you went through in your head
+
+Task modelled on verification report process being adopted by Psychology journals
+
+-   each group assigned a Psychological Science paper
+-   task to use open data and code to reproduce descriptives and plots
+
+![](plots.png)
+
+-   document the process using RMarkdown
+
+[assessment guidelines](https://docs.google.com/document/d/1TiKfJuGF9GhR0v7NeTUDqJfzzYbjho8SPz8Thl6F-BE/edit?usp=drive_link)
+
+course structure
+
+Fortnightly workshops + 2 hour lab each week
+
+Week 1-4 - video modules re data cleaning and visualisation in R & RMarkdown - formative self test exercises
+
+Week 5-8 - group work, reproducibility project
+
+Week 9-10 - individual report write up
+
+## can we use GenAI?
+
+### yes... but, lets play with it first
+
+So we allow students to use generative AI but to set them up for success and to hopefully minimise the likelihood that they would outsource their learning completely in week five we run a workshop where we gave students the opportunity to play with the tools and just test out how good they were at the kinds of things that they were going to need to do as part of the projects in the coming weeks. Learning how to do new things, documenting your code, debugging errors and adhering to tidyverse style.
+
+In the workshop we assigned each group one of these four tasks And gave them example code and prompts that were modelling how you might use ChatGPT in a way that was gonna enhance your learning. Each group was given one of these tasks and there was us to compare how well two of the AIs did at that task.
+
+They had 45 minutes class in class to play and then each group presented back to class what they had learned about the usefulness of each of these tools for each of these tasks. What was really interesting is that because they were all working together Using the same prompts in the same tour at the same time they saw her in real time the variability in ChatGPT gives you and they very quickly learned that the quality of the prompts you give ChatGPT makes all the difference to the quality of the response you get. The students concluded most of these tools were somewhat useful in learning new things or debugging errors, helping you style your code but for the kind of documentation we were are looking for they were useless (because the thinking process is in your head.)
+
+Week 5 workshop
+
+-   learning new things in R
+-   **documenting your code**
+-   debugging errors
+-   adhering to tidyverse style
+
+Each group is assigned a task and 2 AI tools (chatGPT, Claude, Copilot, Perplexity) to compare. They get 45 min class time to "play" and then report back what they learned.
+
+## can we use GenAI?
+
+So in addition to running this workshop as they were embarking on their group work we also required that students acknowledge how they had used generative AI in their final submission. With their final reports they submitted an acknowledgement that owned up to the tools that they had used, the tasks that they had used them for and gave examples of the prompts that they have used.
+
+yes... but acknowledge how in your final submission
+
+[AI assistance acknowledgement form](https://docs.google.com/document/d/1OVmt90ODZIDwpGAuMGsTfOvQRlbCAt0-Q5CFcPt6n8Y/edit?usp=sharing)
+
+![](form.png)
+
+# how to we respond to a wicked problem
+
+## what tasks did they use GenAI for?
+
+Data from this form told us that chatGPT was their favourite ai tool, and most students were using AI to help them debug code, write code and explain code. I was happy that relatively few were using it for writing documentation, which was where I see the evidence of learning and most of the emphasis was in the marking criteria.
+
+![](what.png)
+
+## Take home message
+
+So my take home message for you today is that generative AI and assessment in education is a wicked problem. If it feels like you’re walking through mud, that’s just the nature of wicked problems and I encourage you to be kind to yourself in this process. Change is gonna be slow and iterative and context specific. There is no solution to this problem. So be kind to yourself in the process.
+
+Generative AI had exposed problems that were always there, and forced us to sit back and ask what do we really want our students to be able to do, and how do we want to them to learn to do that. The answers to these questions might have changed now that GenAI is on the scene.
+
+Once you have a clear idea on what you want students to learn and how, you can more easily see how assessment might provide you evidence of that.
+
+We are dealing with a wicked problem
+
+-   it is not solvable
+-   be kind to yourself
+
+### designing learning
+
+-   What do you want students to be able to do?
+
+-   How do you want them to learn to do that?
+
+-   Design assessment that provides you evidence of learning
+
+## one more thing...
+
+Read [Olivia Guest's position paper](https://zenodo.org/records/17065099)
+
+![](guest.png)

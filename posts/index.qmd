@@ -1,0 +1,36 @@
+---
+title: "Rethinking data science education in the age of genAI"
+author: Jenny Richmond Ph.D
+subtitle: "how to we know what students know when chatGPT can do the tasks we have traditionally relied on to assess learning?"
+date: 2025-10-05
+---
+
+I spent a lovely few days in Melbourne last week visiting Monash and attending WOMBAT (Workshop Organised by Monash Business Analytics Team).
+
+::: column-margin
+![WOMBAT is an annual data science event that brings together data science students, educators, and practitioners. https://wombat2025.numbat.space/](https://wombat2025.numbat.space/img/wombat/hex-offwhite.svg)
+:::
+
+Di Cook and her collegaues in Department of Econometrics and Business Statistics at Monash have a tradition of naming software packages, events, and even their research group after Australian animals and the WOMBAT event is an annual excuse for R people from academia and industry to come together and share new packages, practices, and problems.
+
+When Cynthia Huang (who was organising the program) invited me to speak about the impact of generative AI on data science education, I was excited to dive into how large language models (LLMs) are changing the way educators are thinking about what students need to learn and how they need to learn it.
+
+If the #positconf2025 program is anything to go by, it seems that data science practitioners are "all in" on LLMs. The new Positron IDE has an AI assistant and a DataBot agent embedded and Posit are developing packages like `ellmer` and `chatlas` that make using LLMs within your data science workflow easy. The landscape is changing rapidly though, and Posit also launched a [fortnightly AI newsletter](https://posit.co/blog/2025-08-29-ai-newsletter/) dedicated to AI updates.
+
+![AI packages/tools from Posit](https://posit.co/wp-content/uploads/2025/08/PST-Blog-AI-Newsletter-v2.jpg)
+
+::: column-margin
+![The research group at Monash is known as NUMBATS (Non-Uniform Monash Business Analytics Team), a nod to the stripey marsupial from Western Australia.](https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Numbat_0A2A0187.jpg/500px-Numbat_0A2A0187.jpg)
+:::
+
+There is no doubt that using LLMs once you already know your way around R can be useful, but what about learning? I wanted to dig into what students are doing with LLMs, what universities are doing to counter misuse, and most importantly, what we as a community of data science educators are doing (and can do) to support students in learning to navigate the new learning environment they find themselves in.
+
+# what are students doing
+
+# what are universities doing
+
+# what are educators doing
+
+# why is progress slow
+
+# how to we respond to a wicked problem

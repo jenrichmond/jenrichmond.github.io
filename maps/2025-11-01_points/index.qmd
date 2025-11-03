@@ -1,0 +1,126 @@
+---
+title: "Day 1: points"
+author: Jen Richmond
+date: 2025-11-01
+format: html
+editor: source
+draft: FALSE
+image: gw.png
+execute:
+  freeze: true
+---
+
+I am supposed to be hiking the Routeburn Track next week (if the [waist-deep snow melts](https://www.facebook.com/share/p/1ZFTkXT3Kn/) and the Harris Saddle is open) so thought I would start the #30DayMapChallenge with some data about New Zealand Great Walks. 
+
+![](gw.png)
+
+
+# read data
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+library(googlesheets4)
+library(tidyverse)
+library(janitor)
+library(rnaturalearth)
+library(ggeasy)
+library(ggsci)
+
+bookings <- read_sheet("https://docs.google.com/spreadsheets/d/1v3ZIwjE3RgQ3y0seRQ1EAg1xj1VN0oVUHjGKm_-6bRY/edit?gid=0#gid=0", sheet = "gw_bookings") %>%
+select(-"Total all Great Walks") %>%
+  pivot_longer(names_to = "track", values_to = "count", "Abel Tasman Coast Track":"Whanganui Journey") 
+
+
+tracks <- read_sheet("https://docs.google.com/spreadsheets/d/1v3ZIwjE3RgQ3y0seRQ1EAg1xj1VN0oVUHjGKm_-6bRY/edit?gid=0#gid=0", sheet = "gw_lat_long") %>%
+  clean_names() 
+
+```
+
+## wrangle data
+
+```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
+
+tracks <- tracks %>%
+ separate(start_lat_long, into = c("start_lat", "start_long"), ",") %>%
+  separate(end_lat_long, into = c("end_lat", "end_long"), ",") %>%
+mutate(track_format = stringr::str_extract(location, "\\([^)]+\\)$"), # extract string within last bracket
+                track_format = stringr::str_remove_all(track_format, "[\\(\\)]"),  # remove brackets
+                location = stringr::str_remove(location, "\\s*\\([^)]+\\)$")) %>% # make everything but the bracket content location
+  mutate(start_location = str_extract(location, "^[^:]+"), # pull up to first : into start location
+         end_location = str_extract(location, "(?<=;\\s)[^:]+")) %>% # pull text after ; space up to :
+mutate(start_lat = as.numeric(start_lat), end_lat = as.numeric(end_lat), 
+       start_long = as.numeric(start_long), end_long = as.numeric(end_long))
+  
+
+joined <- left_join(bookings, tracks, by = "track")
+
+total_year <- joined %>%
+  group_by(year, track, start_lat, start_long, track_format) %>%
+  summarise(total_bookings = sum(count))
+
+total23_24 <- total_year %>%
+  filter(year == "2023-2024") %>%
+  mutate(booking_category = cut(total_bookings, 
+                                 breaks = c(0, 5000, 10000, Inf),
+                                 labels = c("Low (0-5k)", "Medium (5-10k)", "High (>10k)"))) %>%
+  mutate(track_format = fct_relevel(track_format, c("one way", "river journey", "loop track")))
+
+
+
+```
+
+## plot data
+
+```{r}
+#| code-fold: true
+#| fig-width: 7
+#| fig-height: 8
+
+
+nz <- ne_countries(country = "new zealand", returnclass = "sf", scale = "large")
+
+# first plot from tracks data to check locations, includes all 11 tracks
+
+ggplot() +
+  geom_sf(data = nz) +
+  geom_point(data = tracks, aes(x = start_long, y = start_lat, colour = track), size = 2) +
+  coord_sf(xlim = c(166, 179), ylim = c(-47, -34)) +
+  theme_minimal() +
+ easy_remove_axes(which = c("both"), what = c("title")) +
+  labs(title = "Where are the Great Walks of New Zealand?")
+
+
+# then plot from 23-24 season from bookings joined data, only have booking data for 9 tracks
+
+
+ggplot() +
+  geom_sf(data = nz) +
+  geom_point(data = total23_24, aes(x = start_long, y = start_lat, 
+                                    colour = track_format, size = booking_category), shape = 20) +
+  coord_sf(xlim = c(166, 179), ylim = c(-47, -34)) +
+  theme_bw()  +
+  scale_size_manual(values = c(3, 5, 7), name = "Visitors") +
+   easy_remove_axes(which = c("both"), what = c("title")) + 
+  scale_color_npg() +
+  easy_add_legend_title("Track type") +
+  guides(color = guide_legend(override.aes = list(size = 3))) + # Larger dots in the legend
+  labs(title = "Which New Zealand Great Walks had the most traffic in the 2023-2024 season?", 
+       subtitle = "There are 11 Great Walks in New Zealand. More than 14000 people walked the \nAbel Tasman Coast track in the 2023-2024 season. Tracks in Fiordland were also popular. \nThe Routeburn and Kepler tracks each saw between 6000 and 7000 visitors.", 
+       caption = "Note: Visitor numbers for the Hump Ridge track and the \nLake Waikaremoana track were unavailable.")
+
+
+```
+
+
+```{r}
+#| include: false
+ggsave(here::here("maps", "2025-11-01_points", "gw.png"), width = 7, height = 8)
+
+
+```
+

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>blog – Jen Richmond</title>
+<title>30DayMaps – Jen Richmond</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,10 +79,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      page: 18,
-    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -168,7 +167,7 @@ window.Quarto = {
 <span class="menu-text">about</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
+    <a class="nav-link" href="./posts.html"> 
 <span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -178,11 +177,15 @@ window.Quarto = {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-viz">    
         <li>
     <a class="dropdown-item" href="./charts_30day.html">
- <span class="dropdown-text">30DayChallenge</span></a>
+ <span class="dropdown-text">30DayChartChallenge</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./charts_tidytuesday.html">
  <span class="dropdown-text">TidyTuesday</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./maps_30day.html">
+ <span class="dropdown-text">30DayMapChallenge</span></a>
   </li>  
     </ul>
   </li>
@@ -224,13 +227,13 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(21)</span></div><div class="category" data-category="ZGF0YSUyMHdyYW5nbGluZw==">data wrangling <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2dwbG90">ggplot <span class="quarto-category-count">(2)</span></div><div class="category" data-category="aWRoZ3Q=">idhgt <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">blog</h1>
+<h1 class="title">30DayMaps</h1>
 </div>
 
 
@@ -247,534 +250,40 @@ window.Quarto = {
 </header>
 
 
-<p>Want to support my blog? <a href="https://buymeacoffee.com/jennyrichm9" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" height="30"></a></p>
+<p>I am learning to make maps with R. I made these maps as part of the #30DayMapChallenge in November 2025.</p>
 
 
 
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1760612400000" data-listing-file-modified-sort="1760671341514" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="629">
-<a href="./posts/2025-10-17_tefap/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/2025-10-17_tefap/index_files/figure-html/unnamed-chunk-4-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-TEFAP order cancellations
-</h5>
-<div class="card-text listing-description delink">
-On BlueSky this afternoon I came across some data that ProPublica were sharing on github about cancelled food orders funded by The Emergency Food Assistance Program (TEFAP).…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Oct 17, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1759575600000" data-listing-file-modified-sort="1760671533754" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="331">
-<a href="./posts/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Rethinking data science education in the age of genAI
-</h5>
-<div class="card-text listing-description delink">
-I spent a lovely few days in Melbourne last week visiting Monash and attending WOMBAT (Workshop Organised by Monash Business Analytics Team).
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jenny Richmond Ph.D
-</div>
-<div class="listing-date">
-Oct 5, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1748692800000" data-listing-file-modified-sort="1748999576759" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="278">
-<a href="./posts/2025-05-19_font_notes/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2025-05-19_font_notes/featured.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-font notes
-</h5>
-<div class="card-text listing-description delink">
-I have been getting brave with fonts in my ggplots and running into problems with fonts not appearing the same in my quarto doc and exported png files. BlueSky advice was…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Jun 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-date-sort="1747915200000" data-listing-file-modified-sort="1749000891020" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="791">
-<a href="./posts/2025-05-21_annotations/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/2025-05-21_annotations/index_files/figure-html/unnamed-chunk-3-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-selective annotations
-</h5>
-<div class="card-text listing-description delink">
-My friend Lisa called me with a ggplot challenge the other day. She was trying to work out how to have only some of her points labelled with annotations. Here are some notes…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-May 23, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-listing-date-sort="1746705600000" data-listing-file-modified-sort="1747091281903" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2397">
-<a href="./posts/2025-05-09-what_happened_what_now/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/2025-05-09-what_happened_what_now/the_train.png" alt="A steam train called "Academia" puffs through the mountains with three young academics aboard. There is a steep cliff alongside the track." style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-what happened? what now?
-</h5>
-<div class="card-text listing-description delink">
-I think about academia like a train that I jumped on way back when I was a baby scientist. The first time one of your professors sees potential in you, they invite you to…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-May 9, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-listing-date-sort="1746100800000" data-listing-file-modified-sort="1747097713364" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1468">
-<a href="./posts/2025-05-02_30daychartdebrief/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2025-05-02_30daychartdebrief/featured.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-30dayChartChallenge debrief
-</h5>
-<div class="card-text listing-description delink">
-Where did April go? The #30DayChartChallenge is all done. As predicted, I didn’t manage to do it every day, but committing to try and make charts related to each of the…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-May 2, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-listing-date-sort="1745064000000" data-listing-file-modified-sort="1745197328882" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1132">
-<a href="./posts/2025-04-18_closeread/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/2025-04-18_closeread/img/grebe.jpg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Pūteketeke Pandemonium
-</h5>
-<div class="card-text listing-description delink">
-This post is my first attempt at a <code>closeread</code> scrollytelling story. It tells the story of the Pūteketeke controversy that plagued the Forest and Bird NZ <em>Bird of the Century</em> co…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Apr 20, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="7" data-listing-date-sort="1727866800000" data-listing-file-modified-sort="1755144448297" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1006">
-<a href="./posts/2024-10-03-what-i-learned-at-positconf/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2024-10-03-what-i-learned-at-positconf/featured.jpeg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-what i learned at positconf
-</h5>
-<div class="card-text listing-description delink">
-Several weeks ago I attended #positconf in Seattle. I was super grateful to receive funding for my travel, stay, and registration from Posit as an Opportunity Scholar and…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Oct 3, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="8" data-categories="cHl0aG9u" data-listing-date-sort="1720008000000" data-listing-file-modified-sort="1743462968030" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="361">
-<a href="./posts/2024-07-04-learning_python/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2024-07-04-learning_python/featured.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-learning python
-</h5>
-<div class="listing-categories">
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1761908400000" data-listing-file-modified-sort="1762139134036" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="658">
+<div class="thumbnail"><a href="./maps/2025-11-01_points/index.html" class="no-external">
 
-<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+<img loading="lazy" src="./maps/2025-11-01_points/gw.png" class="thumbnail-image">
 
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./maps/2025-11-01_points/index.html" class="no-external">Day 1: points</a>
+</h3>
+<div class="delink listing-description"><a href="./maps/2025-11-01_points/index.html" class="no-external">
+I am supposed to be hiking the Routeburn Track next week (if the waist-deep snow melts and the Harris Saddle is open) so thought I would start the #30DayMapChallenge with…
+</a></div>
 </div>
-<div class="card-text listing-description delink">
-When you are exploring a far off land and only know a tiny bit of the language they speak there, you always carry a little dictionary with commonly used phrases translated…
+<div class="metadata">
+<a href="./maps/2025-11-01_points/index.html" class="no-external">
+<div class="listing-date">
+Nov 1, 2025
 </div>
-<div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Jen Richmond
 </div>
-<div class="listing-date">
-Jul 4, 2024
+</a>
 </div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="9" data-categories="ZGF0YSUyMHdyYW5nbGluZw==" data-listing-date-sort="1684843200000" data-listing-file-modified-sort="1743449668759" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="294">
-<a href="./posts/2023-05-24-rowwise-mean/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2023-05-24-rowwise-mean/featured.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-rowwise %&gt;% mean
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHdyYW5nbGluZw=='); return false;">data wrangling</div>
-
-</div>
-<div class="card-text listing-description delink">
-When you have data from a survey, the responses for each item are most often listed in different variables. Generally you have to average across the items to get a mean…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-May 24, 2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="10" data-categories="aWRoZ3QlMkNnZ3Bsb3Q=" data-listing-date-sort="1682337600000" data-listing-file-modified-sort="1743449195759" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="774">
-<a href="./posts/2023-04-25-error-bars-on-plots/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2023-04-25-error-bars-on-plots/featured.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-error bars on plots
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('aWRoZ3Q='); return false;">idhgt</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90'); return false;">ggplot</div>
-
-</div>
-<div class="card-text listing-description delink">
-Repurposing this APA figures post as a IDHTG (I don’t have to google) post.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Apr 25, 2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="11" data-categories="Z2dwbG90" data-listing-date-sort="1670929200000" data-listing-file-modified-sort="1743469377268" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="280">
-<a href="./posts/2022-12-15-colours-that-r-knows/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2022-12-15-colours-that-r-knows/featured.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-colours that R knows
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90'); return false;">ggplot</div>
-
-</div>
-<div class="card-text listing-description delink">
-I have been working through the ggplot R Advent calendar by Kiirsti Owen with some lovely RLadies friends and we got up to Day 15 where we started controlling colours in…<code></code>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Dec 14, 2022
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="12" data-listing-date-sort="1664276400000" data-listing-file-modified-sort="1743469623328" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="333">
-<a href="./posts/2022-09-28-git-hints/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2022-09-28-git-hints/featured.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-git hints
-</h5>
-<div class="card-text listing-description delink">
-I am getting pretty good at avoiding git merge conflicts by always remembering to pull before I push when using github. But the terminal in RStudio has been giving me this…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Sep 28, 2022
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="13" data-listing-date-sort="1657627200000" data-listing-file-modified-sort="1745655435770" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1456">
-<a href="./posts/2022-07-13-analysing-smartwatch-data/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2022-07-13-analysing-smartwatch-data/featured.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-analysing smartwatch data
-</h5>
-<div class="card-text listing-description delink">
-Sometimes trying to replicate what someone is doing in a blogpost you find on twitter is a great way to learn something new. I am half heartedly thinking about trying to…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Jul 13, 2022
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="14" data-listing-date-sort="1656244800000" data-listing-file-modified-sort="1745655484326" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="538">
-<a href="./posts/2022-06-27-using-lists-in-r/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2022-06-27-using-lists-in-r/pepper.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-using lists in R
-</h5>
-<div class="card-text listing-description delink">
-One of my goals while on long service leave is to learn some new R things that have been on my radar for a while… the first of these is purrr. The purrr package allows you…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Jun 27, 2022
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="15" data-listing-date-sort="1642330800000" data-listing-file-modified-sort="1743474548436" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1351">
-<a href="./posts/2022-01-17-my-favourite-things-about-r/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2022-01-17-my-favourite-things-about-r/featured.jpeg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-my favourite things about R
-</h5>
-<div class="card-text listing-description delink">
-I am prepping a talk for R-Ladies Sydney about my favourite R things, including the packages and functions that end up in every script I write.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Jan 17, 2022
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="16" data-listing-date-sort="1642244400000" data-listing-file-modified-sort="1745296055487" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="519">
-<a href="./posts/2022-01-16-useful-bash-commands/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2022-01-16-useful-bash-commands/featured.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-useful bash commands
-</h5>
-<div class="card-text listing-description delink">
-I remember working in a cafe in Melbourne with Charles Gray a couple of years ago and watching in awe as she navigated her way around our project files using the terminal…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Jan 16, 2022
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="17" data-listing-date-sort="1630324800000" data-listing-file-modified-sort="1745295718566" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="637">
-<a href="./posts/2021-08-31-parameterised-penguins/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2021-08-31-parameterised-penguins/featured.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-parameterised penguins
-</h5>
-<div class="card-text listing-description delink">
-I am beginning a project where we want to create a distill site that has lots of profile pages that all have the same format but pull different data from a dataframe. Here I…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Aug 31, 2021
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="18" data-listing-date-sort="1624276800000" data-listing-file-modified-sort="1743474532523" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="143">
-<a href="./posts/2021-06-22-pat-for-github/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" data-src="./posts/2021-06-22-pat-for-github/featured.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-PAT for GitHub
-</h5>
-<div class="card-text listing-description delink">
-I have been avoiding setting up a Personal Access Token to authenticate my github account for a while because it seemed complicated. Never fear Happy Git with R and <code>usethis()</code>…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Jun 22, 2021
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="19" data-listing-date-sort="1610017200000" data-listing-file-modified-sort="1746082071108" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="640">
-<a href="./posts/2021-01-08-my-first-pull-request/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" data-src="./posts/2021-01-08-my-first-pull-request/featured.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-my first pull request
-</h5>
-<div class="card-text listing-description delink">
-There are so many lovely packages for colour palettes (see links at the bottom of this post for more).
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Jan 8, 2021
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="20" data-listing-date-sort="1605610800000" data-listing-file-modified-sort="1743476003629" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="598">
-<a href="./posts/2020-11-18-digging-into-the-janitor-package/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" data-src="./posts/2020-11-18-digging-into-the-janitor-package/featured.jpeg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-cleaning penguins with the janitor package
-</h5>
-<div class="card-text listing-description delink">
-The janitor package by Sam Firke contains probably my FAVOURITE R function: <code>clean_names()</code>.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Jen Richmond
-</div>
-<div class="listing-date">
-Nov 18, 2020
-</div>
-</div>
-</div>
-</div></a>
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
-<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
-  <ul class="pagination"></ul>
-</nav>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
