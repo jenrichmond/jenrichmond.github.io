@@ -10,10 +10,9 @@ execute:
   freeze: true
 ---
 
+Sticking to the theme of walking trails in NZ, for Day 2 of the #30DayMapChallenge I am plotting the route of the Te Araroa Trail, a 3000km track that goes from the top of the North Island to the bottom of the South Island. My first foray into plotting .gpx data, downloaded from the [Te Araroa Trail map site](https://www.teararoa.org.nz/trail-maps/).
 
-Sticking to the theme of walking trails in NZ, for Day 2 of the #30DayMapChallenge I am plotting the route of the Te Araroa Trail, a 3000km track that goes from the top of the North Island to the bottom of the South Island. 
-
-![](ta.png)
+[![Route and elevation of the Te Araroa trail. ](ta.png)](https://www.teararoa.org.nz/trail-maps/)
 
 ## read data
 
@@ -40,7 +39,7 @@ trail <- st_read(here("maps", "2025-11-02_lines", "gpx_data", "TeAraroaTrail_202
 
 ## explore data
 
-This is my first time reading .gpx data into R and it looks like a WHOLE LOT of NAs. It is possible that there is useful information in some of these variables, and `naniar::vis_miss()` is a good way to check. It seems that only the name variable and the geometry variable have any data at all, so I am going to select just those. 
+This is my first time reading .gpx data into R and it looks like a WHOLE LOT of NAs. It is possible that there is useful information in some of these variables, and `naniar::vis_miss()` is a good way to check. It seems that only the name variable and the geometry variable have any data at all, so I am going to select just those.
 
 ```{r}
 #| code-fold: true
@@ -55,7 +54,6 @@ ta <- trail %>%
 
 ## plot trail
 
-
 ```{r}
 #| code-fold: true
 ggplot() +
@@ -67,7 +65,7 @@ ggplot() +
 
 ## plot sections
 
-The whole trail gpx file doesn't have elevation data, so I have downloaded all the files for each trail section and I am reading them all into into single dataframe, pulling section number and name out of filename. There are also parts of the route that through hikers typically bypass to avoid dangerous rivers or sections of road that are not worth walking, so I am filtering out those bypass sections too. 
+The whole trail gpx file doesn't have elevation data, so I have downloaded all the files for each trail section and I am reading them all into into single dataframe, pulling section number and name out of filename. There are also parts of the route that through hikers typically bypass to avoid dangerous rivers or sections of road that are not worth walking, so I am filtering out those bypass sections too.
 
 ```{r}
 #| code-fold: true
@@ -119,7 +117,6 @@ map <- ggplot() +
 
 
 ```
-
 
 ```{r}
 #| include: false

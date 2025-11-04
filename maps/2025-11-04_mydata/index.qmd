@@ -1,0 +1,12 @@
+---
+title: "Day 4: mydata"
+author: Jen Richmond
+date: 2025-11-04
+format: html
+editor: source
+draft: FALSE
+image: ta.png
+execute:
+  freeze: true
+---
+

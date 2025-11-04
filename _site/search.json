@@ -1285,7 +1285,7 @@
     "href": "maps_30day.html",
     "title": "30DayMaps",
     "section": "",
-    "text": "I am learning to make maps with R. I made these maps as part of the #30DayMapChallenge in November 2025.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 0: themes\n\n\n\n\n\n\n\n\nOct 31, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1: points\n\n\n\n\n\n\n\n\nNov 1, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2: lines\n\n\n\n\n\n\n\n\nNov 2, 2025\n\n\nJen Richmond\n\n\n\n\n\nNo matching items"
+    "text": "I am learning to make maps with R. I made these maps as part of the #30DayMapChallenge in November 2025.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 0: themes\n\n\n\n\n\n\n\n\nOct 31, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1: points\n\n\n\n\n\n\n\n\nNov 1, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2: lines\n\n\n\n\n\n\n\n\nNov 2, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 4: mydata\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nindex\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "maps/2025-10-31_challenge/index.html",
@@ -1299,7 +1299,7 @@
     "href": "maps/2025-11-02_lines/index.html",
     "title": "Day 2: lines",
     "section": "",
-    "text": "Sticking to the theme of walking trails in NZ, for Day 2 of the #30DayMapChallenge I am plotting the route of the Te Araroa Trail, a 3000km track that goes from the top of the North Island to the bottom of the South Island."
+    "text": "Sticking to the theme of walking trails in NZ, for Day 2 of the #30DayMapChallenge I am plotting the route of the Te Araroa Trail, a 3000km track that goes from the top of the North Island to the bottom of the South Island. My first foray into plotting .gpx data, downloaded from the Te Araroa Trail map site."
   },
   {
     "objectID": "maps/2025-11-02_lines/index.html#read-data",
