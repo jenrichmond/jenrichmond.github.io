@@ -5,7 +5,7 @@ date: 2025-11-02
 format: html
 editor: source
 draft: FALSE
-image: gw.png
+image: ta.png
 execute:
   freeze: true
 ---
