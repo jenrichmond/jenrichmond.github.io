@@ -11,7 +11,7 @@
     "href": "maps_30day.html",
     "title": "30DayMaps",
     "section": "",
-    "text": "I am learning to make maps with R. I made these maps as part of the #30DayMapChallenge in November 2025.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 0: themes\n\n\n\n\n\n\n\n\nOct 31, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1: points\n\n\n\n\n\n\n\n\nNov 1, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2: lines\n\n\n\n\n\n\n\n\nNov 2, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 4: mydata\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nindex\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "I am learning to make maps with R. I made these maps as part of the #30DayMapChallenge in November 2025.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 0: themes\n\n\n\n\n\n\n\n\nOct 31, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1: points\n\n\n\n\n\n\n\n\nNov 1, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2: lines\n\n\n\n\n\n\n\n\nNov 2, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 3: polygon\n\n\n\n\n\n\n\n\nNov 3, 2025\n\n\nJen Richmond\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "charts_tidytuesday.html",
@@ -901,6 +901,20 @@
     "title": "Day 0: themes",
     "section": "",
     "text": "I can’t resist a 30 Day DataViz Challenge and November is all about maps! I can count the number of maps I have made with R on one hand, so this challenge is going to have me learning LOTS of new things.\nHere are the daily #30DayMapChallenge themes…"
+  },
+  {
+    "objectID": "maps/2025-11-03_polygon/index.html",
+    "href": "maps/2025-11-03_polygon/index.html",
+    "title": "Day 3: polygon",
+    "section": "",
+    "text": "Day 3 of the challenge is polygons, so I wanted to work out how make a map that splits NZ into regions and fills the area of each by population. The spData package was a good find because it contains data about land area, population, and median income data by region. The population data was a bit out of date so here I have found 2024 estimates from StatsNZ and joined the updated population data."
+  },
+  {
+    "objectID": "maps/2025-11-03_polygon/index.html#plot",
+    "href": "maps/2025-11-03_polygon/index.html#plot",
+    "title": "Day 3: polygon",
+    "section": "plot",
+    "text": "plot\n\n\nCode\nggplot(data = nz) +\n  geom_sf(aes(fill = Name), color = \"black\") + \n  labs(title = \"Map of New Zealand Regions\", fill = \"Region Name\") +\n  theme_bw() \n\n\n\n\n\n\n\n\n\nCode\nggplot(data = nzpop24) +\n  geom_sf(aes(fill = Population24), color = \"black\") + # Fill by region name and add black borders\n  labs(title = \"The Team of 5 million\", fill = \"Population\", \n       subtitle = \"StatsNZ estimates that 5.3 million people live in New Zealand. \\nOne third of Kiwis live in Auckland. \\nMore than 75% of Kiwis live in the North Island.\", \n       caption = \"Data from StatsNZ Dec 2024\") +\n  scale_fill_gradient(low = \"lightblue\", high = \"darkblue\", \n                      labels = label_number(scale = 1e-6, suffix = \"M\")) +\n  theme_bw()"
   },
   {
     "objectID": "charts/2025-04-01_fractions/index.html",
