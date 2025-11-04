@@ -28,6 +28,7 @@ library(rnaturalearth)
 library(here)
 library(naniar)
 library(ggannotate)
+library(ggeasy)
 
 # Get NZ map
 nz <- ne_countries(country = "new zealand", returnclass = "sf", scale = "large")
@@ -113,8 +114,8 @@ map <- ggplot() +
     arrow = arrow(length = unit(0.1, "cm"), type = "closed"),
     color = "blue",
     linewidth  = 1
-  )
- 
+  ) +
+  easy_remove_axes(which = c("both"), what = c("title"))
 
 
 ```
