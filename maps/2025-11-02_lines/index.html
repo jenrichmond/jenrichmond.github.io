@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jen Richmond">
-<meta name="dcterms.date" content="2025-04-20">
+<meta name="dcterms.date" content="2025-11-02">
 
-<title>Pūteketeke Pandemonium – Jen Richmond</title>
+<title>Day 2: lines – Jen Richmond</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -42,10 +77,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-8fd1faf6fd93e4e6d207ae0f9db51d78.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
-<script src="../../site_libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
-<script src="../../site_libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -82,11 +114,9 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </script>
-<meta cr-debug-mode="false">
-<meta cr-remove-header-space="false">
 
 
-<link rel="stylesheet" href="../../site_libs/quarto-contrib/quarto-project/qmd-lab/closeread/closeread.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -172,35 +202,32 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#read-data" id="toc-read-data" class="nav-link active" data-scroll-target="#read-data">read data</a></li>
+  <li><a href="#explore-data" id="toc-explore-data" class="nav-link" data-scroll-target="#explore-data">explore data</a></li>
+  <li><a href="#plot-trail" id="toc-plot-trail" class="nav-link" data-scroll-target="#plot-trail">plot trail</a></li>
+  <li><a href="#plot-sections" id="toc-plot-sections" class="nav-link" data-scroll-target="#plot-sections">plot sections</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
-      <!-- user-provided yaml closeread style options -->
-      <style>
-        :root {
-          --cr-narrative-overlay-min-width: 300px;
---cr-section-background-color: #f7f6f5;
---cr-poem-font-family: , “Times New Roman”, Times, serif;
---cr-narrative-font-size: 2em;
---cr-narrative-font-family: Arial, sans-serif;
---cr-narrative-overlay-max-width: 600px;
---cr-narrative-outer-margin: #ffffff;
---cr-narrative-background-color-overlay: #525252;
-        }
-      </style>
-    
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Pūteketeke Pandemonium</h1>
+<h1 class="title">Day 2: lines</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -212,7 +239,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 20, 2025</p>
+      <p class="date">November 2, 2025</p>
     </div>
   </div>
   
@@ -224,232 +251,84 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </header>
 
 
-<p>This post is my first attempt at a <code>closeread</code> scrollytelling story. It tells the story of the <a href="https://www.forestandbird.org.nz/resources/bird-century-winner-announced-puteketeke-pandemonium-prevails?gad_source=1&amp;gclid=CjwKCAjwk43ABhBIEiwAvvMEBxXajWDGGQNmx6QbZjiQlec8hqOLnfd8OZ1hKKLJYBtjSOkwTdUc4RoCbiQQAvD_BwE">Pūteketeke controversy</a> that plagued the Forest and Bird NZ <em>Bird of the Century</em> competition in 2023.</p>
-<p>The <code>closeread</code> extension makes it easy to turn a Quarto document into a scrollytelling story like this one. The <code>closeread</code> <a href="https://closeread.dev/">documentation</a> and <a href="https://www.gastonsanchez.com/learn-closeread/">this tutorial</a> by Gaston Sanchez were helpful in making this story.</p>
-<div class="cr-section cr-column-screen sidebar-left">
-<div class="narrative-col">
-<div class="trigger new-trigger" data-focus-on="cr-grebe">
-<div class="narrative">
-<p>This bird is called a Pūteketeke</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>It is also known as the Australasian Crested Grebe.</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>There are fewer than 1000 Pūteketeke in New Zealand.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-courtship">
-<div class="narrative">
-<p>They are known for unique courtship behaviour…</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-parenting">
-<div class="narrative">
-<p>… and for being good parents</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-platform">
-<div class="narrative">
-<p>In my hometown, Wanaka NZ, the humans make the Pūteketeke floating platforms to build their nests on. Read about the <a href="https://wanakagrebes.org.nz/grebe-project/">Wanaka Grebe Project here</a>.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-bb">
-<div class="narrative">
-<p>In 2023, the Pūteketeke went global.</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>Billboards appeared in cities across the world.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-well">
-<div class="narrative">
-<p>From Wellington NZ …</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-paris">
-<div class="narrative">
-<p>… to Paris, France</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-wi">
-<div class="narrative">
-<p>… to Manitowoc, Wisconsin</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>How did the Pūteketeke get this kind of international attention??</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-plot1">
-<div class="narrative">
-<p>In 2023 Forest and Bird New Zealand was celebrating its centenary and had dubbed its annual competition “Bird of the Century”.</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>Each year Forest and Bird invites New Zealanders to vote for their favourite native bird.</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>Anyone with a valid email address can enter.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-boty">
-<div class="narrative">
-<p>In 2023, comedian John Oliver heard about the competition and threw his resources behind a campaign in support of the Pūteketeke.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-john">
-<div class="narrative">
-<p>John Oliver himself described the campaign as <a href="https://www.youtube.com/watch?v=6GF6Gd7wrlk">“alarmingly aggressive”</a></p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-jimmy">
-<div class="narrative">
-<p>John even appeared on <a href="https://www.youtube.com/watch?v=uVE1hBzHn3s&amp;t=6s">Jimmy Fallon’s show</a> in a Pūteketeke costume</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>This is not the first time that the Forest and Bird competition has attracted controversy.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-bat">
-<div class="narrative">
-<p>In 2021, the Long-tailed bat (Pekapeka-tou-roa) won the Bird of the Year, even though it is definitely not a bird.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-plot2">
-<div class="narrative">
-<p>The Long-tailed bat (Pekapeka-tou-roa) is New Zealand’s only native land mammal and caused a bit of a stir when it was voted as New Zealand’s favourite bird in 2021.</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>The results in 2022 caused less furor.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-penguin">
-<div class="narrative">
-<p>While the Little Penguin / Kororā technically received the most #1 votes…</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-wren">
-<div class="narrative">
-<p>…it was pipped at the post by the New Zealand Rock Wren / Pīwauwau…</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-plot3">
-<div class="narrative">
-<p>…a tiny alpine bird that lives in the mountains of the South Island.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-plot4">
-<div class="narrative">
-<p>In 2023,the result of the John Oliver’s campaign was a resounding win for the Pūteketeke (more than 290K votes!) and a boost in donations to Forest and Bird.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-plot5">
-<div class="narrative">
-<p>Interest in the Forest and Bird competition carried over into 2024, with vote rates higher than average.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-ye">
-<div class="narrative">
-<p>Last year, the Yellow-eyed Penguin / Hoiho prevailed.</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>Check out the <a href="https://www.birdoftheyear.org.nz/">Forest and Bird website</a> to read about past winners, donate to conservation efforts, and vote for your favourite New Zealand bird in the 2025 competition (voting opens in September).</p>
-</div>
-</div>
-</div>
-<div class="sticky-col">
-<div class="sticky-col-stack">
-<div id="cr-grebe" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/grebe.jpg" class="img-fluid figure-img"></p>
-<figcaption>Pūteketeke</figcaption>
-</figure>
-</div>
-</div>
-<div id="cr-courtship" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://media1.tenor.com/m/pr8Ep6wpQoYAAAAd/Pūteketeke-bird.gif" class="img-fluid figure-img"></p>
-<figcaption>Pūteketeke courtship behaviour</figcaption>
-</figure>
-</div>
-</div>
-<div id="cr-parenting" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://blog.forestandbird.org.nz/wp-content/uploads/love-you-mum-crested-grebe-steve-attwood.jpg" class="img-fluid figure-img"></p>
-<figcaption>Pūteketeke parent and chick</figcaption>
-</figure>
-</div>
-</div>
-<div id="cr-platform" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://wanakagrebes.org.nz/wp-content/uploads/2024/05/img-project-nest.jpg" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Pūteketeke platform</figcaption>
-</figure>
-</div>
-</div>
-<div id="cr-bb" class="sticky">
-<p><img src="img/bb.webp" class="img-fluid"></p>
-</div>
-<div id="cr-well" class="sticky">
-<p><img src="img/billboard.webp" class="img-fluid"></p>
-</div>
-<div id="cr-paris" class="sticky">
-<p><img src="img/france.jpg" class="img-fluid"></p>
-</div>
-<div id="cr-wi" class="sticky">
-<p><img src="img/bird-campaign WI.webp" class="img-fluid"></p>
-</div>
-<div id="cr-plot1" class="sticky">
+<p>Sticking to the theme of walking trails in NZ, for Day 2 of the #30DayMapChallenge I am plotting the route of the Te Araroa Trail, a 3000km track that goes from the top of the North Island to the bottom of the South Island.</p>
+<p><img src="ta.png" class="img-fluid"></p>
+<section id="read-data" class="level2">
+<h2 class="anchored" data-anchor-id="read-data">read data</h2>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggannotate)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get NZ map</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>nz <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">country =</span> <span class="st">"new zealand"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>, <span class="at">scale =</span> <span class="st">"large"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Load your trail data </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>trail <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">here</span>(<span class="st">"maps"</span>, <span class="st">"2025-11-02_lines"</span>, <span class="st">"gpx_data"</span>, <span class="st">"TeAraroaTrail_2025_26.gpx"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Multiple layers are present in data source /Users/jenrichmond/Dropbox/ALL_R_stuff/2. WEBSITES/jenrichmond.github.io/maps/2025-11-02_lines/gpx_data/TeAraroaTrail_2025_26.gpx, reading layer `waypoints'.
+Use `st_layers' to list all layer names and their type in a data source.
+Set the `layer' argument in `st_read' to read a particular layer.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `waypoints' from data source 
+  `/Users/jenrichmond/Dropbox/ALL_R_stuff/2. WEBSITES/jenrichmond.github.io/maps/2025-11-02_lines/gpx_data/TeAraroaTrail_2025_26.gpx' 
+  using driver `GPX'
+Simple feature collection with 3058 features and 23 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: 167.7707 ymin: -46.62184 xmax: 175.6654 ymax: -34.4267
+Geodetic CRS:  WGS 84</code></pre>
 </div>
 </div>
-</div>
-</div>
-<div id="cr-boty" class="sticky">
-<p><img src="img/boty logo.png" class="img-fluid"> <img src="img/john-oliver-1920.avif" class="img-fluid"></p>
-</div>
-<div id="cr-john" class="sticky">
-<p><img src="https://media.rnztools.nz/rnz/image/upload/s--qVuRXVAg--/ar_16:10,c_fill,f_auto,g_auto,q_auto,w_1050/v1699320268/4KZWYV8_20231107_135316_jpg?_a=BACCd2AD.png" class="img-fluid"></p>
-</div>
-<div id="cr-jimmy" class="sticky">
-<p><img src="img/the-tonight-show-john-oliver.jpg" class="img-fluid"></p>
-</div>
-<div id="cr-bat" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/long-tailed-bat-hero-1920.webp" class="img-fluid figure-img" width="640"></p>
-<figcaption>Pekapeka-tou-roa, Bird of the Year 2021</figcaption>
-</figure>
-</div>
-</div>
-<div id="cr-plot2" class="sticky">
+</section>
+<section id="explore-data" class="level2">
+<h2 class="anchored" data-anchor-id="explore-data">explore data</h2>
+<p>This is my first time reading .gpx data into R and it looks like a WHOLE LOT of NAs. It is possible that there is useful information in some of these variables, and <code>naniar::vis_miss()</code> is a good way to check. It seems that only the name variable and the geometry variable have any data at all, so I am going to select just those.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(trail)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 3,058
+Columns: 24
+$ ele           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ time          &lt;dttm&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ magvar        &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ geoidheight   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ name          &lt;chr&gt; "0 km", "1 km", "2 km", "3 km", "4 km", "5 km", "6 km", …
+$ cmt           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ desc          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ src           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ link1_href    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ link1_text    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ link1_type    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ link2_href    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ link2_text    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ link2_type    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ sym           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ type          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ fix           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ sat           &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ hdop          &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ vdop          &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ pdop          &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ ageofdgpsdata &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ dgpsid        &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ geometry      &lt;POINT [°]&gt; POINT (172.6776 -34.4267), POINT (172.6774 -34.433…</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_miss</span>(trail)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -457,26 +336,24 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </figure>
 </div>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ta <span class="ot">&lt;-</span> trail <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, geometry)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-</div>
-<div id="cr-penguin" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/blue.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Kororā, Bird of the Year runner up 2022</figcaption>
-</figure>
-</div>
-</div>
-<div id="cr-wren" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/wren.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Pīwauwau, Bird of the Year 2022</figcaption>
-</figure>
-</div>
-</div>
-<div id="cr-plot3" class="sticky">
+</section>
+<section id="plot-trail" class="level2">
+<h2 class="anchored" data-anchor-id="plot-trail">plot trail</h2>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> nz, <span class="at">fill =</span> <span class="st">"lightgray"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> ta, <span class="at">color =</span> <span class="st">"skyblue4"</span>, <span class="at">size =</span> <span class="fl">0.2</span>)  <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">166</span>, <span class="dv">179</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">47</span>, <span class="sc">-</span><span class="dv">34</span>)) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -485,45 +362,63 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-</div>
-<div id="cr-plot4" class="sticky">
+</section>
+<section id="plot-sections" class="level2">
+<h2 class="anchored" data-anchor-id="plot-sections">plot sections</h2>
+<p>The whole trail gpx file doesn’t have elevation data, so I have downloaded all the files for each trail section and I am reading them all into into single dataframe, pulling section number and name out of filename. There are also parts of the route that through hikers typically bypass to avoid dangerous rivers or sections of road that are not worth walking, so I am filtering out those bypass sections too.</p>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>gpx_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="fu">here</span>(<span class="st">"maps"</span>, <span class="st">"2025-11-02_lines"</span>, <span class="st">"gpx_data"</span>, <span class="st">"routes"</span>), </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.gpx$"</span>, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>all_routes <span class="ot">&lt;-</span> gpx_files <span class="sc">%&gt;%</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_names</span>(<span class="fu">basename</span>(gpx_files)) <span class="sc">%&gt;%</span> <span class="co"># use filename as names </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span><span class="fu">st_read</span>(.x, <span class="at">layer =</span> <span class="st">"track_points"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">.id =</span> <span class="st">"filename"</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">route_section =</span> tools<span class="sc">::</span><span class="fu">file_path_sans_ext</span>(filename)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">route_number =</span> <span class="fu">parse_number</span>(route_section)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(route_number, route_section, track_seg_point_id, ele, geometry) <span class="sc">%&gt;%</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bypass =</span> <span class="fu">str_detect</span>(route_section, <span class="st">"Bypass"</span>)) </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>ta_trail <span class="ot">&lt;-</span> all_routes <span class="sc">%&gt;%</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(bypass <span class="sc">==</span> <span class="cn">FALSE</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>map <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> nz, <span class="at">fill =</span> <span class="st">"lightgray"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> ta_trail, <span class="fu">aes</span>(<span class="at">color =</span> ele), <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>(<span class="at">option =</span> <span class="st">"plasma"</span>, <span class="at">name =</span> <span class="st">"Elevation (m)"</span>, </span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>                        <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2000</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2000</span>, <span class="at">by =</span> <span class="dv">500</span>)) <span class="sc">+</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">165</span>, <span class="dv">180</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">47</span>, <span class="sc">-</span><span class="dv">34</span>)) <span class="sc">+</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Te Araroa Trail New Zealand"</span>, <span class="at">subtitle =</span> <span class="st">"The TA trail is a 3000 km walking track that goes from Cape Reinga </span><span class="sc">\n</span><span class="st">at the top of the North Island to Bluff at the bottom of the South Island. </span><span class="sc">\n</span><span class="st">It typically takes hikers 4-6 months to complete. Hikers reach the highest </span><span class="sc">\n</span><span class="st">point in the North Island at 1861m above sea level while walking the </span><span class="sc">\n</span><span class="st">Tongariro Alpine Crossing. In the South Island, the highest point on the trail </span><span class="sc">\n</span><span class="st">is on the Two Thumb Track near Lake Tekapo at 1934m above sea level."</span>) <span class="sc">+</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fl">173.5</span>, <span class="at">y =</span> <span class="sc">-</span><span class="dv">45</span>, <span class="at">label =</span> <span class="st">"Two Thumb Track: </span><span class="sc">\n</span><span class="st">Stag Saddle 1934m"</span>),</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>          <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label),</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> <span class="fl">2.65</span>, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fl">178.2</span>, <span class="at">y =</span> <span class="sc">-</span><span class="fl">40.5</span>, <span class="at">label =</span> <span class="st">"Tongaririo </span><span class="sc">\n</span><span class="st">Alpine Crossing: </span><span class="sc">\n</span><span class="st">Red Crater 1861m"</span>),</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>          <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">label =</span> label),</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">2.65</span>, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">172</span>, <span class="at">y =</span> <span class="sc">-</span><span class="dv">45</span>, <span class="at">xend =</span> <span class="dv">171</span>, <span class="at">yend =</span> <span class="sc">-</span><span class="dv">44</span>),</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"cm"</span>), <span class="at">type =</span> <span class="st">"closed"</span>),</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"blue"</span>,</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth  =</span> <span class="dv">1</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">178</span>, <span class="at">y =</span> <span class="sc">-</span><span class="fl">39.8</span>, <span class="at">xend =</span> <span class="dv">176</span>, <span class="at">yend =</span> <span class="sc">-</span><span class="fl">39.2</span>),</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"cm"</span>), <span class="at">type =</span> <span class="st">"closed"</span>),</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"blue"</span>,</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth  =</span> <span class="dv">1</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-</div>
-</div>
-</div>
-<div id="cr-plot5" class="sticky">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="cr-ye" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/yellow-eyed-penguins_0.avif" class="img-fluid figure-img" width="640"></p>
-<figcaption>Hoiho, Bird of the Year 2024</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div style="text-align: center; margin-top: 3rem; color: #666;">
-<p>Made with <a href="https://quarto.org/">Quarto</a></p>
-</div>
+<p><img src="ta.png" class="img-fluid"></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
