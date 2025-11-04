@@ -10,3 +10,10 @@ execute:
   freeze: true
 ---
 
+Inspired by [this bluesky post](https://bsky.app/profile/andrew.heiss.phd/post/3m4snm75k2k2c) from Andrew Heiss, today I want to make a map of all the places I have lived. Thanks for sharing your [code gist](https://gist.github.com/andrewheiss/0c3873272ba6e91041ec24d9e1adbfb4) Andrew!
+
+
+```{r}
+
+```
+
