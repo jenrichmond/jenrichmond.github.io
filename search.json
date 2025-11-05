@@ -11,7 +11,7 @@
     "href": "maps_30day.html",
     "title": "30DayMaps",
     "section": "",
-    "text": "I am learning to make maps with R. I made these maps as part of the #30DayMapChallenge in November 2025.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 0: themes\n\n\n\n\n\n\n\n\nOct 31, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1: points\n\n\n\n\n\n\n\n\nNov 1, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2: lines\n\n\n\n\n\n\n\n\nNov 2, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 3: polygon\n\n\n\n\n\n\n\n\nNov 3, 2025\n\n\nJen Richmond\n\n\n\n\n\nNo matching items"
+    "text": "I am learning to make maps with R. I made these maps as part of the #30DayMapChallenge in November 2025.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 0: themes\n\n\n\n\n\n\n\n\nOct 31, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1: points\n\n\n\n\n\n\n\n\nNov 1, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2: lines\n\n\n\n\n\n\n\n\nNov 2, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 3: polygon\n\n\n\n\n\n\n\n\nNov 3, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 4: mydata\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\nJen Richmond\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "charts_tidytuesday.html",
@@ -894,6 +894,20 @@
     "title": "Billboard Hot 100 Number Ones",
     "section": "",
     "text": "The Tidy Tuesday data this week comes from a google sheet that Chris Dalla Riva compiled in the process of writing his book: Uncharted Territory: What Numbers Tell Us about the Biggest Hit Songs and Ourselves. It is a big dataset (105 variables) of information about every Billboard Hot 100 Number One hit from 1958 to 2025.\nIt contains variables related to everything from the number of weeks the song spent at number one, the makeup of the song writing team, to the key that the song is in and what instruments were featured.\nMy TidyTuesday strategy with a big dataset like this is to find a tiny question to answer. I am curious about obscure instruments, so this week have focused on Number One songs that feature a cowbell.\nIt seems that the cowbell is rather out of fashion.\n\n\nget data\n\n\nCode\nlibrary(tidytuesdayR)\nlibrary(tidyverse)\nlibrary(ggeasy)\nlibrary(gt)\n\n\ntheme_set(theme_bw())\n\ntt &lt;- tt_load(2025, 34)\n\nbill &lt;- tt[[1]]\n\ntopics &lt;- tt[[2]]\n\n\n\n\nwrangle\n\n\nCode\ncow &lt;- bill %&gt;%\n  select(1:4, overall_rating, bpm:happiness, cowbell) %&gt;%\n  filter(cowbell == 1) %&gt;%\n  pivot_longer(values_to = \"score\", names_to = \"measure\", energy:happiness)\n\n\n\n\nplot\n\n\nCode\nplot &lt;- cow %&gt;%\n  ggplot(aes(x = date, y = score, colour = song)) +\n  geom_rect(aes(xmin = as.POSIXct(\"1967-01-01\"), \n                xmax = as.POSIXct(\"1992-12-31\"),\n                ymin = -Inf, \n                ymax = Inf), \n            fill = \"lightblue\", alpha = .5, inherit.aes = FALSE) +\n  geom_point(size = 2) +\n  facet_wrap(~measure) +\n  labs(title = \"Billboard Hot 100 Number Ones that feature a cowbell\", \n       subtitle = \"The Billboard Hot 100 Number Ones database contains more than 1000 songs released \\nbetween 1958 and 2025. There are 7 songs in the database that include a cowbell. \\nThere haven't been any Number One songs featuring a cowbell since 1991.\",  \n       x = \"Date\", y = \"Score\") +\n  scale_x_datetime(limits = c(min(bill$date), max(bill$date))) +\neasy_move_legend(to = c(\"bottom\")) +\n  easy_remove_legend_title() +\n  theme(text = element_text(family = \"Lato\"))\n\n\n  ggsave(here::here(\"tidytuesday\", \"2025-08-26_billboard\", \"featured.png\"), width = 8, height = 6)"
+  },
+  {
+    "objectID": "maps/2025-11-04_mydata/index.html",
+    "href": "maps/2025-11-04_mydata/index.html",
+    "title": "Day 4: mydata",
+    "section": "",
+    "text": "Inspired by this bluesky post from Andrew Heiss, today made a map of all the places I have lived.\nCode\nlibrary(tidyverse)\nlibrary(maps)\nlibrary(tidygeocoder)\nlibrary(ggeasy)\nlibrary(ggrepel)"
+  },
+  {
+    "objectID": "maps/2025-11-04_mydata/index.html#add-linesarrows",
+    "href": "maps/2025-11-04_mydata/index.html#add-linesarrows",
+    "title": "Day 4: mydata",
+    "section": "add lines/arrows",
+    "text": "add lines/arrows\n\n\nCode\npairs &lt;- lat_longs %&gt;%\n  mutate(next_longitude = lead(longitude),\n    next_latitude = lead(latitude),\n    next_place = lead(places),\n    next_order = lead(order)) \n\n\nggplot(mp) +\n  geom_polygon(aes(x = long, y = lat, group = group), fill = \"white\") +\n   coord_map() +\n    geom_segment(data = pairs, \n             aes(x = longitude, y = latitude, xend = next_longitude, yend = next_latitude),\n             arrow = arrow(length = unit(0.3, \"cm\"), type = \"open\", ends = \"last\"),\n             linewidth = 0.5,\n             arrow.fill = NULL) +\n  geom_point(data = lat_longs, aes(x = longitude, y = latitude), \n           size = 2, color = \"black\", fill = \"black\", shape = 21, \n           inherit.aes = FALSE) +\n geom_text_repel(data = lat_longs, aes(x = longitude, y = latitude, label = places), size = 3) +\n  theme_bw() +\n  easy_remove_gridlines() +\n    easy_remove_axes() +\n    theme(panel.background = element_rect(fill = \"lightsteelblue\")) +\n  labs(title = \"Places I have lived\")\n\n\n\n\n\n\n\n\n\n```"
   },
   {
     "objectID": "maps/2025-10-31_challenge/index.html",
