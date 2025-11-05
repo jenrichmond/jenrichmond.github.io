@@ -1285,7 +1285,7 @@
     "href": "maps_30day.html",
     "title": "30DayMaps",
     "section": "",
-    "text": "I am learning to make maps with R. I made these maps as part of the #30DayMapChallenge in November 2025.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 0: themes\n\n\n\n\n\n\n\n\nOct 31, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1: points\n\n\n\n\n\n\n\n\nNov 1, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2: lines\n\n\n\n\n\n\n\n\nNov 2, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 3: polygon\n\n\n\n\n\n\n\n\nNov 3, 2025\n\n\nJen Richmond\n\n\n\n\n\nNo matching items"
+    "text": "I am learning to make maps with R. I made these maps as part of the #30DayMapChallenge in November 2025.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay 0: themes\n\n\n\n\n\n\n\n\nOct 31, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1: points\n\n\n\n\n\n\n\n\nNov 1, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2: lines\n\n\n\n\n\n\n\n\nNov 2, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 3: polygon\n\n\n\n\n\n\n\n\nNov 3, 2025\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nDay 4: mydata\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\nJen Richmond\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "maps/2025-10-31_challenge/index.html",
@@ -1342,5 +1342,19 @@
     "title": "Day 3: polygon",
     "section": "plot",
     "text": "plot\n\n\nCode\nggplot(data = nz) +\n  geom_sf(aes(fill = Name), color = \"black\") + \n  labs(title = \"Map of New Zealand Regions\", fill = \"Region Name\") +\n  theme_bw() \n\n\n\n\n\n\n\n\n\nCode\nggplot(data = nzpop24) +\n  geom_sf(aes(fill = Population24), color = \"black\") + # Fill by region name and add black borders\n  labs(title = \"The Team of 5 million\", fill = \"Population\", \n       subtitle = \"StatsNZ estimates that 5.3 million people live in New Zealand. \\nOne third of Kiwis live in Auckland. \\nMore than 75% of Kiwis live in the North Island.\", \n       caption = \"Data from StatsNZ Dec 2024\") +\n  scale_fill_gradient(low = \"lightblue\", high = \"darkblue\", \n                      labels = label_number(scale = 1e-6, suffix = \"M\")) +\n  theme_bw()"
+  },
+  {
+    "objectID": "maps/2025-11-04_mydata/index.html",
+    "href": "maps/2025-11-04_mydata/index.html",
+    "title": "Day 4: mydata",
+    "section": "",
+    "text": "Inspired by this bluesky post from Andrew Heiss, today made a map of all the places I have lived.\nCode\nlibrary(tidyverse)\nlibrary(maps)\nlibrary(tidygeocoder)\nlibrary(ggeasy)\nlibrary(ggrepel)"
+  },
+  {
+    "objectID": "maps/2025-11-04_mydata/index.html#add-linesarrows",
+    "href": "maps/2025-11-04_mydata/index.html#add-linesarrows",
+    "title": "Day 4: mydata",
+    "section": "add lines/arrows",
+    "text": "add lines/arrows\n\n\nCode\npairs &lt;- lat_longs %&gt;%\n  mutate(next_longitude = lead(longitude),\n    next_latitude = lead(latitude),\n    next_place = lead(places),\n    next_order = lead(order)) \n\n\nggplot(mp) +\n  geom_polygon(aes(x = long, y = lat, group = group), fill = \"white\") +\n   coord_map() +\n    geom_segment(data = pairs, \n             aes(x = longitude, y = latitude, xend = next_longitude, yend = next_latitude),\n             arrow = arrow(length = unit(0.3, \"cm\"), type = \"open\", ends = \"last\"),\n             linewidth = 0.5,\n             arrow.fill = NULL) +\n  geom_point(data = lat_longs, aes(x = longitude, y = latitude), \n           size = 2, color = \"black\", fill = \"black\", shape = 21, \n           inherit.aes = FALSE) +\n geom_text_repel(data = lat_longs, aes(x = longitude, y = latitude, label = places), size = 3) +\n  theme_bw() +\n  easy_remove_gridlines() +\n    easy_remove_axes() +\n    theme(panel.background = element_rect(fill = \"lightsteelblue\")) +\n  labs(title = \"Places I have lived\")\n\n\n\n\n\n\n\n\n\n```"
   }
 ]
