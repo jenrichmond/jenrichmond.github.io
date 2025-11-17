@@ -1,0 +1,67 @@
+---
+title: "Day 7: accessibility"
+author: Jen Richmond
+date: 2025-11-07
+format: html
+editor: source
+draft: TRUE
+image: pop.png
+execute:
+  freeze: true
+---
+
+https://natlib.govt.nz/librarians/directory-of-new-zealand-libraries
+
+# load packages
+
+```{r}
+
+library(tidyverse)
+library(here)
+library(janitor)
+library(tidygeocoder)
+library(spData)
+library(sf)
+```
+
+# get data
+
+The `geocode()` funtion is amazing but SLOW when it is looking for more than 100 coordinates, so I am writing the data to csv in order to read it back in. 
+
+```{r}
+#| eval: false
+
+public <- read_csv("maps/2024-11-07_accessibility/directory-of-new-zealand-libraries.csv") %>%
+  clean_names() %>%
+  filter(library_type_3 %in% c("Public", "Tertiary")) %>%
+  select(library_type_3, name, street_address) %>%
+  geocode(street_address, method = 'osm', lat = latitude , long = longitude) 
+
+
+public %>% 
+   filter(library_type_3 == "Public") %>%
+  write_csv(here("maps", "2024-11-07_accessibility", "public.csv"))
+
+
+```
+
+# plot
+
+```{r eval = FALSE}
+
+lib <- read_csv(here("maps", "2024-11-07_accessibility", "public.csv")) 
+
+%>%
+ 
+  filter(!is.na(latitude))
+
+
+rne_nz <- rnaturalearth::ne_countries(country = "new zealand", returnclass = "sf", scale = "large")
+
+ggplot() +
+  geom_sf(data = rne_nz) +
+  geom_point(data = lib, aes(x = longitude, y = latitude)) +
+  coord_sf(xlim = c(166, 179), ylim = c(-47, -34)) +
+  theme_bw()
+```
+

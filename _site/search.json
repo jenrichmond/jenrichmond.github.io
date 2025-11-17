@@ -81,7 +81,7 @@
     "href": "charts_tidytuesday.html",
     "title": "tidytuesday",
     "section": "",
-    "text": "Tidy Tuesday is a weekly community challenge run by Jon Harmon and team in the Data Science Learning Community. Each week the team post a dataset to their github page and data enthusiasts from around the world make something with it and share their creations using the #TidyTuesday hashtag.\nI document my TidyTuesday process here, creating useful resources for the community about how my plot came about. Recently I have also curated datasets for Tidy Tuesday (see Week 20 re Sydney Beaches, Week 25 re global measles cases, Week 34 re Billboard Number Ones, and Week 36 re the Henley Passport Index).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPassport power\n\n\n\n\n\n\nJen Richmond\n\n\nSep 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nBillboard Hot 100 Number Ones\n\n\n\n\n\n\nJen Richmond\n\n\nAug 30, 2025\n\n\n\n\n\n\n\n\n\n\n\nscottish munros\n\n\n\n\n\n\nJen Richmond\n\n\nAug 19, 2025\n\n\n\n\n\n\n\n\n\n\n\nextreme weather\n\n\n\n\n\n\nJen Richmond\n\n\nAug 12, 2025\n\n\n\n\n\n\n\n\n\n\n\ngross colours\n\n\n\n\n\n\nJen Richmond\n\n\nJul 8, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\ngas prices\n\n\n\n\n\n\nJen Richmond\n\n\nJul 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nmeasles\n\n\n\n\n\n\nJen Richmond\n\n\nJun 22, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\napis\n\n\n\n\n\n\nJen Richmond\n\n\nJun 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nhistorydata: judges\n\n\n\n\n\n\nJen Richmond\n\n\nJun 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\ngutenberg\n\n\n\n\n\n\nJen Richmond\n\n\nJun 3, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\ndungeons and dragons monsters\n\n\n\n\n\n\nJen Richmond\n\n\nMay 27, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nsydney beaches\n\n\n\n\n\n\nJen Richmond\n\n\nMay 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\ncool stuff from tidytuesdayR\n\n\n\n\n\n\nJen Richmond\n\n\nMay 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nvesuvius\n\n\n\n\n\n\nJen Richmond\n\n\nMay 13, 2025\n\n\n\n\n\n\n\n\n\n\n\nnsf grants terminated\n\n\n\n\n\n\nJen Richmond\n\n\nMay 6, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Tidy Tuesday is a weekly community challenge run by Jon Harmon and team in the Data Science Learning Community. Each week the team post a dataset to their github page and data enthusiasts from around the world make something with it and share their creations using the #TidyTuesday hashtag.\nI document my TidyTuesday process here, creating useful resources for the community about how my plot came about.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLead levels in Flint water\n\n\n\n\n\n\nJen Richmond\n\n\nNov 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nPassport power\n\n\n\n\n\n\nJen Richmond\n\n\nSep 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nBillboard Hot 100 Number Ones\n\n\n\n\n\n\nJen Richmond\n\n\nAug 30, 2025\n\n\n\n\n\n\n\n\n\n\n\nscottish munros\n\n\n\n\n\n\nJen Richmond\n\n\nAug 19, 2025\n\n\n\n\n\n\n\n\n\n\n\nextreme weather\n\n\n\n\n\n\nJen Richmond\n\n\nAug 12, 2025\n\n\n\n\n\n\n\n\n\n\n\ngross colours\n\n\n\n\n\n\nJen Richmond\n\n\nJul 8, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\ngas prices\n\n\n\n\n\n\nJen Richmond\n\n\nJul 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nmeasles\n\n\n\n\n\n\nJen Richmond\n\n\nJun 22, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\napis\n\n\n\n\n\n\nJen Richmond\n\n\nJun 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nhistorydata: judges\n\n\n\n\n\n\nJen Richmond\n\n\nJun 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\ngutenberg\n\n\n\n\n\n\nJen Richmond\n\n\nJun 3, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\ndungeons and dragons monsters\n\n\n\n\n\n\nJen Richmond\n\n\nMay 27, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nsydney beaches\n\n\n\n\n\n\nJen Richmond\n\n\nMay 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\ncool stuff from tidytuesdayR\n\n\n\n\n\n\nJen Richmond\n\n\nMay 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nvesuvius\n\n\n\n\n\n\nJen Richmond\n\n\nMay 13, 2025\n\n\n\n\n\n\n\n\n\n\n\nnsf grants terminated\n\n\n\n\n\n\nJen Richmond\n\n\nMay 6, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "charts/2025-04-06_florence/index.html",
@@ -1356,5 +1356,26 @@
     "title": "Day 4: mydata",
     "section": "add lines/arrows",
     "text": "add lines/arrows\n\n\nCode\npairs &lt;- lat_longs %&gt;%\n  mutate(next_longitude = lead(longitude),\n    next_latitude = lead(latitude),\n    next_place = lead(places),\n    next_order = lead(order)) \n\n\nggplot(mp) +\n  geom_polygon(aes(x = long, y = lat, group = group), fill = \"white\") +\n   coord_map() +\n    geom_segment(data = pairs, \n             aes(x = longitude, y = latitude, xend = next_longitude, yend = next_latitude),\n             arrow = arrow(length = unit(0.3, \"cm\"), type = \"open\", ends = \"last\"),\n             linewidth = 0.5,\n             arrow.fill = NULL) +\n  geom_point(data = lat_longs, aes(x = longitude, y = latitude), \n           size = 2, color = \"black\", fill = \"black\", shape = 21, \n           inherit.aes = FALSE) +\n geom_text_repel(data = lat_longs, aes(x = longitude, y = latitude, label = places), size = 3) +\n  theme_bw() +\n  easy_remove_gridlines() +\n    easy_remove_axes() +\n    theme(panel.background = element_rect(fill = \"lightsteelblue\")) +\n  labs(title = \"Places I have lived\")\n\n\n\n\n\n\n\n\n\n```"
+  },
+  {
+    "objectID": "tidytuesday/2025-11-04_flint/index.html",
+    "href": "tidytuesday/2025-11-04_flint/index.html",
+    "title": "Lead levels in Flint water",
+    "section": "",
+    "text": "The TidyTuesday data this week is from a paper by Loux & Gibson (2018) about using lead data from Flint Michigan as a example for introductory statistics. When I was curating the data, I wanted to use the figure from this blog post about the murky tale of Flint’s water data, but the image wouldn’t download well, so here is how I recreated it using ggplot.\nCode\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\nlibrary(ggeasy)\nlibrary(ggannotate)\n  \ntuesdata &lt;- tidytuesdayR::tt_load(2025, week = 44)\n\nflint_mdeq &lt;- tuesdata[[1]]\nflint_vt &lt;- tuesdata[[2]]\n\nrm(tuesdata)"
+  },
+  {
+    "objectID": "tidytuesday/2025-11-04_flint/index.html#calc-percentiles",
+    "href": "tidytuesday/2025-11-04_flint/index.html#calc-percentiles",
+    "title": "Lead levels in Flint water",
+    "section": "calc percentiles",
+    "text": "calc percentiles\n\n\nCode\n  flint_mdeq %&gt;%\n    summarise(\n      p90lead = quantile(lead, 0.90),\n      p90lead2 = quantile(lead2, 0.90, na.rm= TRUE)) %&gt;%\n  gt::gt()\n\n\n\n\n\n\n\n\np90lead\np90lead2\n\n\n\n\n18\n11.4\n\n\n\n\n\n\n\nCode\n  flint_vt %&gt;%\n    summarise(\n      p90 = quantile(lead, 0.90)\n    )  %&gt;%\n  gt::gt()\n\n\n\n\n\n\n\n\np90\n\n\n\n\n26.64"
+  },
+  {
+    "objectID": "tidytuesday/2025-11-04_flint/index.html#calculating-90th-percentiles",
+    "href": "tidytuesday/2025-11-04_flint/index.html#calculating-90th-percentiles",
+    "title": "Lead levels in Flint water",
+    "section": "calculating 90th percentiles",
+    "text": "calculating 90th percentiles\n\n\nCode\n  flint_mdeq %&gt;%\n    summarise(\n      p90lead = quantile(lead, 0.90),\n      p90lead2 = quantile(lead2, 0.90, na.rm= TRUE)) %&gt;%\n  gt::gt()\n\n\n\n\n\n\n\n\np90lead\np90lead2\n\n\n\n\n18\n11.4"
   }
 ]
