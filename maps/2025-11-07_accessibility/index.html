@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jen Richmond">
-<meta name="dcterms.date" content="2025-04-20">
+<meta name="dcterms.date" content="2025-11-07">
 
-<title>Pūteketeke Pandemonium – Jen Richmond</title>
+<title>Day 7: accessibility – Jen Richmond</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -42,10 +77,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-8fd1faf6fd93e4e6d207ae0f9db51d78.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
-<script src="../../site_libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
-<script src="../../site_libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -82,11 +114,9 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </script>
-<meta cr-debug-mode="false">
-<meta cr-remove-header-space="false">
 
 
-<link rel="stylesheet" href="../../site_libs/quarto-contrib/quarto-project/qmd-lab/closeread/closeread.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -170,35 +200,32 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#load-packages" id="toc-load-packages" class="nav-link active" data-scroll-target="#load-packages">load packages</a></li>
+  <li><a href="#get-data" id="toc-get-data" class="nav-link" data-scroll-target="#get-data">get data</a></li>
+  <li><a href="#plot1" id="toc-plot1" class="nav-link" data-scroll-target="#plot1">plot1</a></li>
+  <li><a href="#plot2" id="toc-plot2" class="nav-link" data-scroll-target="#plot2">plot2</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
-      <!-- user-provided yaml closeread style options -->
-      <style>
-        :root {
-          --cr-narrative-overlay-max-width: 600px;
---cr-narrative-overlay-min-width: 300px;
---cr-poem-font-family: , “Times New Roman”, Times, serif;
---cr-narrative-font-size: 2em;
---cr-narrative-font-family: Arial, sans-serif;
---cr-narrative-background-color-overlay: #525252;
---cr-section-background-color: #f7f6f5;
---cr-narrative-outer-margin: #ffffff;
-        }
-      </style>
-    
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Pūteketeke Pandemonium</h1>
+<h1 class="title">Day 7: accessibility</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -210,7 +237,7 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 20, 2025</p>
+      <p class="date">November 7, 2025</p>
     </div>
   </div>
   
@@ -222,259 +249,63 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </header>
 
 
-<p>This post is my first attempt at a <code>closeread</code> scrollytelling story. It tells the story of the <a href="https://www.forestandbird.org.nz/resources/bird-century-winner-announced-puteketeke-pandemonium-prevails?gad_source=1&amp;gclid=CjwKCAjwk43ABhBIEiwAvvMEBxXajWDGGQNmx6QbZjiQlec8hqOLnfd8OZ1hKKLJYBtjSOkwTdUc4RoCbiQQAvD_BwE">Pūteketeke controversy</a> that plagued the Forest and Bird NZ <em>Bird of the Century</em> competition in 2023.</p>
-<p>The <code>closeread</code> extension makes it easy to turn a Quarto document into a scrollytelling story like this one. The <code>closeread</code> <a href="https://closeread.dev/">documentation</a> and <a href="https://www.gastonsanchez.com/learn-closeread/">this tutorial</a> by Gaston Sanchez were helpful in making this story.</p>
-<div class="cr-section cr-column-screen sidebar-left">
-<div class="narrative-col">
-<div class="trigger new-trigger" data-focus-on="cr-grebe">
-<div class="narrative">
-<p>This bird is called a Pūteketeke</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>It is also known as the Australasian Crested Grebe.</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>There are fewer than 1000 Pūteketeke in New Zealand.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-courtship">
-<div class="narrative">
-<p>They are known for unique courtship behaviour…</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-parenting">
-<div class="narrative">
-<p>… and for being good parents</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-platform">
-<div class="narrative">
-<p>In my hometown, Wanaka NZ, the humans make the Pūteketeke floating platforms to build their nests on. Read about the <a href="https://wanakagrebes.org.nz/grebe-project/">Wanaka Grebe Project here</a>.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-bb">
-<div class="narrative">
-<p>In 2023, the Pūteketeke went global.</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>Billboards appeared in cities across the world.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-well">
-<div class="narrative">
-<p>From Wellington NZ …</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-paris">
-<div class="narrative">
-<p>… to Paris, France</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-wi">
-<div class="narrative">
-<p>… to Manitowoc, Wisconsin</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>How did the Pūteketeke get this kind of international attention??</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-plot1">
-<div class="narrative">
-<p>In 2023 Forest and Bird New Zealand was celebrating its centenary and had dubbed its annual competition “Bird of the Century”.</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>Each year Forest and Bird invites New Zealanders to vote for their favourite native bird.</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>Anyone with a valid email address can enter.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-boty">
-<div class="narrative">
-<p>In 2023, comedian John Oliver heard about the competition and threw his resources behind a campaign in support of the Pūteketeke.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-john">
-<div class="narrative">
-<p>John Oliver himself described the campaign as <a href="https://www.youtube.com/watch?v=6GF6Gd7wrlk">“alarmingly aggressive”</a></p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-jimmy">
-<div class="narrative">
-<p>John even appeared on <a href="https://www.youtube.com/watch?v=uVE1hBzHn3s&amp;t=6s">Jimmy Fallon’s show</a> in a Pūteketeke costume</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>This is not the first time that the Forest and Bird competition has attracted controversy.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-bat">
-<div class="narrative">
-<p>In 2021, the Long-tailed bat (Pekapeka-tou-roa) won the Bird of the Year, even though it is definitely not a bird.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-plot2">
-<div class="narrative">
-<p>The Long-tailed bat (Pekapeka-tou-roa) is New Zealand’s only native land mammal and caused a bit of a stir when it was voted as New Zealand’s favourite bird in 2021.</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>The results in 2022 caused less furor.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-penguin">
-<div class="narrative">
-<p>While the Little Penguin / Kororā technically received the most #1 votes…</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-wren">
-<div class="narrative">
-<p>…it was pipped at the post by the New Zealand Rock Wren / Pīwauwau…</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-plot3">
-<div class="narrative">
-<p>…a tiny alpine bird that lives in the mountains of the South Island.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-plot4">
-<div class="narrative">
-<p>In 2023,the result of the John Oliver’s campaign was a resounding win for the Pūteketeke (more than 290K votes!) and a boost in donations to Forest and Bird.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-plot5">
-<div class="narrative">
-<p>Interest in the Forest and Bird competition carried over into 2024, with vote rates higher than average.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-ye">
-<div class="narrative">
-<p>Last year, the Yellow-eyed Penguin / Hoiho prevailed.</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>Check out the <a href="https://www.birdoftheyear.org.nz/">Forest and Bird website</a> to read about past winners, donate to conservation efforts, and vote for your favourite New Zealand bird in the 2025 competition (voting opens in September).</p>
-</div>
-</div>
-</div>
-<div class="sticky-col">
-<div class="sticky-col-stack">
-<div id="cr-grebe" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/grebe.jpg" class="img-fluid figure-img"></p>
-<figcaption>Pūteketeke</figcaption>
-</figure>
-</div>
-</div>
-<div id="cr-courtship" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://media1.tenor.com/m/pr8Ep6wpQoYAAAAd/Pūteketeke-bird.gif" class="img-fluid figure-img"></p>
-<figcaption>Pūteketeke courtship behaviour</figcaption>
-</figure>
-</div>
-</div>
-<div id="cr-parenting" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://blog.forestandbird.org.nz/wp-content/uploads/love-you-mum-crested-grebe-steve-attwood.jpg" class="img-fluid figure-img"></p>
-<figcaption>Pūteketeke parent and chick</figcaption>
-</figure>
-</div>
-</div>
-<div id="cr-platform" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://wanakagrebes.org.nz/wp-content/uploads/2024/05/img-project-nest.jpg" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Pūteketeke platform</figcaption>
-</figure>
-</div>
-</div>
-<div id="cr-bb" class="sticky">
-<p><img src="img/bb.webp" class="img-fluid"></p>
-</div>
-<div id="cr-well" class="sticky">
-<p><img src="img/billboard.webp" class="img-fluid"></p>
-</div>
-<div id="cr-paris" class="sticky">
-<p><img src="img/france.jpg" class="img-fluid"></p>
-</div>
-<div id="cr-wi" class="sticky">
-<p><img src="img/bird-campaign WI.webp" class="img-fluid"></p>
-</div>
-<div id="cr-plot1" class="sticky">
+<p>I am interested in the accessibility of public libraries.</p>
+<p>Here I worked out how to plot library locations on a map that also included regional information. The map below does make me question how complete the <a href="https://natlib.govt.nz/librarians/directory-of-new-zealand-libraries">Directory of New Zealand libraries</a> is though. Surely there is more than 1 library in Auckland!</p>
+<p><img src="lib.png" class="img-fluid"></p>
+<section id="load-packages" class="level1">
+<h1>load packages</h1>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidygeocoder)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spData)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-</div>
-</div>
-</div>
-<div id="cr-boty" class="sticky">
-<p><img src="img/boty logo.png" class="img-fluid"> <img src="img/john-oliver-1920.avif" class="img-fluid"></p>
-</div>
-<div id="cr-john" class="sticky">
-<p><img src="https://media.rnztools.nz/rnz/image/upload/s--qVuRXVAg--/ar_16:10,c_fill,f_auto,g_auto,q_auto,w_1050/v1699320268/4KZWYV8_20231107_135316_jpg?_a=BACCd2AD.png" class="img-fluid"></p>
-</div>
-<div id="cr-jimmy" class="sticky">
-<p><img src="img/the-tonight-show-john-oliver.jpg" class="img-fluid"></p>
-</div>
-<div id="cr-bat" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/long-tailed-bat-hero-1920.webp" class="img-fluid figure-img" width="640"></p>
-<figcaption>Pekapeka-tou-roa, Bird of the Year 2021</figcaption>
-</figure>
-</div>
-</div>
-<div id="cr-plot2" class="sticky">
+</section>
+<section id="get-data" class="level1">
+<h1>get data</h1>
+<p>The <code>geocode()</code> function is amazing at turning address data into lat/long data but SLOW when it is looking for more than a handful of coordinates, so here I am writing the data to csv in order to read it back in.</p>
+<p>Tried method = “osm” first (OpenStreetMap) and it missed coordinates for 23 sites. Turns out that method = “arcgis” works better.</p>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Auckland"</span>, <span class="st">"Hamilton"</span>, <span class="st">"Wellington"</span>, <span class="st">"Christchurch"</span>, <span class="st">"Dunedin"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>libraries <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"maps/2025-11-07_accessibility/directory-of-new-zealand-libraries.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">city =</span> <span class="fu">str_extract</span>(street_address, <span class="fu">paste</span>(cities, <span class="at">collapse =</span> <span class="st">"|"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(library_type_3, name, street_address, city) </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>public <span class="ot">&lt;-</span> libraries <span class="sc">%&gt;%</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(library_type_3 <span class="sc">==</span> <span class="st">"Public"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geocode</span>(street_address, <span class="at">method =</span> <span class="st">'arcgis'</span>, <span class="at">lat =</span> latitude , <span class="at">long =</span> longitude) </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>public <span class="sc">%&gt;%</span> </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(library_type_3 <span class="sc">==</span> <span class="st">"Public"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="fu">here</span>(<span class="st">"maps"</span>, <span class="st">"2025-11-07_accessibility"</span>, <span class="st">"public.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-</div>
-</div>
-<div id="cr-penguin" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/blue.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Kororā, Bird of the Year runner up 2022</figcaption>
-</figure>
-</div>
-</div>
-<div id="cr-wren" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/wren.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Pīwauwau, Bird of the Year 2022</figcaption>
-</figure>
-</div>
-</div>
-<div id="cr-plot3" class="sticky">
+</section>
+<section id="plot1" class="level1">
+<h1>plot1</h1>
+<p>If you want to make a map without regional information using the rnaturalearth package works well.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>lib <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"maps"</span>, <span class="st">"2025-11-07_accessibility"</span>, <span class="st">"public.csv"</span>)) </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>rne_nz <span class="ot">&lt;-</span> rnaturalearth<span class="sc">::</span><span class="fu">ne_countries</span>(<span class="at">country =</span> <span class="st">"new zealand"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>, <span class="at">scale =</span> <span class="st">"large"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> rne_nz) <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> lib, <span class="fu">aes</span>(<span class="at">x =</span> longitude, <span class="at">y =</span> latitude)) <span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">166</span>, <span class="dv">179</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">47</span>, <span class="sc">-</span><span class="dv">34</span>)) <span class="sc">+</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -483,9 +314,30 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-</div>
-<div id="cr-plot4" class="sticky">
+</section>
+<section id="plot2" class="level1">
+<h1>plot2</h1>
+<p>But if you want regional information on your plot, you need to battle wih spData. Here I ran into problems that required converting the nz map to lat/long and then converting point locations to sf.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nz map with areas from spData </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>nz <span class="ot">&lt;-</span> nz</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>sp_nz <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(nz, <span class="dv">4326</span>)  <span class="co"># Convert nz to lat/long</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># convert points to sf geometry</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>lib_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(lib, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"longitude"</span>, <span class="st">"latitude"</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sp_nz, <span class="at">fill =</span> <span class="st">"lightgrey"</span>, <span class="at">color =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> lib_sf, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">166</span>, <span class="dv">179</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">47</span>, <span class="sc">-</span><span class="dv">34</span>)) <span class="sc">+</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Where is the nearest public library?"</span>, <span class="at">caption=</span> <span class="st">"Data from https://natlib.govt.nz/librarians/directory-of-new-zealand-libraries"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -494,34 +346,9 @@ gtag('config', 'G-Y7WV5KV7Z0', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-</div>
-<div id="cr-plot5" class="sticky">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="cr-ye" class="sticky">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/yellow-eyed-penguins_0.avif" class="img-fluid figure-img" width="640"></p>
-<figcaption>Hoiho, Bird of the Year 2024</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div style="text-align: center; margin-top: 3rem; color: #666;">
-<p>Made with <a href="https://quarto.org/">Quarto</a></p>
-</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
