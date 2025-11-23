@@ -1,0 +1,170 @@
+/* import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;700&display=swap');
+
+/* all formats */
+
+.cvdate {
+  float: right;
+  font-style: italic
+}
+
+.print-only {
+  display: none;
+  /*color: aquamarine;*/
+}
+
+/* adapt stylesheet for print
+from: https://github.com/quarto-dev/quarto-cli/discussions/2538#discussioncomment-4081842 */
+
+/* for page-breaks use style spans
+  page-break-before: always;
+  page-break-after: always;
+*/
+
+@media print {
+  @page {
+      size: a4 portrait;
+      margin: 0.75in 0.75in 1in 0.75in;
+      counter-increment: page;
+      @bottom-center {
+        content: counter(page);
+        font-size: 10pt;
+        color: #666;
+      }
+  }
+  .no-print {
+      display: none;
+  }
+  .print-only {
+      display: block;
+  }
+
+  .contact-block {
+      margin-top: 0%;
+      text-align: center;
+  }
+
+  html {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 11pt; /* Better base size for print */
+    line-height: 1.4; /* Improved readability */
+    color: #222; /* Softer than pure black for print */
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    margin-block-end: 2em;
+  }
+  header h1.title {
+      display: none;
+  }
+  header .author {
+    font-size: 18pt;
+    font-weight: 700;
+    color: #222;
+    text-align: center;
+    margin-block-end: 0em;
+    margin-bottom: 0;
+    text-transform: none;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 14pt;
+    text-transform: uppercase;
+    color: #222 !important; /* Force dark color */
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.2em;
+    page-break-after: avoid; /* Keep headings with content */
+  }
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 11pt;
+    text-transform: uppercase;
+    color: #222;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+    page-break-after: avoid;
+  }
+  
+  h4 {
+    font-weight: 600;
+    font-size: 10pt;
+    color: #222;
+    margin-top: 0.8em;
+    margin-bottom: 0.4em;
+    page-break-after: avoid;
+  }
+
+
+/* p justify changes contact block 
+*/
+  p {
+    font-size: 10pt;
+    margin-bottom: 0.6em;
+  }
+
+   /* Improved list formatting */
+  ul {
+    margin-top: 0.3em;
+    margin-bottom: 0.8em;
+    padding-left: 1.2em;
+  }
+  
+  ul li {
+    font-size: 10pt;
+    margin-bottom: 0.3em;
+    line-height: 1.3;
+    page-break-inside: avoid; /* Try to keep list items together */
+  }
+
+ /* Better date formatting */
+  .cvdate {
+    font-size: 9pt;
+    color: #222;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* Links for print */
+  a {
+    text-decoration: none;
+    font-weight: 500; /* Reduced from 700 */
+    color: #2c5aa0;
+  }
+  
+  /* Add some breathing room for sections */
+  .section {
+    page-break-inside: avoid;
+    margin-bottom: 1.2em;
+  }
+  
+  /* Experience entries */
+  .experience-item {
+    margin-bottom: 1.5em;
+    page-break-inside: avoid;
+  }
+  
+   
+  /* Force page breaks where needed */
+  .page-break {
+    page-break-before: always;
+  }
+  
+  /* Professional summary styling */
+  .summary {
+    font-size: 10.5pt;
+    line-height: 1.4;
+    margin-bottom: 1.5em;
+    text-align: justify;
+  }
+}
+}
