@@ -19,7 +19,6 @@ website:
           - text: "30DayMapChallenge"
             href: maps_30day.qmd
       - projects.qmd
-      - resume.qmd
       
     right:
       - icon: github
