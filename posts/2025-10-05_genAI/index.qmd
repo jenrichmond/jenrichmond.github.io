@@ -1,6 +1,6 @@
 ---
 title: "Rethinking data science education in the age of genAI"
-author: Jenny Richmond Ph.D
+author: Jen Richmond
 subtitle: "how to we know what students know when chatGPT can do the tasks we have traditionally relied on to assess learning?"
 date: 2025-10-05
 draft: TRUE

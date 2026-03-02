@@ -1,0 +1,109 @@
+---
+title: "index"
+format: html
+draft: TRUE
+---
+
+```{r}
+library(tidyverse)
+library(tidytuesdayR)
+library(janitor)
+
+df <- tt_load("2026-02-17")
+
+df <- df[[1]]
+
+df %>% write_csv(here::here("tidytuesday", "2026-02-17_sheep", "data.csv"))
+```
+
+```{r}
+farms <- df %>%
+  filter(measure %in% c("Total Area of Farms", "Plantations of Exotic Trees", "Wine grapes"))
+
+farms %>%
+  ggplot(aes(x = year_ended_june, y = value, colour = measure)) +
+  geom_line()
+
+area <-  df %>%
+  filter(value_label == "Hectares") %>%
+  filter(value > 1000000)
+
+options(scipen = 999)
+
+area %>%
+  ggplot(aes(x = year_ended_june, y = value, colour = measure)) +
+  geom_line() +
+  ggeasy::easy_remove_legend()
+```
+
+```{r}
+ sheep_dairy <- df %>%
+  filter(measure %in% c("Total Sheep", "Total Dairy Cattle (including Bobby Calves)"))
+
+sheep_dairy %>%
+  ggplot(aes(x = year_ended_june, y = value, colour = measure)) +
+  geom_line()
+```
+
+
+```{r}
+df %>%
+  tabyl(measure)
+
+distinct <- df %>%
+  distinct(measure) %>%
+  arrange(measure)
+```
+
+
+
+```{r}
+fruit_measures <- c(
+  "Feijoas",
+  "Grapefruit/Goldfruit",
+  "Kiwifruit",
+  "Lemons",
+  "Macadamias",
+  "Mandarins",
+  "Melons (Water and Rock)",
+  "Nectarines",
+  "Nuts",
+  "Olives (net area planted)",
+  "Oranges",
+  "Passionfruit",
+  "Peaches",
+  "Pears (excluding Asian Pears)",
+  "Persimmons",
+  "Plums",
+  "Raspberries",
+  "Strawberries",
+  "Tamarillos",
+  "Tangelos",
+  "Walnuts",
+  "Wine grapes"
+)
+
+df_fruit <- df %>%
+  filter(measure %in% fruit_measures)
+
+df_fruit %>%
+  filter(measure %in% c("Wine grapes", "Kiwifruit")) %>%
+  ggplot(aes(x = year_ended_june, y = value, colour = measure)) +
+  geom_line() +
+  ggeasy::easy_remove_legend()
+```
+
+```{r}
+flower_measures <- c(
+  "Flowers and Foliage (Outdoor)",
+  "Hydrangea",
+  "Orchids",
+  "Peony",
+  "Perennials (Indoor)",
+  "Perrenials (outdoor)"
+)
+
+df_flowers <- df %>%
+  filter(measure %in% flower_measures)
+```
+
