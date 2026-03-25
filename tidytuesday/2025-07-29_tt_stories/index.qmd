@@ -1,7 +1,7 @@
 ---
-title: "netflix"
+title: "storytelling"
 editor: visual
-draft: TRUE
+date: 2025-07-29
 ---
 
 Emily Riederer wrote a great [blog post](%3Chttps://www.emilyriederer.com/post/quarto-comms) this week about storytelling in data science. Her take home was that that often we tell data stories in procedural order like this...
@@ -11,9 +11,3 @@ Emily Riederer wrote a great [blog post](%3Chttps://www.emilyriederer.com/post/q
 But actually the story is more engaging and meaningful like this when you tell it like this..
 
 ![](progressive%20disclosure.png)
-
-# I wondered...
-
-The TidyTuesday data this week is about Netflix views. I am most interested in the relative viewing stats for shows that run for multiple seasons.
-
-# I found that....

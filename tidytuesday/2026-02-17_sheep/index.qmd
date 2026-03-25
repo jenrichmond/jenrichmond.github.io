@@ -1,109 +1,73 @@
 ---
-title: "index"
+title: "NZ agriculture production"
 format: html
-draft: TRUE
+date: 2026-02-17
+author: Jen Richmond 
 ---
 
+The TidyTuesday data this week comes from NZ agriculture production statistics. I was interested to dig into the relative change in sheep vs dairy numbers, and learn about what has happened to kiwifruit vs. wine production. 
+
 ```{r}
+#| message: false
+#| warning: false
+#| code-fold: true
 library(tidyverse)
 library(tidytuesdayR)
 library(janitor)
+library(ggeasy)
 
 df <- tt_load("2026-02-17")
 
 df <- df[[1]]
 
-df %>% write_csv(here::here("tidytuesday", "2026-02-17_sheep", "data.csv"))
+options(scipen= 999)
 ```
 
+# Sheep vs Cows
+
 ```{r}
-farms <- df %>%
-  filter(measure %in% c("Total Area of Farms", "Plantations of Exotic Trees", "Wine grapes"))
-
-farms %>%
-  ggplot(aes(x = year_ended_june, y = value, colour = measure)) +
-  geom_line()
-
-area <-  df %>%
-  filter(value_label == "Hectares") %>%
-  filter(value > 1000000)
-
-options(scipen = 999)
-
-area %>%
+#| code-fold: true
+df %>%
+  filter(measure %in% c("Total Sheep", "Total Dairy Cattle (including Bobby Calves)")) %>%
+  mutate(measure = factor(measure, levels = c(
+    "Total Sheep",
+    "Total Dairy Cattle (including Bobby Calves)"
+  ))) %>%
   ggplot(aes(x = year_ended_june, y = value, colour = measure)) +
   geom_line() +
-  ggeasy::easy_remove_legend()
+facet_wrap(~measure,
+  scales = "free_y",
+  labeller = as_labeller(c(
+    "Total Dairy Cattle (including Bobby Calves)" = "Dairy Cattle",
+    "Total Sheep" = "Sheep"
+  ))
+) +
+  theme_minimal() +
+  easy_remove_legend() +
+  labs(y = "Number of Animals (millions)", x = "Year", 
+       title = "The total number of sheep produced in NZ has been in steady decline since the \nmid 1980s. Dairy cattle numbers tripled over the same period.", 
+       subtitle = "Note y axis difference") +
+ scale_y_continuous(
+  labels = scales::label_number(scale = 1e-6, suffix = "M"), 
+  breaks = scales::breaks_pretty(n = 4)
+  )
+
 ```
 
-```{r}
- sheep_dairy <- df %>%
-  filter(measure %in% c("Total Sheep", "Total Dairy Cattle (including Bobby Calves)"))
-
-sheep_dairy %>%
-  ggplot(aes(x = year_ended_june, y = value, colour = measure)) +
-  geom_line()
-```
-
+# Kiwifruit vs Grapes
 
 ```{r}
+#| code-fold: true
 df %>%
-  tabyl(measure)
-
-distinct <- df %>%
-  distinct(measure) %>%
-  arrange(measure)
-```
-
-
-
-```{r}
-fruit_measures <- c(
-  "Feijoas",
-  "Grapefruit/Goldfruit",
-  "Kiwifruit",
-  "Lemons",
-  "Macadamias",
-  "Mandarins",
-  "Melons (Water and Rock)",
-  "Nectarines",
-  "Nuts",
-  "Olives (net area planted)",
-  "Oranges",
-  "Passionfruit",
-  "Peaches",
-  "Pears (excluding Asian Pears)",
-  "Persimmons",
-  "Plums",
-  "Raspberries",
-  "Strawberries",
-  "Tamarillos",
-  "Tangelos",
-  "Walnuts",
-  "Wine grapes"
-)
-
-df_fruit <- df %>%
-  filter(measure %in% fruit_measures)
-
-df_fruit %>%
   filter(measure %in% c("Wine grapes", "Kiwifruit")) %>%
   ggplot(aes(x = year_ended_june, y = value, colour = measure)) +
   geom_line() +
-  ggeasy::easy_remove_legend()
+  facet_wrap(~measure) +
+    theme_minimal() +
+  easy_remove_legend() +
+  labs(y = "Hectares planted", x = "Year",
+       title = "The number of hectares planted in kiwifruit peaked in the late 80s and has \nremained steady. Grape production tripled over the same period.") +
+  scale_y_continuous(limits = c(0,40000)
+  )
+
 ```
-
-```{r}
-flower_measures <- c(
-  "Flowers and Foliage (Outdoor)",
-  "Hydrangea",
-  "Orchids",
-  "Peony",
-  "Perennials (Indoor)",
-  "Perrenials (outdoor)"
-)
-
-df_flowers <- df %>%
-  filter(measure %in% flower_measures)
-```
-
