@@ -29,7 +29,7 @@ library(here)
 library(ggeasy)
 
 
-age_use <- read_csv(here("charts/2025-04-28_inclusion/age_group.csv")) %>%
+age_use <- read_csv(here("charts25/2025-04-28_inclusion/age_group.csv")) %>%
   filter(category == "Internet use") %>%
    mutate(response = factor(response, levels = c("Many times a day",  "Once or twice a day",  "A few times a week or less", "Never use it"))) %>%
    mutate(age = factor(age, levels = c("15-24", "25-34","35-44", "45-54","55-64","65-74","75+"))) %>%
@@ -37,7 +37,7 @@ age_use <- read_csv(here("charts/2025-04-28_inclusion/age_group.csv")) %>%
   select(category, age, response, estimate)
 
       
-age_sat <- read_csv(here("charts/2025-04-28_inclusion/age_group.csv")) %>%
+age_sat <- read_csv(here("charts25/2025-04-28_inclusion/age_group.csv")) %>%
   filter(category == "Internet satisfaction") %>%
    mutate(response = factor(response, levels = c("Very satisfied",  "Satisfied", 
                                            "No feeling either way", "Dissatisfied/very dissatisfied
@@ -87,7 +87,6 @@ age_use %>%
   ggplot(aes(x = age, y = estimate, fill = response)) +
   geom_col() +
   scale_fill_manual(values = palette1) +
-  easy_add_legend_title("Frequency") +
   labs(y = "Percent of respondents", x = "Age group", , 
        title = "Digital inclusion: Wellbeing NZ 2023", 
        subtitle = "Internet use", caption = "Data from StatsNZ") +
@@ -100,7 +99,7 @@ age_use %>%
 ```{r}
 #| include: false
 
-ggsave(here::here("charts", "2025-03-31_challenge", "digital.png"), width = 6, height = 4,  bg = "white")
+ggsave(here::here("charts25", "2025-03-31_challenge", "digital.png"), width = 6, height = 4,  bg = "white")
 
 
 ggsave("featured.png", width = 6, height = 4,  bg = "white")
@@ -115,7 +114,6 @@ age_sat %>%
   ggplot(aes(x = age, y = estimate, fill = response)) +
   geom_col() +
   scale_fill_manual(values = palette2) +
-  easy_add_legend_title("Satisfaction") +
   labs(y = "Percent of respondents", x = "Age group", 
         title = "Digital inclusion: Wellbeing NZ 2023", 
        subtitle = "Internet satisfaction", caption = "Data from StatsNZ") +
@@ -150,7 +148,6 @@ age_use %>%
   ggplot(aes(x = age, y = estimate, fill = response)) +
   geom_col() +
   scale_fill_manual(values = palette1) +
-  easy_add_legend_title("Frequency") +
   labs(y = "Percent of respondents", x = "Age group", 
 caption = "Data from StatsNZ") +
   theme_minimal() +
@@ -168,7 +165,6 @@ age_sat %>%
   ggplot(aes(x = age, y = estimate, fill = response)) +
   geom_col() +
   scale_fill_manual(values = palette2) +
-  easy_add_legend_title("Satisfaction") +
   labs(y = "Percent of respondents", x = "Age group", 
 caption = "Data from StatsNZ") +
   theme_minimal() +

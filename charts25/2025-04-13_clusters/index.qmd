@@ -85,7 +85,7 @@ fviz_cluster(km_bodymass_bill, data = bodymass_bill,
 ```{r}
 #| include: false
 
-ggsave(here::here("charts", "2025-03-31_challenge", "clusters.png"), width = 6, height = 4,  bg = "white")
+ggsave(here::here("charts25", "2025-03-31_challenge", "clusters.png"), width = 6, height = 4,  bg = "white")
 
 
 ggsave("featured.png",  bg = "white")

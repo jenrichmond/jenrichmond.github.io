@@ -30,7 +30,7 @@ library(ggeasy)
 library(patchwork)
 library(ggtext)
 
-hep <- read_csv(here("charts", "2025-04-24_who", "hepBC.csv"))
+hep <- read_csv(here("charts25", "2025-04-24_who", "hepBC.csv"))
 
 glimpse(hep)
 ```
@@ -46,7 +46,7 @@ Now I don't even know what this kind of chart is called, let alone how to make i
 I was surprised that the [code that claude](https://github.com/jenrichmond/jenrichmond.github.io/blob/main/charts/2025-04-24_who/claudes_code.R) wrote ran without throwing an error and made a passable treemap plot. It is actually impressive that the LLM pulled the data and colour palette from the png file I gave it. Of course, if I want to learn about how treemaps work, I should probably start from scratch. 
 
 ```{r}
-source(here::here("charts", "2025-04-24_who", "claudes_code.R"))
+source(here::here("charts25", "2025-04-24_who", "claudes_code.R"))
 
 final_plot
 ```
@@ -216,7 +216,7 @@ labs(title = "<span style='color:#F4BD4B;'>Figure 2.4</span><span> Number of new
 ```{r}
 #| include: false
 
-ggsave(here::here("charts", "2025-03-31_challenge", "who.png"), width = 6, height = 4,  bg = "white")
+ggsave(here::here("charts25", "2025-03-31_challenge", "who.png"), width = 6, height = 4,  bg = "white")
 
 
 ggsave("featured.png",  width = 6, height = 4,  bg = "white")

@@ -35,7 +35,7 @@ library(ggeasy)
 library(Manu)
 
 
-chart_time <- read_csv(here("charts/2025-04-30_natgeo/chart_time.csv"))
+chart_time <- read_csv(here("charts25/2025-04-30_natgeo/chart_time.csv"))
 
 glimpse(chart_time)
 
@@ -145,6 +145,8 @@ week_total <- week_total %>%
 
 glimpse(week_total)
 ```
+
+
 ```{r}
 week_total %>%
   ggplot(aes(x = challenge_week, y = total_hours)) +
@@ -176,7 +178,7 @@ p
 ```{r}
 #| include: false
 
-ggsave(here::here("charts", "2025-03-31_challenge", "chart_time.png"), width = 6, height = 4,  bg = "white")
+ggsave(here::here("charts25", "2025-03-31_challenge", "chart_time.png"), width = 6, height = 4,  bg = "white")
 
 
 ggsave("featured.png",  width = 6, height = 4,  bg = "white")

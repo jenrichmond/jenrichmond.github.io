@@ -65,21 +65,7 @@ willingness2024 <- willingness %>%
 glimpse(willingness2024)
 ```
 
-Unfortunately in filtering out the 2023 data, I have also lost information about the owid region, which is used in colouring the dots in the plot. I need to go back to the dataset that has regions for 2023 and have them propogate into the 2024 rows as well.
 
-This chunk groups the data by country and then mutates a new column to contain new region values. It looks just at 2023 rows and pulls the first value of region from those. Then we can filter for just 2024 values.
-
-```{r}
-
-willingness2024 <- willingness %>%
-  group_by(entity) %>%
-  mutate(region = first(owid_region[year == 2023])) %>%
-  select(starts_with("entity"), region, year, ends_with("willingness")) %>%
-  filter(year == 2024) 
- 
-glimpse(willingness2024)
-
-```
 ### make a basic plot
 
 ```{r}
@@ -148,7 +134,7 @@ I have used `scale_colour_manual()` to set the colours and added a title and sub
 
 willingness2024 %>%
   filter(entity != "World") %>%
-  ggplot(aes(y =  prediction_others_willingness, x = self_willingness, colour = region)) +
+  ggplot(aes(y =  prediction_others_willingness, x = self_willingness, colour = owid_region)) +
   geom_point() +
   scale_y_continuous(labels = percent_format(accuracy = 1, scale = 1), 
                       limits = c(0,100), expand = c(0,0), breaks = seq(0,100,20)) +
@@ -167,7 +153,7 @@ willingness2024 %>%
     linetype = "dotted") +
   scale_colour_manual(values = c("#a2559b", "#00847d", "#4b6a9c", "#e56e59", "#38aaba", "#883039")) +
   easy_remove_legend_title() +
-  geom_text_repel(aes(label = entity), size = 3, max.overlaps = 20)
+  ggrepel::geom_text_repel(aes(label = entity), size = 3, max.overlaps = 20)
 
 ```
 
@@ -191,7 +177,7 @@ The `plotly` packages allows for much of the same kind of interactivity that the
 plot <- willingness2024 %>%
   filter(entity != "World") %>%
   ggplot(aes(y =  prediction_others_willingness, x = self_willingness, 
-             colour = region, text = paste("country:", entity))) +
+             colour = owid_region, text = paste("country:", entity))) +
   geom_point() +
   scale_y_continuous(labels = percent_format(accuracy = 1, scale = 1), 
                       limits = c(0,100), expand = c(0,0), breaks = seq(0,100,20)) +

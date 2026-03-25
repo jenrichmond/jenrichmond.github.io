@@ -26,7 +26,7 @@ library(ggrain)
 library(ggeasy)
 library(patchwork)
 
-age_diff <- read_csv(here("charts", "2025-04-22_stars", "hollywood age.csv")) %>%
+age_diff <- read_csv(here("charts25", "2025-04-22_stars", "hollywood age.csv")) %>%
   clean_names() %>%
   select(movie_name, release_year, age_difference)
 
@@ -126,7 +126,7 @@ p2 +
 ```{r}
 #| include: false
 
-ggsave(here::here("charts", "2025-03-31_challenge", "stars.png"), width = 8, height = 4,  bg = "white")
+ggsave(here::here("charts25", "2025-03-31_challenge", "stars.png"), width = 8, height = 4,  bg = "white")
 
 
 ggsave("featured.png", width = 8, height = 4, bg = "white")

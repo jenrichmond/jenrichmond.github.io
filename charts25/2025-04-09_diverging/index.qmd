@@ -150,8 +150,7 @@ work_family %>%
   theme_minimal() +
   scale_y_continuous(limits = c(70,100)) +
   scale_x_continuous(limits = c(1990, 2022)) +
-  scale_color_brewer(palette = "Set1") +
-  easy_add_legend_title("Life Area")
+  scale_color_brewer(palette = "Set1") 
   
 ```
 
@@ -159,7 +158,7 @@ work_family %>%
 ```{r}
 #| include: false
 
-ggsave(here::here("charts", "2025-03-31_challenge", "values.png"), width = 6, height = 4,  bg = "white")
+ggsave(here::here("charts25", "2025-03-31_challenge", "values.png"), width = 6, height = 4,  bg = "white")
 
 
 ggsave("featured.png",  bg = "white")

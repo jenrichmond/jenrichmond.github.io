@@ -64,7 +64,7 @@ The dataset had daily temperature values and I really only needed the average te
 #| warning: false
 
 
-temp <- read_csv(here("charts", "2025-04-11_stripes", "daily-temperature-for-30-sites-to-2022-part2.csv"))
+temp <- read_csv(here("charts25", "2025-04-11_stripes", "daily-temperature-for-30-sites-to-2022-part2.csv"))
 
 q <- temp %>%
   filter(site ==  "Queenstown (Otago)") %>%
@@ -123,7 +123,7 @@ qmean %>%
 ```{r}
 #| include: false
 
-ggsave(here::here("charts", "2025-03-31_challenge", "temp.png"), width = 8, height = 4,  bg = "white")
+ggsave(here::here("charts25", "2025-03-31_challenge", "temp.png"), width = 8, height = 4,  bg = "white")
 
 
 ggsave("featured.png",  width = 8, height = 4,  bg = "white")

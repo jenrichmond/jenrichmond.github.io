@@ -25,12 +25,12 @@ library(here)
 library(usmap)
 library(janitor)
 
-vax <- read_csv(here("charts/2025-04-25_risk/kindy_vax _rates.csv")) %>%
+vax <- read_csv(here("charts25/2025-04-25_risk/kindy_vax _rates.csv")) %>%
   mutate(year = str_sub(school_year, 1,4)) %>%
   select(state = geography, year, estimate_pct, categories) %>%
   mutate(estimate_pct = parse_number(estimate_pct)) 
 
-cases2425 <- read_csv(here("charts/2025-04-25_risk/cases20242025.csv")) %>%
+cases2425 <- read_csv(here("charts25/2025-04-25_risk/cases20242025.csv")) %>%
   select(state = geography, year, cases_calendar_year)
 
 vax$year <- as.numeric(vax$year)
@@ -70,7 +70,7 @@ plot_usmap(data = vax2324, values = "estimate_pct", labels=FALSE) +
 
 ```{r}
 #| include: false
-ggsave(here::here("charts", "2025-03-31_challenge", "measlesvax_continuous.png"), width = 6, height = 4,  bg = "white")
+ggsave(here::here("charts25", "2025-03-31_challenge", "measlesvax_continuous.png"), width = 6, height = 4,  bg = "white")
 ```
 
 
@@ -95,7 +95,7 @@ plot_usmap(data = vax2324, values = "categories", labels=FALSE) +
 ```{r}
 #| include: false
 #| 
-ggsave(here::here("charts", "2025-03-31_challenge", "measlesvax_categorical.png"), width = 6, height = 4,  bg = "white")
+ggsave(here::here("charts25", "2025-03-31_challenge", "measlesvax_categorical.png"), width = 6, height = 4,  bg = "white")
 
 ```
 
@@ -120,7 +120,7 @@ plot_usmap(data = cases2425, values = "cases_calendar_year", labels=FALSE) +
 ```{r}
 #| include: false
 
-ggsave(here::here("charts", "2025-03-31_challenge", "measles.png"), width = 6, height = 4,  bg = "white")
+ggsave(here::here("charts25", "2025-03-31_challenge", "measles.png"), width = 6, height = 4,  bg = "white")
 
 
 ggsave("featured.png",  width = 6, height = 4,  bg = "white")

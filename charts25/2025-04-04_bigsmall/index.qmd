@@ -199,7 +199,7 @@ p
 ggsave("featured.png", bg = "white", width = 8, height = 6)
 
 
-ggsave(here::here("charts", "2025-03-31_challenge", "domestic.png"), width = 8, height = 6,  bg = "white")
+ggsave(here::here("charts25", "2025-03-31_challenge", "domestic.png"), width = 8, height = 6,  bg = "white")
 
 
 

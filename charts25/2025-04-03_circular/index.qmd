@@ -117,7 +117,6 @@ share2024_world %>%
   geom_col(colour = "white") +
  coord_polar("y", start = 0) +
     theme_void() +
-  easy_add_legend_title("Percent seats") +
   scale_fill_manual(values = c("#a2559b", "#00847d", "#4b6a9c", "#e56e59", "#38aaba", "#6b3d8d",  "#986d39" )) +
   labs(title = "Percent of countries by share of women in parliament in 2024, World", 
        subtitle = "Percent of seats in lower or single chamber of the legislature held by women", 
@@ -141,7 +140,6 @@ share2024_regions %>%
   facet_wrap(~entity) +
     scale_fill_manual(values = c("#a2559b", "#00847d", "#4b6a9c", "#e56e59", "#38aaba", "#6b3d8d",  "#986d39" )) +
     theme_void() +
-   easy_add_legend_title("Percent seats") +
 labs(title = "Percent of countries by share of women in parliament in 2024, Regions", 
        subtitle = "Percent of seats in lower or single chamber of the legislature held by women", 
        caption = "Data source: V-Dem (2025) via OurWorldInData. \nNote: Only countries with at least one legislative chamber included.")
@@ -152,7 +150,7 @@ labs(title = "Percent of countries by share of women in parliament in 2024, Regi
 ```{r, save plot}
 #| include: false
 #| 
-ggsave(here::here("charts", "2025-03-31_challenge", "womeningovt.png"), width = 6, height = 4, bg = "white")
+ggsave(here::here("charts25", "2025-03-31_challenge", "womeningovt.png"), width = 6, height = 4, bg = "white")
 
 ggsave("featured.png", bg = "white")
 

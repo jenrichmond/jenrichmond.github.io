@@ -39,7 +39,7 @@ library(janitor)
 library(ggbump)
 library(ggeasy)
 
-top10_year <- read_csv(here::here("charts", "2025-04-17_birds", "top10.csv"))
+top10_year <- read_csv(here::here("charts25", "2025-04-17_birds", "top10.csv"))
 
 glimpse(top10_year)
 ```
@@ -186,7 +186,7 @@ d23 <- top10_year %>%
 ```{r}
 #| include: false
 
-ggsave(here::here("charts", "2025-03-31_challenge", "puteketeke.png"), width = 6, height = 4,  bg = "white")
+ggsave(here::here("charts25", "2025-03-31_challenge", "puteketeke.png"), width = 6, height = 4,  bg = "white")
 
 
 ggsave("featured.png",  bg = "white")
