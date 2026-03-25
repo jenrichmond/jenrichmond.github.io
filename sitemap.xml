@@ -2,326 +2,330 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jenrichmond.github.io/wombat/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.842Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/posts/2023-04-25-error-bars-on-plots/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.490Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/posts/2023-05-24-rowwise-mean/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.498Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/posts/2025-05-09-what_happened_what_now/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.565Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/posts/2022-01-16-useful-bash-commands/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.472Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/posts/2021-08-31-parameterised-penguins/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.470Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/posts/2025-05-19_font_notes/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.578Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/posts/2024-10-03-what-i-learned-at-positconf/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.511Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/posts/2025-05-21_annotations/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.579Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/posts/2024-07-04-learning_python/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.499Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/posts/2020-11-18-digging-into-the-janitor-package/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.465Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/posts/2021-06-22-pat-for-github/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.469Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-27_noise/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.372Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-05_ranking/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.248Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-04_bigsmall/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.247Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-03_circular/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.245Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-28_inclusion/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.376Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-01_fractions/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.241Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-22_stars/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.339Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-16_negative/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.333Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-06_florence/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.249Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-25_risk/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.371Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/posts.html</loc>
-    <lastmod>2026-03-25T21:46:23.464Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/charts_tidytuesday.html</loc>
-    <lastmod>2026-03-25T21:46:23.381Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/maps/2025-11-03_polygon/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.439Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/maps/2025-11-04_mydata/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.441Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/maps/2025-11-02_lines/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.437Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/projects.html</loc>
-    <lastmod>2026-03-25T21:46:23.590Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/maps_30day.html</loc>
-    <lastmod>2026-03-25T21:46:23.445Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/projects/2024-10-30_alumni_gateway/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.601Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/projects/2025-05-13_tipstricks/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.667Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/projects/2025-03-02_RYouWithMe/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.661Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-07-02_tt_gas/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.793Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2026-02-17_sheep/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.818Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-08-26_billboard/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.813Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-06-22_tt_measles/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.792Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-05-13_tt_vesuvius/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.689Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-05-06_tt_nsf/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.678Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-07-29_tt_stories/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.803Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-05-20_tt_beaches/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.693Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-05-27_tt_monsters/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.735Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-06-03_tt_gutenberg/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.738Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-09-09_henley/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.814Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-08-12_tt_extreme/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.806Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-07-08_tt_colours/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.802Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-08-19_munros/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.810Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-06-17_tt_apis/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.784Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-05-14_cool-stuff-tidytuesdayR/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.692Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-11-04_flint/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.818Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/tidytuesday/2025-06-10_tt_judges/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.778Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/projects/2024-10-10_academic_research/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.591Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/projects/2025-02_02_academic_writing/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.655Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/projects/2025-11-30_PSYCHEdpodcast/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.667Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/about.html</loc>
-    <lastmod>2026-03-25T21:46:23.217Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.385Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/maps/2025-11-01_points/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.388Z</lastmod>
+    <lastmod>2026-03-25T22:40:19.997Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/maps/2025-11-07_accessibility/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.443Z</lastmod>
+    <lastmod>2026-03-25T22:40:19.593Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/maps/2025-10-31_challenge/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.386Z</lastmod>
+    <loc>https://jenrichmond.github.io/maps/2025-11-03_polygon/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.588Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/resume.html</loc>
-    <lastmod>2026-03-25T21:46:23.677Z</lastmod>
+    <loc>https://jenrichmond.github.io/maps/2025-11-01_points/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.531Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/pieces.html</loc>
-    <lastmod>2026-03-25T21:46:23.464Z</lastmod>
+    <loc>https://jenrichmond.github.io/posts.html</loc>
+    <lastmod>2026-03-25T22:40:19.613Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/charts_30day.html</loc>
-    <lastmod>2026-03-25T21:46:23.381Z</lastmod>
+    <loc>https://jenrichmond.github.io/about.html</loc>
+    <lastmod>2026-03-25T22:40:19.335Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-07_outliers/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.250Z</lastmod>
+    <loc>https://jenrichmond.github.io/charts_30day_2026.html</loc>
+    <lastmod>2026-03-25T22:40:19.523Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/charts/2025-03-31_challenge/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.225Z</lastmod>
+    <loc>https://jenrichmond.github.io/charts_30day_2025.html</loc>
+    <lastmod>2026-03-25T22:40:19.523Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-30_natgeo/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.381Z</lastmod>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-05-14_cool-stuff-tidytuesdayR/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.852Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-09_diverging/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.251Z</lastmod>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-06-22_tt_measles/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.949Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-17_birds/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.336Z</lastmod>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-06-10_tt_judges/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.935Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-19_smooth/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.337Z</lastmod>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-07-29_tt_stories/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.960Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-11_stripes/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.329Z</lastmod>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-05-27_tt_monsters/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.896Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-24_who/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.369Z</lastmod>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-06-03_tt_gutenberg/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.899Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-13_clusters/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.330Z</lastmod>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-05-13_tt_vesuvius/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.849Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/charts/2025-04-02_slope/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.244Z</lastmod>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-06-17_tt_apis/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.942Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-08-26_billboard/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.970Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2021-01-08-my-first-pull-request/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.466Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jenrichmond.github.io/posts/2025-04-18_closeread/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.541Z</lastmod>
+    <lastmod>2026-03-25T22:40:19.614Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2022-12-15-colours-that-r-knows/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.488Z</lastmod>
+    <lastmod>2026-03-25T22:40:19.635Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/posts/2025-05-21_annotations/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.734Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/posts/2025-04-18_closeread/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.697Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2022-06-27-using-lists-in-r/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.480Z</lastmod>
+    <lastmod>2026-03-25T22:40:19.628Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/posts/2022-09-28-git-hints/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.486Z</lastmod>
+    <loc>https://jenrichmond.github.io/posts/2024-07-04-learning_python/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.645Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/posts/2023-04-25-error-bars-on-plots/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.636Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/posts/2025-05-09-what_happened_what_now/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.719Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2022-01-17-my-favourite-things-about-r/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.474Z</lastmod>
+    <lastmod>2026-03-25T22:40:19.621Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/posts/2022-01-16-useful-bash-commands/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.620Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.589Z</lastmod>
+    <lastmod>2026-03-25T22:40:19.744Z</lastmod>
   </url>
   <url>
-    <loc>https://jenrichmond.github.io/posts/2022-07-13-analysing-smartwatch-data/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.484Z</lastmod>
+    <loc>https://jenrichmond.github.io/projects/2025-03-02_RYouWithMe/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.824Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/projects/2025-02_02_academic_writing/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.816Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/projects/2024-10-30_alumni_gateway/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.755Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.528Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-19_smooth/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.478Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-24_who/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.510Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-30_natgeo/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.523Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-25_risk/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.512Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-06_florence/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.378Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-16_negative/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.474Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-27_noise/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.514Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-03-31_challenge/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.343Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-11_stripes/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.470Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-09_diverging/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.380Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-07_outliers/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.379Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-01_fractions/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.358Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-22_stars/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-03_circular/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.367Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-04_bigsmall/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.369Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-17_birds/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.477Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-02_slope/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.361Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-13_clusters/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.471Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-28_inclusion/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.519Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts25/2025-04-05_ranking/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.373Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/projects/2025-11-30_PSYCHEdpodcast/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.829Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/projects/2024-10-10_academic_research/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.746Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/projects/2025-05-13_tipstricks/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.829Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2025-10-17_tefap/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.589Z</lastmod>
+    <lastmod>2026-03-25T22:40:19.744Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/posts/2023-05-24-rowwise-mean/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.644Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/posts/2024-10-03-what-i-learned-at-positconf/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.660Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/posts/2022-07-13-analysing-smartwatch-data/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.631Z</lastmod>
   </url>
   <url>
     <loc>https://jenrichmond.github.io/posts/2025-05-02_30daychartdebrief/index.html</loc>
-    <lastmod>2026-03-25T21:46:23.549Z</lastmod>
+    <lastmod>2026-03-25T22:40:19.704Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/posts/2025-05-19_font_notes/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.733Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/posts/2022-09-28-git-hints/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.633Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/posts/2021-08-31-parameterised-penguins/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.619Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/posts/2021-06-22-pat-for-github/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.618Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/posts/2020-11-18-digging-into-the-janitor-package/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.614Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-08-12_tt_extreme/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.962Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/tidytuesday/2026-02-17_sheep/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.975Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-05-06_tt_nsf/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.840Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-05-20_tt_beaches/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.852Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-08-19_munros/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.967Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-11-04_flint/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.975Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-07-08_tt_colours/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.960Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-09-09_henley/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.971Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/tidytuesday/2025-07-02_tt_gas/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.950Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/projects.html</loc>
+    <lastmod>2026-03-25T22:40:19.744Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/charts_tidytuesday.html</loc>
+    <lastmod>2026-03-25T22:40:19.523Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/pieces.html</loc>
+    <lastmod>2026-03-25T22:40:19.613Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/resume.html</loc>
+    <lastmod>2026-03-25T22:40:19.838Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/maps_30day.html</loc>
+    <lastmod>2026-03-25T22:40:19.594Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/maps/2025-11-04_mydata/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.591Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/maps/2025-11-02_lines/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.587Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jenrichmond.github.io/maps/2025-10-31_challenge/index.html</loc>
+    <lastmod>2026-03-25T22:40:19.529Z</lastmod>
   </url>
 </urlset>
