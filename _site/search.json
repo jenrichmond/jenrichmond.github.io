@@ -1362,6 +1362,76 @@
     "href": "charts_30day_2026.html",
     "title": "30DayCharts_2026",
     "section": "",
-    "text": "I love data viz! I made the charts in this portfolio as part of the #30DayChartChallenge in April 2026.\nWant to support my chart making? \n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "I love data viz! I made the charts in this portfolio as part of the #30DayChartChallenge in April 2026.\nWant to support my chart making? \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nday 0 challenge\n\n\n\n\n\n\n\n\nMar 31, 2026\n\n\nJen Richmond\n\n\n\n\n\n\n\n\n\n\n\n\nday 1: part to whole\n\n\n\n\n\n\n\n\nApr 1, 2026\n\n\nJen Richmond\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "charts26/2026-03-31_challenge/index.html",
+    "href": "charts26/2026-03-31_challenge/index.html",
+    "title": "day 0 challenge",
+    "section": "",
+    "text": "This year for the #30DayChartChallenge I am going to dig back in the archives of the TidyTuesday repo and choose a dataset at random. I have much less time this year so my goal is to make quick plots (~ 30 min) and interpret the prompts generously.\nThis page will contain each of my final plots and the code that generates it, but if you want to look into how the plot came about, check out the associated blog post."
+  },
+  {
+    "objectID": "charts26/2026-03-31_challenge/index.html#day-1-fractions",
+    "href": "charts26/2026-03-31_challenge/index.html#day-1-fractions",
+    "title": "day 0 challenge",
+    "section": "Day 1 fractions",
+    "text": "Day 1 fractions\nDataset\n\nmy plotr code"
+  },
+  {
+    "objectID": "charts26/2026-03-31_challenge/index.html#day-1-part-to-whole",
+    "href": "charts26/2026-03-31_challenge/index.html#day-1-part-to-whole",
+    "title": "day 0 challenge",
+    "section": "Day 1 part-to-whole",
+    "text": "Day 1 part-to-whole\nAustralian Salaries by Gender\n\nmy plotr code\n\n\n\n\n\n\nsummary %&gt;%\n  ggplot(aes(x = \"\", y = n, fill = bias)) +\n  geom_col(width = 0.7) +\n  labs(\n    x = NULL,\n    y = \"Number of occupations\",\n    fill = NULL,\n    title = \"Gender Pay Gaps in Australia\", \n    subtitle = \"Of the 1105 occupations in this dataset, only 7% pay women on average \\nmore than men\", \n    caption = \"TidyTuesday 2018 Week 4 | Data from data.gov.au\"\n  ) +\n  theme_minimal() +\n  scale_fill_manual(values = get_pal(\"Takahe\")) +\n  scale_y_continuous(limits = c(0,1200), breaks = seq(0, 1200, 300)) +\n  theme(\n    plot.caption = element_text(hjust = 0.5) # Centers the caption\n  )"
+  },
+  {
+    "objectID": "charts26/2026-04-01_partwhole/index.html",
+    "href": "charts26/2026-04-01_partwhole/index.html",
+    "title": "day 1: part to whole",
+    "section": "",
+    "text": "Code\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\nlibrary(janitor)\nlibrary(ggeasy)\nlibrary(Manu)\n\n\n# choosing a dataset randomly\n\nset.seed(1)\nttyears &lt;- c(2018:2025)\nttweeks &lt;- c(1:52)\n\n# choose a year at random\nchosen_year &lt;- sample(ttyears, size = 1)\n\n# choose at week at random\nchosen_week &lt;- sample(ttweeks, size = 1)\n\n# read the data from that year/week\n\ndf &lt;- tidytuesdayR::tt_load(chosen_year, chosen_week)\n\n# print dataset\nprint(df)\n\nsalaries &lt;- df[[1]]\n\n\nThe data for this plot comes from a 2018 TidyTuesday challenge. The Week 4 data that year was about Australian Salaries. I was interested in differences in the average salary of men and women in different occupations. The 30DayChartChallenge theme today is part to whole, so I decided to plot the proprotion of occupations in which women are paid more than men. It would be interesting to know whether this stat has improved since 2018.\n\n\n\nCode\n# make new column flagging occupations where women get paid more\n\nsalaries_gender &lt;- salaries %&gt;%\n  select(-1, -2, -individuals) %&gt;%\n  pivot_wider(names_from = gender, values_from = average_taxable_income) %&gt;%\n  rowwise() %&gt;%\n  mutate(salary_diff = Female - Male) %&gt;%\n  ungroup() %&gt;%\n  mutate(bias = case_when(salary_diff &gt; 0 ~ 1, \n                          salary_diff &lt; 0 ~ 0)) # tag occupations where women are paid more on average with 1\n\n\n# count occupations where women are paid more, set up labels, remove NAs\nsummary &lt;- salaries_gender %&gt;%\n  count(bias) %&gt;%\n  mutate(bias = factor(bias,\n    levels = c(1, 0),\n    labels = c(\"Women &gt; Men\", \"Men &gt; Women\")\n  )) %&gt;%\n  na.omit() \n\n# plot\nsummary %&gt;%\n  ggplot(aes(x = \"\", y = n, fill = bias)) +\n  geom_col(width = 0.7) +\n  labs(\n    x = NULL,\n    y = \"Number of occupations\",\n    fill = NULL,\n    title = \"Gender Pay Gaps in Australia\", \n    subtitle = \"Of the 1105 occupations in this dataset, only 7% pay women on average \\nmore than men\", \n    caption = \"TidyTuesday 2018 Week 4 | Data from data.gov.au\"\n  ) +\n  theme_minimal() +\n  scale_fill_manual(values = get_pal(\"Takahe\")) +\n  scale_y_continuous(limits = c(0,1200), breaks = seq(0, 1200, 300)) +\n  theme(\n    plot.caption = element_text(hjust = 0.5) # Centers the caption\n  )"
+  },
+  {
+    "objectID": "charts26/2026-03-31_challenge/index.html#day-1-part-to-whole-1",
+    "href": "charts26/2026-03-31_challenge/index.html#day-1-part-to-whole-1",
+    "title": "day 0 challenge",
+    "section": "Day 1 part-to-whole",
+    "text": "Day 1 part-to-whole\nDataset\n\nmy plotr code"
+  },
+  {
+    "objectID": "charts26/2026-03-31_challenge/index.html#day-1-part-to-whole-2",
+    "href": "charts26/2026-03-31_challenge/index.html#day-1-part-to-whole-2",
+    "title": "day 0 challenge",
+    "section": "Day 1 part-to-whole",
+    "text": "Day 1 part-to-whole\nDataset\n\nmy plotr code"
+  },
+  {
+    "objectID": "charts26/2026-03-31_challenge/index.html#day-1-part-to-whole-3",
+    "href": "charts26/2026-03-31_challenge/index.html#day-1-part-to-whole-3",
+    "title": "day 0 challenge",
+    "section": "Day 1 part-to-whole",
+    "text": "Day 1 part-to-whole\nDataset\n\nmy plotr code"
+  },
+  {
+    "objectID": "charts26/2026-03-31_challenge/index.html#day-_____",
+    "href": "charts26/2026-03-31_challenge/index.html#day-_____",
+    "title": "day 0 challenge",
+    "section": "Day _____",
+    "text": "Day _____\nDataset\n\nmy plotr code"
+  },
+  {
+    "objectID": "charts26/2026-03-31_challenge/index.html#day-_____-1",
+    "href": "charts26/2026-03-31_challenge/index.html#day-_____-1",
+    "title": "day 0 challenge",
+    "section": "Day _____",
+    "text": "Day _____\nDataset\n\nmy plotr code"
+  },
+  {
+    "objectID": "charts26/2026-03-31_challenge/index.html#day-_____-2",
+    "href": "charts26/2026-03-31_challenge/index.html#day-_____-2",
+    "title": "day 0 challenge",
+    "section": "Day _____",
+    "text": "Day _____\nDataset\n\nmy plotr code"
   }
 ]

@@ -97,6 +97,9 @@
   },
   {
     "listing": "/charts_30day_2026.html",
-    "items": []
+    "items": [
+      "/charts26/2026-03-31_challenge/index.html",
+      "/charts26/2026-04-01_partwhole/index.html"
+    ]
   }
 ]

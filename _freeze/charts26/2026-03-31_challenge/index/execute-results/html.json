@@ -1,0 +1,15 @@
+{
+  "hash": "976c3494fe2274c835cafcef1fb51f1f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"day 0 challenge\"\neditor: source\nauthor: Jen Richmond\ndate: 2026-03-31\nimage: featured.png\n---\n\nThis year for the #30DayChartChallenge I am going to dig back in the archives of the TidyTuesday repo and choose a dataset at random. I have much less time this year so my goal is to make quick plots (~ 30 min) and interpret the prompts generously. \n\n\nThis page will contain each of my final plots and the code that generates it, but if you want to look into how the plot came about, check out the associated blog post. \n\n\n\n![](featured.png)\n\n\n\n\n## Day 1 part-to-whole\n\n[Australian Salaries by Gender](\"https://github.com/rfordatascience/tidytuesday/tree/main/data/2018/2018-04-23\")\n\n::: panel-tabset\n\n### my plot\n\n![](gender.png)\n\n### r code\n\n\n::: {.cell}\n\n```{.r .cell-code}\nsummary %>%\n  ggplot(aes(x = \"\", y = n, fill = bias)) +\n  geom_col(width = 0.7) +\n  labs(\n    x = NULL,\n    y = \"Number of occupations\",\n    fill = NULL,\n    title = \"Gender Pay Gaps in Australia\", \n    subtitle = \"Of the 1105 occupations in this dataset, only 7% pay women on average \\nmore than men\", \n    caption = \"TidyTuesday 2018 Week 4 | Data from data.gov.au\"\n  ) +\n  theme_minimal() +\n  scale_fill_manual(values = get_pal(\"Takahe\")) +\n  scale_y_continuous(limits = c(0,1200), breaks = seq(0, 1200, 300)) +\n  theme(\n    plot.caption = element_text(hjust = 0.5) # Centers the caption\n  )\n```\n:::\n\n:::\n\n\n\n## Day _____\n\n[Dataset](URL)\n\n::: panel-tabset\n\n### my plot\n\n![](image.png)\n\n### r code\n\n\n::: {.cell}\n\n:::\n\n:::\n\n\n## Day _____\n\n[Dataset](URL)\n\n::: panel-tabset\n\n### my plot\n\n![](image.png)\n\n### r code\n\n\n::: {.cell}\n\n:::\n\n:::\n\n\n## Day _____\n\n[Dataset](URL)\n\n::: panel-tabset\n\n### my plot\n\n![](image.png)\n\n### r code\n\n\n::: {.cell}\n\n:::\n\n:::\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

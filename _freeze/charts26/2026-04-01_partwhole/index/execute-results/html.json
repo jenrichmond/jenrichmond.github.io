@@ -1,0 +1,17 @@
+{
+  "hash": "f55be31895ab59cb961ee7251f8163b6",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"day 1: part to whole\"\nauthor: Jen Richmond\ndate: 2026-04-01\nformat: html\neditor: source\ndraft: FALSE\ncode-fold: true\nimage: featured.png\nexecute:\n  freeze: true\n---\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\nlibrary(janitor)\nlibrary(ggeasy)\nlibrary(Manu)\n\n\n# choosing a dataset randomly\n\nset.seed(1)\nttyears <- c(2018:2025)\nttweeks <- c(1:52)\n\n# choose a year at random\nchosen_year <- sample(ttyears, size = 1)\n\n# choose at week at random\nchosen_week <- sample(ttweeks, size = 1)\n\n# read the data from that year/week\n\ndf <- tidytuesdayR::tt_load(chosen_year, chosen_week)\n\n# print dataset\nprint(df)\n\nsalaries <- df[[1]]\n```\n:::\n\n\n\nThe data for this plot comes from a 2018 TidyTuesday challenge. The Week 4 data that year was about Australian Salaries. I was interested in differences in the average salary of men and women in different occupations. The 30DayChartChallenge theme today is part to whole, so I decided to plot the proprotion of occupations in which women are paid more than men. It would be interesting to know whether this stat has improved since 2018. \n\n\n![](featured.png)\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# make new column flagging occupations where women get paid more\n\nsalaries_gender <- salaries %>%\n  select(-1, -2, -individuals) %>%\n  pivot_wider(names_from = gender, values_from = average_taxable_income) %>%\n  rowwise() %>%\n  mutate(salary_diff = Female - Male) %>%\n  ungroup() %>%\n  mutate(bias = case_when(salary_diff > 0 ~ 1, \n                          salary_diff < 0 ~ 0)) # tag occupations where women are paid more on average with 1\n\n\n# count occupations where women are paid more, set up labels, remove NAs\nsummary <- salaries_gender %>%\n  count(bias) %>%\n  mutate(bias = factor(bias,\n    levels = c(1, 0),\n    labels = c(\"Women > Men\", \"Men > Women\")\n  )) %>%\n  na.omit() \n\n# plot\nsummary %>%\n  ggplot(aes(x = \"\", y = n, fill = bias)) +\n  geom_col(width = 0.7) +\n  labs(\n    x = NULL,\n    y = \"Number of occupations\",\n    fill = NULL,\n    title = \"Gender Pay Gaps in Australia\", \n    subtitle = \"Of the 1105 occupations in this dataset, only 7% pay women on average \\nmore than men\", \n    caption = \"TidyTuesday 2018 Week 4 | Data from data.gov.au\"\n  ) +\n  theme_minimal() +\n  scale_fill_manual(values = get_pal(\"Takahe\")) +\n  scale_y_continuous(limits = c(0,1200), breaks = seq(0, 1200, 300)) +\n  theme(\n    plot.caption = element_text(hjust = 0.5) # Centers the caption\n  )\n```\n:::\n\n\n\n\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
