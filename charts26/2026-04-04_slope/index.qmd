@@ -1,12 +1,11 @@
 ---
-title: "day X"
+title: "day 4: slope"
 author: Jen Richmond
-date: 2026-04-01
+date: 2026-04-04
 format: html
 editor: source
-draft: FALSE
 code-fold: true
-image: featured.png
+image: tidyfeatured.png
 execute:
   freeze: true
 ---
@@ -17,6 +16,7 @@ execute:
 
 library(tidyverse)
 library(tidytuesdayR)
+library(tidyplots)
 library(janitor)
 library(ggpubr)
 library(Manu)
@@ -43,48 +43,76 @@ print(df)
 
 palm <- df[[1]]
 
+options(scipen = 999)
 
 ```
 
 
 The data for this plot comes from a `r chosen_year` TidyTuesday challenge. The Week `r chosen_week` data that year was about Palm Trees. 
 
-![](featured.png)
 
+
+### ggplot
 
 ```{r}
-#| fig-show: "hide"
+#| message: false
+#| warning: false
 
-options(scipen = 999)
-
-palm %>%
-  filter(climbing != "both") %>%
+palm |>
   ggplot(aes(y = max_stem_height_m, x = max_leaf_number)) +
   geom_jitter() +
-  scale_y_continuous(limits = c(0,65), breaks = seq(0,80,20)) +
-  scale_x_continuous(limits = c(0,80), breaks = seq(0,80,20)) +
+  scale_y_continuous(limits = c(0,65), breaks = seq(0,80,20), expand = c(0,0)) +
+  scale_x_continuous(limits = c(0,80), breaks = seq(0,80,20), expand = c(0,0)) +
   geom_smooth(method = "lm", se = FALSE, colour = "red")  +
   labs(y = "Maximum height (m)", x = "Maximum leaf number", 
        title = "Taller palm trees have more leaves", 
-       caption = "TidyTuesday 2025 Week 11 | Data from palmtrees` R package") +
-  theme_pubr() +
-  stat_cor(method = "pearson", p.accuracy = 0.001, r.accuracy = 0.01)
-
+       caption = "TidyTuesday 2025 Week 11 | Data from `palmtrees` R package") +
+  theme_pubr(base_family = "Lato") +
+  stat_cor(method = "pearson", p.accuracy = 0.001, r.accuracy = 0.01, label.x = 1) 
 
 
 ```
+
 
 ```{r}
 #| include: false
-# save plots
-
-ggsave(here::here("charts26", "2026-03-31_challenge", "palm.png"), width = 6, height = 4,  bg = "white")
 
 
-ggsave("featured.png", width = 6, height = 4,  bg = "white")
+ggsave(here::here("charts26", "2026-04-04_slope", "ggfeatured.png"))
+
+ggsave(here::here("charts26", "2026-03-31_challenge", "ggpalm.png"))
 
 
 ```
+
+
+
+### tidyplot
+
+
+```{r}
+#| message: false
+#| warning: false
+
+
+palm |>
+  tidyplot(y = max_stem_height_m, x = max_leaf_number) |> 
+  add_data_points_jitter(colour = "black", size = 2)  |> 
+  add_curve_fit(method = "lm", colour = "red", linewidth = 1, se = FALSE) |> 
+  adjust_y_axis(limits = c(0,65), breaks = seq(0,80,20)) |> 
+  adjust_x_axis(limits = c(0,80), breaks = seq(0,80,20)) |> 
+  adjust_font(fontsize = 14, family = "Lato") |> 
+  adjust_title("Taller palm trees have more leaves", fontsize = 16) |> 
+  adjust_x_axis_title("Maximum leaf number") |> 
+  adjust_y_axis_title("Maximum height (m)") |> 
+  adjust_caption("TidyTuesday 2025 Week 11 | Data from `palmtrees` R package") |> 
+  adjust_size(unit = "mm", width = 160, height = 100) |> 
+  add_annotation_text("R = 0.42, p < 0.001", x = 10, y = 62, fontsize = 12) |> 
+  save_plot(here::here("charts26", "2026-04-04_slope","tidyfeatured.png")) |> 
+  save_plot(here::here("charts26", "2026-03-31_challenge","tidypalm.png"))
+
+```
+
 
 
 

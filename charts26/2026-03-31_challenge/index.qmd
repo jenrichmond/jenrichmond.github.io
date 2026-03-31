@@ -8,6 +8,8 @@ image: featured.png
 
 This year for the #30DayChartChallenge I am going to dig back in the archives of the TidyTuesday repo and choose a dataset at random. I have much less time this year so my goal is to make quick plots (~ 30 min) and interpret the prompts generously. 
 
+I am also using the challenge this year as an excuse to try out the `tidyplots` package. By the end of the month I hope to work out whether the package might be a good ggplot alternative for students needing simple but powerful plotting functions. 
+
 
 This page will contain each of my final plots and the code that generates it, but if you want to look into how the plot came about, check out the associated blog post. 
 
@@ -20,56 +22,35 @@ This page will contain each of my final plots and the code that generates it, bu
 
 ## Day 1 part-to-whole
 
-[Australian Salaries by Gender]("https://github.com/rfordatascience/tidytuesday/tree/main/data/2018/2018-04-23")
+[Australian Salaries by Gender](https://github.com/rfordatascience/tidytuesday/tree/main/data/2018/2018-04-23)
 
 ::: panel-tabset
 
-### my plot
+### tidyplot
 
 ![](gender.png)
 
-### r code
+### ggplot
 
-```{r, echo=TRUE, eval=FALSE}
+![](gender.png)
 
-summary %>%
-  ggplot(aes(x = "", y = n, fill = bias)) +
-  geom_col(width = 0.7) +
-  labs(
-    x = NULL,
-    y = "Number of occupations",
-    fill = NULL,
-    title = "Gender Pay Gaps in Australia", 
-    subtitle = "Of the 1105 occupations in this dataset, only 7% pay women on average \nmore than men", 
-    caption = "TidyTuesday 2018 Week 4 | Data from data.gov.au"
-  ) +
-  theme_minimal() +
-  scale_fill_manual(values = get_pal("Takahe")) +
-  scale_y_continuous(limits = c(0,1200), breaks = seq(0, 1200, 300)) +
-  theme(
-    plot.caption = element_text(hjust = 0.5) # Centers the caption
-  )
-```
 :::
 
 
 
-## Day _____
+## Day 4: slope
 
-[Dataset](URL)
+[palmtrees package ]("https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-03-18/readme.md")
 
 ::: panel-tabset
 
-### my plot
+### ggplot
 
-![](image.png)
+![](ggpalm.png)
 
-### r code
+### tidyplot
 
-```{r, echo=TRUE, eval=FALSE}
-
-
-```
+![](tidypalm.png)
 :::
 
 
@@ -79,16 +60,13 @@ summary %>%
 
 ::: panel-tabset
 
-### my plot
+### tidyplot
 
 ![](image.png)
 
-### r code
+### ggplot
 
-```{r, echo=TRUE, eval=FALSE}
-
-
-```
+![](image.png)
 :::
 
 
@@ -98,17 +76,43 @@ summary %>%
 
 ::: panel-tabset
 
-### my plot
+### tidyplot
 
 ![](image.png)
 
-### r code
+### ggplot
 
-```{r, echo=TRUE, eval=FALSE}
-
-
-```
+![](image.png)
 :::
 
 
+## Day _____
 
+[Dataset](URL)
+
+::: panel-tabset
+
+### tidyplot
+
+![](image.png)
+
+### ggplot
+
+![](image.png)
+:::
+
+
+## Day _____
+
+[Dataset](URL)
+
+::: panel-tabset
+
+### tidyplot
+
+![](image.png)
+
+### ggplot
+
+![](image.png)
+:::
