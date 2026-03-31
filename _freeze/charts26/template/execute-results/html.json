@@ -1,0 +1,15 @@
+{
+  "hash": "fad79ef362464b94e4500b0ea6da420c",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"day X\"\nauthor: Jen Richmond\ndate: 2026-04-01\nformat: html\neditor: source\ndraft: FALSE\ncode-fold: true\nimage: featured.png\nexecute:\n  freeze: true\n---\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\nlibrary(janitor)\nlibrary(ggeasy)\nlibrary(Manu)\n\n\n# choosing a dataset randomly\n\nset.seed(4)\nttyears <- c(2018:2025)\nttweeks <- c(1:52)\n\n# choose a year at random\nchosen_year <- sample(ttyears, size = 1)\n\n# choose at week at random\nchosen_week <- sample(ttweeks, size = 1)\n\n# read the data from that year/week\n\ndf <- tidytuesdayR::tt_load(chosen_year, chosen_week)\n\n# print dataset\nprint(df)\n\npalm <- df[[1]]\n```\n:::\n\n\n\nThe data for this plot comes from a 2025 TidyTuesday challenge. The Week 11 data that year was about Palm Trees. \n\n![](featured.png)\n\n\n\n::: {.cell}\n\n:::\n\n\n\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

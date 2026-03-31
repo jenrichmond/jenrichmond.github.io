@@ -32,6 +32,6 @@ This page showcases some of [my favourite projects](https://jenrichmond.github.i
 
 I LOVE data viz and storytelling. 
 
-Check out my [#30DayChart challenge](https://jenrichmond.github.io/charts_30day.html) portfolio and my weekly [#TidyTuesday](https://jenrichmond.github.io/charts_tidytuesday.html) attempts. 
+Check out my [#30DayChart challenge](https://jenrichmond.github.io/charts_30day_2026.html) portfolio and my weekly [#TidyTuesday](https://jenrichmond.github.io/charts_tidytuesday.html) attempts. 
 
 

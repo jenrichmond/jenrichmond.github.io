@@ -1,0 +1,17 @@
+{
+  "hash": "b3f0cafcf8cc1a9d6bd918ac3bd8b879",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"day X\"\nauthor: Jen Richmond\ndate: 2026-04-01\nformat: html\neditor: source\ndraft: FALSE\ncode-fold: true\nimage: featured.png\nexecute:\n  freeze: true\n---\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\nlibrary(janitor)\nlibrary(ggpubr)\nlibrary(Manu)\n\n\n# choosing a dataset randomly\n\nset.seed(4)\nttyears <- c(2018:2025)\nttweeks <- c(1:52)\n\n# choose a year at random\nchosen_year <- sample(ttyears, size = 1)\n\n# choose at week at random\nchosen_week <- sample(ttweeks, size = 1)\n\n# read the data from that year/week\n\ndf <- tidytuesdayR::tt_load(chosen_year, chosen_week)\n\n# print dataset\nprint(df)\n\npalm <- df[[1]]\n```\n:::\n\n\n\nThe data for this plot comes from a 2025 TidyTuesday challenge. The Week 11 data that year was about Palm Trees. \n\n![](featured.png)\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\noptions(scipen = 999)\n\npalm %>%\n  filter(climbing != \"both\") %>%\n  ggplot(aes(y = max_stem_height_m, x = max_leaf_number)) +\n  geom_jitter() +\n  scale_y_continuous(limits = c(0,65), breaks = seq(0,80,20)) +\n  scale_x_continuous(limits = c(0,80), breaks = seq(0,80,20)) +\n  geom_smooth(method = \"lm\", se = FALSE, colour = \"red\")  +\n  labs(y = \"Maximum height (m)\", x = \"Maximum leaf number\", \n       title = \"Taller palm trees have more leaves\", \n       caption = \"TidyTuesday 2025 Week 11 | Data from palmtrees` R package\") +\n  theme_pubr() +\n  stat_cor(method = \"pearson\", p.accuracy = 0.001, r.accuracy = 0.01)\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning: The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.\nℹ Please use the `linewidth` argument instead.\nℹ The deprecated feature was likely used in the ggpubr package.\n  Please report the issue at <https://github.com/kassambara/ggpubr/issues>.\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.\nℹ Please use the `linewidth` argument instead.\nℹ The deprecated feature was likely used in the ggpubr package.\n  Please report the issue at <https://github.com/kassambara/ggpubr/issues>.\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\n`geom_smooth()` using formula = 'y ~ x'\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning: Removed 1246 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning: Removed 1246 rows containing non-finite outside the scale range\n(`stat_cor()`).\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning: Removed 1279 rows containing missing values or values outside the scale range\n(`geom_point()`).\n```\n\n\n:::\n:::\n\n\n\n\n\n\n",
+    "supporting": [
+      "../../index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
