@@ -51,6 +51,17 @@
     ]
   },
   {
+    "listing": "/maps_30day.html",
+    "items": [
+      "/maps/2025-10-31_challenge/index.html",
+      "/maps/2025-11-01_points/index.html",
+      "/maps/2025-11-02_lines/index.html",
+      "/maps/2025-11-03_polygon/index.html",
+      "/maps/2025-11-04_mydata/index.html",
+      "/maps/2025-11-07_accessibility/index.html"
+    ]
+  },
+  {
     "listing": "/charts_tidytuesday.html",
     "items": [
       "/tidytuesday/2026-02-17_sheep/index.html",
@@ -71,17 +82,6 @@
       "/tidytuesday/2025-05-14_cool-stuff-tidytuesdayR/index.html",
       "/tidytuesday/2025-05-13_tt_vesuvius/index.html",
       "/tidytuesday/2025-05-06_tt_nsf/index.html"
-    ]
-  },
-  {
-    "listing": "/maps_30day.html",
-    "items": [
-      "/maps/2025-10-31_challenge/index.html",
-      "/maps/2025-11-01_points/index.html",
-      "/maps/2025-11-02_lines/index.html",
-      "/maps/2025-11-03_polygon/index.html",
-      "/maps/2025-11-04_mydata/index.html",
-      "/maps/2025-11-07_accessibility/index.html"
     ]
   },
   {

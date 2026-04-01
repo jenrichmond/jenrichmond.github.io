@@ -19,7 +19,7 @@ library(tidytuesdayR)
 library(tidyplots)
 library(janitor)
 library(ggpubr)
-library(Manu)
+library(here)
 
 
 # choosing a dataset randomly
@@ -76,13 +76,14 @@ palm |>
 
 ```{r}
 #| include: false
+# save plots
 
+ggsave(here::here("charts26", "2026-04-04_slope","ggfeatured.png"), width = 6, height = 4,  bg = "white")
 
-ggsave(here::here("charts26", "2026-04-04_slope", "ggfeatured.png"))
+gg_path_post <- here("charts26", "2026-04-01_partwhole", "ggfeatured.png")
+gg_path_showcase <- here("charts26", "2026-03-31_challenge", "gggender.png")
 
-ggsave(here::here("charts26", "2026-03-31_challenge", "ggpalm.png"))
-
-
+fs::file_copy(gg_path_post, gg_path_showcase, overwrite = TRUE)
 ```
 
 
@@ -108,11 +109,17 @@ palm |>
   adjust_caption("TidyTuesday 2025 Week 11 | Data from `palmtrees` R package") |> 
   adjust_size(unit = "mm", width = 160, height = 100) |> 
   add_annotation_text("R = 0.42, p < 0.001", x = 10, y = 62, fontsize = 12) |> 
-  save_plot(here::here("charts26", "2026-04-04_slope","tidyfeatured.png")) |> 
-  save_plot(here::here("charts26", "2026-03-31_challenge","tidypalm.png"))
-
+  save_plot(here::here("charts26", "2026-04-04_slope","tidyfeatured.png")) 
 ```
 
 
+```{r}
+#| include: false
+# save plots
+tidy_path_post <- here::here("charts26", "2026-04-04_slope", "tidyfeatured.png")
+tidy_path_showcase <- here::here("charts26", "2026-03-31_challenge", "tidypalms.png")
 
+fs::file_copy(tidy_path_post, tidy_path_showcase, overwrite = TRUE)
+
+```
 

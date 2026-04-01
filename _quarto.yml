@@ -38,7 +38,7 @@ website:
     location: navbar
     type: overlay
   page-footer:
-      left: "&#169; 2024 Jen Richmond"
+      left: "&#169; 2026 Jen Richmond"
       center: |
         <a class="link-dark me-1" href="https://github.com/jenrichmond" title="github" target="_blank" rel="noopener">{{< iconify fa6-brands github >}}</a>
         <a class="link-dark me-1" href="https://www.linkedin.com/in/jenrichmondphd/" title="LinkedIn" target="_blank" rel="noopener">{{< iconify fa6-brands linkedin >}}</a>

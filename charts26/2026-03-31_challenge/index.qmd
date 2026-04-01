@@ -26,13 +26,13 @@ This page will contain each of my final plots and the code that generates it, bu
 
 ::: panel-tabset
 
-### tidyplot
-
-![](gender.png)
-
 ### ggplot
 
-![](gender.png)
+![](gggender.png)
+
+### tidyplot
+
+![](tidygender.png)
 
 :::
 

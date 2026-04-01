@@ -6,7 +6,7 @@ format: html
 editor: source
 draft: FALSE
 code-fold: true
-image: featured.png
+image: tidyfeatured.png
 execute:
   freeze: true
 ---
@@ -17,9 +17,11 @@ execute:
 
 library(tidyverse)
 library(tidytuesdayR)
+library(tidyplots)
 library(janitor)
 library(ggeasy)
 library(Manu)
+library(here)
 
 
 # choosing a dataset randomly
@@ -50,11 +52,9 @@ salaries <- df[[1]]
 The data for this plot comes from a `r chosen_year` TidyTuesday challenge. The Week `r chosen_week` data that year was about Australian Salaries. I was interested in differences in the average salary of men and women in different occupations. The 30DayChartChallenge theme today is part to whole, so I decided to plot the proprotion of occupations in which women are paid more than men. It would be interesting to know whether this stat has improved since 2018. 
 
 
-![](featured.png)
-
+# data prep
 
 ```{r}
-#| fig-show: "hide"
 
 # make new column flagging occupations where women get paid more
 
@@ -65,8 +65,10 @@ salaries_gender <- salaries %>%
   mutate(salary_diff = Female - Male) %>%
   ungroup() %>%
   mutate(bias = case_when(salary_diff > 0 ~ 1, 
-                          salary_diff < 0 ~ 0)) # tag occupations where women are paid more on average with 1
-
+                          salary_diff < 0 ~ 0)) %>% # tag occupations where women are paid more on average with 1
+  mutate(direction = case_when(bias == 0 ~ "Men > Women", 
+                               bias == 1 ~ "Women > Men"))  |> 
+  filter(!is.na(direction)) 
 
 # count occupations where women are paid more, set up labels, remove NAs
 summary <- salaries_gender %>%
@@ -77,7 +79,13 @@ summary <- salaries_gender %>%
   )) %>%
   na.omit() 
 
-# plot
+
+```
+
+# ggplot
+
+```{r}
+
 summary %>%
   ggplot(aes(x = "", y = n, fill = bias)) +
   geom_col(width = 0.7) +
@@ -89,7 +97,7 @@ summary %>%
     subtitle = "Of the 1105 occupations in this dataset, only 7% pay women on average \nmore than men", 
     caption = "TidyTuesday 2018 Week 4 | Data from data.gov.au"
   ) +
-  theme_minimal() +
+  theme_minimal(base_family = "Lato") +
   scale_fill_manual(values = get_pal("Takahe")) +
   scale_y_continuous(limits = c(0,1200), breaks = seq(0, 1200, 300)) +
   theme(
@@ -101,13 +109,50 @@ summary %>%
 #| include: false
 # save plots
 
-ggsave(here::here("charts26", "2026-03-31_challenge", "gender.png"), width = 6, height = 4,  bg = "white")
+ggsave(here::here("charts26", "2026-04-01_partwhole","ggfeatured.png"), width = 6, height = 4,  bg = "white")
+
+gg_path_post <- here("charts26", "2026-04-01_partwhole", "ggfeatured.png")
+gg_path_showcase <- here("charts26", "2026-03-31_challenge", "gggender.png")
+
+fs::file_copy(gg_path_post, gg_path_showcase, overwrite = TRUE)
+```
 
 
-ggsave("featured.png", width = 6, height = 4,  bg = "white")
+# tidyplots
 
+```{r}
+#| message: false
+#| warning: false
+
+
+salaries_gender |> 
+  tidyplot(colour = direction) |> 
+  add_barstack_absolute() |> 
+  adjust_size(unit = "mm", width = 120, height = 80) |> 
+  reorder_color_levels("Women > Men") |> 
+  adjust_y_axis_title("Number of occupations") |> 
+  adjust_colors(new_colors = c("#DD3C51", "#313657")) |> 
+  theme_tidyplot()  |> 
+  remove_x_axis_ticks() |> 
+  remove_x_axis_title() |> 
+  adjust_y_axis(limits = c(0,1200)) |> 
+  adjust_font(fontsize = 12, family = "Lato") |> 
+  adjust_title("Gender Pay Gaps in Australia: Of the 1105 occupations in this dataset, \nonly 7% pay women on average more than men", fontsize = 14)  |> 
+  adjust_caption("TidyTuesday 2018 Week 4 | Data from data.gov.au") |> 
+    remove_legend_title() |> 
+  save_plot(here::here("charts26", "2026-04-01_partwhole","tidyfeatured.png")) 
 
 ```
 
 
+
+```{r}
+#| include: false
+# save plots
+tidy_path_post <- here("charts26", "2026-04-01_partwhole", "tidyfeatured.png")
+tidy_path_showcase <- here("charts26", "2026-03-31_challenge", "tidygender.png")
+
+fs::file_copy(tidy_path_post, tidy_path_showcase, overwrite = TRUE)
+
+```
 
