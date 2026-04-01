@@ -1,0 +1,104 @@
+---
+title: "day ______"
+author: Jen Richmond
+date: 2026-04-08
+format: html
+draft: TRUE
+editor: source
+code-fold: true
+image: tidyfeatured.png
+execute:
+  freeze: true
+---
+
+```{r}
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(tidytuesdayR)
+library(tidyplots)
+library(janitor)
+library(ggpubr)
+library(here)
+
+
+# choosing a dataset randomly
+
+set.seed(8888)
+ttyears <- c(2018:2025)
+ttweeks <- c(1:52)
+
+# choose a year at random
+chosen_year <- sample(ttyears, size = 1)
+
+# choose at week at random
+chosen_week <- sample(ttweeks, size = 1)
+
+# read the data from that year/week
+
+df <- tidytuesdayR::tt_load(chosen_year, chosen_week)
+
+# print dataset
+print(df)
+
+pop <- df[[1]]
+
+
+options(scipen = 999)
+
+```
+
+
+The data for this plot comes from a `r chosen_year` TidyTuesday challenge. The Week `r chosen_week` data that year was about refugees. 
+
+
+
+### ggplot
+
+```{r}
+#| message: false
+#| warning: false
+
+
+
+
+```
+
+
+```{r}
+#| include: false
+# save plots
+
+ggsave(here::here("charts26", "2026-04-04_slope","ggfeatured.png"), width = 6, height = 4,  bg = "white")
+
+gg_path_post <- here("charts26", "2026-04-01_partwhole", "ggfeatured.png")
+gg_path_showcase <- here("charts26", "2026-03-31_challenge", "gggender.png")
+
+fs::file_copy(gg_path_post, gg_path_showcase, overwrite = TRUE)
+```
+
+
+
+### tidyplot
+
+
+```{r}
+#| message: false
+#| warning: false
+
+
+
+```
+
+
+```{r}
+#| include: false
+# save plots
+tidy_path_post <- here::here("charts26", "2026-04-04_slope", "tidyfeatured.png")
+tidy_path_showcase <- here::here("charts26", "2026-03-31_challenge", "tidypalms.png")
+
+fs::file_copy(tidy_path_post, tidy_path_showcase, overwrite = TRUE)
+
+```
+

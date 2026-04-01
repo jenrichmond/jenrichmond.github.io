@@ -1,0 +1,15 @@
+{
+  "hash": "3bf3bb89b1f92464b6b7ade84331986b",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"day ______\"\nauthor: Jen Richmond\ndate: 2026-04-08\nformat: html\ndraft: TRUE\neditor: source\ncode-fold: true\nimage: tidyfeatured.png\nexecute:\n  freeze: true\n---\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\nlibrary(tidyplots)\nlibrary(janitor)\nlibrary(ggpubr)\nlibrary(here)\n\n\n# choosing a dataset randomly\n\nset.seed(8888)\nttyears <- c(2018:2025)\nttweeks <- c(1:52)\n\n# choose a year at random\nchosen_year <- sample(ttyears, size = 1)\n\n# choose at week at random\nchosen_week <- sample(ttweeks, size = 1)\n\n# read the data from that year/week\n\ndf <- tidytuesdayR::tt_load(chosen_year, chosen_week)\n\n# print dataset\nprint(df)\n\npop <- df[[1]]\n\n\noptions(scipen = 999)\n```\n:::\n\n\n\nThe data for this plot comes from a 2023 TidyTuesday challenge. The Week 34 data that year was about refugees. \n\n\n\n### ggplot\n\n\n::: {.cell}\n\n:::\n\n\n\n\n\n\n\n### tidyplot\n\n\n\n::: {.cell}\n\n:::\n\n\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

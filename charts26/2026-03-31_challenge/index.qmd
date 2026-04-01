@@ -54,19 +54,22 @@ This page will contain each of my final plots and the code that generates it, bu
 :::
 
 
-## Day _____
+## Day 8: circular
 
-[Dataset](URL)
+[Refugees]("https://github.com/rfordatascience/tidytuesday/blob/main/data/2023/2023-08-22/readme.md")
 
 ::: panel-tabset
 
 ### tidyplot
 
-![](image.png)
+#### As conflict wears on, the number of people displaced within their own country increases. 
+
+![](tidyArefugees.png)
+![](tidyIrefugees.png)
 
 ### ggplot
 
-![](image.png)
+![](ggrefugees.png)
 :::
 
 
