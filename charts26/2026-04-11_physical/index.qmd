@@ -1,0 +1,152 @@
+---
+title: "day 11: physical"
+author: Jen Richmond
+date: 2026-04-11
+format: html
+editor: source
+code-fold: true
+image: tidyfeatured.png
+execute:
+  freeze: true
+---
+
+```{r}
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(tidytuesdayR)
+library(tidyplots)
+library(janitor)
+library(ggeasy)
+library(here)
+library(RColorBrewer)
+
+
+# read the data from that year/week
+
+chosen_year <- 2026
+chosen_week <- 13
+
+df <- tidytuesdayR::tt_load(2026, 13)
+
+
+
+# print dataset
+print(df)
+
+temp <- df[[1]]
+
+
+options(scipen = 999)
+
+```
+
+
+The data for this plot comes from a `r chosen_year` TidyTuesday challenge. The Week `r chosen_week` data that year was about ocean temperature in Nova Scotia. 
+
+
+
+### prep
+
+```{r}
+#| message: false
+#| warning: false
+
+
+shallow_deep <- temp %>%
+  filter(sensor_depth_at_low_tide_m %in% c(2, 40)) %>%
+  group_by(sensor_depth_at_low_tide_m, year(date), month(date)) %>%
+  summarise(monthly_mean = mean(mean_temperature_degree_c)) %>%
+  rename(month = "month(date)", year = "year(date)", depth = sensor_depth_at_low_tide_m) %>%
+  mutate(depth = case_when(depth == 2 ~ "shallow (2 m)", 
+                           depth == 40 ~ "deep (40 m)")) %>%
+  mutate(depth = as.factor(depth)) %>%
+  mutate(depth = fct_relevel(depth, c("shallow (2 m)", "deep (40 m)"))) %>%
+  mutate(month = factor(month, levels = 1:12, labels = month.abb)) %>%
+  arrange(depth, year, month) %>%
+  ungroup() 
+
+
+# make missing data explicit NA
+
+shallow_deep_complete <- shallow_deep %>%
+  complete(year, month = factor(month, levels = month.abb), depth) %>%
+   mutate(month = forcats::fct_rev(month))
+
+
+
+```
+
+
+### ggplot
+
+```{r}
+
+
+
+shallow_deep_complete %>%
+  ggplot(aes(x = year, y = month, fill = monthly_mean)) +
+  geom_tile() +
+  facet_wrap(~depth) +
+  theme_minimal(base_family = "Lato") +
+  scale_fill_distiller(palette = "Blues", na.value = "darkgrey",
+                      name = "Average \nTemperature") +
+  labs(y = "Month", x = "Year", title = "Ocean Temperature by Depth in Nova Scotia", 
+       caption = "TidyTuesday 2026 Week 13 | Data from Nova Scotia Open Data Portal") 
+
+
+
+```
+
+```{r}
+#| include: false
+# save plots
+
+ggsave(here::here("charts26", "2026-04-11_physical","ggfeatured.png"), width = 6, height = 4,  bg = "white")
+
+gg_path_post <- here("charts26", "2026-04-11_physical", "ggfeatured.png")
+gg_path_showcase <- here("charts26", "2026-03-31_challenge", "ggtemp.png")
+
+fs::file_copy(gg_path_post, gg_path_showcase, overwrite = TRUE)
+```
+
+
+
+### tidyplot
+
+
+```{r}
+#| message: false
+#| warning: false
+
+blues <- brewer.pal(9, "Blues")
+
+
+shallow_deep_complete %>%
+  tidyplot(x = year, y = month, fill = monthly_mean) %>%
+  add_heatmap() %>%
+  split_plot(by = depth) %>%
+   adjust_size(width = 55, height = 75) %>%
+  adjust_font(fontsize = 12, family = "Lato") %>%
+  adjust_title("Ocean Temperature by Depth in Nova Scotia", fontsize = 14) %>%
+  adjust_colors(new_colors = rev(blues)) %>%
+  adjust_caption("TidyTuesday 2026 Week 13 | Data from Nova Scotia Open Data Portal") %>%
+  adjust_x_axis_title("Year") %>%
+  adjust_y_axis_title("Month") %>%
+  adjust_legend_title("Average \ntemperature") %>%
+  save_plot(here::here("charts26", "2026-04-11_physical", "tidyfeatured.png"))
+
+```
+
+
+```{r}
+#| include: false
+# save plots
+tidy_path_post <- here::here("charts26", "2026-04-11_physical", "tidyfeatured.png")
+tidy_path_showcase <- here::here("charts26", "2026-03-31_challenge", "tidytemp.png")
+
+fs::file_copy(tidy_path_post, tidy_path_showcase, overwrite = TRUE)
+
+```
+
