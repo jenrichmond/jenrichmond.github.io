@@ -73,19 +73,22 @@ This page will contain each of my final plots and the code that generates it, bu
 :::
 
 
-## Day _____
+## Day 15: correlation
 
-[Dataset](URL)
+[Animal Crossing]("https://github.com/rfordatascience/tidytuesday/blob/main/data/2020/2020-05-05/readme.md")
 
 ::: panel-tabset
 
 ### tidyplot
 
-![](image.png)
+![](tidyanimal2.png)
+![](tidyanimal1.png)
 
 ### ggplot
 
-![](image.png)
+![](gganimal2.png)
+
+![](gganimal1.png)
 :::
 
 

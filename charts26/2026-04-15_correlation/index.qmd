@@ -3,10 +3,9 @@ title: "day 15: correlation"
 author: Jen Richmond
 date: 2026-04-15
 format: html
-draft: TRUE
 editor: source
 code-fold: true
-image: tidyfeatured.png
+image: tidyfeatured1.png
 execute:
   freeze: true
 ---
@@ -201,7 +200,7 @@ join %>%
   add_curve_fit(se = FALSE, linewidth = 1) %>%
   adjust_size(width = 100, height = 80) %>%
   adjust_font(family = "Lato", fontsize = 10) %>%
-  adjust_x_axis_title("Review sentiment") %>%
+  adjust_x_axis_title("Review sentiment (AFINN)") %>%
   adjust_y_axis_title("Review score") %>%
   adjust_title("Animal crossing review scores are correlated with review \ntext sentiment", fontsize = 12) %>%
    adjust_caption("TidyTuesday 2020 Week 19 | Data from Metacritic") %>%
